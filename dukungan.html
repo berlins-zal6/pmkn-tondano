@@ -4,166 +4,361 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="icon pmkn.jpeg" type="image/png" />
-    <title>Dukung Kami</title>
+    <title>Dukung Kami - PMKN Tondano</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
+
     <style>
-      body {
-        font-family: Arial, sans-serif;
+      :root {
+        --primary: #2563eb;
+        --secondary: #3b82f6;
+        --dark: #1e293b;
+        --light: #f8fafc;
+        --text: #334155;
+        --white: #ffffff;
+        --success: #22c55e;
+      }
+
+      * {
         margin: 0;
         padding: 0;
-        background-color: #f5f5f5;
+        box-sizing: border-box;
       }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--light);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      /* --- Header & Navigation --- */
+      .header {
+        background: rgba(30, 41, 59, 0.98);
+        backdrop-filter: blur(15px);
+        padding: 15px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        color: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo-area {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: white;
+      }
+      .logo-area img {
+        width: 40px;
+        border-radius: 50%;
+        border: 2px solid var(--secondary);
+      }
+
+      .nav-bar {
+        display: flex;
+        gap: 10px;
+      }
+      .nav-bar a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 18px;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        transition: 0.3s;
+      }
+      .nav-bar a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--secondary);
+      }
+
+      /* Menu Toggle (Garis 3) */
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 28px;
+        height: 18px;
+        cursor: pointer;
+      }
+      .menu-toggle span {
+        display: block;
+        height: 3px;
+        background: var(--white);
+        border-radius: 10px;
+        transition: 0.3s;
+      }
+
+      /* --- Content Layout --- */
       .container {
         max-width: 800px;
         margin: 40px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 0 20px;
       }
-      .header {
-        background-color: #333;
-        color: #fff;
-        padding: 20px;
+
+      .hero-support {
         text-align: center;
+        margin-bottom: 40px;
       }
-      .header i {
-        font-size: 24px;
-        margin-right: 10px;
-        color: #fff;
-        vertical-align: middle;
-      }
-      .header a {
-        text-decoration: none;
-        color: #fff;
-      }
-      .header h1 {
-        font-size: 24px;
-        margin: 0;
-      }
-      .content {
-        padding: 20px;
-      }
-      .dukungan-form {
-        padding: 20px;
-        background-color: #f7f7f7;
-        border-radius: 10px;
-      }
-      .dukungan-form input[type="text"],
-      .dukungan-form input[type="email"],
-      .dukungan-form input[type="number"] {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
-      .dukungan-form button[type="submit"] {
-        background-color: #333;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-      .dukungan-form button[type="submit"]:hover {
-        background-color: #444;
-      }
-      .qris-image {
-        max-width: 50%;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-      }
-      .qris-text {
-        font-size: 18px;
-        font-weight: bold;
-        margin-top: 10px;
-        text-align: center;
-      }
-      .bank-text {
-        font-size: 18px;
-        font-weight: bold;
-        margin-top: 20px;
-        text-align: center;
-      }
-      .bank-info {
-        background-color: #f7f7f7;
-        padding: 10px;
-        border-radius: 10px;
+
+      .hero-support h2 {
+        font-size: 2rem;
+        color: var(--dark);
         margin-bottom: 10px;
+      }
+
+      .support-card {
+        background: var(--white);
+        border-radius: 25px;
+        padding: 40px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+        text-align: center;
+      }
+
+      /* --- QRIS Styling --- */
+      .qris-box {
+        background: var(--light);
+        padding: 25px;
+        border-radius: 20px;
+        display: inline-block;
+        margin: 20px 0;
+        border: 2px dashed #cbd5e1;
+      }
+
+      .qris-image {
+        max-width: 250px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+      }
+
+      .copy-text {
+        font-weight: 600;
+        color: var(--primary);
+        font-size: 1.1rem;
+      }
+
+      /* --- Bank Info --- */
+      .payment-list {
+        margin-top: 30px;
+        text-align: left;
+      }
+
+      .payment-item {
+        background: var(--light);
+        padding: 20px;
+        border-radius: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        transition: 0.3s;
+      }
+
+      .payment-item:hover {
+        transform: scale(1.02);
+      }
+
+      .bank-details {
         display: flex;
         align-items: center;
+        gap: 15px;
       }
-      .bank-info i {
-        font-size: 24px;
-        margin-right: 10px;
-        color: #333;
+      .bank-details i {
+        font-size: 1.5rem;
+        color: var(--primary);
       }
-      .bank-info span {
-        font-size: 18px;
-        font-weight: bold;
+      .bank-name {
+        font-weight: 600;
+        display: block;
       }
-      hr {
-        border: 1px solid #ccc;
-        margin: 20px 0;
+      .acc-number {
+        font-size: 0.9rem;
+        color: #64748b;
       }
-      .terima-kasih {
-        text-align: center;
+
+      .btn-copy {
+        background: var(--dark);
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        transition: 0.3s;
+      }
+
+      .btn-copy:hover {
+        background: var(--primary);
+      }
+
+      /* --- Footer Section --- */
+      .thanks-box {
         margin-top: 40px;
-        padding: 20px;
-        background-color: #f7f7f7;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 30px;
+        border-radius: 20px;
+        background: var(--dark);
+        color: white;
       }
-      .terima-kasih p {
-        font-size: 18px;
-        margin-bottom: 10px;
-      }
-      .terima-kasih p:last-child {
-        font-weight: bold;
-        font-size: 20px;
+
+      /* --- Mobile Responsive --- */
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: flex;
+        }
+        .nav-bar {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 70%;
+          height: 100vh;
+          background: var(--dark);
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          transition: 0.4s;
+        }
+        .nav-bar.show {
+          right: 0;
+        }
+        .payment-item {
+          flex-direction: column;
+          gap: 15px;
+          text-align: center;
+        }
+        .bank-details {
+          flex-direction: column;
+          gap: 5px;
+        }
       }
     </style>
   </head>
   <body>
     <div class="header">
-      <h1>
-        <a href="index.html"><i class="fa-solid fa-house"></i></a> Dukung Kami
-      </h1>
+      <a href="index.html" class="logo-area">
+        <img src="icon pmkn.jpeg" alt="Logo" />
+        <h1 style="font-size: 1.2rem">PMKN</h1>
+      </a>
+
+      <div class="menu-toggle" id="menuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav class="nav-bar" id="navBar">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+        <a href="profil.html"><i class="fa-solid fa-user"></i> Profil</a>
+        <a href="#"><i class="fa-solid fa-upload"></i> Upload</a>
+        <a href="#"><i class="fa-brands fa-ubuntu"></i> BPH</a>
+        <a href="#"><i class="fa-solid fa-info-circle"></i> About</a>
+      </nav>
     </div>
+
     <div class="container">
-      <div class="content">
-        <h2>Terima Kasih Atas Dukungan Anda!</h2>
+      <div class="hero-support">
+        <h2>Dukung Pelayanan Kami</h2>
         <p>
-          Kami sangat menghargai dukungan Anda untuk terus mengembangkan website
-          ini.
+          Setiap kontribusi Anda sangat berarti untuk kemajuan organisasi dan
+          kegiatan mahasiswa Nias di Tondano.
         </p>
-        <div class="dukungan-form">
-          <p>Scan QRIS di bawah ini untuk melakukan donasi:</p>
-          <img src="qris.jpg" alt="QRIS" class="qris-image" />
-          <p class="qris-text">Nomor QRIS: 082358478663</p>
-          <hr />
-          <p class="bank-text">Atau, Anda dapat melakukan transfer ke:</p>
-          <div class="bank-info">
-            <i class="fa-brands fa-cc-visa"></i>
-            <span>BRI: 717301027673539 (A.N. BERLIN SEPTENUS ZALUKHU)</span>
+      </div>
+
+      <div class="support-card">
+        <h3>Metode Donasi</h3>
+
+        <div class="qris-box">
+          <p style="margin-bottom: 10px; font-weight: 600">Scan QRIS</p>
+          <img src="qris.jpg" alt="QRIS PMKN" class="qris-image" />
+          <p class="copy-text">0823 5847 8663</p>
+          <button
+            class="btn-copy"
+            style="margin-top: 10px"
+            onclick="copyValue('082358478663')"
+          >
+            Salin Nomor QRIS
+          </button>
+        </div>
+
+        <div class="payment-list">
+          <div class="payment-item">
+            <div class="bank-details">
+              <i class="fa-solid fa-building-columns"></i>
+              <div>
+                <span class="bank-name">BANK BRI</span>
+                <span class="acc-number">7173-0102-7673-539</span>
+                <br /><small>A.N. BERLIN SEPTENUS ZALUKHU</small>
+              </div>
+            </div>
+            <button class="btn-copy" onclick="copyValue('717301027673539')">
+              Salin Rekening
+            </button>
           </div>
-          <div class="bank-info">
-            <i class="fa-solid fa-money-bill"></i>
-            <span>DANA: 082358478663 (A.N. BERLIN SEPTENUS ZALUKHU)</span>
+
+          <div class="payment-item">
+            <div class="bank-details">
+              <i class="fa-solid fa-wallet"></i>
+              <div>
+                <span class="bank-name">DANA</span>
+                <span class="acc-number">0823 5847 8663</span>
+                <br /><small>A.N. BERLIN SEPTENUS ZALUKHU</small>
+              </div>
+            </div>
+            <button class="btn-copy" onclick="copyValue('082358478663')">
+              Salin Nomor
+            </button>
           </div>
         </div>
-        <div class="terima-kasih">
-          <p>Terima kasih atas dukungan Anda!</p>
-          <p>Salam,</p>
-          <p>Berlin Septenus Zalukhu</p>
+
+        <div class="thanks-box">
+          <p style="font-style: italic">
+            "Hendaklah masing-masing memberikan menurut kerelaan hatinya, jangan
+            dengan sedih hati atau karena paksaan."
+          </p>
+          <p style="margin-top: 20px; font-weight: 700">
+            Terima Kasih Atas Dukungan Anda!
+          </p>
+          <p style="font-size: 0.9rem; opacity: 0.8">Berlin Septenus Zalukhu</p>
         </div>
       </div>
     </div>
+
+    <script>
+      // Toggle Mobile Menu
+      const menuBtn = document.getElementById("menuBtn");
+      const navBar = document.getElementById("navBar");
+
+      menuBtn.addEventListener("click", () => {
+        navBar.classList.toggle("show");
+        // Animasi sederhana untuk hamburger
+        menuBtn.style.transform = navBar.classList.contains("show")
+          ? "rotate(90deg)"
+          : "rotate(0)";
+      });
+
+      // Fitur Salin Nomor Otomatis
+      function copyValue(text) {
+        navigator.clipboard
+          .writeText(text)
+          .then(() => {
+            alert("Nomor berhasil disalin: " + text);
+          })
+          .catch((err) => {
+            console.error("Gagal menyalin: ", err);
+          });
+      }
+    </script>
   </body>
 </html>
-

@@ -6,486 +6,329 @@
     <link rel="icon" href="icon pmkn.jpeg" type="image/png" />
     <title>PMKN Tondano</title>
     <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
     <style>
-      body {
-        font-family: Arial, sans-serif;
+      :root {
+        --primary: #2563eb;
+        --secondary: #3b82f6;
+        --dark: #1e293b;
+        --light: #f8fafc;
+        --text: #334155;
+        --white: #ffffff;
+        --glass: rgba(255, 255, 255, 0.1);
+      }
+      * {
         margin: 0;
         padding: 0;
-        background-color: #f5f5f5;
+        box-sizing: border-box;
       }
-      .loading-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #fff;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--light);
+        color: var(--text);
+        line-height: 1.6;
+        overflow-x: hidden;
       }
-      .loading-logo {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        margin-bottom: 20px;
-      }
-      .loading-bar {
-        width: 200px;
-        height: 5px;
-        background-color: #ccc;
-        border-radius: 5px;
-        margin-bottom: 20px;
-        position: relative;
-      }
-      .loading-bar::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0%;
-        height: 100%;
-        background-color: #333;
-        border-radius: 5px;
-        animation: load 2s linear infinite;
-      }
-      @keyframes load {
-        0% {
-          width: 0%;
-        }
-        50% {
-          width: 100%;
-        }
-        100% {
-          width: 0%;
-        }
-      }
-      .loading-text {
-        font-size: 24px;
-        color: #333;
-        margin-bottom: 10px;
-      }
-      .loading-subtext {
-        font-size: 18px;
-        color: #666;
-      }
+      /* --- Header & Navigation --- */
       .header {
-        background-color: #333;
-        color: #fff;
-        padding: 20px;
+        background: rgba(30, 41, 59, 0.98);
+        backdrop-filter: blur(15px);
+        padding: 15px 5%;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        color: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       }
-      .header-content {
+      .logo-area {
         display: flex;
         align-items: center;
+        gap: 12px;
       }
-      .logo {
-        width: 50px;
-        height: 50px;
+      .logo-area img {
+        width: 42px;
         border-radius: 50%;
-        margin-right: 20px;
-        transition: transform 0.2s ease-in-out;
+        border: 2px solid var(--secondary);
       }
-      .logo:hover {
-        transform: scale(1.1);
-        cursor: pointer;
+      .logo-area h1 {
+        font-size: 1.4rem;
+        font-weight: 700;
       }
-      .header h1 {
-        margin: 0;
-        font-size: 36px;
-      }
+      /* Navigation Desktop */
       .nav-bar {
         display: flex;
-        align-items: center;
+        gap: 10px;
       }
       .nav-bar a {
-        color: #fff;
+        color: white;
         text-decoration: none;
-        margin: 0 10px;
-        font-size: 18px;
+        padding: 10px 18px;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        transition: 0.3s;
         display: flex;
         align-items: center;
-      }
-      .nav-bar a i {
-        margin-right: 5px;
+        gap: 8px;
       }
       .nav-bar a:hover {
-        color: #ccc;
+        background: var(--glass);
+        color: var(--secondary);
       }
+      /* Menu Toggle (Garis 3) */
       .menu-toggle {
         display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 20px;
         cursor: pointer;
+        z-index: 2001;
       }
       .menu-toggle span {
         display: block;
-        width: 25px;
         height: 3px;
-        background-color: #fff;
-        margin: 5px 0;
-      }
-      @media (max-width: 768px) {
-        .nav-bar {
-          display: none;
-          flex-direction: column;
-          position: absolute;
-          top: 70px;
-          right: 20px;
-          background-color: #333;
-          padding: 10px;
-          border-radius: 10px;
-          align-items: flex-start;
-        }
-        .nav-bar.show {
-          display: flex;
-        }
-        .nav-bar a {
-          margin: 10px 0;
-          padding: 10px;
-          width: 100%;
-          text-align: left;
-        }
-        .menu-toggle {
-          display: block;
-        }
-      }
-      .content {
-        max-width: 800px;
-        margin: 40px auto;
-        padding: 20px;
-        background-color: #fff;
+        background: var(--white);
         border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
       }
-
-      .welcome {
-        font-size: 24px;
+      .line-1 {
+        width: 100%;
+      }
+      .line-2 {
+        width: 70%;
+        margin-left: auto;
+      }
+      .line-3 {
+        width: 100%;
+      }
+      /* Animasi Garis 3 ke X */
+      .menu-toggle.active .line-1 {
+        transform: translateY(8.5px) rotate(45deg);
+      }
+      .menu-toggle.active .line-2 {
+        opacity: 0;
+        transform: translateX(10px);
+      }
+      .menu-toggle.active .line-3 {
+        transform: translateY(-8.5px) rotate(-45deg);
+      }
+      /* --- Hero Section --- */
+      .hero {
+        background: var(--white);
+        padding: 80px 5% 40px;
+        text-align: center;
+      }
+      .hero h2 {
+        font-size: 2.5rem;
+        color: var(--dark);
         margin-bottom: 20px;
       }
-
-      .dukungan {
-    background-color: #f7f7f7;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.dukungan-btn {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.dukungan-btn:hover {
-    background-color: #444;
-}
-
-      .chat-widget {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 300px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      .hero p {
+        max-width: 750px;
+        margin: 0 auto;
+        color: #64748b;
+        font-size: 1.1rem;
+      }
+      /* --- Main Content Container --- */
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
         padding: 20px;
-        display: none;
-        flex-direction: column;
       }
-
-      .chat-widget.show {
-        display: flex;
+      /* Maintenance Section */
+      .maintenance-card {
+        background: #fffbeb;
+        border: 1px solid #fde68a;
+        padding: 40px;
+        border-radius: 25px;
+        text-align: center;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
       }
-
-      .chat-header {
-        font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+      .maintenance-card i {
+        font-size: 3rem;
+        color: #d97706;
+        margin-bottom: 20px;
       }
-
-      .chat-close {
-        cursor: pointer;
+      /* Grid System */
+      .grid-layout {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 25px;
       }
-
-      .chat-message {
-        margin-bottom: 10px;
+      .card {
+        background: var(--white);
+        padding: 30px;
+        border-radius: 25px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
       }
-
-      .chat-input {
-        width: 100%;
-        height: 30px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-      }
-
-      .chat-send {
-        width: 100%;
-        height: 30px;
-        background-color: #333;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-
-      .chat-toggle {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        background-color: #333;
-        color: #fff;
-        border-radius: 50%;
+      .social-links {
         display: flex;
         justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+      .social-icon {
+        width: 45px;
+        height: 45px;
+        background: var(--light);
+        display: flex;
         align-items: center;
-        cursor: pointer;
+        justify-content: center;
+        border-radius: 50%;
+        color: var(--dark);
+        text-decoration: none;
+        transition: 0.3s;
+        font-size: 1.2rem;
       }
-
-      .chat-options {
-        margin-bottom: 10px;
+      .social-icon:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-5px);
       }
-
-      .chat-option {
-        background-color: #f5f5f5;
-        padding: 10px;
-        border-radius: 5px;
-        margin-bottom: 5px;
+      .support-btn {
+        width: 100%;
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 15px;
+        border-radius: 15px;
+        font-weight: 600;
         cursor: pointer;
+        margin-top: 15px;
+        transition: 0.3s;
+      }
+      .support-btn:hover {
+        background: var(--dark);
+        transform: scale(1.02);
+      }
+      /* --- Mobile Responsive --- */
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: flex;
+        }
+        .nav-bar {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 75%;
+          height: 100vh;
+          background: rgba(30, 41, 59, 0.95);
+          backdrop-filter: blur(15px);
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+        }
+        .nav-bar.show {
+          right: 0;
+        }
+        .grid-layout {
+          grid-template-columns: 1fr;
+        }
+        .hero h2 {
+          font-size: 1.8rem;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="loading-screen">
-      <img src="icon pmkn.jpeg" alt="Logo PMKN" class="loading-logo" />
-      <div class="loading-text">PMKN Tondano</div>
-      <div class="loading-bar"></div>
-      <div class="loading-subtext">Memuat halaman...</div>
-    </div>
     <div class="header">
-      <div class="header-content">
-        <a href="#">
-          <img src="icon pmkn.jpeg" alt="Logo PMKN" class="logo" />
-        </a>
+      <div class="logo-area">
+        <img src="icon pmkn.jpeg" alt="Logo" />
         <h1>PMKN Tondano</h1>
       </div>
-      <div class="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="menu-toggle" id="menuBtn">
+        <span class="line-1"></span>
+        <span class="line-2"></span>
+        <span class="line-3"></span>
       </div>
-      <div class="nav-bar">
-        <a href="#"><i class="fa-solid fa-house"></i> Beranda</a>
-        <a href="#"><i class="fa-solid fa-user"></i> Profil</a>
+      <nav class="nav-bar" id="navBar">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+        <a href="profil.html"><i class="fa-solid fa-user"></i> Profil</a>
         <a href="#"><i class="fa-solid fa-upload"></i> Upload</a>
         <a href="#"><i class="fa-brands fa-ubuntu"></i> BPH</a>
         <a href="#"><i class="fa-solid fa-info-circle"></i> About</a>
-      </div>
+      </nav>
     </div>
-    <div class="content">
-      <div class="welcome">Welcome to PMKN Tondano!</div>
+    <section class="hero">
+      <h2>Shalom! Welcome to PMKN</h2>
       <p>
-        Selamat datang di website resmi PMKN Tondano. PMKN adalah Persatuan
-        Mahasiswa Kristen Nias, sebuah organisasi mahasiswa di Tondano, yang
-        tujuannya adalah memperkuat kebersamaan dan semangat kekristenan di
-        kalangan mahasiswa Nias. Kami adalah organisasi mahasiswa yang
-        berdedikasi untuk meningkatkan kualitas hidup mahasiswa dan masyarakat
-        sekitar.
+        Persatuan Mahasiswa Kristen Nias (PMKN) Tondano adalah komunitas iman
+        dan persaudaraan untuk mahasiswa Nias yang sedang menempuh pendidikan di
+        Tondano.
       </p>
-
-      <div class="maintenance" style="background-color: #f7f7f7; padding: 20px; border-radius: 10px; text-align: center;">
-    <i class="fa-solid fa-wrench" style="font-size: 36px; color: #666"></i>
-    <h2>Website Sedang Maintenance</h2>
-    <p>Kami mohon maaf atas ketidaknyamanan yang mungkin terjadi. Kami akan kembali secepatnya.</p>
-</div>
-<div class="social-media" style="margin-top: 10px; text-align: center;">
-    <p>Anda dapat mengenali kami melalui media sosial kami:</p>
-    <a href="https://www.facebook.com/pmkntondano" target="_blank" style="margin: 0 10px; color: #666; text-decoration: none;">
-        <i class="fa-brands fa-facebook-f" style="font-size: 24px;"></i>
-    </a>
-    <a href="https://www.instagram.com/pmkn_tondano" target="_blank" style="margin: 0 10px; color: #666; text-decoration: none;">
-        <i class="fa-brands fa-instagram" style="font-size: 24px;"></i>
-    </a>
-    <a href="https://www.tiktok.com/search?q=pmkn%20tondano&t=1769452575510" target="_blank" style="margin: 0 10px; color: #666; text-decoration: none;">
-        <i class="fa-brands fa-tiktok" style="font-size: 24px;"></i>
-    </a>
-    <a href="https://www.youtube.com/@PMKN_Tondano" target="_blank" style="margin: 0 10px; color: #666; text-decoration: none;">
-        <i class="fa-brands fa-youtube" style="font-size: 24px;"></i>
-    </a>
-    <a href="https://berlins-zal6.github.io/kominfopmkn/index.html" target="_blank" style="margin: 0 10px; color: #666; text-decoration: none;">
-    <i class="fa-solid fa-computer" style="font-size: 24px;"></i>
-</div>
-<div class="contact-info" style="margin-top: 10px; text-align: center;">
-    <p>Atau hubungi kami melalui:</p>
-    <a href="mailto:pmkntondano@gmail.com" style="margin: 0 10px; color: #666; text-decoration: none;">
-        <i class="fa-solid fa-envelope" style="font-size: 20px;"></i> pmkntondano@gmail.com
-    </a>
-    <a href="https://wa.me/6282358478663" target="_blank" style="margin: 0 10px; color: #666; text-decoration: none;">
-        <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i> +62 8xx xxxx x663
-    </a>
-</a>
-</div>
-
-<div class="content">
-    <!-- kode yang sudah ada -->
-    <div class="dukungan">
-        <h2>Dukung Kami!</h2>
-        <p>Kami sangat membutuhkan dukungan Anda untuk terus mengembangkan website ini.</p>
-        <button class="dukungan-btn" onclick="window.location.href='dukungan.html'"><i class="fa-solid fa-circle-dollar-to-slot"></i> Dukung Sekarang</button>
-    </div>
-</div>
-
-    <div class="chat-widget">
-      <div class="chat-header">
-        PMKN Asistent
-        <span class="chat-close"><i class="fa-solid fa-times"></i></span>
+    </section>
+    <div class="container">
+      <div class="maintenance-card">
+        <i class="fa-solid fa-laptop-code"></i>
+        <h3>Website Under Development</h3>
+        <p>
+          Kami sedang merapikan beberapa fitur agar kamu makin nyaman
+          berselancar. Mohon bersabar ya!
+        </p>
       </div>
-      <div class="chat-message">Online. Siap membantu Anda!</div>
-      <div class="chat-options">
-        <div class="chat-option" data-message="Apa itu PMKN?">
-          Apa itu PMKN?
+      <div class="grid-layout">
+        <div class="card">
+          <h3 style="margin-bottom: 15px">
+            <i class="fa-solid fa-share-nodes"></i> Hubungkan Dengan Kami
+          </h3>
+          <p>
+            Ikuti perkembangan kegiatan PMKN melalui kanal media sosial resmi
+            kami:
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-icon"
+              ><i class="fa-brands fa-facebook-f"></i
+            ></a>
+            <a href="#" class="social-icon"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="#" class="social-icon"
+              ><i class="fa-brands fa-tiktok"></i
+            ></a>
+            <a href="#" class="social-icon"
+              ><i class="fa-brands fa-youtube"></i
+            ></a>
+          </div>
         </div>
-        <div class="chat-option" data-message="Kapan website ini selesai?">
-          Kapan website ini selesai?
-        </div>
-        <div
-          class="chat-option"
-          data-message="Bagaimana cara bergabung dengan PMKN?"
-        >
-          Bagaimana cara bergabung dengan PMKN?
+        <div class="card">
+          <h3><i class="fa-solid fa-hand-holding-heart"></i> Dukungan</h3>
+          <p style="font-size: 0.9rem; margin-top: 10px">
+            Dukunganmu sangat berarti bagi pengembangan organisasi dan pelayanan
+            kami.
+          </p>
+          <button class="support-btn" onclick="location.href = 'dukungan.html'">
+            Donasi Sekarang
+          </button>
         </div>
       </div>
-      <input type="text" class="chat-input" placeholder="Tulis pesan..." />
-      <button class="chat-send"><i class="fa-solid fa-paper-plane"></i> Send</button>
     </div>
-    <div class="chat-toggle">
-      <i class="fa-solid fa-comment"></i>
-    </div>
-
     <script>
-      const loadingScreen = document.querySelector(".loading-screen");
-      const menuToggle = document.querySelector(".menu-toggle");
-      const navBar = document.querySelector(".nav-bar");
-      const chatWidget = document.querySelector(".chat-widget");
-      const chatToggle = document.querySelector(".chat-toggle");
-      const chatInput = document.querySelector(".chat-input");
-      const chatSend = document.querySelector(".chat-send");
-      const chatClose = document.querySelector(".chat-close");
-      const chatOptions = document.querySelectorAll(".chat-option");
-
-      window.addEventListener("load", () => {
-        loadingScreen.style.display = "none";
-        setTimeout(() => {
-          chatWidget.classList.add("show");
-        }, 3000);
-      });
-
-      menuToggle.addEventListener("click", () => {
+      // --- Mobile Menu Logic ---
+      const menuBtn = document.getElementById("menuBtn");
+      const navBar = document.getElementById("navBar");
+      menuBtn.addEventListener("click", () => {
+        menuBtn.classList.toggle("active");
         navBar.classList.toggle("show");
       });
-
-      chatToggle.addEventListener("click", () => {
-    chatWidget.classList.toggle("show");
-    setTimeout(() => {
-        chatInput.focus();
-    }, 100);
-});
-
-      chatSend.addEventListener("click", () => {
-    const message = chatInput.value;
-    if (message.toLowerCase().includes("halo") || message.toLowerCase().includes("hy") || message.toLowerCase().includes("hai")|| message.toLowerCase().includes("p")) {
-        const response = document.createElement("div");
-        response.className = "chat-message";
-        response.textContent = "Halo! 😊 Apa yang bisa saya bantu?";
-        chatWidget.appendChild(response);
-        chatInput.value = "";
-        setTimeout(() => {
-            const response2 = document.createElement("div");
-            response2.className = "chat-message";
-            response2.textContent = "Sabar ya, saya sedang memeriksa... 🤔";
-            chatWidget.appendChild(response2);
-            setTimeout(() => {
-                const response3 = document.createElement("div");
-                response3.className = "chat-message";
-                response3.textContent = "Ah, saya sudah tahu! 🎉 Apa yang kamu ingin tahu?";
-                chatWidget.appendChild(response3);
-            }, 2000);
-        }, 1000);
-    } else if (message === "halo") {
-        const response = document.createElement("div");
-        response.className = "chat-message";
-        response.textContent = "Halo, apa kabar?";
-        chatWidget.appendChild(response);
-    } else if (message === "apa itu pmkn") {
-        const response = document.createElement("div");
-        response.className = "chat-message";
-        response.textContent = "PMKN adalah Persatuan Mahasiswa Kristen Nias, sebuah organisasi mahasiswa di Tondano.";
-        chatWidget.appendChild(response);
-    } else if (message === "kapan website ini selesai?") {
-        const response = document.createElement("div");
-        response.className = "chat-message";
-        response.textContent = "Kami tidak dapat memberikan tanggal pasti, namun kami akan terus bekerja untuk menyelesaikan website ini secepat mungkin.";
-        chatWidget.appendChild(response);
-    } else {
-        const response = document.createElement("div");
-        response.className = "chat-message";
-        response.textContent = "Maaf, saya tidak mengerti.";
-        chatWidget.appendChild(response);
-    }
-    chatInput.value = "";
-});
-
-      chatOptions.forEach((option) => {
-        option.addEventListener("click", () => {
-          const message = option.dataset.message;
-          const response = document.createElement("div");
-          response.className = "chat-message";
-          response.textContent = message;
-          chatWidget.appendChild(response);
-          const answer = getAnswer(message);
-          const answerElement = document.createElement("div");
-          answerElement.className = "chat-message";
-          answerElement.textContent = answer;
-          chatWidget.appendChild(answerElement);
-        });
-      });
-
-      function getAnswer(message) {
-        if (message === "Apa itu PMKN?") {
-          return "PMKN adalah Persatuan Mahasiswa Kristen Nias, sebuah organisasi mahasiswa di Tondano.";
-        } else if (message === "Kapan website ini selesai?") {
-          return "Kami tidak dapat memberikan tanggal pasti, namun kami akan terus bekerja untuk menyelesaikan website ini secepat mungkin.";
-        } else if (message === "Bagaimana cara bergabung dengan PMKN?") {
-          return "Anda dapat menghubungi kami melalui kontak yang tersedia di website ini.";
-        } else {
-          return "Maaf, saya tidak mengerti.";
-        }
-      }
-
-      chatClose.addEventListener("click", () => {
-        chatWidget.classList.remove("show");
-      });
-
-      chatInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-        chatSend.click();
-    }
-});
+      // Close menu if link clicked
+      document.querySelectorAll(".nav-bar a").forEach((n) =>
+        n.addEventListener("click", () => {
+          menuBtn.classList.remove("active");
+          navBar.classList.remove("show");
+        }),
+      );
     </script>
   </body>
 </html>
