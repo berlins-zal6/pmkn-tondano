@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="icon pmkn.jpeg" type="image/png" />
-    <title>PMKN Tondano</title>
+    <title>Profil PMKN Tondano</title>
+
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
@@ -13,6 +14,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
+
     <style>
       :root {
         --primary: #2563eb;
@@ -23,11 +25,13 @@
         --white: #ffffff;
         --glass: rgba(255, 255, 255, 0.1);
       }
+
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
+
       body {
         font-family: "Poppins", sans-serif;
         background-color: var(--light);
@@ -36,75 +40,7 @@
         overflow-x: hidden;
       }
 
-      #loading-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--white);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-        opacity: 1;
-        transition: opacity 0.5s;
-      }
-
-      .loading-logo {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        background: var(--white);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .loading-logo img {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-      }
-
-      .loading-text {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: var(--dark);
-        margin-bottom: 20px;
-        text-align: center;
-      }
-
-      .loading-bar {
-        width: 200px;
-        height: 5px;
-        background: var(--light);
-        border-radius: 10px;
-        overflow: hidden;
-      }
-
-      .loading-progress {
-        width: 0%;
-        height: 100%;
-        background: var(--primary);
-        animation: loading 2s infinite;
-      }
-
-      @keyframes loading {
-        0% {
-          width: 0%;
-        }
-        50% {
-          width: 100%;
-        }
-        100% {
-          width: 0%;
-        }
-      }
-      /* --- Header & Navigation --- */
+      /* --- Header & Navigation (Standard Modern) --- */
       .header {
         background: rgba(30, 41, 59, 0.98);
         backdrop-filter: blur(15px);
@@ -118,10 +54,13 @@
         color: white;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       }
+
       .logo-area {
         display: flex;
         align-items: center;
         gap: 12px;
+        text-decoration: none;
+        color: white;
       }
       .logo-area img {
         width: 42px;
@@ -132,7 +71,7 @@
         font-size: 1.4rem;
         font-weight: 700;
       }
-      /* Navigation Desktop */
+
       .nav-bar {
         display: flex;
         gap: 10px;
@@ -148,11 +87,13 @@
         align-items: center;
         gap: 8px;
       }
-      .nav-bar a:hover {
+      .nav-bar a:hover,
+      .nav-bar a.active {
         background: var(--glass);
         color: var(--secondary);
       }
-      /* Menu Toggle (Garis 3) */
+
+      /* Modern Hamburger Menu Toggle */
       .menu-toggle {
         display: none;
         flex-direction: column;
@@ -225,166 +166,200 @@
         }
       }
 
-      /* Animasi Garis 3 ke X */
-      .menu-toggle.active .line-1 {
-        transform: translateY(8.5px) rotate(45deg);
+      /* --- Content Layout --- */
+      .container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 20px;
       }
-      .menu-toggle.active .line-2 {
-        opacity: 0;
-        transform: translateX(10px);
-      }
-      .menu-toggle.active .line-3 {
-        transform: translateY(-8.5px) rotate(-45deg);
-      }
-      /* --- Hero Section --- */
-      .hero {
+
+      /* Profile Card */
+      .profil-card {
         background: var(--white);
-        padding: 80px 5% 40px;
+        padding: 50px 30px;
+        border-radius: 30px;
         text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+        border: 1px solid rgba(0, 0, 0, 0.02);
       }
-      .hero h2 {
-        font-size: 2.5rem;
+
+      .profil-card img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        margin-bottom: 25px;
+        border: 5px solid var(--light);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .profil-card h2 {
+        font-size: 2.2rem;
         color: var(--dark);
-        margin-bottom: 20px;
+        margin-bottom: 15px;
       }
-      .hero p {
+      .profil-card p {
         max-width: 750px;
         margin: 0 auto;
         color: #64748b;
         font-size: 1.1rem;
       }
-      /* --- Main Content Container --- */
-      .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      /* Maintenance Section */
-      .maintenance-card {
-        background: #fffbeb;
-        border: 1px solid #fde68a;
+
+      /* Section History */
+      .section-box {
+        background: var(--white);
         padding: 40px;
         border-radius: 25px;
-        text-align: center;
         margin-bottom: 30px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       }
-      .maintenance-card i {
-        font-size: 3rem;
-        color: #d97706;
-        margin-bottom: 20px;
-      }
-      /* Grid System */
-      .grid-layout {
-        display: grid;
-        grid-template-columns: 1.5fr 1fr;
-        gap: 25px;
-      }
-      .card {
-        background: var(--white);
-        padding: 30px;
-        border-radius: 25px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-      }
-      .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-top: 20px;
-      }
-      .social-icon {
-        width: 45px;
-        height: 45px;
-        background: var(--light);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
+
+      .section-box h2 {
+        border-left: 6px solid var(--primary);
+        padding-left: 20px;
+        margin-bottom: 25px;
+        font-size: 1.6rem;
         color: var(--dark);
-        text-decoration: none;
-        transition: 0.3s;
-        font-size: 1.2rem;
       }
-      .social-icon:hover {
-        background: var(--primary);
-        color: white;
+
+      .history-content {
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
+      }
+
+      .history-content:hover {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         transform: translateY(-5px);
       }
-      .support-btn {
-        width: 100%;
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 15px;
-        border-radius: 15px;
-        font-weight: 600;
-        cursor: pointer;
-        margin-top: 15px;
-        transition: 0.3s;
+
+      .history-content p {
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+        line-height: 1.6;
       }
-      .support-btn:hover {
-        background: var(--dark);
-        transform: scale(1.02);
+
+      .history-content p:last-child {
+        margin-bottom: 0;
       }
+
+      /* Visi Misi Grid */
+      .visi-misi-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+      }
+
+      .card {
+        background: var(--white);
+        padding: 35px;
+        border-radius: 25px;
+        transition: 0.4s ease;
+        border: 1px solid #e2e8f0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
+        border-color: var(--primary);
+      }
+
+      .card h3 {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+        color: var(--primary);
+        font-size: 1.4rem;
+      }
+
+      .card ul {
+        list-style: none;
+      }
+      .card ul li {
+        margin-bottom: 12px;
+        padding-left: 30px;
+        position: relative;
+      }
+
+      .card ul li::before {
+        content: "\f058"; /* FontAwesome check circle */
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+      }
+
       /* --- Mobile Responsive --- */
       @media (max-width: 768px) {
         .menu-toggle {
           display: flex;
         }
+
         .nav-bar {
           position: fixed;
           top: 0;
           right: -100%;
           width: 75%;
           height: 100vh;
-          background: rgba(30, 41, 59, 0.95);
-          backdrop-filter: blur(15px);
+          background: rgba(30, 41, 59, 0.98);
+          backdrop-filter: blur(20px);
           flex-direction: column;
           justify-content: center;
           align-items: center;
           transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+          gap: 25px;
         }
+
         .nav-bar.show {
           right: 0;
         }
-        .grid-layout {
+
+        .nav-bar a {
+          font-size: 1.2rem;
+          width: 80%;
+          justify-content: center;
+        }
+
+        .visi-misi-grid {
           grid-template-columns: 1fr;
         }
-        .hero h2 {
+        .profil-card h2 {
           font-size: 1.8rem;
         }
       }
 
-      .hero-btn {
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 15px 30px;
-        border-radius: 15px;
-        font-weight: 600;
-        cursor: pointer;
-        margin-top: 20px;
-        transition: 0.3s;
+      .visi-icon {
+        font-size: 24px;
+        color: #3498db;
+        background-color: #f1f1f1;
+        padding: 10px;
+        border-radius: 50%;
+        margin-right: 10px;
       }
 
-      .hero-btn:hover {
-        background: var(--dark);
-        transform: scale(1.05);
+      .visi-subtitle {
+        font-size: 12px;
+        color: #666;
+        display: block;
+        margin-top: 5px;
+      }
+
+      .card h3 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+        color: var(--primary);
       }
     </style>
   </head>
   <body>
-    <div id="loading-screen">
-      <div class="loading-logo">
-        <img src="icon pmkn.jpeg" alt="Logo PMKN" />
-      </div>
-      <div class="loading-text">PMKN TONDANO<br />Memuat Halaman...</div>
-      <div class="loading-bar">
-        <div class="loading-progress"></div>
-      </div>
-    </div>
-
     <div class="header">
       <div class="logo-area">
         <img src="icon pmkn.jpeg" alt="Logo" />
@@ -403,87 +378,123 @@
         <a href="#"><i class="fa-solid fa-info-circle"></i> About</a>
       </nav>
     </div>
-    <section class="hero">
-      <h2>Yaahowu! Welcome to PMKN</h2>
-      <p>
-        Persatuan Mahasiswa Kristen Nias (PMKN) Tondano adalah komunitas iman
-        dan persaudaraan untuk mahasiswa Nias yang sedang menempuh pendidikan di
-        Tondano.
-      </p>
-      <button class="hero-btn" onclick="location.href = 'profil.html'">
-        Pelajari Lebih Lanjut
-      </button>
-    </section>
+
     <div class="container">
-      <div class="maintenance-card">
-        <i class="fa-solid fa-laptop-code"></i>
-        <h3>Website Under Development</h3>
+      <div class="profil-card">
+        <img src="icon pmkn.jpeg" alt="Logo PMKN" />
+        <h2>Profil PMKN Tondano</h2>
         <p>
-          Kami sedang merapikan beberapa fitur agar kamu makin nyaman
-          berselancar. Mohon bersabar ya!
+          Persatuan Mahasiswa Kristen Nias (PMKN) adalah wadah bagi mahasiswa
+          asal Nias di Tondano untuk mempererat tali persaudaraan, menjaga nilai
+          religius, dan melestarikan budaya di tanah rantau.
         </p>
       </div>
-      <div class="grid-layout">
-        <div class="card">
-          <h3 style="margin-bottom: 15px">
-            <i class="fa-solid fa-share-nodes"></i> Hubungkan Dengan Kami
-          </h3>
+
+      <div class="section-box">
+        <h2>Sejarah PMKN</h2>
+        <div class="history-content">
           <p>
-            Ikuti perkembangan kegiatan PMKN melalui kanal media sosial resmi
-            kami:
+            Persatuan Mahasiswa Kristen Nias (PMKN) di Tondano merupakan sebuah
+            wadah persekutuan yang menghimpun mahasiswa-mahasiswa asal Nias yang
+            menempuh pendidikan di Tondano. Organisasi ini dibentuk dengan
+            tujuan utama menjadi tempat beribadah, mempererat komunikasi, serta
+            membangun kebersamaan dan solidaritas di antara mahasiswa Nias yang
+            berada jauh dari kampung halaman.
           </p>
-          <div class="social-links">
-            <a href="https://www.facebook.com/pmkn.tondano" class="social-icon"
-              ><i class="fa-brands fa-facebook-f"></i
-            ></a>
-            <a href="https://www.instagram.com/pmkn_tondano" class="social-icon"
-              ><i class="fa-brands fa-instagram"></i
-            ></a>
-            <a
-              href="https://www.tiktok.com/search?q=pmkn%20tondano&t=1769452575510"
-              class="social-icon"
-              ><i class="fa-brands fa-tiktok"></i
-            ></a>
-            <a href="https://www.youtube.com/@PMKN_Tondano" class="social-icon"
-              ><i class="fa-brands fa-youtube"></i
-            ></a>
-          </div>
+          <p>
+            Cikal bakal PMKN bermula pada tahun 2014, ketika beberapa mahasiswa
+            Nias yang merantau ke Tondano merasakan kebutuhan akan sebuah
+            keluarga dan wadah persekutuan yang dapat menyatukan mereka dalam
+            iman, persaudaraan, dan kebersamaan. Pada awalnya, perkumpulan ini
+            dikenal dengan nama PEMANIS (Persatuan Mahasiswa Nias).
+          </p>
+          <p>
+            Dengan perjuangan dan dedikasi para perintis, PMKN tumbuh menjadi
+            organisasi yang kuat dan resmi didirikan pada 29 Oktober 2020.
+            Berlandaskan pada Garis-Garis Besar Haluan Organisasi (GBHO) dan
+            Peraturan Organisasi (PO), PMKN terus menjadi rumah bagi mahasiswa
+            Nias di Tondano, tempat mereka dapat tumbuh, belajar, dan melayani
+            bersama.
+          </p>
+          <p>
+            Hari ini, PMKN tetap menjadi wadah yang dinamis, memimpin mahasiswa
+            Nias di Tondano menuju masa depan yang cerah, dengan iman,
+            persaudaraan, dan pelayanan.
+          </p>
         </div>
+      </div>
+
+      <div class="visi-misi-grid">
         <div class="card">
-          <h3><i class="fa-solid fa-hand-holding-heart"></i> Dukungan</h3>
-          <p style="font-size: 0.9rem; margin-top: 10px">
-            Dukunganmu sangat berarti bagi pengembangan organisasi dan pelayanan
-            kami.
+          <h3>
+            <i class="fa-solid fa-eye visi-icon"></i> Visi
+            <span class="visi-subtitle">Pandangan Masa Depan</span>
+          </h3>
+          <p style="font-style: italic; color: #475569">
+            "Mewujudkan mahasiswa Nias yang beriman teguh, berbudaya leluhur,
+            dan berkontribusi aktif dalam memajukan masyarakat Nias di mana pun
+            berada."
           </p>
-          <button class="support-btn" onclick="location.href = 'dukungan.html'">
-            Donasi Sekarang
-          </button>
+        </div>
+
+        <div class="card">
+          <h3><i class="fa-solid fa-bullseye"></i> Misi</h3>
+          <ul>
+            <li>Membina iman dan karakter Kristiani yang berintegritas.</li>
+            <li>Melestarikan kekayaan budaya Nias di tanah rantau.</li>
+            <li>Memperkuat sinergi antar anggota dan pihak eksternal.</li>
+            <li>Mendorong prestasi akademik dan kreativitas mahasiswa.</li>
+          </ul>
         </div>
       </div>
     </div>
-    <script>
-      window.addEventListener("load", () => {
-        const loadingScreen = document.getElementById("loading-screen");
-        loadingScreen.style.opacity = "0";
-        setTimeout(() => {
-          loadingScreen.style.display = "none";
-        }, 500);
-      });
 
-      // --- Mobile Menu Logic ---
+    <footer
+      style="
+        text-align: center;
+        padding: 40px;
+        color: #94a3b8;
+        font-size: 0.9rem;
+      "
+    >
+      &copy; 2026 PMKN Tondano. All Rights Reserved.
+    </footer>
+
+    <script>
+      // Menu Toggle Logic
       const menuBtn = document.getElementById("menuBtn");
       const navBar = document.getElementById("navBar");
+      const body = document.querySelector("body");
+
       menuBtn.addEventListener("click", () => {
         menuBtn.classList.toggle("active");
         navBar.classList.toggle("show");
+
+        // Prevent scrolling when menu is open
+        if (navBar.classList.contains("show")) {
+          body.style.overflow = "hidden";
+        } else {
+          body.style.overflow = "auto";
+        }
       });
-      // Close menu if link clicked
-      document.querySelectorAll(".nav-bar a").forEach((n) =>
-        n.addEventListener("click", () => {
+
+      // Close menu when clicking links
+      document.querySelectorAll(".nav-bar a").forEach((link) => {
+        link.addEventListener("click", () => {
           menuBtn.classList.remove("active");
           navBar.classList.remove("show");
-        }),
-      );
+          body.style.overflow = "auto";
+        });
+      });
+
+      // Close menu when clicking outside
+      window.addEventListener("click", (e) => {
+        if (!menuBtn.contains(e.target) && !navBar.contains(e.target)) {
+          menuBtn.classList.remove("active");
+          navBar.classList.remove("show");
+          body.style.overflow = "auto";
+        }
+      });
     </script>
   </body>
 </html>
