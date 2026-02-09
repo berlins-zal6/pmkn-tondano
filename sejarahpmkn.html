@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="icon pmkn.jpeg" type="image/png" />
-    <title>PMKN Tondano</title>
+    <title>Sejarah | PMKN Tondano</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
@@ -251,28 +251,33 @@
       }
 
       .dropdown:hover .dropdown-menu {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
 
-      .dropdown-menu li {
-        list-style: none;
-      }
+.dropdown-menu li {
+    list-style: none;
+}
 
-      .dropdown-menu a {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 10px 18px;
-        color: #334155;
-        font-size: 0.95rem;
-      }
+.dropdown-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 18px;
+    color: #334155;
+    font-size: 0.95rem;
+}
 
-      .dropdown-menu a:hover {
-        background: #f1f5f9;
-        color: #ff4d00;
-      }
+.dropdown-menu a:hover {
+    background: #f1f5f9;
+    color: #ff4d00;
+}
+
+.menu a.active {
+    color: #ff4d00;
+    border-bottom: 2px solid #ff4d00;
+}
 
       /* ===== SEARCH BOX ===== */
       .search-box {
@@ -442,6 +447,36 @@
         color: #64748b;
         font-size: 1.1rem;
       }
+
+      .hero {
+    text-align: center;
+    padding: 80px 5% 40px;
+}
+
+.breadcrumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.breadcrumb a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: #ff4d00;
+}
+
+.breadcrumb span {
+    color: #64748b;
+}
+
+
       /* --- Main Content Container --- */
       .container {
         max-width: 1000px;
@@ -562,118 +597,187 @@
         transform: scale(1.05);
       }
 
-      /* phone */
-  @media (max-width: 768px) {
-  body {
-    font-size: 14px;
-  }
-
-  /* Header lebih compact */
-  .header {
-    padding: 12px 4%;
-  }
-
-  .logo span {
-    font-size: 1rem;
-  }
-
-  /* Hero Mobile */
-  .hero {
-    padding: 60px 20px 30px;
-  }
-
-  .hero h2 {
-    font-size: 1.6rem;
-    line-height: 1.3;
-  }
-
-  .hero p {
-    font-size: 0.95rem;
-  }
-
-  .hero-btn {
-    width: 100%;
-    padding: 14px;
-    font-size: 0.95rem;
-  }
-
-  /* Container */
-  .container {
-    padding: 15px;
-  }
-
-  /* Card */
-  .card {
-    padding: 20px;
-    border-radius: 18px;
-  }
-
-  .maintenance-card {
-    padding: 25px;
-    border-radius: 18px;
-  }
-
-  /* Grid jadi 1 kolom */
-  .grid-layout {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  /* Social icon lebih kecil */
-  .social-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-  }
-
-  /* Search box full width */
-  .search-box {
-    width: 100%;
-  }
-
-  .search-box input {
-    width: 100%;
-  }
-
-  /* Dropdown mobile lebih smooth */
-  .dropdown-menu {
-    border-radius: 10px;
-    margin-top: 5px;
-  }
+      a.perintis-link {
+    text-decoration: none;
+    color: #2563eb;
+    transition: color 0.3s ease-in-out;
 }
 
-/* Tampilan Phone */
-@media (max-width: 480px) {
-  .hero h2 {
-    font-size: 1.4rem;
-  }
+a.perintis-link:hover {
+    color: #ff4d00;
+}
 
-  .hero p {
-    font-size: 0.9rem;
-  }
+/* ================= FOOTER MODERN ================= */
+.footer {
+  position: relative;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #e2e8f0;
+  padding: 60px 6% 30px;
+  overflow: hidden;
+}
 
-  .loading-logo {
-    width: 80px;
-    height: 80px;
-  }
+/* Pattern bulat background */
+.footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+  background-size: 40px 40px;
+  opacity: 0.5;
+}
 
-  .loading-logo img {
-    width: 65px;
-    height: 65px;
-  }
+/* Container */
+.footer-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 40px;
+}
 
-  .loading-text {
-    font-size: 1rem;
-  }
+/* Logo Box */
+.footer-logo-box {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
 
-  .card h3 {
-    font-size: 1rem;
-  }
+.footer-logo {
+  width: 55px;
+  height: 55px;
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
 
-  .support-btn {
-    padding: 12px;
-    font-size: 0.9rem;
-  }
+.footer-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+}
+
+.footer-subtitle {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.footer-desc {
+  margin-top: 15px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer-accredit {
+  color: #ff6a00;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+/* Column */
+.footer h4 {
+  color: white;
+  margin-bottom: 15px;
+}
+
+.footer ul {
+  list-style: none;
+}
+
+.footer ul li {
+  margin-bottom: 10px;
+}
+
+.footer ul li a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: 0.25s;
+}
+
+.footer ul li a:hover {
+  color: #ff6a00;
+  transform: translateX(5px);
+}
+
+/* Contact */
+.footer-contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.footer-contact i {
+  color: #ff6a00;
+  margin-top: 4px;
+}
+
+/* Bottom */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 6%;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-bottom-left p {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-bottom: 10px;
+}
+
+.footer-bottom-left ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.footer-bottom-left ul li a {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+.footer-bottom-left ul li a:hover {
+    color: #ff6a00;
+}
+
+.footer-bottom-right {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 35px;
+    height: 35px;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #94a3b8;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+.social-icon:hover {
+    background: #ff6a00;
+    color: white;
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-bottom-right {
+        margin-top: 20px;
+    }
 }
     </style>
   </head>
@@ -687,23 +791,19 @@
         <div class="loading-progress"></div>
       </div>
     </div>
-
     <header class="header">
-      <div class="logo">
+    <div class="logo">
         <img src="icon pmkn.jpeg" alt="Logo PMKN" />
         <span>PMKN Tondano</span>
-      </div>
-      <nav class="navbar">
-        <!-- menu items -->
-      </nav>
-
-      <nav class="navbar">
+    </div>
+    <nav class="navbar">
         <ul class="menu">
-          <li><a href="index.html" class="active">Beranda</a></li>
-
+          <li><a href="index.html">Beranda</a></li>
           <!-- Dropdown Profil -->
           <li class="dropdown">
-            <a href="#">Profil <i class="fa-solid fa-chevron-down"></i></a>
+            <a href="#" class="active"
+              >Profil <i class="fa-solid fa-chevron-down"></i
+            ></a>
             <ul class="dropdown-menu">
               <li>
                 <a href="sejarahpmkn.html"
@@ -734,7 +834,7 @@
               </li>
             </ul>
           </li>
-          <!-- Dropdown Organisasi -->
+            <!-- Dropdown Organisasi -->
           <li class="dropdown">
             <a href="#">Organisasi <i class="fa-solid fa-chevron-down"></i></a>
             <ul class="dropdown-menu">
@@ -755,9 +855,9 @@
                 <a href="#"><i class="fa-solid fa-users"></i> Anggota</a>
               </li>
               <li>
-                <li>
                 <a href="#"><i class="fa-solid fa-handshake"></i> Mitra PMKN</a>
               </li>
+              <li>
                 <a href="#"
                   ><i class="fa-solid fa-calendar-days"></i> Kegiatan</a
                 >
@@ -798,7 +898,6 @@
               </li>
             </ul>
           </li>
-
           <!-- Search -->
           <li class="search-box">
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -806,70 +905,55 @@
           </li>
         </ul>
       </nav>
-
       <!-- Hamburger -->
-      <div class="menu-toggle" id="menuBtn">
+    <div class="menu-toggle" id="menuBtn">
         <span class="line-1"></span>
         <span class="line-2"></span>
         <span class="line-3"></span>
-      </div>
+    </div>
     </header>
     <section class="hero">
-      <h2>Yaahowu! Welcome to PMKN</h2>
-      <p>
-        Persatuan Mahasiswa Kristen Nias (PMKN) Tondano adalah komunitas iman
-        dan persaudaraan untuk mahasiswa Nias yang sedang menempuh pendidikan di
-        Tondano.
-      </p>
-      <button class="hero-btn" onclick="location.href = 'visimisi.html'">
-        Pelajari Lebih Lanjut <i class="fa-solid fa-arrow-right"></i>
-      </button>
-    </section>
+    <div class="breadcrumb">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a> > <span>Sejarah PMKN Tondano</span>
+    </div>
+    <h2>Sejarah PMKN Tondano</h2>
+    <p> Persatuan Mahasiswa Kristen Nias (PMKN) Tondano memiliki sejarah berdirinya dan sangat menarik untuk diketahui. </p>
+</section>
     <div class="container">
-      <div class="maintenance-card">
-        <i class="fa-solid fa-laptop-code"></i>
-        <h3>Website Under Maintenance</h3>
+      <div class="card">
+        <h3>Tujuan</h3>
         <p>
-          Kami sedang merapikan beberapa fitur agar kamu makin nyaman
-          berselancar. Mohon bersabar ya!
+          Persatuan Mahasiswa Kristen Nias (PMKN) di Tondano merupakan sebuah
+          wadah persekutuan yang menghimpun mahasiswa-mahasiswa asal Nias yang
+          menempuh pendidikan di Tondano. Organisasi ini dibentuk dengan tujuan
+          utama menjadi tempat beribadah, mempererat komunikasi, serta membangun
+          kebersamaan dan solidaritas di antara mahasiswa Nias yang berada jauh
+          dari kampung halaman.
+        </p>
+        <p>
+          Tujuan awal PMKN adalah untuk mempersatukan mahasiswa Nias yang sedang
+          menempuh pendidikan di Tondano dan sekitarnya.
         </p>
       </div>
-      <div class="grid-layout">
-        <div class="card">
-          <h3 style="margin-bottom: 15px">
-            <i class="fa-solid fa-share-nodes"></i> Hubungkan Dengan Kami
-          </h3>
+      <div class="card">
+        <h3>Berdirinya</h3>
+        <p>
+          Cikal bakal PMKN bermula pada tahun 2014, ketika beberapa mahasiswa
+          Nias yang merantau ke Tondano merasakan kebutuhan akan sebuah keluarga
+          dan wadah persekutuan yang dapat menyatukan mereka dalam iman,
+          persaudaraan, dan kebersamaan. Pada awalnya, perkumpulan ini dikenal
+          dengan nama PEMANIS (Persatuan Mahasiswa Nias).
+        </p>
+      </div>
+      <div class="card">
+        <h3>Resmi -  Sekarang</h3>
+        <p> Dengan perjuangan dan dedikasi para <a href="perintispmkn.html" class="perintis-link">Perintis</a>, PMKN tumbuh menjadi organisasi yang kuat dan resmi didirikan pada 29 Oktober 2020. Berlandaskan pada Garis-Garis Besar Haluan Organisasi (GBHO) dan Peraturan Organisasi (PO), PMKN terus menjadi rumah bagi mahasiswa Nias di Tondano, tempat mereka dapat tumbuh, belajar, dan melayani bersama. </p>
           <p>
-            Ikuti perkembangan kegiatan PMKN melalui kanal media sosial resmi
-            kami:
-          </p>
-          <div class="social-links">
-            <a href="https://www.facebook.com/pmkn.tondano" class="social-icon"
-              ><i class="fa-brands fa-facebook-f"></i
-            ></a>
-            <a href="https://www.instagram.com/pmkn_tondano" class="social-icon"
-              ><i class="fa-brands fa-instagram"></i
-            ></a>
-            <a
-              href="https://www.tiktok.com/search?q=pmkn%20tondano&t=1769452575510"
-              class="social-icon"
-              ><i class="fa-brands fa-tiktok"></i
-            ></a>
-            <a href="https://www.youtube.com/@PMKN_Tondano" class="social-icon"
-              ><i class="fa-brands fa-youtube"></i
-            ></a>
-          </div>
-        </div>
-        <div class="card">
-          <h3><i class="fa-solid fa-hand-holding-heart"></i> Dukungan</h3>
-          <p style="font-size: 0.9rem; margin-top: 10px">
-            Dukunganmu sangat berarti bagi pengembangan organisasi dan pelayanan
-            kami.
-          </p>
-          <button class="support-btn" onclick="location.href = 'dukungan.html'">
-            Donasi Sekarang
-          </button>
-        </div>
+            Hari ini, PMKN tetap menjadi wadah yang dinamis, memimpin mahasiswa
+            Nias di Tondano menuju masa depan yang cerah, dengan iman,
+            persaudaraan, dan pelayanan.
+        </p>
+        </p>
       </div>
     </div>
     <script>
@@ -882,20 +966,103 @@
       });
 
       // --- Mobile Menu Logic ---
-      const menuBtn = document.getElementById("menuBtn");
-      const navbar = document.querySelector(".navbar");
-      menuBtn.addEventListener("click", () => {
+    const menuBtn = document.getElementById("menuBtn");
+    const navbar = document.querySelector(".navbar");
+    menuBtn.addEventListener("click", () => {
         menuBtn.classList.toggle("active");
         navbar.classList.toggle("show");
-      });
+    });
 
-      // Close menu if link clicked
-      document.querySelectorAll(".navbar a").forEach((n) =>
+    // Close menu if link clicked
+    document.querySelectorAll(".navbar a").forEach((n) =>
         n.addEventListener("click", () => {
-          menuBtn.classList.remove("active");
-          navbar.classList.remove("show");
+            menuBtn.classList.remove("active");
+            navbar.classList.remove("show");
         }),
-      );
+    );
     </script>
+
+    <footer class="footer">
+  <div class="footer-container">
+
+    <!-- LOGO & DESKRIPSI -->
+    <div>
+      <div class="footer-logo-box">
+        <div class="footer-logo">
+          <img src="icon pmkn.jpeg" alt="Logo PMKN" width="30" />
+        </div>
+        <div>
+          <div class="footer-title">PMKN TONDANO</div>
+          <div class="footer-subtitle">Persatuan Mahasiswa Kristen Nias</div>
+        </div>
+      </div>
+
+      <p class="footer-desc">
+        Wadah persekutuan mahasiswa Kristen Nias di Tondano untuk membangun iman,
+        persaudaraan, komunikasi, dan pelayanan yang berlandaskan kasih Kristus.
+      </p>
+
+      <div class="footer-accredit">
+        Berdiri sejak 2014 • Resmi 2020
+      </div>
+    </div>
+
+    <!-- TAUTAN CEPAT -->
+    <div>
+      <h4>Tautan Cepat</h4>
+      <ul>
+        <li><a href="sejarahpmkn.html">Sejarah PMKN</a></li>
+        <li><a href="perintispmkn.html">Perintis PMKN</a></li>
+        <li><a href="visimisi.html">Visi & Misi</a></li>
+        <li><a href="#">BPH PMKN</a></li>
+        <li><a href="#">BPI PMKN</a></li>
+      </ul>
+    </div>
+
+    <!-- AKADEMIK -->
+    <div>
+      <h4>Organisasi</h4>
+      <ul>
+        <li><a href="strukturorgpmkn.html">Struktur Organisasi</a></li>
+        <li><a href="#">GBHO</a></li>
+        <li><a href="#">Peraturan Organisasi</a></li>
+        <li><a href="#">Dokumentasi</a></li>
+      </ul>
+    </div>
+
+    <!-- KONTAK -->
+    <div>
+      <h4>Kontak Kami</h4>
+      <ul class="footer-contact">
+        <li>
+          <i class="fa-solid fa-location-dot"></i>
+          Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2<br />Kec. Tondano Selatan Sulawesi Utara
+        </li>
+        <li>
+          <i class="fa-solid fa-envelope"></i>
+          pmkntondano@gmail.com
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-left">
+        <p>&copy; 2026 PMKN Tondano • All Rights Reserved</p>
+        <ul>
+            <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Kebijakan Privasi</a></li>
+            <li><a href="#"><i class="fa-solid fa-code"></i> Kontributor</a></li>
+            <li><a href="#"><i class="fa-solid fa-question-circle"></i> FAQ</a></li>
+        </ul>
+    </div>
+    <div class="footer-bottom-right">
+        <a href="https://www.facebook.com/pmkn.tondano" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/pmkn_tondano" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/search?q=pmkn%20tondano&t=1769452575510" class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/@PMKN_Tondano" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+</div>
+</footer>
   </body>
 </html>
