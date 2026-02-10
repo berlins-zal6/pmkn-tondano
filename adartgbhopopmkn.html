@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="icon pmkn.jpeg" type="image/png" />
-    <title>PMKN Tondano</title>
+    <title>GBHO, PO & AD/ART | PMKN Tondano</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
@@ -274,6 +274,11 @@
         color: #ff4d00;
       }
 
+      .menu a.active {
+        color: #ff4d00;
+        border-bottom: 2px solid #ff4d00;
+      }
+
       /* ===== SEARCH BOX ===== */
       .search-box {
         display: flex;
@@ -442,6 +447,35 @@
         color: #64748b;
         font-size: 1.1rem;
       }
+
+      .hero {
+        text-align: center;
+        padding: 80px 5% 40px;
+      }
+
+      .breadcrumb {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+        color: #64748b;
+      }
+
+      .breadcrumb a {
+        color: #2563eb;
+        text-decoration: none;
+      }
+
+      .breadcrumb a:hover {
+        color: #ff4d00;
+      }
+
+      .breadcrumb span {
+        color: #64748b;
+      }
+
       /* --- Main Content Container --- */
       .container {
         max-width: 1000px;
@@ -562,119 +596,273 @@
         transform: scale(1.05);
       }
 
-      /* phone */
-  @media (max-width: 768px) {
-  body {
-    font-size: 14px;
-  }
+      a.perintis-link {
+        text-decoration: none;
+        color: #2563eb;
+        transition: color 0.3s ease-in-out;
+      }
 
-  /* Header lebih compact */
-  .header {
-    padding: 12px 4%;
-  }
+      a.perintis-link:hover {
+        color: #ff4d00;
+      }
 
-  .logo span {
-    font-size: 1rem;
-  }
+      .bold-text {
+    font-weight: bold;}
 
-  /* Hero Mobile */
-  .hero {
-    padding: 60px 20px 30px;
-  }
+    /* Document-GBHO, PO & AD/ART */
+      .document-section {
+        padding: 40px 5%;
+        background: linear-gradient(to bottom, #f8fafc, #ffffff);
+      }
+      .doc-card {
+        background: white;
+        border-radius: 20px;
+        padding: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: 0.3s;
+        border-left: 5px solid var(--primary);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        margin-bottom: 20px;
+      }
+      .doc-card:hover {
+        transform: translateX(10px);
+        box-shadow: 0 15px 35px rgba(37, 99, 235, 0.1);
+      }
+      .doc-info {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .doc-icon {
+        width: 60px;
+        height: 60px;
+        background: #eff6ff;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 1.5rem;
+      }
+      .doc-text h3 {
+        font-size: 1.1rem;
+        color: var(--dark);
+      }
+      .doc-text span {
+        font-size: 0.85rem;
+        color: #64748b;
+      }
+      .action-btns {
+        display: flex;
+        gap: 10px;
+      }
+      .btn-view {
+        background: #f1f5f9;
+        color: var(--text);
+        padding: 10px 20px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+      .btn-view:hover {
+        background: #e2e8f0;
+      }
+      .btn-download {
+        background: var(--primary);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: 0.3s;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+      }
+      .btn-download:hover {
+        background: var(--dark);
+        transform: translateY(-2px);
+      }
 
-  .hero h2 {
-    font-size: 1.6rem;
-    line-height: 1.3;
-  }
+      /* ================= FOOTER MODERN ================= */
+      .footer {
+        position: relative;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #e2e8f0;
+        padding: 60px 6% 30px;
+        overflow: hidden;
+      }
 
-  .hero p {
-    font-size: 0.95rem;
-  }
+      /* Pattern bulat background */
+      .footer::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+          circle at 1px 1px,
+          rgba(255, 255, 255, 0.05) 1px,
+          transparent 0
+        );
+        background-size: 40px 40px;
+        opacity: 0.5;
+      }
 
-  .hero-btn {
-    width: 100%;
-    padding: 14px;
-    font-size: 0.95rem;
-  }
+      /* Container */
+      .footer-container {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 40px;
+      }
 
-  /* Container */
-  .container {
-    padding: 15px;
-  }
+      /* Logo Box */
+      .footer-logo-box {
+        display: flex;
+        gap: 15px;
+        align-items: flex-start;
+      }
 
-  /* Card */
-  .card {
-    padding: 20px;
-    border-radius: 18px;
-  }
+      .footer-logo {
+        width: 55px;
+        height: 55px;
+        background: #ffffff;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+      }
 
-  .maintenance-card {
-    padding: 25px;
-    border-radius: 18px;
-  }
+      .footer-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: white;
+      }
 
-  /* Grid jadi 1 kolom */
-  .grid-layout {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
+      .footer-subtitle {
+        font-size: 0.9rem;
+        color: #94a3b8;
+      }
 
-  /* Social icon lebih kecil */
-  .social-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-  }
+      .footer-desc {
+        margin-top: 15px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
 
-  /* Search box full width */
-  .search-box {
-    width: 100%;
-  }
+      .footer-accredit {
+        color: #ff6a00;
+        margin-top: 12px;
+        font-weight: 600;
+      }
 
-  .search-box input {
-    width: 100%;
-  }
+      /* Column */
+      .footer h4 {
+        color: white;
+        margin-bottom: 15px;
+      }
 
-  /* Dropdown mobile lebih smooth */
-  .dropdown-menu {
-    border-radius: 10px;
-    margin-top: 5px;
-  }
-}
+      .footer ul {
+        list-style: none;
+      }
 
-/* Tampilan Phone */
-@media (max-width: 480px) {
-  .hero h2 {
-    font-size: 1.4rem;
-  }
+      .footer ul li {
+        margin-bottom: 10px;
+      }
 
-  .hero p {
-    font-size: 0.9rem;
-  }
+      .footer ul li a {
+        color: #cbd5e1;
+        text-decoration: none;
+        transition: 0.25s;
+      }
 
-  .loading-logo {
-    width: 80px;
-    height: 80px;
-  }
+      .footer ul li a:hover {
+        color: #ff6a00;
+        transform: translateX(5px);
+      }
 
-  .loading-logo img {
-    width: 65px;
-    height: 65px;
-  }
+      /* Contact */
+      .footer-contact li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
 
-  .loading-text {
-    font-size: 1rem;
-  }
+      .footer-contact i {
+        color: #ff6a00;
+        margin-top: 4px;
+      }
 
-  .card h3 {
-    font-size: 1rem;
-  }
+      /* Bottom */
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 6%;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
 
-  .support-btn {
-    padding: 12px;
-    font-size: 0.9rem;
-  }
-}
+      .footer-bottom-left p {
+        font-size: 0.85rem;
+        color: #94a3b8;
+        margin-bottom: 10px;
+      }
+
+      .footer-bottom-left ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+
+      .footer-bottom-left ul li a {
+        font-size: 0.85rem;
+        color: #94a3b8;
+        text-decoration: none;
+        transition: 0.25s;
+      }
+
+      .footer-bottom-left ul li a:hover {
+        color: #ff6a00;
+      }
+
+      .footer-bottom-right {
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-icon {
+        width: 35px;
+        height: 35px;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: #94a3b8;
+        text-decoration: none;
+        transition: 0.25s;
+      }
+
+      .social-icon:hover {
+        background: #ff6a00;
+        color: white;
+        transform: translateY(-3px);
+      }
+
+      @media (max-width: 768px) {
+        .footer-bottom {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .footer-bottom-right {
+          margin-top: 20px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -687,20 +875,14 @@
         <div class="loading-progress"></div>
       </div>
     </div>
-
     <header class="header">
       <div class="logo">
         <img src="icon pmkn.jpeg" alt="Logo PMKN" />
         <span>PMKN Tondano</span>
       </div>
       <nav class="navbar">
-        <!-- menu items -->
-      </nav>
-
-      <nav class="navbar">
         <ul class="menu">
-          <li><a href="index.html" class="active">Beranda</a></li>
-
+          <li><a href="index.html">Beranda</a></li>
           <!-- Dropdown Profil -->
           <li class="dropdown">
             <a href="#">Profil <i class="fa-solid fa-chevron-down"></i></a>
@@ -736,7 +918,9 @@
           </li>
           <!-- Dropdown Organisasi -->
           <li class="dropdown">
-            <a href="#">Organisasi <i class="fa-solid fa-chevron-down"></i></a>
+            <a href="#" class="active">
+              Organisasi <i class="fa-solid fa-chevron-down"></i
+            ></a>
             <ul class="dropdown-menu">
                     <li>
                         <a href="adartgbhopopmkn.html"><i class="fa-solid fa-scale-balanced"></i> GBHO & PO</a>
@@ -792,9 +976,9 @@
               </li>
               <li>
                 <a href="#"><i class="fa-solid fa-book"></i> Panduan Pengguna</a>
+              </li>
             </ul>
           </li>
-
           <!-- Search -->
           <li class="search-box">
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -802,7 +986,6 @@
           </li>
         </ul>
       </nav>
-
       <!-- Hamburger -->
       <div class="menu-toggle" id="menuBtn">
         <span class="line-1"></span>
@@ -811,63 +994,81 @@
       </div>
     </header>
     <section class="hero">
-      <h2>Yaahowu! Welcome to PMKN</h2>
-      <p>
-        Persatuan Mahasiswa Kristen Nias (PMKN) Tondano adalah komunitas iman
-        dan persaudaraan untuk mahasiswa Nias yang sedang menempuh pendidikan di
-        Tondano.
-      </p>
-      <button class="hero-btn" onclick="location.href = 'visimisi.html'">
-        Pelajari Lebih Lanjut <i class="fa-solid fa-arrow-right"></i>
-      </button>
-    </section>
-    <div class="container">
-      <div class="maintenance-card">
-        <i class="fa-solid fa-laptop-code"></i>
-        <h3>Website Under Maintenance</h3>
-        <p>
-          Kami sedang merapikan beberapa fitur agar kamu makin nyaman
-          berselancar. Mohon bersabar ya!
-        </p>
+      <div class="breadcrumb">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a> >
+        <span>GBHO, PO & AD/ART PMKN Tondano</span>
       </div>
-      <div class="grid-layout">
-        <div class="card">
-          <h3 style="margin-bottom: 15px">
-            <i class="fa-solid fa-share-nodes"></i> Hubungkan Dengan Kami
+      <h2>GBHO, PO & AD/ART</h2>
+      <p>
+    <span class="bold-text">Garis Besar Haluan Organisasi (GBHO)</span> adalah dokumen yang merinci visi, misi, tujuan, dan strategi organisasi. <span class="bold-text">Peraturan Organisasi (PO)</span> adalah aturan yang mengatur struktur, fungsi, dan tata kerja organisasi. <span class="bold-text">Anggaran Dasar/Anggaran Rumah Tangga (AD/ART)</span> adalah dokumen yang mengatur hak dan kewajiban anggota, mekanisme pengambilan keputusan, serta aturan internal organisasi. Ketiga dokumen ini menjadi landasan utama dalam menjalankan organisasi PMKN di Tondano, memastikan bahwa setiap langkah dan kebijakan yang diambil sesuai dengan tujuan dan nilai-nilai yang telah ditetapkan.
+</p>
+    </section>
+
+    <section class="document-section">
+      <div class="container">
+        <div style="margin-bottom: 30px;">
+          <h3 style="color: var(--dark); display: flex; align-items: center; gap: 10px;">
+            <i class="fa-solid fa-folder-open" style="color: #f59e0b;"></i> 
+            Arsip Dokumen
           </h3>
-          <p>
-            Ikuti perkembangan kegiatan PMKN melalui kanal media sosial resmi
-            kami:
-          </p>
-          <div class="social-links">
-            <a href="https://www.facebook.com/pmkn.tondano" class="social-icon"
-              ><i class="fa-brands fa-facebook-f"></i
-            ></a>
-            <a href="https://www.instagram.com/pmkn_tondano" class="social-icon"
-              ><i class="fa-brands fa-instagram"></i
-            ></a>
-            <a
-              href="https://www.tiktok.com/search?q=pmkn%20tondano&t=1769452575510"
-              class="social-icon"
-              ><i class="fa-brands fa-tiktok"></i
-            ></a>
-            <a href="https://www.youtube.com/@PMKN_Tondano" class="social-icon"
-              ><i class="fa-brands fa-youtube"></i
-            ></a>
+        </div>
+
+        <div class="doc-card">
+          <div class="doc-info">
+            <div class="doc-icon">
+              <i class="fa-solid fa-file-signature"></i>
+            </div>
+            <div class="doc-text">
+              <h3>GBHO PMKN TONDANO</h3>
+              <span>Format: PDF • Ukuran: 274 KB • Update: 2025</span>
+            </div>
+          </div>
+          <div class="action-btns">
+            <a href="GBHO TERBARU.pdf" target="_blank" class="btn-view">Lihat</a>
+            <a href="GBHO TERBARU.pdf" download class="btn-download"><i class="fa-solid fa-download"></i> Unduh</a>
           </div>
         </div>
-        <div class="card">
-          <h3><i class="fa-solid fa-hand-holding-heart"></i> Dukungan</h3>
-          <p style="font-size: 0.9rem; margin-top: 10px">
-            Dukunganmu sangat berarti bagi pengembangan organisasi dan pelayanan
-            kami.
-          </p>
-          <button class="support-btn" onclick="location.href = 'dukungan.html'">
-            Donasi Sekarang
-          </button>
+
+        <div class="doc-card" style="border-left-color: #f59e0b;">
+          <div class="doc-info">
+            <div class="doc-icon" style="background: #fffbeb; color: #f59e0b;">
+              <i class="fa-solid fa-pen-ruler"></i>
+            </div>
+            <div class="doc-text">
+              <h3>PO PMKN TONDANO</h3>
+              <span>Format: PDF • Ukuran: 91 KB • Update: 2025</span>
+            </div>
+          </div>
+          <div class="action-btns">
+            <a href="PERATURAN PERATURAN ORGANISASI TERBARU 2024.pdf" target="_blank" class="btn-view">Lihat</a>
+            <a href="PERATURAN PERATURAN ORGANISASI TERBARU 2024.pdf" download class="btn-download" style="background: #f59e0b;"><i class="fa-solid fa-download"></i> Unduh</a>
+          </div>
+        </div>
+
+        <div class="doc-card" style="border-left-color: #10b981;">
+          <div class="doc-info">
+            <div class="doc-icon" style="background: #ecfdf5; color: #10b981;">
+              <i class="fa-solid fa-book"></i>
+            </div>
+            <div class="doc-text">
+              <h3>AD/ART PMKN TONDANO</h3>
+              <span>Format: PDF • Ukuran: 356 KB • Update: 2024</span>
+            </div>
+          </div>
+          <div class="action-btns">
+            <a href="AD DAN ART PMKN.pdf" target="_blank" class="btn-view">Lihat</a>
+            <a href="AD DAN ART PMKN.pdf" download class="btn-download" style="background: #10b981;"><i class="fa-solid fa-download"></i> Unduh</a>
+          </div>
+        </div>
+
+        <div class="maintenance-card" style="margin-top: 40px; padding: 20px; border-radius: 15px;">
+           <p style="font-size: 0.9rem; color: #92400e;">
+             <i class="fa-solid fa-circle-info" style="font-size: 15px;"></i> Pastikan perangkat Anda memiliki aplikasi pembaca PDF atau hubungi sekretaris organisasi.
+           </p>
         </div>
       </div>
-    </div>
+    </section>
+
     <script>
       window.addEventListener("load", () => {
         const loadingScreen = document.getElementById("loading-screen");
@@ -893,5 +1094,105 @@
         }),
       );
     </script>
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- LOGO & DESKRIPSI -->
+        <div>
+          <div class="footer-logo-box">
+            <div class="footer-logo">
+              <img src="icon pmkn.jpeg" alt="Logo PMKN" width="30" />
+            </div>
+            <div>
+              <div class="footer-title">PMKN TONDANO</div>
+              <div class="footer-subtitle">
+                Persatuan Mahasiswa Kristen Nias
+              </div>
+            </div>
+          </div>
+
+          <p class="footer-desc">
+            Wadah persekutuan mahasiswa Kristen Nias di Tondano untuk membangun
+            iman, persaudaraan, komunikasi, dan pelayanan yang berlandaskan
+            kasih Kristus.
+          </p>
+
+          <div class="footer-accredit">Berdiri sejak 2014 • Resmi 2020</div>
+        </div>
+
+        <!-- TAUTAN CEPAT -->
+        <div>
+          <h4>Tautan Cepat</h4>
+          <ul>
+            <li><a href="sejarahpmkn.html">Sejarah PMKN</a></li>
+            <li><a href="perintispmkn.html">Perintis PMKN</a></li>
+            <li><a href="visimisi.html">Visi & Misi</a></li>
+            <li><a href="#">BPH PMKN</a></li>
+            <li><a href="bpipmkn.html">BPI PMKN</a></li>
+          </ul>
+        </div>
+
+        <!-- AKADEMIK -->
+        <div>
+          <h4>Organisasi</h4>
+          <ul>
+            <li><a href="strukturorgpmkn.html">Struktur Organisasi</a></li>
+            <li><a href="adartgbhopopmkn.html">GBHO & PO</a></li>
+            <li><a href="#">Tugas Utama Bidang</a></li>
+            <li><a href="#">Dokumentasi</a></li>
+          </ul>
+        </div>
+
+        <!-- KONTAK -->
+        <div>
+          <h4>Kontak Kami</h4>
+          <ul class="footer-contact">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2<br />Kec. Tondano
+              Selatan Sulawesi Utara
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              pmkntondano@gmail.com
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-left">
+          <p>&copy; 2026 PMKN Tondano • All Rights Reserved</p>
+          <ul>
+            <li>
+              <a href="#"
+                ><i class="fa-solid fa-shield-halved"></i> Kebijakan Privasi</a
+              >
+            </li>
+            <li>
+              <a href="#"><i class="fa-solid fa-code"></i> Kontributor</a>
+            </li>
+            <li>
+              <a href="#"><i class="fa-solid fa-question-circle"></i> FAQ</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-bottom-right">
+          <a href="https://www.facebook.com/pmkn.tondano" class="social-icon"
+            ><i class="fa-brands fa-facebook"></i
+          ></a>
+          <a href="https://www.instagram.com/pmkn_tondano" class="social-icon"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a
+            href="https://www.tiktok.com/search?q=pmkn%20tondano&t=1769452575510"
+            class="social-icon"
+            ><i class="fa-brands fa-tiktok"></i
+          ></a>
+          <a href="https://www.youtube.com/@PMKN_Tondano" class="social-icon"
+            ><i class="fa-brands fa-youtube"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="icon pmkn.jpeg" type="image/png" />
-    <title>Visi & Misi, Tujuan, Strategi | PMKN Tondano</title>
+    <title>Badan Pengurus Inti | PMKN Tondano</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
@@ -567,163 +567,87 @@
         color: #ff4d00;
       }
 
-      .visi-misi-modern {
-        max-width: 1100px;
-        margin: 60px auto;
-        padding: 20px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-      }
-
-      .section-title {
-        grid-column: 1 / -1;
-        text-align: center;
-        font-size: 2rem;
-        font-weight: 700;
-        color: #1e293b;
-        margin-bottom: 10px;
-      }
-
-      .section-subtitle {
-        grid-column: 1 / -1;
-        text-align: center;
-        font-size: 1.1rem;
-        color: #475569;
-        margin-bottom: 30px;
-      }
-
-      /* Visi Misi */
-      .visi-misi-modern {
-        max-width: 1100px;
-        margin: 60px auto;
-        padding: 20px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-      }
-
-      .section-title {
-        grid-column: 1 / -1;
-        text-align: center;
-        font-size: 2rem;
-        font-weight: 700;
-        color: #1e293b;
-        margin-bottom: 10px;
-      }
-
-      .section-subtitle {
-        grid-column: 1 / -1;
-        text-align: center;
-        font-size: 1.1rem;
-        color: #475569;
-        margin-bottom: 30px;
-      }
-
-      .modern-card {
-        background: #fff;
-        border-radius: 20px;
-        padding: 30px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-        transition: 0.3s;
-      }
-
-      .modern-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      .modern-card i {
-        font-size: 2.5rem;
-        color: #2563eb;
-        margin-bottom: 20px;
-      }
-
-      .modern-card h2 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #1e293b;
-        margin-bottom: 15px;
-      }
-
-      .modern-card p {
-        font-size: 1rem;
-        color: #475569;
-        line-height: 1.6;
-      }
-
-      .modern-card ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .modern-card ul li {
-        font-size: 1rem;
-        color: #475569;
-        line-height: 1.6;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-      }
-
-      .modern-card ul li i {
-        font-size: 1.5rem;
-        color: #2563eb;
-        margin-right: 15px;
-        width: 40px;
-        height: 40px;
-        background: #f0f7ff;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-  /* Partisipasi */
- .partisipasi-card {
-    grid-column: 1 / -1;
-    background: #f0f7ff;
-    border-radius: 20px;
-    padding: 20px;
-    margin-top: 30px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+/* --- BPI Team Section --- */
+.bpi-wrapper {
+    max-width: 1000px;
+    margin: 40px auto 80px;
+    padding: 0 5%;
+    text-align: center;
 }
+.bpi-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+.bpi-member-card {
+    background: var(--white);
+    border-radius: 25px;
+    padding: 40px 30px;
+    transition: 0.4s;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+}
+.bpi-member-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
+}
+.bpi-photo-wrapper {
+    width: 130px; height: 130px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    padding: 6px;
+    border: 2px dashed #cbd5e1; 
+    position: relative;
+}
+.bpi-photo-wrapper img {
+    width: 100%; height: 100%;
+    object-fit: cover; border-radius: 50%;
+}
+.bpi-member-card .jabatan {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+.bpi-member-card h3 { font-size: 1.3rem; color: var(--dark); }
+.bpi-member-card .nim { font-size: 0.85rem; color: #94a3b8; display: block; margin-bottom: 15px; }
+.bpi-member-card .job-desk {
+    font-size: 0.9rem; color: #64748b;
+    font-style: italic; line-height: 1.5;
+    margin-bottom: 20px; min-height: 50px;
+}
+.bpi-email-link {
+    width: 40px; height: 40px;
+    background: #f1f5f9; color: var(--primary);
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 50%; text-decoration: none; transition: 0.3s;
+}
+.bpi-email-link:hover { background: var(--primary); color: white; }
 
-.partisipasi-btn {
-    background: #2563eb;
+/* --- Button Daftar Pengurus Harian --- */
+.btn-bph-container { margin-top: 20px; }
+.btn-bph {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--primary), #1d4ed8);
     color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.partisipasi-btn:hover {
-    background: #1e293b;
-    transform: scale(1.05);
-}
-
-/* Kembali */
-.kembali-btn {
-    background: #f0f7ff;
-    color: #2563eb;
-    border: 1px solid #2563eb;
-    padding: 10px 20px;
-    border-radius: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
+    padding: 16px 35px;
+    border-radius: 50px;
     text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+}
+.btn-bph:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.3);
+    background: var(--dark);
 }
 
-.kembali-btn:hover {
-    background: #2563eb;
-    color: white;
-    transform: scale(1.05);
-}
      /* ================= FOOTER MODERN ================= */
       .footer {
         position: relative;
@@ -1022,123 +946,68 @@
 <section class="hero">
       <div class="breadcrumb">
         <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a> >
-        <span>Visi & Misi PMKN Tondano</span>
+        <span>BPI PMKN Tondano</span>
       </div>
-      <h2>Visi & Misi</h2>
+      <h2>BPI PMKN Tondano</h2>
       <p>
-        Arah dan landasan strategis Persatuan Mahasiswa Kristen Nias (PMKN) di
-        Tondano dalam menyelenggarakan kegiatan yang unggul dan inovatif.
+        Badan Pengurus Inti (BPI) PMKN Tondano adalah Tim yang berdedikasi untuk memimpin dan mengembangkan Persatuan Mahasiswa Kristen Nias (PMKN) di Tondano menuju keunggulan dan inovasi.
       </p>
     </section>
-    <!-- ===== VISI MISI MODERN ===== -->
-    <section class="visi-misi-modern">
-      <!-- VISI -->
-      <div class="modern-card visi">
-        <i class="fa-solid fa-eye"></i>
-        <h2>Visi</h2>
-        <p>
-          Mewujudkan mahasiswa Nias yang beriman teguh, berbudaya leluhur,
-          berkarakter Kristiani, serta mampu berkontribusi aktif dalam
-          pembangunan masyarakat Nias di mana pun berada.
-        </p>
+
+       <section class="bpi-wrapper">
+      <div class="bpi-container">
+        <div class="bpi-member-card">
+          <div class="bpi-photo-wrapper">
+            <img src="Lisman Lase.png" alt="Lisman Lase">
+          </div>
+          <div class="jabatan">Ketua Umum PMKN</div>
+          <h3>LISMAN LASE</h3>
+          <span class="nim">NIM. 22211010</span>
+          <p class="job-desk">"Bertanggung jawab penuh atas koordinasi internal dan eksternal PMKN Tondano."</p>
+          <a href="mailto:email@contoh.com" class="bpi-email-link"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+
+        <div class="bpi-member-card">
+          <div class="bpi-photo-wrapper">
+            <img src="Ardin Halawa.png" alt="Ardiansyah Putra Halawa">
+          </div>
+          <div class="jabatan">Wakil Ketua Umum PMKN</div>
+          <h3>ARDIANSYAH PUTRA HALAWA</h3>
+          <span class="nim">NIM. 23208031</span>
+          <p class="job-desk">"Membantu Ketua Umum dalam mengawasi kinerja setiap bidang organisasi."</p>
+          <a href="mailto:email@contoh.com" class="bpi-email-link"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+
+        <div class="bpi-member-card">
+          <div class="bpi-photo-wrapper">
+            <img src="Erlin Zega.png" alt="Erlin Setiaman Zega">
+          </div>
+          <div class="jabatan">Sekretaris Umum PMKN</div>
+          <h3>ERLIN SETIAMAN ZEGA</h3>
+          <span class="nim">NIM. 24702062</span>
+          <p class="job-desk">"Mengelola administrasi, persuratan, dan dokumentasi seluruh kegiatan."</p>
+          <a href="mailto:email@contoh.com" class="bpi-email-link"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+
+        <div class="bpi-member-card">
+          <div class="bpi-photo-wrapper">
+            <img src="Jelita Ziliwu.png" alt="Jelita Ziliwu">
+          </div>
+          <div class="jabatan">Bendahara Umum PMKN</div>
+          <h3>JELITA ZILIWU</h3>
+          <span class="nim">NIM. 23704070</span>
+          <p class="job-desk">"Mengatur sirkulasi keuangan dan menyusun laporan anggaran organisasi."</p>
+          <a href="mailto:email@contoh.com" class="bpi-email-link"><i class="fa-solid fa-envelope"></i></a>
+        </div>
       </div>
-      <!-- MISI -->
-      <div class="modern-card misi">
-        <i class="fa-solid fa-bullseye"></i>
-        <h2>Misi</h2>
-        <ul>
-          <li>
-            <i class="fa-solid fa-cross"></i>
-            Membina iman dan karakter Kristiani yang berintegritas
-          </li>
-          <li>
-            <i class="fa-solid fa-earth-oceania"></i>
-            Melestarikan nilai budaya dan identitas Nias
-          </li>
-          <li>
-            <i class="fa-solid fa-handshake"></i>
-            Mempererat persaudaraan dan solidaritas anggota
-          </li>
-          <li>
-            <i class="fa-solid fa-graduation-cap"></i>
-            Mendorong prestasi akademik dan kreativitas mahasiswa
-          </li>
-          <li>
-            <i class="fa-solid fa-heart"></i>
-            Mengembangkan pelayanan dan kontribusi sosial
-          </li>
-        </ul>
+
+      <div class="btn-bph-container">
+        <a href="#" class="btn-bph">
+          <i class="fa-solid fa-users"></i>
+          Daftar Pengurus Harian
+        </a>
       </div>
     </section>
-
-    <!-- ===== TUJUAN & STRATEGI MODERN ===== -->
-    <section class="tujuan-strategi-modern">
-      <h2 class="section-title">TUJUAN & STRATEGI</h2>
-      <p class="section-subtitle">
-        Target dan Rencana Aksi Persatuan Mahasiswa Kristen Nias (PMKN) di
-        Tondano untuk mencapai visi dan misi yang telah ditetapkan.
-      </p>
-      <!-- TUJUAN -->
-      <div class="modern-card tujuan">
-        <i class="fa-solid fa-square-poll-horizontal"></i>
-        <h2>Tujuan</h2>
-        <ul>
-          <li>
-            <i class="fa-solid fa-spa"></i>
-            Meningkatkan kualitas iman dan karakter Kristiani mahasiswa Nias
-          </li>
-          <li>
-            <i class="fa-regular fa-flag"></i>
-            Melestarikan dan mengembangkan budaya Nias di kalangan mahasiswa
-          </li>
-          <li>
-            <i class="fa-solid fa-graduation-cap"></i>
-            Meningkatkan prestasi akademik dan kreativitas mahasiswa
-          </li>
-          <li>
-            <i class="fa-solid fa-heart"></i>
-            Mengembangkan pelayanan dan kontribusi sosial mahasiswa
-          </li>
-        </ul>
-      </div>
-      <!-- STRATEGI -->
-      <div class="modern-card strategi">
-        <i class="fa-solid fa-lightbulb"></i>
-        <h2>Strategi</h2>
-        <ul>
-          <li>
-            <i class="fa-solid fa-arrow-up-right-dots"></i>
-            Meningkatkan kualitas program kerja dan kegiatan PMKN
-          </li>
-          <li>
-            <i class="fa-solid fa-chart-line"></i>> Meningkatkan kualitas sumber
-            daya manusia PMKN
-          </li>
-          <li>
-            <i class="fa-regular fa-handshake"></i>
-            Meningkatkan kerjasama dengan lembaga dan organisasi lain
-          </li>
-          <li>
-            <i class="fa-solid fa-share-nodes"></i>
-            Meningkatkan kualitas pelayanan dan kontribusi sosial PMKN
-          </li>
-        </ul>
-      </div>
-    </section>
-    
-    <!-- PARTISIPASI -->
-    <div class="partisipasi-card">
-        <h2>Partisipasi Anda Penting</h2>
-        <p>Bantu kami mengukur pemahaman dan keselarasan Visi & Misi di kalangan civitas akademika</p>
-        <button class="partisipasi-btn"><i class="fa-solid fa-list"></i> Isi Survei Visi Misi </button>
-    </div>
-  </section>
-
-   <!-- KEMBALI KE BERANDA -->
-    <div style="text-align: center; margin-top: 30px;">
-        <a href="index.html" class="kembali-btn"><i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda</a>
-    </div>
-  </section>
 
     <script>
       window.addEventListener("load", () => {
