@@ -708,21 +708,72 @@
 
 /* Kembali */
 .kembali-btn {
-    background: #f0f7ff;
-    color: #2563eb;
-    border: 1px solid #2563eb;
-    padding: 10px 20px;
-    border-radius: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 28px;
+    background: #ffffff;
+    color: #1e293b; /* Warna teks gelap elegan */
     text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 50px;
+    border: 2px solid #e2e8f0;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
+/* Lingkaran Ikon */
+.kembali-btn .circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: #2563eb; /* Warna biru utama */
+    border-radius: 50%;
+    margin-right: 12px;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.kembali-btn .icon {
+    color: #ffffff;
+    font-size: 0.9rem;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Hover State */
 .kembali-btn:hover {
+    color: #ffffff;
     background: #2563eb;
-    color: white;
-    transform: scale(1.05);
+    border-color: #2563eb;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4);
+}
+
+.kembali-btn:hover .circle {
+    background: #ffffff;
+    transform: translateX(-5px);
+}
+
+.kembali-btn:hover .icon {
+    color: #2563eb;
+    transform: scale(1.1);
+}
+
+/* Active/Click Effect */
+.kembali-btn:active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px -3px rgba(37, 99, 235, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .kembali-btn {
+        padding: 10px 22px;
+        font-size: 0.9rem;
+    }
 }
      /* ================= FOOTER MODERN ================= */
       .footer {
@@ -955,7 +1006,7 @@
                         <a href="strukturorgpmkn.html"><i class="fa-solid fa-sitemap"></i> Struktur Organisasi</a>
                     </li>
                     <li>
-                <a href="#"
+                <a href="tugasutamabidang.html"
                   ><i class="fa-solid fa-building-circle-check"></i> Tugas Utama
                   Bidang</a> </li>
                     <li>
@@ -1135,9 +1186,14 @@
   </section>
 
    <!-- KEMBALI KE BERANDA -->
-    <div style="text-align: center; margin-top: 30px;">
-        <a href="index.html" class="kembali-btn"><i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda</a>
-    </div>
+   <div style="text-align: center; margin-top: 50px; padding-bottom: 40px;">
+    <a href="index.html" class="kembali-btn">
+        <span class="circle" aria-hidden="true">
+            <i class="fa-solid fa-arrow-left icon"></i>
+        </span>
+        <span class="button-text">Kembali ke Beranda</span>
+    </a>
+</div>
   </section>
 
     <script>
@@ -1209,7 +1265,7 @@
           <ul>
             <li><a href="strukturorgpmkn.html">Struktur Organisasi</a></li>
             <li><a href="adartgbhopopmkn.html">GBHO & PO</a></li>
-            <li><a href="#">Tugas Utama Bidang</a></li>
+            <li><a href="tugasutamabidang.html">Tugas Utama Bidang</a></li>
             <li><a href="#">Dokumentasi</a></li>
           </ul>
         </div>
