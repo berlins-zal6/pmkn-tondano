@@ -680,31 +680,104 @@
         align-items: center;
       }
 
-  /* Partisipasi */
- .partisipasi-card {
-    grid-column: 1 / -1;
-    background: #f0f7ff;
-    border-radius: 20px;
-    padding: 20px;
-    margin-top: 30px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-}
+  /* --- Partisipasi Section Modern --- */
+      .partisipasi-section {
+        padding: 60px 5%;
+        display: flex;
+        justify-content: center;
+      }
 
-.partisipasi-btn {
-    background: #2563eb;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-}
+      .partisipasi-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        padding: 50px 40px;
+        border-radius: 24px;
+        text-align: center;
+        max-width: 900px;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(37, 99, 235, 0.1);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+      }
 
-.partisipasi-btn:hover {
-    background: #1e293b;
-    transform: scale(1.05);
-}
+      /* Dekorasi Lingkaran Halus di Background */
+      .partisipasi-card::before {
+        content: "";
+        position: absolute;
+        top: -50px;
+        right: -50px;
+        width: 150px;
+        height: 150px;
+        background: rgba(37, 99, 235, 0.05);
+        border-radius: 50%;
+        z-index: 0;
+      }
+
+      .partisipasi-card h2 {
+        font-size: 2.2rem;
+        color: var(--dark);
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .partisipasi-card p {
+        color: #64748b;
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto 35px;
+        line-height: 1.6;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Tombol Partisipasi Modern */
+      .btn-partisipasi {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+        color: white;
+        padding: 16px 35px;
+        border-radius: 14px;
+        font-weight: 600;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        position: relative;
+        z-index: 1;
+      }
+
+      .btn-partisipasi:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+        filter: brightness(1.1);
+      }
+
+      .btn-partisipasi:active {
+        transform: translateY(0) scale(0.98);
+      }
+
+      .btn-partisipasi i {
+        font-size: 1.2rem;
+        transition: 0.3s;
+      }
+
+      .btn-partisipasi:hover i {
+        transform: rotate(15deg);
+      }
+
+      @media (max-width: 768px) {
+        .partisipasi-card {
+          padding: 40px 20px;
+        }
+        .partisipasi-card h2 {
+          font-size: 1.7rem;
+        }
+      }
 
 /* Kembali */
 .kembali-btn {
@@ -775,6 +848,7 @@
         font-size: 0.9rem;
     }
 }
+
      /* ================= FOOTER MODERN ================= */
       .footer {
         position: relative;
@@ -1046,7 +1120,7 @@
                         <a href="#"><i class="fa-solid fa-info-circle"></i> Tentang PMKN</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa-solid fa-address-card"></i> Kontak</a>
+                        <a href="kontak.html"><i class="fa-solid fa-address-card"></i> Kontak</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa-solid fa-book"></i> Panduan Pengguna</a>
@@ -1178,11 +1252,18 @@
     </section>
     
     <!-- PARTISIPASI -->
+    <section class="partisipasi-section">
     <div class="partisipasi-card">
         <h2>Partisipasi Anda Penting</h2>
-        <p>Bantu kami mengukur pemahaman dan keselarasan Visi & Misi di kalangan civitas akademika</p>
-        <button class="partisipasi-btn"><i class="fa-solid fa-list"></i> Isi Survei Visi Misi </button>
+        <p>Bantu kami mengukur pemahaman dan keselarasan Visi & Misi di kalangan civitas akademika untuk PMKN Tondano yang lebih baik.</p>
+        
+        <a href="https://forms.gle/MZxd13zHoiWfEeZk9" target="_blank" style="text-decoration: none;">
+            <button class="btn-partisipasi">
+                <i class="fa-solid fa-clipboard-check"></i> Isi Survei Visi Misi 
+            </button>
+        </a>
     </div>
+</section>
   </section>
 
    <!-- KEMBALI KE BERANDA -->
