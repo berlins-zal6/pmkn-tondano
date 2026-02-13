@@ -499,6 +499,18 @@
 
 
         /* table */
+@media print {
+    .header, .hero, .footer, #status-filter, #search-input, button, .menu-toggle {
+        display: none !important;
+    }
+    .glass-card {
+        box-shadow: none !important;
+        border: none !important;
+    }
+    body {
+        background: white !important;
+    }
+}
 
         #data-table {
     width: 100%;
@@ -589,6 +601,7 @@
     animation: spin 1s linear infinite;
 }
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
 
 
 /* ================= FOOTER MODERN ================= */
@@ -908,9 +921,23 @@
                 <h1 class="text-3xl font-black text-slate-800 tracking-tight">Data Anggota</h1>
                 <p class="text-slate-500 mt-1 flex items-center gap-2">
                     <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                    Sistem Informasi Data Anggota PMKN Tondano
+                    Data Anggota PMKN di Tondano
                 </p>
             </div>
+
+            <div class="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+    <button onclick="exportToExcel()" class="flex items-center gap-2 px-5 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-2xl transition-all shadow-lg shadow-emerald-100 font-bold text-sm">
+        <i class="fa-solid fa-file-excel"></i>
+        <span>Excel</span>
+    </button>
+
+    <button onclick="printTable()" class="flex items-center gap-2 px-5 py-3 bg-slate-800 hover:bg-slate-900 text-white rounded-2xl transition-all shadow-lg shadow-slate-200 font-bold text-sm">
+        <i class="fa-solid fa-print"></i>
+        <span>Print</span>
+    </button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
             
             <div class="flex flex-wrap items-center gap-4 w-full lg:w-auto">
                 <div class="relative w-full md:w-64">
@@ -1200,6 +1227,121 @@ function updateTotalCount(count, statusLabel = "Semua") {
     // Selalu tampilkan label status agar desain tetap seimbang di tengah
     indicator.style.opacity = "1";
 }
+
+// --- Fungsi Cetak (Print) ---
+function printTable() {
+    const total = document.getElementById('total-count').innerText;
+    const status = document.getElementById('status-filter').value;
+    const tableContent = document.getElementById('data-table').outerHTML;
+    
+    // Membuat jendela cetak baru agar desain web utama tidak berantakan
+    const printWindow = window.open('', '', 'height=700,width=900');
+    
+    printWindow.document.write(`
+        <html>
+            <head>
+                <title>Data Anggota PMKN - ${status}</title>
+                <style>
+                    body { font-family: sans-serif; padding: 20px; color: #333; }
+                    h1 { text-align: center; color: #1e293b; }
+                    .info { margin-bottom: 20px; text-align: center; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+                    table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12px; }
+                    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+                    th { background-color: #f8fafc; }
+                    .badge { font-weight: bold; color: #444; }
+                </style>
+            </head>
+            <body>
+                <h1>DATA ANGGOTA PMKN TONDANO</h1>
+                <div class="info">
+                    <p>Kategori: <b>${status}</b> | Total: <b>${total} Orang</b></p>
+                    <p>Dicetak pada: ${new Date().toLocaleString('id-ID')}</p>
+                </div>
+                ${tableContent}
+            </body>
+        </html>
+    `);
+    
+    printWindow.document.close();
+    printWindow.focus();
+    setTimeout(() => {
+        printWindow.print();
+        printWindow.close();
+    }, 500);
+}
+
+// --- Fungsi Export Excel ---
+function exportToExcel() {
+    const status = document.getElementById('status-filter').value;
+    const table = document.getElementById('data-table');
+    
+    // Mengonversi tabel HTML menjadi sheet Excel
+    const wb = XLSX.utils.table_to_book(table, { sheet: "Data Anggota" });
+    
+    // Nama file sesuai dengan filter yang dipilih
+    const fileName = `Data_Anggota_PMKN_${status.replace(' ', '_')}_${new Date().toLocaleDateString('id-ID')}.xlsx`;
+    
+    // Download file
+    XLSX.writeFile(wb, fileName);
+}
+
+// --- Fungsi Cetak (Print) ---
+function printTable() {
+    const total = document.getElementById('total-count').innerText;
+    const status = document.getElementById('status-filter').value;
+    const tableContent = document.getElementById('data-table').outerHTML;
+    
+    // Membuat jendela cetak baru agar desain web utama tidak berantakan
+    const printWindow = window.open('', '', 'height=700,width=900');
+    
+    printWindow.document.write(`
+        <html>
+            <head>
+                <title>Data Anggota PMKN - ${status}</title>
+                <style>
+                    body { font-family: sans-serif; padding: 20px; color: #333; }
+                    h1 { text-align: center; color: #1e293b; }
+                    .info { margin-bottom: 20px; text-align: center; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+                    table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12px; }
+                    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+                    th { background-color: #f8fafc; }
+                    .badge { font-weight: bold; color: #444; }
+                </style>
+            </head>
+            <body>
+                <h1>DATA ANGGOTA PMKN TONDANO</h1>
+                <div class="info">
+                    <p>Kategori: <b>${status}</b> | Total: <b>${total} Orang</b></p>
+                    <p>Dicetak pada: ${new Date().toLocaleString('id-ID')}</p>
+                </div>
+                ${tableContent}
+            </body>
+        </html>
+    `);
+    
+    printWindow.document.close();
+    printWindow.focus();
+    setTimeout(() => {
+        printWindow.print();
+        printWindow.close();
+    }, 500);
+}
+
+// --- Fungsi Export Excel ---
+function exportToExcel() {
+    const status = document.getElementById('status-filter').value;
+    const table = document.getElementById('data-table');
+    
+    // Mengonversi tabel HTML menjadi sheet Excel
+    const wb = XLSX.utils.table_to_book(table, { sheet: "Data Anggota" });
+    
+    // Nama file sesuai dengan filter yang dipilih
+    const fileName = `Data_Anggota_PMKN_${status.replace(' ', '_')}_${new Date().toLocaleDateString('id-ID')}.xlsx`;
+    
+    // Download file
+    XLSX.writeFile(wb, fileName);
+}
+
     </script>
 
     <footer class="footer">
