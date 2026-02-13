@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="icon pmkn.jpeg" type="image/png" />
-    <title>Sejarah | PMKN Tondano</title>
+    <title>Data Anggota | PMKN Tondano</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
@@ -13,6 +13,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
       :root {
         --primary: #2563eb;
@@ -476,136 +477,119 @@
     color: #64748b;
 }
 
+.glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-      /* --- Main Content Container --- */
-      .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      /* Maintenance Section */
-      .maintenance-card {
-        background: #fffbeb;
-        border: 1px solid #fde68a;
-        padding: 40px;
-        border-radius: 25px;
-        text-align: center;
-        margin-bottom: 30px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
-      }
-      .maintenance-card i {
-        font-size: 3rem;
-        color: #d97706;
-        margin-bottom: 20px;
-      }
-      /* Grid System */
-      .grid-layout {
-        display: grid;
-        grid-template-columns: 1.5fr 1fr;
-        gap: 25px;
-      }
-      .card {
-        background: var(--white);
-        padding: 30px;
-        border-radius: 25px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-      }
-      .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-top: 20px;
-      }
-      .social-icon {
-        width: 45px;
-        height: 45px;
-        background: var(--light);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        color: var(--dark);
-        text-decoration: none;
-        transition: 0.3s;
-        font-size: 1.2rem;
-      }
-      .social-icon:hover {
-        background: var(--primary);
-        color: white;
-        transform: translateY(-5px);
-      }
-      .support-btn {
-        width: 100%;
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 15px;
-        border-radius: 15px;
-        font-weight: 600;
-        cursor: pointer;
-        margin-top: 15px;
-        transition: 0.3s;
-      }
-      .support-btn:hover {
-        background: var(--dark);
-        transform: scale(1.02);
-      }
-      /* --- Mobile Responsive --- */
-      @media (max-width: 768px) {
-        .menu-toggle {
-          display: flex;
-        }
-        .nav-bar {
-          position: fixed;
-          top: 0;
-          right: -100%;
-          width: 75%;
-          height: 100vh;
-          background: rgba(30, 41, 59, 0.95);
-          backdrop-filter: blur(15px);
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-        }
-        .nav-bar.show {
-          right: 0;
-        }
-        .grid-layout {
-          grid-template-columns: 1fr;
-        }
-        .hero h2 {
-          font-size: 1.8rem;
-        }
-      }
 
-      .hero-btn {
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 15px 30px;
-        border-radius: 15px;
-        font-weight: 600;
-        cursor: pointer;
-        margin-top: 20px;
-        transition: 0.3s;
-      }
+        /* table */
 
-      .hero-btn:hover {
-        background: var(--dark);
-        transform: scale(1.05);
-      }
-
-      a.perintis-link {
-    text-decoration: none;
-    color: #2563eb;
-    transition: color 0.3s ease-in-out;
+        #data-table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-a.perintis-link:hover {
-    color: #ff4d00;
+#data-table th {
+    background-color: #f0f0f0;
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    border: 1px solid #ddd;
 }
+
+#data-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+#data-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#data-table tr:hover {
+    background-color: #f2f2f2;
+}
+
+#data-table .status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#data-table .status-orang-tua {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+#data-table .status-alumni {
+    background-color: #03A9F4;
+    color: #fff;
+}
+
+#data-table .status-bpi {
+    background-color: #FF9800;
+    color: #fff;
+}
+
+#data-table .status-pengurus {
+    background-color: #9C27B0;
+    color: #fff;
+}
+
+#data-table .status-anggota-biasa {
+    background-color: #2196F3;
+    color: #fff;
+}
+
+#data-table .status-lainnya {
+    background-color: #607D8B;
+    color: #fff;
+}
+
+/* Custom Modern Status Badges */
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+}
+
+.status-pengurus { background-color: #f3e8ff; color: #7e22ce; border-color: #e9d5ff; }
+.status-alumni { background-color: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+.status-bpi { background-color: #ffedd5; color: #c2410c; border-color: #fed7aa; }
+.status-orang-tua { background-color: #dcfce7; color: #15803d; border-color: #bbf7d0; }
+.status-biasa { background-color: #f1f5f9; color: #334155; border-color: #e2e8f0; }
+
+/* Loader Animation */
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3b82f6;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
 
 /* ================= FOOTER MODERN ================= */
 .footer {
@@ -801,7 +785,7 @@ a.perintis-link:hover {
           <li><a href="index.html">Beranda</a></li>
           <!-- Dropdown Profil -->
           <li class="dropdown">
-            <a href="#" class="active"
+            <a href="#"
               >Profil <i class="fa-solid fa-chevron-down"></i
             ></a>
             <ul class="dropdown-menu">
@@ -836,7 +820,8 @@ a.perintis-link:hover {
           </li>
             <!-- Dropdown Organisasi -->
           <li class="dropdown">
-            <a href="#">Organisasi <i class="fa-solid fa-chevron-down"></i></a>
+            <a href="#" class="active"
+            >Organisasi <i class="fa-solid fa-chevron-down"></i></a>
             <ul class="dropdown-menu">
                     <li>
                         <a href="adartgbhopopmkn.html"><i class="fa-solid fa-scale-balanced"></i> GBHO & PO</a>
@@ -910,50 +895,93 @@ a.perintis-link:hover {
     </header>
     <section class="hero">
     <div class="breadcrumb">
-        <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a> > <span>Sejarah PMKN Tondano</span>
+        <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a> > <span>Anggota PMKN Tondano</span>
     </div>
-    <h2>Sejarah PMKN Tondano</h2>
-    <p> Persatuan Mahasiswa Kristen Nias (PMKN) Tondano memiliki sejarah berdirinya dan sangat menarik untuk diketahui. </p>
+    <h2>Anggota PMKN Tondano</h2>
+    <p> Daftar anggota Persatuan Mahasiswa Kristen Nias (PMKN) di Tondano. </p>
 </section>
-    <div class="container">
-      <div class="card">
-        <h3>Tujuan</h3>
-        <p>
-          Persatuan Mahasiswa Kristen Nias (PMKN) di Tondano merupakan sebuah
-          wadah persekutuan yang menghimpun mahasiswa-mahasiswa asal Nias yang
-          menempuh pendidikan di Tondano. Organisasi ini dibentuk dengan tujuan
-          utama menjadi tempat beribadah, mempererat komunikasi, serta membangun
-          kebersamaan dan solidaritas di antara mahasiswa Nias yang berada jauh
-          dari kampung halaman.
-        </p>
-        <p>
-          Tujuan awal PMKN adalah untuk mempersatukan mahasiswa Nias yang sedang
-          menempuh pendidikan di Tondano dan sekitarnya.
-        </p>
-      </div>
-      <div class="card">
-        <h3>Berdirinya</h3>
-        <p>
-          Cikal bakal PMKN bermula pada tahun 2014, ketika beberapa mahasiswa
-          Nias yang merantau ke Tondano merasakan kebutuhan akan sebuah keluarga
-          dan wadah persekutuan yang dapat menyatukan mereka dalam iman,
-          persaudaraan, dan kebersamaan. Pada awalnya, perkumpulan ini dikenal
-          dengan nama PEMANIS (Persatuan Mahasiswa Nias).
-        </p>
-      </div>
-      <div class="card">
-        <h3>Resmi -  Sekarang</h3>
-        <p> Dengan perjuangan dan dedikasi para <a href="perintispmkn.html" class="perintis-link">Perintis</a>,
-          PMKN tumbuh menjadi organisasi yang kuat dan resmi didirikan pada 29 Oktober 2020. Berlandaskan pada <a href="AD DAN ART PMKN.pdf" target="_blank" class="btn-view">AD/ART PMKN</a> Garis-Garis Besar Haluan Organisasi <a href="GBHO TERBARU.pdf" target="_blank" class="btn-view">GBHO</a>, dan Peraturan Organisasi <a href="PERATURAN PERATURAN ORGANISASI TERBARU 2024.pdf" target="_blank" class="btn-view">PO</a>, PMKN terus menjadi rumah bagi mahasiswa Nias di Tondano, tempat mereka dapat tumbuh, belajar, dan melayani bersama. </p>
-          <p>
-            Hari ini, PMKN tetap menjadi wadah yang dinamis, memimpin mahasiswa
-            Nias di Tondano menuju masa depan yang cerah, dengan iman,
-            persaudaraan, dan pelayanan.
-        </p>
-        </p>
-      </div>
+
+<div class="max-w-[95%] mx-auto p-4 md:p-8"> <div class="glass-card bg-white rounded-[2rem] shadow-2xl border border-slate-100 overflow-hidden">
+        
+        <div class="p-8 border-b border-slate-100 bg-gradient-to-r from-white to-slate-50 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+            <div>
+                <h1 class="text-3xl font-black text-slate-800 tracking-tight">Data Anggota</h1>
+                <p class="text-slate-500 mt-1 flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                    Sistem Informasi Data Anggota PMKN Tondano
+                </p>
+            </div>
+            
+            <div class="flex flex-wrap items-center gap-4 w-full lg:w-auto">
+                <div class="relative w-full md:w-64">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="search-input" placeholder="Cari nama atau ..." class="w-full pl-11 pr-4 py-3 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all outline-none text-sm shadow-sm">
+                </div>
+                
+                <div class="relative w-full md:w-auto">
+                    <select id="status-filter" class="appearance-none w-full md:w-56 pl-5 pr-12 py-3 bg-white border border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all outline-none text-sm font-semibold text-slate-700 shadow-sm cursor-pointer">
+                        <option value="Semua">Semua Status</option>
+                        <option value="Orang Tua">Orang Tua</option>
+                        <option value="Alumni">Alumni</option>
+                        <option value="BPI">BPI</option>
+                        <option value="Pengurus/BPH">Pengurus/BPH</option>
+                        <option value="Anggota Biasa">Anggota Biasa</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="overflow-x-auto custom-scrollbar">
+            <div id="loading" class="flex flex-col items-center py-24">
+                <div class="loader-modern"></div>
+                <p class="mt-4 text-slate-400 font-medium animate-pulse">Sinkronisasi Data ...</p>
+            </div>
+
+            <table id="data-table" class="w-full text-left hidden border-spacing-0">
+                <thead class="bg-slate-50/50">
+                    <tr id="table-header" class="text-slate-500 uppercase text-[11px] font-bold tracking-[0.1em]">
+                        </tr>
+                </thead>
+                <tbody id="table-body" class="text-slate-600 text-[13px] font-medium">
+                    </tbody>
+            </table>
+        </div>
+        
+        <div id="empty-state" class="hidden py-24 text-center">
+            <div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fa-solid fa-user-slash text-slate-300 text-3xl"></i>
+            </div>
+            <h3 class="text-slate-800 font-bold text-lg">Data Tidak Ditemukan</h3>
+            <p class="text-slate-500">Coba ganti kata kunci atau filter status Anda.</p>
+        </div>
     </div>
-    <script>
+</div>
+
+<div class="px-8 py-10 bg-slate-50/50 border-b border-slate-100 flex flex-col items-center justify-center text-center">
+    
+    <div class="bg-white p-6 rounded-[2.5rem] shadow-xl border border-slate-100 flex flex-col items-center gap-3 min-w-[280px] transform hover:scale-105 transition-transform duration-300">
+        <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-200 mb-2">
+            <i class="fa-solid fa-users text-white text-2xl"></i>
+        </div>
+        
+        <div>
+            <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-1">Total Anggota Terdata</p>
+            <div class="flex items-baseline justify-center gap-2">
+                <h2 id="total-count" class="text-5xl font-black text-slate-800 tracking-tighter transition-all duration-500">0</h2>
+                <span class="text-slate-400 font-bold text-lg">Jiwa</span>
+            </div>
+        </div>
+
+        <div id="filter-indicator" class="mt-2 opacity-0 transition-opacity duration-300">
+            <span id="active-filter-label" class="px-4 py-1 bg-blue-50 text-blue-600 rounded-full text-[10px] font-black uppercase tracking-wider border border-blue-100">
+                Semua
+            </span>
+        </div>
+    </div>
+</div>
+
+<script>
       window.addEventListener("load", () => {
         const loadingScreen = document.getElementById("loading-screen");
         loadingScreen.style.opacity = "0";
@@ -977,6 +1005,201 @@ a.perintis-link:hover {
             navbar.classList.remove("show");
         }),
     );
+
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzkagf0p5xnLNEDdAywdShZyk1lnzZx1EnwYG7SF8rB2aOSs5gNTz4C-CnBI1eKd-VI/exec";
+let allData = [];
+
+async function fetchData() {
+    try {
+        const response = await fetch(scriptURL);
+        allData = await response.json();
+        
+        if (allData.length > 0) {
+            renderTableHeader(allData[0]);
+            renderTableBody(allData);
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('data-table').classList.remove('hidden');
+        }
+    } catch (error) {
+        document.getElementById('loading').innerHTML = `<p class="text-red-500">Gagal terhubung ke database.</p>`;
+    }
+}
+
+function renderTableHeader(sample) {
+    const header = document.getElementById('table-header');
+    header.innerHTML = Object.keys(sample).map(key => 
+        `<th class="px-8 py-5 border-b border-slate-100">${key}</th>`
+    ).join('');
+}
+
+function renderTableBody(data) {
+    const body = document.getElementById('table-body');
+    const emptyState = document.getElementById('empty-state');
+    const table = document.getElementById('data-table');
+    const currentStatus = document.getElementById('status-filter').value;
+    
+    // Update jumlah angka otomatis (fungsi yang kita buat sebelumnya)
+    updateTotalCount(data.length, currentStatus);
+
+    body.innerHTML = "";
+    if (data.length === 0) {
+        table.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        return;
+    }
+    
+    table.classList.remove('hidden');
+    emptyState.classList.add('hidden');
+
+    data.forEach(item => {
+        const row = document.createElement('tr');
+        row.className = "hover:bg-blue-50/30 transition-all border-b border-slate-50 last:border-none group";
+        
+        row.innerHTML = Object.keys(item).map(key => {
+            let value = item[key] || "-";
+            const columnKey = key.toLowerCase();
+
+            // 1. Desain Khusus Kolom NAMA
+            if (columnKey === 'nama') {
+                return `<td class="px-8 py-5 font-bold text-slate-800 text-sm min-w-[250px] whitespace-normal uppercase">${value}</td>`;
+            }
+
+            // 2. Desain Khusus Kolom STATUS
+            if (columnKey === 'status') {
+                return `<td class="px-8 py-5"><span class="px-4 py-1.5 rounded-xl text-[10px] font-extrabold tracking-wider uppercase border ${getStatusStyle(value)} shadow-sm">${value}</span></td>`;
+            }
+
+            // 3. LOGIKA TANGGAL (Tanggal Lahir & Tanggal PAB)
+            // Kita deteksi kolom yang mengandung kata 'tanggal' atau 'tgl'
+            if (columnKey.includes('tanggal') || columnKey.includes('tgl')) {
+                return `<td class="px-8 py-5 whitespace-nowrap text-slate-700 font-semibold italic">
+                            <i class="fa-regular fa-calendar-days mr-2 text-blue-400"></i>${value}
+                        </td>`;
+            }
+
+            // 4. Kolom lainnya
+            return `<td class="px-8 py-5 whitespace-nowrap text-slate-500">${value}</td>`;
+        }).join('');
+        
+        body.appendChild(row);
+    });
+}
+
+function getStatusStyle(status) {
+    const s = status.toLowerCase();
+    if (s.includes('pengurus')) return 'bg-purple-50 text-purple-600 border-purple-100';
+    if (s.includes('alumni')) return 'bg-blue-50 text-blue-600 border-blue-100';
+    if (s.includes('bpi')) return 'bg-orange-50 text-orange-600 border-orange-100';
+    if (s.includes('orang tua')) return 'bg-green-50 text-green-600 border-green-100';
+    return 'bg-slate-50 text-slate-500 border-slate-100';
+}
+
+// Logika Filter & Search
+const filterData = () => {
+    const searchTerm = document.getElementById('search-input').value.toLowerCase();
+    const statusVal = document.getElementById('status-filter').value;
+
+    const filtered = allData.filter(item => {
+        const matchesSearch = Object.values(item).some(val => 
+            String(val).toLowerCase().includes(searchTerm)
+        );
+        const matchesStatus = statusVal === "Semua" || item.Status === statusVal;
+        return matchesSearch && matchesStatus;
+    });
+    
+    renderTableBody(filtered);
+};
+
+document.getElementById('status-filter').addEventListener('change', filterData);
+document.getElementById('search-input').addEventListener('input', filterData);
+
+fetchData();
+
+// Tambahkan fungsi ini di dalam script.js Anda
+
+function updateTotalCount(count, statusLabel = "Semua") {
+    const countElement = document.getElementById('total-count');
+    const indicator = document.getElementById('filter-indicator');
+    const label = document.getElementById('active-filter-label');
+
+    // Efek transisi angka sederhana
+    countElement.style.opacity = 0;
+    
+    setTimeout(() => {
+        countElement.innerText = count;
+        countElement.style.opacity = 1;
+    }, 150);
+
+    // Update label indikator filter
+    if (statusLabel !== "Semua") {
+        indicator.classList.remove('hidden');
+        label.innerText = statusLabel;
+    } else {
+        indicator.classList.add('hidden');
+    }
+}
+
+// PERBARUI fungsi renderTableBody Anda agar memanggil updateTotalCount
+function renderTableBody(data) {
+    const body = document.getElementById('table-body');
+    const emptyState = document.getElementById('empty-state');
+    const table = document.getElementById('data-table');
+    const currentStatus = document.getElementById('status-filter').value;
+    
+    // Update jumlah angka otomatis
+    updateTotalCount(data.length, currentStatus);
+
+    body.innerHTML = "";
+    if (data.length === 0) {
+        table.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        return;
+    }
+    
+    table.classList.remove('hidden');
+    emptyState.classList.add('hidden');
+
+    data.forEach(item => {
+        const row = document.createElement('tr');
+        row.className = "hover:bg-blue-50/30 transition-all border-b border-slate-50 last:border-none group";
+        
+        row.innerHTML = Object.keys(item).map(key => {
+            let value = item[key] || "-";
+
+            if (key.toLowerCase() === 'nama') {
+                return `<td class="px-8 py-5 font-bold text-slate-800 text-sm min-w-[250px] whitespace-normal uppercase">${value}</td>`;
+            }
+
+            if (key.toLowerCase() === 'status') {
+                return `<td class="px-8 py-5"><span class="px-4 py-1.5 rounded-xl text-[10px] font-extrabold tracking-wider uppercase border ${getStatusStyle(value)} shadow-sm">${value}</span></td>`;
+            }
+
+            return `<td class="px-8 py-5 whitespace-nowrap text-slate-500">${value}</td>`;
+        }).join('');
+        
+        body.appendChild(row);
+    });
+}
+
+function updateTotalCount(count, statusLabel = "Semua") {
+    const countElement = document.getElementById('total-count');
+    const indicator = document.getElementById('filter-indicator');
+    const label = document.getElementById('active-filter-label');
+
+    // Animasi angka berubah
+    countElement.classList.add('scale-110', 'text-blue-600');
+    
+    setTimeout(() => {
+        countElement.innerText = count;
+        countElement.classList.remove('scale-110', 'text-blue-600');
+    }, 200);
+
+    // Update Label Filter di bawah angka
+    label.innerText = statusLabel;
+    
+    // Selalu tampilkan label status agar desain tetap seimbang di tengah
+    indicator.style.opacity = "1";
+}
     </script>
 
     <footer class="footer">

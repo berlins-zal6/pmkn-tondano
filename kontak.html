@@ -765,6 +765,124 @@
         display: none;
       }
 
+      /* --- Rating Card Style --- */
+      .rating-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.rating-card {
+    background: #f1f5f9;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 20px 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.rating-card .emoji {
+    font-size: 1.8rem;
+    color: #64748b; /* Warna default icon */
+    transition: 0.3s;
+}
+
+.rating-card span {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #64748b;
+}
+
+/* Efek Hover & Active */
+.rating-card:hover {
+    background: #e2e8f0;
+    transform: translateY(-5px);
+}
+
+.rating-card.active {
+    background: white;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+}
+
+/* Warna Spesifik saat Aktif */
+.rating-card[data-value="Sangat Baik"].active { border-color: #e1306c; background: #fff5f8; }
+.rating-card[data-value="Sangat Baik"].active .emoji { color: #e1306c; }
+
+.rating-card[data-value="Baik"].active { border-color: #f59e0b; background: #fffbeb; }
+.rating-card[data-value="Baik"].active .emoji { color: #f59e0b; }
+
+.rating-card[data-value="Cukup"].active { border-color: #3b82f6; background: #eff6ff; }
+.rating-card[data-value="Cukup"].active .emoji { color: #3b82f6; }
+
+.rating-card[data-value="Kurang"].active { border-color: #64748b; background: #f8fafc; }
+
+/* Responsif Mobile */
+@media (max-width: 500px) {
+    .rating-container { grid-template-columns: repeat(2, 1fr); }
+    .social-links-container { grid-template-columns: 1fr; }
+}
+
+      /* Warna khusus saat active */
+      .rating-card[data-value="Sangat Baik"].active { border-color: #22c55e; }
+      .rating-card[data-value="Baik"].active { border-color: #3b82f6; }
+      .rating-card[data-value="Cukup"].active { border-color: #f59e0b; }
+      .rating-card[data-value="Kurang"].active { border-color: #ef4444; }
+
+      @media (max-width: 480px) {
+        .rating-container { grid-template-columns: repeat(2, 1fr); }
+      }
+
+      /* --- Saran Display Section --- */
+      .saran-display-section {
+        padding: 60px 5%;
+        background: #fff;
+      }
+      .saran-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .saran-card {
+        background: #f8fafc;
+        padding: 25px;
+        border-radius: 15px;
+        border-left: 5px solid var(--primary);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        transition: 0.3s;
+      }
+      .saran-card:hover {
+        transform: translateY(-5px);
+      }
+      .saran-card h4 {
+        margin-bottom: 5px;
+        color: var(--dark);
+      }
+      .rating-tag {
+        font-size: 0.75rem;
+        background: #dbeafe;
+        color: var(--primary);
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-weight: 700;
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+      .saran-text {
+        font-style: italic;
+        color: #475569;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+      #loading-saran { text-align: center; color: #64748b; }
+
 /* ================= FOOTER MODERN ================= */
 .footer {
   position: relative;
@@ -1006,7 +1124,7 @@
                   ><i class="fa-solid fa-building-circle-check"></i> Tugas Utama
                   Bidang</a> </li>
                     <li>
-                        <a href="#"><i class="fa-solid fa-users"></i> Anggota</a>
+                        <a href="dataanggota.html"><i class="fa-solid fa-users"></i> Anggota</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa-solid fa-handshake"></i> Mitra PMKN</a>
@@ -1050,7 +1168,7 @@
                 <a href="kontak.html"><i class="fa-solid fa-address-card"></i> Kontak</a>
               </li>
               <li>
-                <a href="#"><i class="fa-solid fa-book"></i> Panduan Pengguna</a>
+                <a href="panduan.html"><i class="fa-solid fa-book"></i> Panduan Pengguna</a>
             </ul>
           </li>
           <!-- Search -->
@@ -1132,9 +1250,9 @@
 </div>
         </div>
 
-        <div class="map-card">
-          <h3 class="section-title"><i class="fa-solid fa-map-location-dot"></i> Lokasi Kami</h3>
-          <p class="info-text">PMKN-Tondano terletak di Tondano, Kabupaten Minahasa. Berikut peta lokasi untuk memudahkan Anda menemukan kami:</p>
+  <div class="map-card">
+  <h3 class="section-title"><i class="fa-solid fa-map-location-dot"></i> Lokasi Kami</h3>
+  <p class="info-text">PMKN-Tondano terletak di Tondano, Kabupaten Minahasa. Berikut peta lokasi untuk memudahkan Anda menemukan kami:</p>
           
     <div class="map-wrapper">
     <iframe 
@@ -1187,15 +1305,29 @@
                 <input type="email" name="Email" placeholder="Email Aktif" required>
             </div>
 
-            <div class="form-group">
-                <label>Penilaian Website</label>
-                <select name="Penilaian" required>
-                    <option value="">-- Pilih Rating --</option>
-                    <option value="⭐⭐⭐⭐⭐ Sangat Baik">⭐⭐⭐⭐⭐ Sangat Baik</option>
-                    <option value="⭐⭐⭐⭐ Baik">⭐⭐⭐⭐ Baik</option>
-                    <option value="⭐⭐⭐ Cukup">⭐⭐⭐ Cukup</option>
-                    <option value="⭐⭐ Kurang">⭐⭐ Kurang</option>
-                </select>
+              <div class="form-group">
+              <label>Bagaimana Penilaian Anda terhadap Website Kami?</label>
+              
+              <input type="hidden" name="Penilaian" id="selectedRating" required>
+
+              <div class="rating-container">
+                  <div class="rating-card" data-value="Sangat Baik" onclick="selectRating(this)">
+                      <div class="emoji"><i class="fa-solid fa-face-kiss-wink-heart"></i></div>
+                      <span>Sangat Baik</span>
+                  </div>
+                  <div class="rating-card" data-value="Baik" onclick="selectRating(this)">
+                      <div class="emoji"><i class="fa-regular fa-face-grin-stars"></i></div>
+                      <span>Baik</span>
+                  </div>
+                  <div class="rating-card" data-value="Cukup" onclick="selectRating(this)">
+                      <div class="emoji"><i class="fa-solid fa-face-grin"></i></div>
+                      <span>Cukup</span>
+                  </div>
+                  <div class="rating-card" data-value="Kurang" onclick="selectRating(this)">
+                      <div class="emoji"><i class="fa-solid fa-face-sad-tear"></i></div>
+                      <span>Kurang</span>
+                  </div>
+              </div>
             </div>
 
             <div class="form-group">
@@ -1207,6 +1339,17 @@
             <div id="status-msg"></div>
         </form>
     </div>
+
+<section class="saran-display-section">
+    <div style="text-align: center; margin-bottom: 40px;">
+        <h2>Apa Kata Mereka?</h2>
+        <p>Saran dan masukan dari komentar civitas PMKN Tondano</p>
+    </div>
+    
+    <div id="loading-saran">Memuat saran...</div>
+    <div class="saran-grid" id="saranContainer"></div>
+</section>
+
 </section>
 
 <script>
@@ -1266,6 +1409,54 @@
             navbar.classList.remove("show");
         }),
     );
+
+    function selectRating(element) {
+    // 1. Hapus kelas 'active' dari semua kartu
+    const cards = document.querySelectorAll('.rating-card');
+    cards.forEach(card => card.classList.remove('active'));
+
+    // 2. Tambahkan kelas 'active' ke kartu yang diklik
+    element.classList.add('active');
+
+    // 3. Masukkan nilai data-value ke dalam input hidden
+    const val = element.getAttribute('data-value');
+    document.getElementById('selectedRating').value = val;
+    
+    console.log("Rating dipilih: " + val); // Untuk cek di console
+}
+    async function loadSaran() {
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw1MWG6RwPQ9XEgZxwZSVm_p-rLeZpC5OWnwiy24VWxYso40E01L-sFDMBu6feoYNby/exec';
+        const container = document.getElementById('saranContainer');
+        const loader = document.getElementById('loading-saran');
+
+        try {
+            const response = await fetch(scriptURL);
+            const data = await response.json();
+            
+            // Ambil 6 saran terbaru dan balik urutannya (terbaru di atas)
+            const displayData = data.reverse().slice(0, 6);
+
+            loader.style.display = 'none';
+            container.innerHTML = '';
+
+            displayData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'saran-card';
+                card.innerHTML = `
+                    <div class="rating-tag">${item.Penilaian}</div>
+                    <h4>${item.Nama}</h4>
+                    <p class="saran-text">"${item.Saran}"</p>
+                `;
+                container.appendChild(card);
+            });
+        } catch (error) {
+            console.error('Error:', error);
+            loader.innerHTML = 'Gagal memuat saran.';
+        }
+    }
+
+    // Jalankan fungsi saat halaman dibuka
+    loadSaran();
     </script>
 
     <footer class="footer">
