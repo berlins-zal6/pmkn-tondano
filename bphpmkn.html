@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="icon pmkn.jpeg" type="image/png" />
-    <title>GBHO, PO & AD/ART | PMKN Tondano</title>
+    <title>Badan Pengurus inti | PMKN Tondano</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
@@ -251,33 +251,33 @@
       }
 
       .dropdown:hover .dropdown-menu {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
 
-      .dropdown-menu li {
-        list-style: none;
-      }
+.dropdown-menu li {
+    list-style: none;
+}
 
-      .dropdown-menu a {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 10px 18px;
-        color: #334155;
-        font-size: 0.95rem;
-      }
+.dropdown-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 18px;
+    color: #334155;
+    font-size: 0.95rem;
+}
 
-      .dropdown-menu a:hover {
-        background: #f1f5f9;
-        color: #ff4d00;
-      }
+.dropdown-menu a:hover {
+    background: #f1f5f9;
+    color: #ff4d00;
+}
 
-      .menu a.active {
-        color: #ff4d00;
-        border-bottom: 2px solid #ff4d00;
-      }
+.menu a.active {
+    color: #ff4d00;
+    border-bottom: 2px solid #ff4d00;
+}
 
       /* ===== SEARCH BOX ===== */
       .search-box {
@@ -449,243 +449,310 @@
       }
 
       .hero {
-        text-align: center;
-        padding: 80px 5% 40px;
-      }
+    text-align: center;
+    padding: 80px 5% 40px;
+}
 
-      .breadcrumb {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 5px;
-        margin-bottom: 20px;
-        font-size: 0.9rem;
-        color: #64748b;
-      }
+.breadcrumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: #64748b;
+}
 
-      .breadcrumb a {
-        color: #2563eb;
-        text-decoration: none;
-      }
+.breadcrumb a {
+    color: #2563eb;
+    text-decoration: none;
+}
 
-      .breadcrumb a:hover {
-        color: #ff4d00;
-      }
+.breadcrumb a:hover {
+    color: #ff4d00;
+}
 
-      .breadcrumb span {
-        color: #64748b;
-      }
+.breadcrumb span {
+    color: #64748b;
+}
 
-      /* --- Main Content Container --- */
-      .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      /* Maintenance Section */
-      .maintenance-card {
-        background: #fffbeb;
-        border: 1px solid #fde68a;
-        padding: 40px;
-        border-radius: 25px;
-        text-align: center;
-        margin-bottom: 30px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
-      }
-      .maintenance-card i {
-        font-size: 3rem;
-        color: #d97706;
-        margin-bottom: 20px;
-      }
-      /* Grid System */
-      .grid-layout {
-        display: grid;
-        grid-template-columns: 1.5fr 1fr;
-        gap: 25px;
-      }
-      .card {
-        background: var(--white);
-        padding: 30px;
-        border-radius: 25px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-      }
-      .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-top: 20px;
-      }
-      .social-icon {
-        width: 45px;
-        height: 45px;
-        background: var(--light);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        color: var(--dark);
-        text-decoration: none;
-        transition: 0.3s;
-        font-size: 1.2rem;
-      }
-      .social-icon:hover {
-        background: var(--primary);
-        color: white;
-        transform: translateY(-5px);
-      }
-      .support-btn {
-        width: 100%;
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 15px;
-        border-radius: 15px;
-        font-weight: 600;
-        cursor: pointer;
-        margin-top: 15px;
-        transition: 0.3s;
-      }
-      .support-btn:hover {
-        background: var(--dark);
-        transform: scale(1.02);
-      }
-      /* --- Mobile Responsive --- */
-      @media (max-width: 768px) {
-        .menu-toggle {
-          display: flex;
-        }
-        .nav-bar {
-          position: fixed;
-          top: 0;
-          right: -100%;
-          width: 75%;
-          height: 100vh;
-          background: rgba(30, 41, 59, 0.95);
-          backdrop-filter: blur(15px);
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-        }
-        .nav-bar.show {
-          right: 0;
-        }
-        .grid-layout {
-          grid-template-columns: 1fr;
-        }
-        .hero h2 {
-          font-size: 1.8rem;
-        }
-      }
 
-      .hero-btn {
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 15px 30px;
-        border-radius: 15px;
-        font-weight: 600;
-        cursor: pointer;
-        margin-top: 20px;
-        transition: 0.3s;
-      }
+/* --- Hero Section Modern & Readable --- */
+.hero {
+  position: relative;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 6% 60px;
+  text-align: center;
+  background: 
+    /* Overlay gelap supaya teks putih menonjol */
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)),
+    url("fotbaragtpmkn.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Efek parallax halus */
+  color: white;
+}
 
-      .hero-btn:hover {
-        background: var(--dark);
-        transform: scale(1.05);
-      }
+.breadcrumb {
+  font-size: 0.85rem;
+  margin-bottom: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 50px;
+  backdrop-filter: blur(5px);
+  display: inline-block;
+  color: #e2e8f0;
+}
 
-      a.perintis-link {
-        text-decoration: none;
-        color: #2563eb;
-        transition: color 0.3s ease-in-out;
-      }
+.breadcrumb a {
+  color: var(--secondary); /* Warna biru muda agar kontras di gelap */
+  text-decoration: none;
+  font-weight: 600;
+}
 
-      a.perintis-link:hover {
-        color: #ff4d00;
-      }
+.hero h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem); /* Ukuran adaptif */
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  letter-spacing: -1px;
+}
 
-      .bold-text {
-    font-weight: bold;}
+.hero p {
+  max-width: 800px;
+  margin: 0 auto 50px;
+  color: #cbd5e1;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
 
-    /* Document-GBHO, PO & AD/ART */
-      .document-section {
-        padding: 40px 5%;
-        background: linear-gradient(to bottom, #f8fafc, #ffffff);
-      }
-      .doc-card {
-        background: white;
-        border-radius: 20px;
-        padding: 25px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        transition: 0.3s;
-        border-left: 5px solid var(--primary);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        margin-bottom: 20px;
-      }
-      .doc-card:hover {
-        transform: translateX(10px);
-        box-shadow: 0 15px 35px rgba(37, 99, 235, 0.1);
-      }
-      .doc-info {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-      }
-      .doc-icon {
-        width: 60px;
-        height: 60px;
-        background: #eff6ff;
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--primary);
-        font-size: 1.5rem;
-      }
-      .doc-text h3 {
-        font-size: 1.1rem;
-        color: var(--dark);
-      }
-      .doc-text span {
-        font-size: 0.85rem;
-        color: #64748b;
-      }
-      .action-btns {
-        display: flex;
-        gap: 10px;
-      }
-      .btn-view {
-        background: #f1f5f9;
-        color: var(--text);
-        padding: 10px 20px;
-        border-radius: 10px;
-        text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 600;
-        transition: 0.3s;
-      }
-      .btn-view:hover {
-        background: #e2e8f0;
-      }
-      .btn-download {
-        background: var(--primary);
-        color: white;
-        padding: 10px 20px;
-        border-radius: 10px;
-        text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 600;
-        transition: 0.3s;
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-      }
-      .btn-download:hover {
-        background: var(--dark);
-        transform: translateY(-2px);
-      }
+/* Total BPH */
+.stats-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 30px auto 0;
+  padding: 0 20px;
+}
+
+.stat-card {
+  background: transparent;
+  padding: 5px 15px;
+  flex: 0 1 auto;
+  text-align: center;
+  border: none;
+  /* Hapus transform agar tidak bergerak */
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+/* Hover Simpel: Hanya merubah sedikit kecerahan/warna tanpa gerakan */
+.stat-card:hover .stat-icon {
+  color: #ff6a00; /* Warna ikon berubah saat dihover */
+  opacity: 1;
+}
+
+.stat-card:hover .stat-value::after {
+  width: 25px; /* Garis sedikit memanjang perlahan sebagai indikator */
+  background: #ff6a00;
+  opacity: 1;
+}
+
+.stat-icon {
+  font-size: 1rem;
+  color: var(--secondary);
+  margin-bottom: 5px;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.6rem;
+  color: #94a3b8;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  display: block;
+  margin-top: 2px;
+}
+
+/* Garis dekoratif tetap */
+.stat-value::after {
+  content: "";
+  display: block;
+  width: 15px;
+  height: 2px;
+  background: var(--secondary);
+  margin: 4px auto 0;
+  border-radius: 10px;
+  opacity: 0.5;
+  transition: all 0.4s ease; /* Transisi halus untuk lebar garis */
+}
+
+@media (max-width: 600px) {
+  .stats-container {
+    gap: 15px;
+  }
+  .stat-card {
+    min-width: 80px;
+    padding: 5px;
+  }
+  .stat-value {
+    font-size: 1.3rem;
+  }
+}
+
+/* --- BPH Grid Section --- */
+.bph-section {
+  padding: 60px 6%;
+  background: var(--light);
+}
+
+.bph-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bph-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  transition: 0.3s;
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.bph-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.bph-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 15px;
+  border: 4px solid #f1f5f9;
+}
+
+.bph-card h3 {
+  color: var(--dark);
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.bph-card p.title {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.bph-info {
+  text-align: left;
+  font-size: 0.85rem;
+  color: var(--text);
+  border-top: 1px solid #f1f5f9;
+  padding-top: 15px;
+  margin-bottom: 20px;
+}
+
+.bph-info div {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bph-info i {
+  color: var(--secondary);
+  width: 15px;
+}
+
+.btn-detail {
+  background: var(--dark);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.btn-detail:hover {
+  background: var(--primary);
+}
+
+/* --- Modal Detail --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 25px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  animation: modalIn 0.3s ease;
+}
+
+@keyframes modalIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
 
       /* ================= FOOTER MODERN ================= */
       .footer {
@@ -864,7 +931,7 @@
         }
       }
     </style>
-  </head>
+</head>
   <body>
     <div id="loading-screen">
       <div class="loading-logo">
@@ -876,16 +943,18 @@
       </div>
     </div>
     <header class="header">
-      <div class="logo">
+    <div class="logo">
         <img src="icon pmkn.jpeg" alt="Logo PMKN" />
         <span>PMKN Tondano</span>
-      </div>
-      <nav class="navbar">
+    </div>
+    <nav class="navbar">
         <ul class="menu">
           <li><a href="index.html">Beranda</a></li>
           <!-- Dropdown Profil -->
           <li class="dropdown">
-            <a href="#">Profil <i class="fa-solid fa-chevron-down"></i></a>
+            <a href="#" class="active"
+              >Profil <i class="fa-solid fa-chevron-down"></i
+            ></a>
             <ul class="dropdown-menu">
               <li>
                 <a href="sejarahpmkn.html"
@@ -910,11 +979,9 @@
               </li>
             </ul>
           </li>
-          <!-- Dropdown Organisasi -->
+            <!-- Dropdown Organisasi -->
           <li class="dropdown">
-            <a href="#" class="active">
-              Organisasi <i class="fa-solid fa-chevron-down"></i
-            ></a>
+            <a href="#">Organisasi <i class="fa-solid fa-chevron-down"></i></a>
             <ul class="dropdown-menu">
                     <li>
                         <a href="adartgbhopopmkn.html"><i class="fa-solid fa-scale-balanced"></i> GBHO & PO</a>
@@ -970,7 +1037,6 @@
               </li>
               <li>
                 <a href="panduan.html"><i class="fa-solid fa-book"></i> Panduan Pengguna</a>
-              </li>
             </ul>
           </li>
           <!-- Search -->
@@ -981,87 +1047,235 @@
         </ul>
       </nav>
       <!-- Hamburger -->
-      <div class="menu-toggle" id="menuBtn">
+    <div class="menu-toggle" id="menuBtn">
         <span class="line-1"></span>
         <span class="line-2"></span>
         <span class="line-3"></span>
-      </div>
+    </div>
     </header>
+
     <section class="hero">
-      <div class="breadcrumb">
-        <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a> >
-        <span>GBHO, PO & AD/ART PMKN Tondano</span>
-      </div>
-      <h2>GBHO, PO & AD/ART</h2>
+    <div class="breadcrumb">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a> > <span>BPH PMKN Tondano</span>
+    </div>
+      <h2>BPH PMKN Tondano</h2>
       <p>
-    <span class="bold-text">Garis Besar Haluan Organisasi (GBHO)</span> adalah dokumen yang merinci visi, misi, tujuan, dan strategi organisasi. <span class="bold-text">Peraturan Organisasi (PO)</span> adalah aturan yang mengatur struktur, fungsi, dan tata kerja organisasi. <span class="bold-text">Anggaran Dasar/Anggaran Rumah Tangga (AD/ART)</span> adalah dokumen yang mengatur hak dan kewajiban anggota, mekanisme pengambilan keputusan, serta aturan internal organisasi. Ketiga dokumen ini menjadi landasan utama dalam menjalankan organisasi PMKN di Tondano, memastikan bahwa setiap langkah dan kebijakan yang diambil sesuai dengan tujuan dan nilai-nilai yang telah ditetapkan.
-</p>
-    </section>
+        Tim pengurus yang bertugas menjalankan kebijakan dan program kerja Persatuan Mahasiswa Kristen Nias (PMKN) di
+        Tondano secara profesional dan berlandaskan kasih.
+      </p>
 
-    <section class="document-section">
-      <div class="container">
-        <div style="margin-bottom: 30px;">
-          <h3 style="color: var(--dark); display: flex; align-items: center; gap: 10px;">
-            <i class="fa-solid fa-folder-open" style="color: #f59e0b;"></i> 
-            Arsip Dokumen
-          </h3>
+      <div class="stats-container">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-users-gear"></i></div>
+          <span class="stat-value">46</span>
+          <span class="stat-label">Total BPH</span>
         </div>
-
-        <div class="doc-card">
-          <div class="doc-info">
-            <div class="doc-icon">
-              <i class="fa-solid fa-file-signature"></i>
-            </div>
-            <div class="doc-text">
-              <h3>GBHO PMKN TONDANO</h3>
-              <span>Format: PDF • Ukuran: 274 KB • Update: 2025</span>
-            </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-person-shelter"></i>
           </div>
-          <div class="action-btns">
-            <a href="GBHO TERBARU.pdf" target="_blank" class="btn-view">Lihat</a>
-            <a href="GBHO TERBARU.pdf" download class="btn-download"><i class="fa-solid fa-download"></i> Unduh</a>
-          </div>
+          <span class="stat-value">3</span>
+          <span class="stat-label">Orang Tua</span>
         </div>
-
-        <div class="doc-card" style="border-left-color: #f59e0b;">
-          <div class="doc-info">
-            <div class="doc-icon" style="background: #fffbeb; color: #f59e0b;">
-              <i class="fa-solid fa-pen-ruler"></i>
-            </div>
-            <div class="doc-text">
-              <h3>PO PMKN TONDANO</h3>
-              <span>Format: PDF • Ukuran: 91 KB • Update: 2025</span>
-            </div>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fa-solid fa-compass"></i>
           </div>
-          <div class="action-btns">
-            <a href="PERATURAN PERATURAN ORGANISASI TERBARU 2024.pdf" target="_blank" class="btn-view">Lihat</a>
-            <a href="PERATURAN PERATURAN ORGANISASI TERBARU 2024.pdf" download class="btn-download" style="background: #f59e0b;"><i class="fa-solid fa-download"></i> Unduh</a>
-          </div>
+          <span class="stat-value">3</span>
+          <span class="stat-label">Pengarah</span>
         </div>
-
-        <div class="doc-card" style="border-left-color: #10b981;">
-          <div class="doc-info">
-            <div class="doc-icon" style="background: #ecfdf5; color: #10b981;">
-              <i class="fa-solid fa-book"></i>
-            </div>
-            <div class="doc-text">
-              <h3>AD/ART PMKN TONDANO</h3>
-              <span>Format: PDF • Ukuran: 356 KB • Update: 2024</span>
-            </div>
-          </div>
-          <div class="action-btns">
-            <a href="AD DAN ART PMKN.pdf" target="_blank" class="btn-view">Lihat</a>
-            <a href="AD DAN ART PMKN.pdf" download class="btn-download" style="background: #10b981;"><i class="fa-solid fa-download"></i> Unduh</a>
-          </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-user-check"></i></div>
+          <span class="stat-value">4</span>
+          <span class="stat-label">BPI</span>
         </div>
-
-        <div class="maintenance-card" style="margin-top: 40px; padding: 20px; border-radius: 15px;">
-           <p style="font-size: 0.9rem; color: #92400e;">
-             <i class="fa-solid fa-circle-info" style="font-size: 15px;"></i> Pastikan perangkat Anda memiliki aplikasi pembaca PDF atau hubungi sekretaris organisasi.
-           </p>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-briefcase"></i></div>
+          <span class="stat-value">6</span>
+          <span class="stat-label">Kord. Bidang</span>
         </div>
       </div>
     </section>
+
+<section class="bph-section">
+  <div class="bph-grid">
+    
+    <div class="bph-card">
+      <img src="Elius Gea.png" alt="Foto Penasehat" class="bph-photo">
+      <h3>Elius Gea, S.PAK., S.ST.PAR., M.TH., M.Pd</h3>
+      <p class="title">Dewan Penasehat</p>
+      <div class="bph-info">
+        <div><i class="fa-solid fa-envelope"></i> -</div>
+        <div><i class="fa-solid fa-phone"></i> -</div>
+      </div>
+      <button class="btn-detail" onclick="showDetail('Elius Gea.png', 'Elius Gea, S.PAK., S.ST.PAR., M.TH., M.Pd', 'Dewan Penasehat')">Lihat Detail</button>
+    </div>
+
+    <div class="bph-card">
+      <img src="Stadi Dachi.png" alt="Foto Penasehat" class="bph-photo">
+      <h3>Stadi Dachi, S.Pd., M.Th</h3>
+      <p class="title">Dewan Penasehat</p>
+      <div class="bph-info">
+        <div><i class="fa-solid fa-envelope"></i> -</div>
+        <div><i class="fa-solid fa-phone"></i> -</div>
+      </div>
+      <button class="btn-detail" onclick="showDetail('Stadi Dachi.png', 'Stadi Dachi, S.Pd., M.Th', 'Dewan Penasehat')">Lihat Detail</button>
+    </div>
+
+    <div class="bph-card">
+      <img src="icon pmkn.jpeg" alt="Foto Penasehat" class="bph-photo">
+      <h3>Talizokho Giawa, S.Th</h3>
+      <p class="title">Dewan Penasehat</p>
+      <div class="bph-info">
+        <div><i class="fa-solid fa-envelope"></i> -</div>
+        <div><i class="fa-solid fa-phone"></i> -</div>
+      </div>
+      <button class="btn-detail" onclick="showDetail('icon pmkn.jpeg', 'Talizokho Giawa, S.Th', 'Dewan Penasehat')">Lihat Detail</button>
+    </div>
+
+    <div class="bph-card">
+      <img src="Notatema Gea.png" alt="Foto Pengarah" class="bph-photo">
+      <h3>Notatema Gea</h3>
+      <p class="title">Dewan Pengarah</p>
+      <div class="bph-info">
+        <div><i class="fa-solid fa-envelope"></i> -</div>
+        <div><i class="fa-solid fa-phone"></i> +62 838-9493-8620</div>
+      </div>
+      <button class="btn-detail" onclick="showDetail('Notatema Gea.png', 'Notatema Gea', 'Dewan Pengarah')">Lihat Detail</button>
+    </div>
+
+    <div class="bph-card">
+      <img src="Fernando Zend.png" alt="Foto Pengarah" class="bph-photo">
+      <h3>Fernando Fransiskus Zendrato</h3>
+      <p class="title">Dewan Pengarah</p>
+      <div class="bph-info">
+        <div><i class="fa-solid fa-envelope"></i> -</div>
+        <div><i class="fa-solid fa-phone"></i> +62 822-8635-1268</div>
+      </div>
+      <button class="btn-detail" onclick="showDetail('Fernando Zend.png', 'Fernando Fransiskus Zendrato', 'Dewan Pengarah')">Lihat Detail</button>
+    </div>
+
+    <div class="bph-card">
+      <img src="Melda Zebua.png" alt="Foto Pengarah" class="bph-photo">
+      <h3>Melda Noverita Zebua</h3>
+      <p class="title">Dewan Pengarah</p>
+      <div class="bph-info">
+        <div><i class="fa-solid fa-envelope"></i> -</div>
+        <div><i class="fa-solid fa-phone"></i> -</div>
+      </div>
+      <button class="btn-detail" onclick="showDetail('Melda Zebua.png', 'Melda Noverita Zebua', 'Dewan Pengarah')">Lihat Detail</button>
+    </div>
+
+    <div class="bph-card">
+      <img src="Lisman Lase.png" alt="Foto Ketua Umum" class="bph-photo">
+      <h3>Lisman Lase</h3>
+      <p class="title">Ketua Umum</p>
+      <div class="bph-info">
+        <div><i class="fa-solid fa-envelope"></i> -</div>
+        <div><i class="fa-solid fa-phone"></i> +62 812-6069-2808</div>
+      </div>
+      <button class="btn-detail" onclick="showDetail('Lisman Lase.png', 'Lisman Lase', 'Ketua Umum')">Lihat Detail</button>
+    </div>
+
+    <div class="bph-card">
+      <img src="Ardin Halawa.png" alt="Foto Ketua Umum" class="bph-photo">
+      <h3>Ardiansyah Putra Halawa</h3>
+      <p class="title">Wakil Ketua Umum</p>
+      <div class="bph-info">
+        <div><i class="fa-solid fa-envelope"></i> -</div>
+        <div><i class="fa-solid fa-phone"></i> +62 823-3993-4943</div>
+      </div>
+      <button class="btn-detail" onclick="showDetail('Ardin Halawa.png', 'Ardiansyah Putra Halawa', 'Wakil Ketua Umum')">Lihat Detail</button>
+    </div>
+
+    <div class="bph-card">
+      <img src="Erlin Zega.png" alt="Foto Sekretaris" class="bph-photo">
+      <h3>Erlin Setiaman Zega</h3>
+      <p class="title">Sekretaris Umum</p>
+      <div class="bph-info">
+        <div><i class="fa-solid fa-envelope"></i> -</div>
+        <div><i class="fa-solid fa-phone"></i> +62 823-6220-3045</div>
+      </div>
+      <button class="btn-detail" onclick="showDetail('Erlin Zega.png', 'Erlin Setiaman Zega', 'Sekretaris Umum')">Lihat Detail</button>
+    </div>
+
+    <div class="bph-card">
+      <img src="Jelita Ziliwu.png" alt="Foto Bendahara" class="bph-photo">
+      <h3>Jelita Ziliwu</h3>
+      <p class="title">Bendahara Umum</p>
+      <div class="bph-info">
+        <div><i class="fa-solid fa-envelope"></i> -</div>
+        <div><i class="fa-solid fa-phone"></i> +62 852-6175-7749</div>
+      </div>
+      <button class="btn-detail" onclick="showDetail('Jelita Ziliwu.png', 'Jelita Ziliwu', 'Bendahara Umum')">Lihat Detail</button>
+    </div>
+
+    <div class="bph-card">
+      <img src="Rahmat Waruwu.png" alt="Foto Kord BOK" class="bph-photo">
+      <h3>Rahmat Tri Kasih Eli Waruwu</h3>
+      <p class="title">Kordinator BOK</p>
+      <div class="bph-info">
+        <div><i class="fa-solid fa-envelope"></i> -</div>
+        <div><i class="fa-solid fa-phone"></i> -</div>
+      </div>
+      <button class="btn-detail" onclick="showDetail('Rahmat Waruwu.png', 'Rahmat Tri Kasih Eli Waruwu', 'Kord. BOK')">Lihat Detail</button>
+    </div>
+
+    <div class="bph-card">
+      <img src="Andri Mend.png" alt="Foto Anggota BOK" class="bph-photo">
+      <h3>Andi Kriswan Mendrofa</h3>
+      <p class="title">Anggota BOK</p>
+      <div class="bph-info">
+        <div><i class="fa-solid fa-envelope"></i> -</div>
+        <div><i class="fa-solid fa-phone"></i> -</div>
+      </div>
+      <button class="btn-detail" onclick="showDetail('Andri Mend.png', 'Andi Kriswan Mendrofa', 'Anggota BOK')">Lihat Detail</button>
+    </div>
+
+    <div class="bph-card">
+      <img src="Erni Waruwu.png" alt="Foto Anggota BOK" class="bph-photo">
+      <h3>Erni Wati Waruwu</h3>
+      <p class="title">Anggota BOK</p>
+      <div class="bph-info">
+        <div><i class="fa-solid fa-envelope"></i> -</div>
+        <div><i class="fa-solid fa-phone"></i> -</div>
+      </div>
+      <button class="btn-detail" onclick="showDetail('Erni Waruwu.png', 'Erniwati Waruwu', 'Anggota BOK')">Lihat Detail</button>
+    </div>
+
+    <div class="bph-card">
+      <img src="Walterus Gea.png" alt="Foto Anggota BOK" class="bph-photo">
+      <h3>Walterus Gea</h3>
+      <p class="title">Anggota BOK</p>
+      <div class="bph-info">
+        <div><i class="fa-solid fa-envelope"></i> -</div>
+        <div><i class="fa-solid fa-phone"></i> +62 853-8511-5679</div>
+      </div>
+      <button class="btn-detail" onclick="showDetail('Walterus Gea.png', 'Walterus Gea', 'Anggota BOK')">Lihat Detail</button>
+    </div>
+
+    <div class="bph-card">
+      <img src="Sitri Daeli.png" alt="Foto Anggota BOK" class="bph-photo">
+      <h3>Sitriani Daeli</h3>
+      <p class="title">Anggota BOK</p>
+      <div class="bph-info">
+        <div><i class="fa-solid fa-envelope"></i> -</div>
+        <div><i class="fa-solid fa-phone"></i> -</div>
+      </div>
+      <button class="btn-detail" onclick="showDetail('Sitri Daeli.png', 'Sitriani Daeli', 'Anggota BOK')">Lihat Detail</button>
+    </div>
+
+  </div>
+</section>
+
+<div id="detailModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <img id="modalImg" src="" alt="" class="modal-img">
+    <h2 id="modalName"></h2>
+    <p id="modalRole" style="color: var(--primary); font-weight: 600;"></p>
+  </div>
+</div>
 
     <script>
       window.addEventListener("load", () => {
@@ -1087,7 +1301,28 @@
           navbar.classList.remove("show");
         }),
       );
+
+      function showDetail(img, name, role) {
+  const modal = document.getElementById('detailModal');
+  document.getElementById('modalImg').src = img;
+  document.getElementById('modalName').innerText = name;
+  document.getElementById('modalRole').innerText = role;
+  modal.style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('detailModal').style.display = 'none';
+}
+
+// Menutup modal jika klik di luar kotak putih
+window.onclick = function(event) {
+  const modal = document.getElementById('detailModal');
+  if (event.target == modal) {
+    closeModal();
+  }
+}
     </script>
+
     <footer class="footer">
       <div class="footer-container">
         <!-- LOGO & DESKRIPSI -->
