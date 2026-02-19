@@ -476,135 +476,60 @@
         color: #64748b;
       }
 
-      /* --- Main Content Container --- */
-      .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      /* Maintenance Section */
-      .maintenance-card {
-        background: #fffbeb;
-        border: 1px solid #fde68a;
-        padding: 40px;
-        border-radius: 25px;
-        text-align: center;
-        margin-bottom: 30px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
-      }
-      .maintenance-card i {
-        font-size: 3rem;
-        color: #d97706;
-        margin-bottom: 20px;
-      }
-      /* Grid System */
-      .grid-layout {
-        display: grid;
-        grid-template-columns: 1.5fr 1fr;
-        gap: 25px;
-      }
-      .card {
-        background: var(--white);
-        padding: 30px;
-        border-radius: 25px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-      }
-      .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        flex-wrap: wrap;
-        margin-top: 20px;
-      }
-      .social-icon {
-        width: 45px;
-        height: 45px;
-        background: var(--light);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        color: var(--dark);
-        text-decoration: none;
-        transition: 0.3s;
-        font-size: 1.2rem;
-      }
-      .social-icon:hover {
-        background: var(--primary);
-        color: white;
-        transform: translateY(-5px);
-      }
-      .support-btn {
-        width: 100%;
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 15px;
-        border-radius: 15px;
-        font-weight: 600;
-        cursor: pointer;
-        margin-top: 15px;
-        transition: 0.3s;
-      }
-      .support-btn:hover {
-        background: var(--dark);
-        transform: scale(1.02);
-      }
-      /* --- Mobile Responsive --- */
-      @media (max-width: 768px) {
-        .menu-toggle {
-          display: flex;
-        }
-        .nav-bar {
-          position: fixed;
-          top: 0;
-          right: -100%;
-          width: 75%;
-          height: 100vh;
-          background: rgba(30, 41, 59, 0.95);
-          backdrop-filter: blur(15px);
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-        }
-        .nav-bar.show {
-          right: 0;
-        }
-        .grid-layout {
-          grid-template-columns: 1fr;
-        }
-        .hero h2 {
-          font-size: 1.8rem;
-        }
-      }
+/* --- Hero Section Modern & Readable --- */
+.hero {
+  position: relative;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 6% 60px;
+  text-align: center;
+  background: 
+  
+  /* Overlay gelap supaya teks putih menonjol */
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)),
+    url("fotbaragtpmkn.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Efek parallax halus */
+  color: white;
+}
 
-      .hero-btn {
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 15px 30px;
-        border-radius: 15px;
-        font-weight: 600;
-        cursor: pointer;
-        margin-top: 20px;
-        transition: 0.3s;
-      }
+.breadcrumb {
+  font-size: 0.85rem;
+  margin-bottom: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 50px;
+  backdrop-filter: blur(5px);
+  display: inline-block;
+  color: #e2e8f0;
+}
 
-      .hero-btn:hover {
-        background: var(--dark);
-        transform: scale(1.05);
-      }
+.breadcrumb a {
+  color: var(--secondary); /* Warna biru muda agar kontras di gelap */
+  text-decoration: none;
+  font-weight: 600;
+}
 
-      a.perintis-link {
-        text-decoration: none;
-        color: #2563eb;
-        transition: color 0.3s ease-in-out;
-      }
+.hero h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem); /* Ukuran adaptif */
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  letter-spacing: -1px;
+}
 
-      a.perintis-link:hover {
-        color: #ff4d00;
-      }
+.hero p {
+  max-width: 800px;
+  margin: 0 auto 50px;
+  color: #cbd5e1;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
 
       /* --- Style Tambahan untuk Gambar Struktur Modern --- */
       .structure-container-modern {
@@ -903,6 +828,84 @@
           margin-top: 20px;
         }
       }
+
+/* Container Utama yang dibuat Melayang */
+.footer-click-wrapper {
+    position: fixed;
+    bottom: 25px; /* Jarak dari bawah */
+    left: 25px;   /* Jarak dari kiri */
+    z-index: 9999;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    max-width: 350px; /* Batasi lebar agar tetap minimalis */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Kotak Konten dengan efek Blur */
+.footer-bottom-left {
+    padding: 18px 22px;
+    background: rgba(15, 23, 42, 0.8); /* Warna gelap transparan */
+    backdrop-filter: blur(12px);      /* Efek kaca */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+/* Animasi Hover: Terangkat & Cahaya Oranye */
+.footer-click-wrapper:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+.footer-click-wrapper:hover .footer-bottom-left {
+    background: rgba(15, 23, 42, 0.95);
+    border-color: rgba(255, 106, 0, 0.4); /* Highlight warna branding */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.footer-bottom-left p {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+/* Styling Daftar Link Internal */
+.footer-bottom-left ul {
+    display: flex;
+    flex-wrap: wrap; /* Supaya rapi jika layar sempit */
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+}
+
+.footer-bottom-left ul li a {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s;
+}
+
+.footer-bottom-left ul li a:hover {
+    color: #ff6a00; /* Warna branding PMKN */
+}
+
+/* Responsif: Sembunyikan atau kecilkan di HP agar tidak menutupi tombol navigasi HP */
+@media (max-width: 768px) {
+    .footer-click-wrapper {
+        bottom: 15px;
+        left: 15px;
+        max-width: 280px;
+        transform: scale(0.9);
+        transform-origin: bottom left;
+    }
+}
+
     </style>
   </head>
   <body>
@@ -1013,13 +1016,19 @@
               </li>
             </ul>
           </li>
+
           <!-- Search -->
-          <li class="search-box">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Cari..." />
-          </li>
-        </ul>
-      </nav>
+          <li class="nav-item-search">
+    <a href="cari.html" class="search-link">
+        <div class="search-icon-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-trigger"></i>
+            <span class="search-text">Cari...</span>
+        </div>
+    </a>
+  </li>
+</ul>
+</nav>
+
       <!-- Hamburger -->
       <div class="menu-toggle" id="menuBtn">
         <span class="line-1"></span>
@@ -1181,39 +1190,22 @@
       </div>
 
       <div class="footer-bottom">
-        <div class="footer-bottom-left">
-          <p>&copy; 2026 PMKN Tondano • All Rights Reserved</p>
-          <ul>
-            <li>
-              <a href="#"
-                ><i class="fa-solid fa-shield-halved"></i> Kebijakan Privasi</a
-              >
-            </li>
-            <li>
-              <a href="#"><i class="fa-solid fa-code"></i> Kontributor</a>
-            </li>
-            <li>
-              <a href="#"><i class="fa-solid fa-question-circle"></i> FAQ</a>
-            </li>
-          </ul>
-        </div>
-        <div class="footer-bottom-right">
-          <a href="https://www.facebook.com/pmkn.tondano" class="social-icon"
-            ><i class="fa-brands fa-facebook"></i
-          ></a>
-          <a href="https://www.instagram.com/pmkn_tondano" class="social-icon"
-            ><i class="fa-brands fa-instagram"></i
-          ></a>
-          <a
-            href="https://www.tiktok.com/search?q=pmkn%20tondano&t=1769452575510"
-            class="social-icon"
-            ><i class="fa-brands fa-tiktok"></i
-          ></a>
-          <a href="https://www.youtube.com/@PMKN_Tondano" class="social-icon"
-            ><i class="fa-brands fa-youtube"></i
-          ></a>
-        </div>
-      </div>
+    <div class="footer-bottom-left">
+        <p>&copy; 2026 PMKN Tondano • All Rights Reserved</p>
+        <ul>
+            <li><a href="#" onclick="event.stopPropagation()"><i class="fa-solid fa-shield-halved"></i> Kebijakan Privasi</a></li>
+            <li><a href="kontributor.html" onclick="event.stopPropagation()"><i class="fa-solid fa-code"></i> Kontributor</a></li>
+            <li><a href="#" onclick="event.stopPropagation()"><i class="fa-solid fa-question-circle"></i> FAQ</a></li>
+        </ul>
+    </div>
+    
+    <div class="footer-bottom-right">
+        <a href="#" class="social-icon" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" class="social-icon" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-icon" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#" class="social-icon" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+</div>
     </footer>
   </body>
 </html>

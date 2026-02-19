@@ -275,20 +275,47 @@
       }
 
       /* ===== SEARCH BOX ===== */
-      .search-box {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        background: #f1f5f9;
-        padding: 6px 12px;
-        border-radius: 8px;
-      }
+      .search-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
 
-      .search-box input {
-        border: none;
-        background: transparent;
-        outline: none;
-      }
+.search-trigger {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    color: #64748b;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.search-trigger:hover {
+    background: rgba(37, 99, 235, 0.1);
+    color: #2563eb;
+}
+
+/* Input yang muncul saat aktif */
+.search-input-hidden {
+    width: 0;
+    opacity: 0;
+    border: none;
+    outline: none;
+    padding: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #f1f5f9;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.search-icon-wrapper.active .search-input-hidden {
+    width: 200px;
+    opacity: 1;
+    padding: 8px 15px;
+    margin-left: 10px;
+}
 
       /* ===== MOBILE ===== */
       .menu-toggle {
@@ -790,12 +817,16 @@
           </li>
 
           <!-- Search -->
-          <li class="search-box">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Cari..." />
-          </li>
-        </ul>
-      </nav>
+          <li class="nav-item-search">
+    <a href="cari.html" class="search-link">
+        <div class="search-icon-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-trigger"></i>
+            <span class="search-text">Cari...</span>
+        </div>
+    </a>
+  </li>
+</ul>
+</nav>
 
       <!-- Hamburger -->
       <div class="menu-toggle" id="menuBtn">

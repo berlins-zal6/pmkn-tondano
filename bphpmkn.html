@@ -279,21 +279,48 @@
     border-bottom: 2px solid #ff4d00;
 }
 
-      /* ===== SEARCH BOX ===== */
-      .search-box {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        background: #f1f5f9;
-        padding: 6px 12px;
-        border-radius: 8px;
-      }
+/* ===== SEARCH BOX ===== */
+.search-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
 
-      .search-box input {
-        border: none;
-        background: transparent;
-        outline: none;
-      }
+.search-trigger {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    color: #64748b;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.search-trigger:hover {
+    background: rgba(37, 99, 235, 0.1);
+    color: #2563eb;
+}
+
+/* Input yang muncul saat aktif */
+.search-input-hidden {
+    width: 0;
+    opacity: 0;
+    border: none;
+    outline: none;
+    padding: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #f1f5f9;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.search-icon-wrapper.active .search-input-hidden {
+    width: 200px;
+    opacity: 1;
+    padding: 8px 15px;
+    margin-left: 10px;
+}
 
       /* ===== MOBILE ===== */
       .menu-toggle {
@@ -488,7 +515,8 @@
   padding: 100px 6% 60px;
   text-align: center;
   background: 
-    /* Overlay gelap supaya teks putih menonjol */
+  
+  /* Overlay gelap supaya teks putih menonjol */
     linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)),
     url("fotbaragtpmkn.jpg");
   background-size: cover;
@@ -616,6 +644,104 @@
   .stat-value {
     font-size: 1.3rem;
   }
+}
+
+/* ---Search Bar --- */
+.search-wrapper {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.search-glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+}
+
+.search-glass:focus-within {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
+    border-color: var(--primary);
+}
+
+.search-input-group {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.main-icon {
+    font-size: 1.2rem;
+    color: var(--primary);
+    margin-right: 15px;
+}
+
+.search-glass input {
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+#clearSearch {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: none; /* Muncul saat ada teks */
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    transition: 0.3s;
+}
+
+#clearSearch:hover {
+    color: #ef4444;
+}
+
+.search-meta {
+    border-left: 2px solid #e2e8f0;
+    padding-left: 20px;
+    margin-left: 10px;
+}
+
+#searchCount {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #64748b;
+    white-space: nowrap;
+    background: #f1f5f9;
+    padding: 6px 12px;
+    border-radius: 10px;
+}
+
+/* Responsif untuk HP */
+@media (max-width: 600px) {
+    .search-glass {
+        flex-direction: column;
+        gap: 15px;
+        border-radius: 25px;
+        padding: 20px;
+    }
+    .search-meta {
+        border-left: none;
+        border-top: 1px solid #eee;
+        padding: 10px 0 0;
+        width: 100%;
+        text-align: center;
+    }
 }
 
 /* --- BPH Grid Section --- */
@@ -752,6 +878,86 @@
   object-fit: cover;
   margin-bottom: 20px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* navigasi page 1-3 */
+.bph-pagination {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0 60px;
+    background: #f1f5f9; /* Pastikan warna sama dengan background section */
+    clear: both; /* Memastikan tidak tertutup oleh float elements */
+}
+
+.pagination-wrapper {
+    display: inline-flex; /* Menggunakan inline-flex agar pas di tengah */
+    align-items: center;
+    gap: 10px;
+    background: #ffffff;
+    padding: 8px 16px;
+    border-radius: 100px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.page-numbers {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.page-num {
+    text-decoration: none !important; /* Paksa hapus garis bawah */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #64748b;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+/* Keadaan Aktif */
+.page-num.active {
+    background: #2563eb !important; /* Paksa warna biru utama */
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.page-num:hover:not(.active) {
+    background: rgba(37, 99, 235, 0.1);
+    color: #2563eb;
+}
+
+.page-nav-btn {
+    text-decoration: none !important;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #334155;
+    transition: 0.3s;
+}
+
+.page-nav-btn.disabled {
+    color: #cbd5e1 !important;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.page-status {
+    margin-top: 12px;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
       /* ================= FOOTER MODERN ================= */
@@ -930,6 +1136,84 @@
           margin-top: 20px;
         }
       }
+
+/* Container Utama yang dibuat Melayang */
+.footer-click-wrapper {
+    position: fixed;
+    bottom: 25px; /* Jarak dari bawah */
+    left: 25px;   /* Jarak dari kiri */
+    z-index: 9999;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    max-width: 350px; /* Batasi lebar agar tetap minimalis */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Kotak Konten dengan efek Blur */
+.footer-bottom-left {
+    padding: 18px 22px;
+    background: rgba(15, 23, 42, 0.8); /* Warna gelap transparan */
+    backdrop-filter: blur(12px);      /* Efek kaca */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+/* Animasi Hover: Terangkat & Cahaya Oranye */
+.footer-click-wrapper:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+.footer-click-wrapper:hover .footer-bottom-left {
+    background: rgba(15, 23, 42, 0.95);
+    border-color: rgba(255, 106, 0, 0.4); /* Highlight warna branding */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.footer-bottom-left p {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+/* Styling Daftar Link Internal */
+.footer-bottom-left ul {
+    display: flex;
+    flex-wrap: wrap; /* Supaya rapi jika layar sempit */
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+}
+
+.footer-bottom-left ul li a {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.3s;
+}
+
+.footer-bottom-left ul li a:hover {
+    color: #ff6a00; /* Warna branding PMKN */
+}
+
+/* Responsif: Sembunyikan atau kecilkan di HP agar tidak menutupi tombol navigasi HP */
+@media (max-width: 768px) {
+    .footer-click-wrapper {
+        bottom: 15px;
+        left: 15px;
+        max-width: 280px;
+        transform: scale(0.9);
+        transform-origin: bottom left;
+    }
+}
+
     </style>
 </head>
   <body>
@@ -1040,12 +1324,17 @@
             </ul>
           </li>
           <!-- Search -->
-          <li class="search-box">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="Cari..." />
-          </li>
-        </ul>
-      </nav>
+          <li class="nav-item-search">
+    <a href="cari.html" class="search-link">
+        <div class="search-icon-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-trigger"></i>
+            <span class="search-text">Cari...</span>
+        </div>
+    </a>
+  </li>
+</ul>
+</nav>
+
       <!-- Hamburger -->
     <div class="menu-toggle" id="menuBtn">
         <span class="line-1"></span>
@@ -1096,6 +1385,19 @@
         </div>
       </div>
     </section>
+
+<div class="search-wrapper">
+    <div class="search-glass">
+        <div class="search-input-group">
+            <i class="fa-solid fa-magnifying-glass main-icon"></i>
+            <input type="text" id="bphSearch" placeholder="Ketik nama, jabatan atau..." onkeyup="searchBPH()">
+            <div id="clearSearch" onclick="resetSearch()"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <div class="search-meta">
+            <span id="searchCount">Cari BPH ...</span>
+        </div>
+    </div>
+</div>
 
 <section class="bph-section">
   <div class="bph-grid">
@@ -1213,12 +1515,12 @@
     <div class="bph-card">
       <img src="Rahmat Waruwu.png" alt="Foto Kord BOK" class="bph-photo">
       <h3>Rahmat Tri Kasih Eli Waruwu</h3>
-      <p class="title">Kordinator BOK</p>
+      <p class="title">Koordinator BOK</p>
       <div class="bph-info">
         <div><i class="fa-solid fa-envelope"></i> -</div>
         <div><i class="fa-solid fa-phone"></i> -</div>
       </div>
-      <button class="btn-detail" onclick="showDetail('Rahmat Waruwu.png', 'Rahmat Tri Kasih Eli Waruwu', 'Kord. BOK')">Lihat Detail</button>
+      <button class="btn-detail" onclick="showDetail('Rahmat Waruwu.png', 'Rahmat Tri Kasih Eli Waruwu', 'Koordinator BOK')">Lihat Detail</button>
     </div>
 
     <div class="bph-card">
@@ -1265,6 +1567,17 @@
       <button class="btn-detail" onclick="showDetail('Sitri Daeli.png', 'Sitriani Daeli', 'Anggota BOK')">Lihat Detail</button>
     </div>
 
+    <div class="bph-card">
+      <img src="Denita Harefa.png" alt="Foto Anggota BOK" class="bph-photo">
+      <h3>Denita Harefa</h3>
+      <p class="title">Anggota BOK</p>
+      <div class="bph-info">
+        <div><i class="fa-solid fa-envelope"></i> -</div>
+        <div><i class="fa-solid fa-phone"></i> -</div>
+      </div>
+      <button class="btn-detail" onclick="showDetail('Denita Harefa.png', 'Denita Harefa', 'Anggota BOK')">Lihat Detail</button>
+    </div>
+
   </div>
 </section>
 
@@ -1275,6 +1588,28 @@
     <h2 id="modalName"></h2>
     <p id="modalRole" style="color: var(--primary); font-weight: 600;"></p>
   </div>
+</div>
+
+<div class="bph-pagination">
+    <div class="pagination-wrapper">
+        <a href="bphpmkn.html" class="page-nav-btn disabled">
+            <i class="fa-solid fa-chevron-left"></i>
+        </a>
+
+        <div class="page-numbers">
+            <a href="bphpmkn.html" class="page-num active">1</a>
+            <a href="bphpmkn2.html" class="page-num">2</a>
+            <a href="bphpmkn3.html" class="page-num">3</a>
+        </div>
+
+        <a href="bphpmkn2.html" class="page-nav-btn">
+            <i class="fa-solid fa-chevron-right"></i>
+        </a>
+    </div>
+    
+    <div class="page-status">
+        Halaman <span>1</span> dari 3
+    </div>
 </div>
 
     <script>
@@ -1302,24 +1637,56 @@
         }),
       );
 
-      function showDetail(img, name, role) {
-  const modal = document.getElementById('detailModal');
-  document.getElementById('modalImg').src = img;
-  document.getElementById('modalName').innerText = name;
-  document.getElementById('modalRole').innerText = role;
-  modal.style.display = 'flex';
+function searchBPH() {
+    let input = document.getElementById('bphSearch');
+    let filter = input.value.toLowerCase();
+    let cards = document.getElementsByClassName('bph-card');
+    let clearBtn = document.getElementById('clearSearch');
+    let countText = document.getElementById('searchCount');
+    let visibleCount = 0;
+
+    // Tampilkan/Sembunyikan tombol X
+    clearBtn.style.display = filter.length > 0 ? "flex" : "none";
+
+    for (let i = 0; i < cards.length; i++) {
+        let name = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+        let role = cards[i].getElementsByClassName('title')[0].innerText.toLowerCase();
+        
+        if (name.includes(filter) || role.includes(filter)) {
+            cards[i].style.display = "";
+            visibleCount++;
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+
+    countText.innerText = filter === "" ? "Cari BPH ..." : `Ditemukan ${visibleCount} orang`;
+}
+
+function resetSearch() {
+    document.getElementById('bphSearch').value = "";
+    searchBPH();
+    document.getElementById('bphSearch').focus();
+}
+
+function showDetail(img, name, role) {
+    const modal = document.getElementById('detailModal');
+    document.getElementById('modalImg').src = img;
+    document.getElementById('modalName').innerText = name;
+    document.getElementById('modalRole').innerText = role;
+    modal.style.display = 'flex';
 }
 
 function closeModal() {
-  document.getElementById('detailModal').style.display = 'none';
+    document.getElementById('detailModal').style.display = 'none';
 }
 
-// Menutup modal jika klik di luar kotak putih
+// Menutup modal jika klik di luar area gambar
 window.onclick = function(event) {
-  const modal = document.getElementById('detailModal');
-  if (event.target == modal) {
-    closeModal();
-  }
+    const modal = document.getElementById('detailModal');
+    if (event.target == modal) {
+        closeModal();
+    }
 }
     </script>
 
@@ -1389,39 +1756,22 @@ window.onclick = function(event) {
       </div>
 
       <div class="footer-bottom">
-        <div class="footer-bottom-left">
-          <p>&copy; 2026 PMKN Tondano • All Rights Reserved</p>
-          <ul>
-            <li>
-              <a href="#"
-                ><i class="fa-solid fa-shield-halved"></i> Kebijakan Privasi</a
-              >
-            </li>
-            <li>
-              <a href="#"><i class="fa-solid fa-code"></i> Kontributor</a>
-            </li>
-            <li>
-              <a href="#"><i class="fa-solid fa-question-circle"></i> FAQ</a>
-            </li>
-          </ul>
-        </div>
-        <div class="footer-bottom-right">
-          <a href="https://www.facebook.com/pmkn.tondano" class="social-icon"
-            ><i class="fa-brands fa-facebook"></i
-          ></a>
-          <a href="https://www.instagram.com/pmkn_tondano" class="social-icon"
-            ><i class="fa-brands fa-instagram"></i
-          ></a>
-          <a
-            href="https://www.tiktok.com/search?q=pmkn%20tondano&t=1769452575510"
-            class="social-icon"
-            ><i class="fa-brands fa-tiktok"></i
-          ></a>
-          <a href="https://www.youtube.com/@PMKN_Tondano" class="social-icon"
-            ><i class="fa-brands fa-youtube"></i
-          ></a>
-        </div>
-      </div>
+    <div class="footer-bottom-left">
+        <p>&copy; 2026 PMKN Tondano • All Rights Reserved</p>
+        <ul>
+            <li><a href="#" onclick="event.stopPropagation()"><i class="fa-solid fa-shield-halved"></i> Kebijakan Privasi</a></li>
+            <li><a href="kontributor.html" onclick="event.stopPropagation()"><i class="fa-solid fa-code"></i> Kontributor</a></li>
+            <li><a href="#" onclick="event.stopPropagation()"><i class="fa-solid fa-question-circle"></i> FAQ</a></li>
+        </ul>
+    </div>
+    
+    <div class="footer-bottom-right">
+        <a href="#" class="social-icon" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" class="social-icon" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-icon" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#" class="social-icon" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+</div>
     </footer>
   </body>
 </html>
