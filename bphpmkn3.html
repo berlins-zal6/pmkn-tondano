@@ -743,6 +743,63 @@
     }
 }
 
+/* Penyesuaian Bar Kamu */
+.search-input-group { position: relative; display: flex; align-items: center; flex: 1; }
+#clearSearch { cursor: pointer; display: none; padding: 5px; color: #94a3b8; }
+#clearSearch:hover { color: #ef4444; }
+
+/* Box Hasil Global */
+.global-results-box {
+    background: white;
+    border-radius: 15px;
+    margin-top: 10px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: none;
+    border: 1px solid #e2e8f0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.global-info-title {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #94a3b8;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.global-result-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    text-decoration: none;
+    color: #1e293b;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    background: #f8fafc;
+    transition: 0.2s;
+}
+
+.global-result-item:hover {
+    background: #eff6ff;
+    transform: translateX(5px);
+}
+
+.result-img-wrapper {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-right: 12px;
+}
+
+.result-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+.result-name { font-size: 0.85rem; font-weight: 700; }
+.result-role { font-size: 0.7rem; color: #64748b; }
+
 /* --- BPH Grid Section --- */
 .bph-section {
   padding: 60px 6%;
@@ -1397,6 +1454,7 @@
             <span id="searchCount">Cari BPH ...</span>
         </div>
     </div>
+    <div id="globalResults" class="global-results-box"></div>
 </div>
 
 <section class="bph-section">
@@ -1557,7 +1615,7 @@
             <a href="bphpmkn3.html" class="page-num active">3</a>
         </div>
 
-        <a href="bphpmkn4.html" class="page-nav-btn disabled">
+        <a href="#" class="page-nav-btn disabled">
             <i class="fa-solid fa-chevron-right"></i>
         </a>
     </div>
@@ -1642,6 +1700,184 @@ window.onclick = function(event) {
     if (event.target == modal) {
         closeModal();
     }
+}
+
+// DATABASE GLOBAL PENGURUS PMKN TONDANO
+// Pastikan nama file foto sesuai dengan yang ada di folder images kamu
+const bphDatabase = [
+    // --- DATA HALAMAN 1 (bphpmkn.html) ---
+    { name: "Elius Gea, S.PAK., S.ST.PAR., M.TH., M.Pd", role: "Dewan Penasehat", page: "bphpmkn.html", photo : "Elius Gea.png" },
+    { name: "Stadi Dachi, S.Pd., M.Th", role: "Dewan Penasehat", page: "bphpmkn.html", photo : "Stadi Dachi.png" },
+    { name: "Talizokho Giawa, S.Th", role: "Dewan Penasehat", page: "bphpmkn.html", photo : "icon pmkn.jpeg" },
+    { name: "Notatema Gea", role: "Dewan Pengarah", page: "bphpmkn.html", photo : "Notatema Gea.png" },
+    { name: "Fernando Fransiskus Zendrato", role: "Dewan Pengarah", page: "bphpmkn.html", photo : "Fernando Zend.png"},
+    { name: "Melda Noverita Zebua", role: "Dewan Pengarah", page: "bphpmkn.html", photo : "Melda Zebua.png"},
+    { name: "Lisman Lase", role: "Ketua Umum", page: "bphpmkn.html", photo : "Lisman Lase.png"},
+    { name: "Ardiansyah Putra Halawa", role: "Wakil Ketua Umum", page: "bphpmkn.html", photo : "Ardin Halawa.png"},
+    { name: "Erlin Setiaman Zega", role: "Sekretaris Umum", page: "bphpmkn.html", photo : "Erlin Zega.png"},
+    { name: "Jelita Ziliwu", role: "Bendahara Umum", page: "bphpmkn.html", photo : "Jelita Ziliwu.png"},
+    { name: "Rahmat Tri Kasih Eli Waruwu", role: "Koordinator BOK", page: "bphpmkn.html", photo : "Rahmat Waruwu.png"},
+    { name: "Andi Kriswan Mendrofa", role: "Anggota BOK", page: "bphpmkn.html", photo : "Andri Mend.png"},
+    { name: "Erni Wati Waruwu", role: "Anggota BOK", page: "bphpmkn.html", photo : "Erni Waruwu.png"},
+    { name: "Walterus Gea", role: "Anggota BOK", page: "bphpmkn.html", photo : "Walterus Gea.png"},
+    { name: "Sitriani Daeli", role: "Anggota BOK", page: "bphpmkn.html", photo : "Sitri Daeli.png"},
+    { name: "Denita Harefa", role: "Anggota BOK", page: "bphpmkn.html", photo : "Denita Harefa.png"},
+
+    // --- DATA HALAMAN 2 (bphpmkn2.html) ---
+    { name: "Yunusman Zebua", role: "Koordinator Hubungan Masyarakat", page: "bphpmkn2.html", photo: "icon pmkn.jpeg"},
+    { name: "Nadi Harlis Harefa", role: "Anggota Hubungan Masyarakat", page: "bphpmkn2.html", photo: "icon pmkn.jpeg"},
+    { name: "Ida Stefanny Dwi Gea", role: "Anggota Hubungan Masyarakat", page: "bphpmkn2.html", photo: "icon pmkn.jpeg"},
+    { name: "Joko Mardianto Zebua", role: "Anggota Hubungan Masyarakat", page: "bphpmkn2.html", photo: "icon pmkn.jpeg"},
+    { name: "Kenniman Tafonao", role: "Anggota Hubungan Masyarakat", page: "bphpmkn2.html", photo: "icon pmkn.jpeg"},
+    { name: "Destriwati Zega", role: "Anggota Hubungan Masyarakat", page: "bphpmkn2.html", photo: "icon pmkn.jpeg"},
+    { name: "Relawati Lase", role: "Koordinator Kerohanian", page: "bphpmkn2.html", photo : "icon pmkn.jpeg"},
+    { name: "Rhema Juwita Zega", role: "Anggota Kerohanian", page: "bphpmkn2.html", photo : "icon pmkn.jpeg"},
+    { name: "Defriani Telaumbanua", role: "Anggota Kerohanian", page: "bphpmkn2.html", photo : "icon pmkn.jpeg"},
+    { name: "Kevin Natanael Lahagu", role: "Anggota Kerohanian", page: "bphpmkn2.html", photo : "icon pmkn.jpeg"},
+    { name: "Pasti Damai Telaumbanua", role: "Anggota Kerohanian", page: "bphpmkn2.html", photo : "icon pmkn.jpeg"},
+    { name: "Nofili Zega", role: "Anggota Kerohanian", page: "bphpmkn2.html", photo : "icon pmkn.jpeg"},
+    { name: "Relawati Lase", role: "Koordinator Kerohanian", page: "bphpmkn2.html", photo : "icon pmkn.jpeg"},
+    { name: "Rhema Juwita Zega", role: "Anggota Kerohanian", page: "bphpmkn2.html", photo : "icon pmkn.jpeg"},
+    { name: "Defriani Telaumbanua", role: "Anggota Kerohanian", page: "bphpmkn2.html", photo : "icon pmkn.jpeg"},
+    { name: "Kevin Natanael Lahagu", role: "Anggota Kerohanian", page: "bphpmkn2.html", photo : "icon pmkn.jpeg"},
+    { name: "Pasti Damai Telaumbanua", role: "Anggota Kerohanian", page: "bphpmkn2.html", photo : "icon pmkn.jpeg"},
+    { name: "Nofili Zega", role: "Anggota Kerohanian", page: "bphpmkn2.html", photo : "icon pmkn.jpeg"},
+    { name: "Pinter Lina Zalukhu", role: "Koordinator Kewirausahaan", page: "bphpmkn2.html", photo : "icon pmkn.jpeg"},
+    { name: "Kurniawan Zega", role: "Anggota Kewirausahaan", page: "bphpmkn2.html", photo : "icon pmkn.jpeg"},
+    { name: "Kristober Anugrah Zega", role: "Anggota Kewirausahaan", page: "bphpmkn2.html", photo : "icon pmkn.jpeg"},
+    { name: "Herdiaman Zega", role: "Anggota Kewirausahaan", page: "bphpmkn2.html", photo : "icon pmkn.jpeg"},
+    { name: "Putra Martinus Tafonao", role: "Anggota Kewirausahaan", page: "bphpmkn2.html", photo : "icon pmkn.jpeg"},
+    { name: "Dedy Kurniawan Zai", role: "Anggota Kewirausahaan", page: "bphpmkn2.html", photo : "icon pmkn.jpeg"},
+
+    // --- DATA HALAMAN 3 (bphpmkn3.html) ---
+    { name: "Mitehe Harefa", role: "Kordinator Minat & Bakat", page: "bphpmkn3.html", photo : "icon pmkn.jpeg"},
+    { name: "Kelfin Setiawan Telaumbanua", role: "Anggota Minat & Bakat", page: "bphpmkn3.html", photo : "icon pmkn.jpeg"},
+    { name: "Arif Derman Jaya Telaumbanua", role: "Anggota Minat & Bakat", page: "bphpmkn3.html", photo : "icon pmkn.jpeg"},
+    { name: "Relevan Damai Sentosa Zebua", role: "Anggota Minat & Bakat", page: "bphpmkn3.html", photo : "icon pmkn.jpeg"},
+    { name: "Join Alpriman Harefa", role: "Anggota Minat & Bakat", page: "bphpmkn3.html", photo : "icon pmkn.jpeg"},
+    { name: "Melfina Lase", role: "Anggota Minat & Bakat", page: "bphpmkn3.html", photo : "icon pmkn.jpeg"},
+    { name: "Jestin Jernih Wati Ziliwu", role: "Koordinator Komunikasi & Informasi", page: "bphpmkn3.html", photo : "icon pmkn.jpeg"},
+    { name: "Helena Reni Oktora Lase", role: "Anggota Komunikasi & Informasi", page: "bphpmkn3.html", photo : "icon pmkn.jpeg"},
+    { name: "Berlin Septenus Zalukhu", role: "Anggota Komunikasi & Informasi", page: "bphpmkn3.html", photo : "icon pmkn.jpeg"},
+    { name: "Wan Ceria Putra Telaumbanua", role: "Anggota Komunikasi & Informasi", page: "bphpmkn3.html", photo : "icon pmkn.jpeg"},
+    { name: "Erna Enjelika Daely", role: "Anggota Komunikasi & Informasi", page: "bphpmkn3.html", photo : "icon pmkn.jpeg"},
+    { name: "Welisman Telaumbanua", role: "Anggota Komunikasi & Informasi", page: "bphpmkn3.html", photo : "icon pmkn.jpeg"},
+    
+];
+
+// FUNGSI PENCARIAN GLOBAL
+function searchBPH() {
+    let input = document.getElementById('bphSearch').value.toLowerCase();
+    let globalBox = document.getElementById('globalResults');
+    let currentFile = window.location.pathname.split("/").pop() || "index.html";
+
+    // Bersihkan hasil jika input kosong
+    if (input.length < 1) {
+        globalBox.style.display = "none";
+        return;
+    }
+
+    // Filter database berdasarkan nama atau jabatan
+    let matches = bphDatabase.filter(person => 
+        person.name.toLowerCase().includes(input) || 
+        person.role.toLowerCase().includes(input)
+    );
+
+    if (matches.length > 0) {
+        globalBox.style.display = "block";
+        globalBox.innerHTML = `<span class="global-info-title">Hasil Pencarian:</span>`;
+        
+        matches.forEach(item => {
+            // Berikan label jika orang tersebut ada di halaman lain
+            let isCurrentPage = currentFile.includes(item.page);
+            let locationLabel = isCurrentPage ? "Di halaman ini" : "Klik untuk lihat detail";
+
+            globalBox.innerHTML += `
+                <a href="${item.page}" class="global-result-item">
+                    <div class="result-img-wrapper">
+                        <img src="${item.photo}" alt="${item.name}" onerror="this.src='default-avatar.png'">
+                    </div>
+                    <div class="result-info">
+                        <div class="result-name">${item.name}</div>
+                        <div class="result-role">${item.role}</div>
+                        <div class="result-location">${locationLabel}</div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </a>`;
+        });
+    } else {
+        globalBox.innerHTML = `<div class="no-result">Nama atau Jabatan tidak ditemukan...</div>`;
+        globalBox.style.display = "block";
+    }
+}
+
+function searchBPH() {
+    let input = document.getElementById('bphSearch').value.toLowerCase();
+    let cards = document.getElementsByClassName('bph-card');
+    let globalBox = document.getElementById('globalResults');
+    let countText = document.getElementById('searchCount');
+    let clearBtn = document.getElementById('clearSearch');
+    let visibleCount = 0;
+
+    // Tampilkan/Sembunyikan tombol X
+    clearBtn.style.display = input.length > 0 ? "flex" : "none";
+
+    // JIKA INPUT KOSONG
+    if (input === "") {
+        for (let card of cards) card.style.display = "";
+        globalBox.style.display = "none";
+        countText.innerText = "Cari BPH ...";
+        return;
+    }
+
+    // 1. CARI LOKAL (Halaman ini)
+    for (let i = 0; i < cards.length; i++) {
+        let name = cards[i].querySelector('h3').innerText.toLowerCase();
+        let role = cards[i].querySelector('.title').innerText.toLowerCase();
+        
+        if (name.includes(input) || role.includes(input)) {
+            cards[i].style.display = "";
+            visibleCount++;
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+
+    // 2. CARI GLOBAL (Database 1-3)
+    let currentFile = window.location.pathname.split("/").pop() || "bphpmkn.html";
+    let matches = bphDatabase.filter(person => 
+        (person.name.toLowerCase().includes(input) || person.role.toLowerCase().includes(input)) &&
+        !person.page.includes(currentFile) // Cari yang TIDAK ada di halaman ini
+    );
+
+    if (matches.length > 0) {
+        globalBox.style.display = "block";
+        globalBox.innerHTML = `<span class="global-info-title">Ditemukan di Halaman Lain:</span>`;
+        matches.forEach(item => {
+            globalBox.innerHTML += `
+                <a href="${item.page}" class="global-result-item">
+                    <div class="result-img-wrapper">
+                        <img src="${item.photo || 'default-avatar.png'}" onerror="this.src='default-avatar.png'">
+                    </div>
+                    <div class="result-info">
+                        <div class="result-name">${item.name}</div>
+                        <div class="result-role">${item.role}</div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right-long"></i>
+                </a>`;
+        });
+    } else {
+        globalBox.style.display = "none";
+    }
+
+    countText.innerText = `Ditemukan: ${visibleCount}`;
+}
+
+// Fungsi Reset (Tombol X)
+function resetSearch() {
+    document.getElementById('bphSearch').value = "";
+    searchBPH();
+    document.getElementById('bphSearch').focus();
 }
     </script>
 
@@ -1730,4 +1966,3 @@ window.onclick = function(event) {
     </footer>
   </body>
 </html>
-
