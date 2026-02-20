@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="icon pmkn.jpeg" type="image/png" />
-    <title>Panduan Pengguna Website | PMKN Tondano</title>
+    <title>FAQ (Tanya Jawab) | PMKN Tondano</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
@@ -234,7 +234,7 @@
         border-bottom: 2px solid #ff4d00;
       }
 
- /* DROPDOWN MODERN PMKN */
+/* DROPDOWN MODERN PMKN */
 .dropdown {
     position: relative;
     padding-bottom: 15px;
@@ -322,47 +322,20 @@
 }
 
       /* ===== SEARCH BOX ===== */
-      .search-icon-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
+      .search-box {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #f1f5f9;
+        padding: 6px 12px;
+        border-radius: 8px;
+      }
 
-.search-trigger {
-    background: none;
-    border: none;
-    font-size: 1.1rem;
-    color: #64748b;
-    cursor: pointer;
-    transition: 0.3s;
-    padding: 8px;
-    border-radius: 50%;
-}
-
-.search-trigger:hover {
-    background: rgba(37, 99, 235, 0.1);
-    color: #2563eb;
-}
-
-/* Input yang muncul saat aktif */
-.search-input-hidden {
-    width: 0;
-    opacity: 0;
-    border: none;
-    outline: none;
-    padding: 0;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    background: #f1f5f9;
-    border-radius: 20px;
-    font-size: 0.85rem;
-}
-
-.search-icon-wrapper.active .search-input-hidden {
-    width: 200px;
-    opacity: 1;
-    padding: 8px 15px;
-    margin-left: 10px;
-}
+      .search-box input {
+        border: none;
+        background: transparent;
+        outline: none;
+      }
 
       /* ===== MOBILE ===== */
       .menu-toggle {
@@ -499,7 +472,7 @@
       .menu-toggle.active .line-3 {
         transform: translateY(-8.5px) rotate(-45deg);
       }
-
+  
 /* --- Hero Section Modern & Readable --- */
 .hero {
   position: relative;
@@ -585,35 +558,222 @@
     }
 }
 
-/* fitur web */
-.features-section { padding: 60px 8%; background: #f1f5f9; }
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+/* Styling Search Bar */
+.search-container {
+    width: 100%;
+    max-width: 900px; /* Diperlebar signifikan dari 600px */
+    margin: 40px auto 0;
+    position: relative;
+    padding: 0 20px;
+    z-index: 20;
 }
 
-.feature-card {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  transition: 0.4s;
-  border: 1px solid rgba(0,0,0,0.02);
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.12); /* Efek kaca transparan */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 100px; /* Membuat sudut benar-benar bulat sempurna */
+    padding: 10px 10px 10px 35px; /* Padding kiri lebih dalam */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.feature-card:hover { transform: translateY(-10px); box-shadow: 0 20px 30px rgba(0,0,0,0.05); }
+.search-wrapper:focus-within {
+    background: rgba(255, 255, 255, 0.98); /* Menjadi putih solid saat aktif agar teks terbaca jelas */
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px); /* Terangkat lebih tinggi */
+    border-color: #ff6a00; /* Warna branding oranye */
+}
 
-.feature-icon {
-  width: 50px;
-  height: 50px;
-  background: rgba(37, 99, 235, 0.1);
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  font-size: 1.2rem;
+.search-wrapper i {
+    color: #ffffff; /* Ikon putih saat diam */
+    font-size: 1.3rem;
+    margin-right: 20px;
+    transition: 0.3s;
+}
+
+.search-wrapper:focus-within i {
+    color: #ff6a00; /* Ikon berubah warna saat aktif */
+}
+
+.search-wrapper input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: white; /* Teks putih saat diam */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    height: 55px; /* Input lebih tinggi/lebar */
+}
+
+.search-wrapper:focus-within input {
+    color: #1e293b; /* Teks berubah gelap saat background memutih */
+}
+
+.search-wrapper input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.search-wrapper:focus-within input::placeholder {
+    color: #94a3b8;
+}
+
+.search-btn {
+    background: #ff6a00; /* Oranye khas sesuai footer */
+    color: white;
+    border: none;
+    padding: 0 40px; /* Tombol lebih lebar */
+    height: 55px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.search-btn:hover {
+    background: #e65f00;
+    box-shadow: 0 8px 20px rgba(255, 106, 0, 0.4);
+    transform: scale(1.02);
+}
+
+/* Penyesuaian Hero */
+.hero {
+    padding-bottom: 100px !important;
+}
+
+/* Responsif Mobile */
+@media (max-width: 768px) {
+    .search-container {
+        max-width: 95%;
+    }
+    .search-btn {
+        padding: 0 20px;
+        font-size: 1rem;
+    }
+    .search-wrapper input {
+        font-size: 1rem;
+    }
+}
+
+/* Kategori FAQ */
+.faq-categories {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px; /* Jarak ke kotak pertanyaan */
+    flex-wrap: wrap;
+}
+
+.cat-btn {
+    padding: 10px 25px;
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #64748b;
+    transition: 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.cat-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.cat-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Animasi saat berganti kategori */
+.faq-item {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Container FAQ */
+.faq-section {
+    max-width: 900px;
+    /* Jarak atas 80px (jarak dari judul), bawah 100px */
+    margin: 80px auto 100px; 
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.faq-card {
+    background: #ffffff;
+    border-radius: 20px; /* Sedikit lebih bulat agar modern */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+    overflow: hidden;
+}
+
+.faq-item {
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-question {
+    padding: 22px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    color: #1e293b;
+    transition: 0.3s;
+}
+
+.faq-question:hover {
+    background: #f8fafc;
+    color: #2563eb;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 30px;
+    background: #fff;
+    transition: all 0.4s cubic-bezier(0, 1, 0, 1);
+    color: #64748b;
+    line-height: 1.8;
+}
+
+/* State Aktif */
+.faq-item.active .faq-answer {
+    max-height: 1000px; /* Nilai besar agar teks panjang tidak terpotong */
+    padding: 10px 30px 30px;
+    transition: all 0.4s cubic-bezier(1, 0, 1, 0);
+}
+
+.faq-item.active .faq-question {
+    color: #2563eb;
+    background: #f0f7ff;
+}
+
+.faq-item.active i {
+    transform: rotate(180deg);
+}
+
+.faq-question i {
+    font-size: 0.8rem;
+    transition: 0.3s;
 }
 
 /* ================= FOOTER MODERN ================= */
@@ -789,25 +949,7 @@
     }
 }
 
-/* isi panduan */
-.guide-container {
-    padding: 40px 10%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-  }
-  .guide-card {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: 0.3s;
-  }
-  .guide-card:hover { transform: translateY(-5px); }
-  .guide-card i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; 
-  }
-
-  /* Container Utama yang dibuat Melayang */
+/* Container Utama yang dibuat Melayang */
 .footer-click-wrapper {
     position: fixed;
     bottom: 25px; /* Jarak dari bawah */
@@ -906,8 +1048,7 @@
           <li><a href="index.html">Beranda</a></li>
           <!-- Dropdown Profil -->
           <li class="dropdown">
-            <a href="#"
-              >Profil <i class="fa-solid fa-chevron-down"></i
+            <a href="#">Profil <i class="fa-solid fa-chevron-down"></i
             ></a>
             <ul class="dropdown-menu">
               <li>
@@ -979,8 +1120,7 @@
           </li>
           <!-- Dropdown About -->
           <li class="dropdown">
-            <a href="#" class="active"
-            >About <i class="fa-solid fa-chevron-down"></i></a>
+            <a href="#">About <i class="fa-solid fa-chevron-down"></i></a>
             <ul class="dropdown-menu">
               <li>
                 <a href="#"
@@ -1000,12 +1140,12 @@
     <a href="cari.html" class="search-link">
         <div class="search-icon-wrapper">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <span class="search-text"></span>
         </div>
     </a>
   </li>
 </ul>
 </nav>
+
       <!-- Hamburger -->
     <div class="menu-toggle" id="menuBtn">
         <span class="line-1"></span>
@@ -1015,33 +1155,113 @@
     </header>
     <section class="hero">
     <div class="breadcrumb">
-        <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a> > <span>Panduan Pengguna</span>
+        <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a> > <span>FAQ</span>
     </div>
-    <h2>Panduan Pengguna <br> <span class="highlight-text">Website</span></h2>
-    <p> Panduan penggunaan situs web PMKN Tondano untuk memudahkan akses informasi dan layanan.</p>
+    <h2>Punya Pertanyaan? <br> <span class="highlight-text">Kami Punya Jawaban.</span></h2>
+    <p>Temukan informasi yang Anda butuhkan mengenai kegiatan, dan kehidupan organisasi di PMKN Tondano.</p>
+    
+    <div class="search-container">
+        <div class="search-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="faqSearch" placeholder="Ketik kata kunci pertanyaan Anda ...">
+            <button class="search-btn">Cari</button>
+        </div>
+    </div>
 </section>
 
-    <section class="features-section">
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
-                <h4>Navigasi Bertingkat</h4>
-                <p>Memudahkan Anda menjelajahi struktur organisasi melalui menu profil dan informasi secara sistematis.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-                <h4>Akses Responsif</h4>
-                <p>Website dapat diakses dengan nyaman melalui PC, Tablet, maupun Smartphone tanpa merusak tata letak.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
-                <h4>Sistem Pencarian</h4>
-                <p>Gunakan bar pencarian untuk menemukan berita atau agenda penting dengan mengetik kata kunci saja.</p>
-            </div>
-        </div>
-    </section>
+<section class="faq-section">
+    <div class="faq-categories">
+        <button class="cat-btn active" data-filter="all">Semua</button>
+        <button class="cat-btn" data-filter="umum">Umum</button>
+        <button class="cat-btn" data-filter="anggota">Keanggotaan</button>
+        <button class="cat-btn" data-filter="organisasi">Organisasi</button>
+        <button class="cat-btn" data-filter="kontak">Lokasi & Kontak</button>
+    </div>
 
-<script>
+    <div class="faq-card">
+        <div class="faq-item" data-category="umum">
+            <div class="faq-question">
+                <span>Apa itu PMKN Tondano?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">PMKN (Persatuan Mahasiswa Kristen Nias) Tondano adalah organisasi kemahasiswaan kedaerahan sebagai wadah persekutuan mahasiswa asal Nias di Tondano.</div>
+        </div>
+
+        <div class="faq-item" data-category="umum">
+            <div class="faq-question">
+                <span>Kapan PMKN Tondano didirikan?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">PMKN Tondano terbentuk pada tahun 2014 dan secara resmi disahkan pada tahun 2020.</div>
+        </div>
+
+        <div class="faq-item" data-category="anggota">
+            <div class="faq-question">
+                <span>Siapa saja yang bisa bergabung?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">Seluruh mahasiswa aktif asal Kepulauan Nias yang berkuliah di wilayah Tondano (UNIMA dan kampus lainnya).</div>
+        </div>
+
+        <div class="faq-item" data-category="anggota">
+            <div class="faq-question">
+                <span>Bagaimana cara mendaftar anggota baru?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">Melalui menu "Join Member" di website atau menghubungi pengurus harian saat open recruitment.</div>
+        </div>
+
+        <div class="faq-item" data-category="anggota">
+            <div class="faq-question">
+                <span>Apakah ada biaya pendaftaran?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">Biaya ditentukan berdasarkan rapat anggota untuk keperluan atribut organisasi seperti KTA atau seragam.</div>
+        </div>
+
+        <div class="faq-item" data-category="organisasi">
+            <div class="faq-question">
+                <span>Apa perbedaan BPH dan BPI?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">BPH menjalankan organisasi sehari-hari, BPI memberikan saran dan pengawasan kinerja pengurus.</div>
+        </div>
+
+        <div class="faq-item" data-category="organisasi">
+            <div class="faq-question">
+                <span>Apakah berafiliasi dengan gereja tertentu?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">Tidak, PMKN bersifat oikumene (interdenominasi) terbuka bagi semua aliran gereja Kristen.</div>
+        </div>
+
+        <div class="faq-item" data-category="organisasi">
+            <div class="faq-question">
+                <span>Apa saja kegiatan rutinnya?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">Kegiatan rutin meliputi ibadah, latihan kepemimpinan, olahraga, dan aksi sosial kemanusiaan.</div>
+        </div>
+
+        <div class="faq-item" data-category="kontak">
+            <div class="faq-question">
+                <span>Di mana lokasi Sekretariat PMKN?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2, Kec. Tondano Selatan, Sulawesi Utara.</div>
+        </div>
+
+        <div class="faq-item" data-category="kontak">
+            <div class="faq-question">
+                <span>Bagaimana cara kerja sama/kolaborasi?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="faq-answer">Hubungi kami melalui email pmkntondano@gmail.com atau melalui DM Instagram resmi kami.</div>
+        </div>
+    </div>
+</section>
+
+    <script>
       window.addEventListener("load", () => {
         const loadingScreen = document.getElementById("loading-screen");
         loadingScreen.style.opacity = "0";
@@ -1065,6 +1285,66 @@
             navbar.classList.remove("show");
         }),
     );
+
+document.addEventListener("DOMContentLoaded", function() {
+    const categoryButtons = document.querySelectorAll('.cat-btn');
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    // Logika Pencarian FAQ (Real-time)
+const searchInput = document.getElementById('faqSearch');
+searchInput.addEventListener('keyup', function() {
+    const filter = searchInput.value.toLowerCase();
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const questionText = item.querySelector('.faq-question span').innerText.toLowerCase();
+        const answerText = item.querySelector('.faq-answer').innerText.toLowerCase();
+
+        // Cek apakah teks ada di pertanyaan atau jawaban
+        if (questionText.includes(filter) || answerText.includes(filter)) {
+            item.style.display = "block";
+        } else {
+            item.style.display = "none";
+        }
+    });
+});
+
+    // --- LOGIKA FILTER KATEGORI ---
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Hapus class active dari semua tombol, tambahkan ke yang diklik
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const filterValue = button.getAttribute('data-filter');
+
+            faqItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+                // Tutup semua jawaban saat ganti kategori
+                item.classList.remove('active');
+            });
+        });
+    });
+
+    // --- LOGIKA ACCORDION (KLIK PERTANYAAN) ---
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const currentItem = question.parentElement;
+            
+            // Tutup yang lain
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== currentItem) item.classList.remove('active');
+            });
+
+            // Toggle yang diklik
+            currentItem.classList.toggle('active');
+        });
+    });
+});
     </script>
 
     <footer class="footer">

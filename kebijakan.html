@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="icon pmkn.jpeg" type="image/png" />
-    <title>Panduan Pengguna Website | PMKN Tondano</title>
+    <title>Kebijakan Privasi | PMKN Tondano</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
@@ -234,7 +234,7 @@
         border-bottom: 2px solid #ff4d00;
       }
 
- /* DROPDOWN MODERN PMKN */
+/* DROPDOWN MODERN PMKN */
 .dropdown {
     position: relative;
     padding-bottom: 15px;
@@ -322,47 +322,20 @@
 }
 
       /* ===== SEARCH BOX ===== */
-      .search-icon-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
+      .search-box {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #f1f5f9;
+        padding: 6px 12px;
+        border-radius: 8px;
+      }
 
-.search-trigger {
-    background: none;
-    border: none;
-    font-size: 1.1rem;
-    color: #64748b;
-    cursor: pointer;
-    transition: 0.3s;
-    padding: 8px;
-    border-radius: 50%;
-}
-
-.search-trigger:hover {
-    background: rgba(37, 99, 235, 0.1);
-    color: #2563eb;
-}
-
-/* Input yang muncul saat aktif */
-.search-input-hidden {
-    width: 0;
-    opacity: 0;
-    border: none;
-    outline: none;
-    padding: 0;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    background: #f1f5f9;
-    border-radius: 20px;
-    font-size: 0.85rem;
-}
-
-.search-icon-wrapper.active .search-input-hidden {
-    width: 200px;
-    opacity: 1;
-    padding: 8px 15px;
-    margin-left: 10px;
-}
+      .search-box input {
+        border: none;
+        background: transparent;
+        outline: none;
+      }
 
       /* ===== MOBILE ===== */
       .menu-toggle {
@@ -499,7 +472,7 @@
       .menu-toggle.active .line-3 {
         transform: translateY(-8.5px) rotate(-45deg);
       }
-
+  
 /* --- Hero Section Modern & Readable --- */
 .hero {
   position: relative;
@@ -585,35 +558,139 @@
     }
 }
 
-/* fitur web */
-.features-section { padding: 60px 8%; background: #f1f5f9; }
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+/* Pendahuluan */
+:root {
+    --primary-grad: linear-gradient(135deg, #2563eb, #3b82f6);
+    --accent-grad: linear-gradient(135deg, #ff6a00, #ee0979);
+    --dark-bg: #0f172a;
+    --glass: rgba(255, 255, 255, 0.9);
+    --glass-border: rgba(255, 255, 255, 0.2);
 }
 
-.feature-card {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  transition: 0.4s;
-  border: 1px solid rgba(0,0,0,0.02);
+/* 2. Sektor Pendahuluan */
+.policy-intro {
+    background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.05), transparent),
+                radial-gradient(circle at bottom left, rgba(255, 106, 0, 0.05), transparent);
+    padding: 100px 6%;
+    position: relative;
 }
 
-.feature-card:hover { transform: translateY(-10px); box-shadow: 0 20px 30px rgba(0,0,0,0.05); }
+/* 3. Card Pendahuluan - Floating Style */
+.intro-card-modern {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 40px;
+    padding: 50px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
 
-.feature-icon {
-  width: 50px;
-  height: 50px;
-  background: rgba(37, 99, 235, 0.1);
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  font-size: 1.2rem;
+.intro-card-modern::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 5px;
+    background: var(--primary-grad);
+}
+
+/* 4. Badge & Text */
+.badge {
+    display: inline-block;
+    background: var(--primary-grad);
+    color: white;
+    padding: 6px 18px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+    text-transform: uppercase;
+}
+
+.title-gradient {
+    font-size: 2.2rem;
+    font-weight: 800;
+    background: linear-gradient(to right, #1e293b, #2563eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.p-lead {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #475569;
+}
+
+/* 5. Policy Grid */
+.policy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.policy-card {
+    background: white;
+    border-radius: 28px;
+    padding: 35px;
+    border: 1px solid #f1f5f9;
+    transition: all 0.4s ease;
+}
+
+.policy-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    border-color: #2563eb33;
+}
+
+/* 6. Consent Box - VERSI DIPERBAIKI (Hanya satu) */
+.consent-box {
+    margin-top: 60px;
+    background: #0f172a; /* Warna gelap agar kontras dan modern */
+    border-radius: 24px;
+    padding: 35px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    box-shadow: 0 15px 35px rgba(15, 23, 42, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.consent-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #00fb86; /* Ikon warna hijau neon agar stand out */
+}
+
+.consent-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #cbd5e1; /* Warna teks abu terang agar nyaman dibaca di bg gelap */
+    margin: 0;
+}
+
+.consent-text strong {
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .consent-box {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
 }
 
 /* ================= FOOTER MODERN ================= */
@@ -789,25 +866,7 @@
     }
 }
 
-/* isi panduan */
-.guide-container {
-    padding: 40px 10%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-  }
-  .guide-card {
-    background: white;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: 0.3s;
-  }
-  .guide-card:hover { transform: translateY(-5px); }
-  .guide-card i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; 
-  }
-
-  /* Container Utama yang dibuat Melayang */
+/* Container Utama yang dibuat Melayang */
 .footer-click-wrapper {
     position: fixed;
     bottom: 25px; /* Jarak dari bawah */
@@ -906,8 +965,7 @@
           <li><a href="index.html">Beranda</a></li>
           <!-- Dropdown Profil -->
           <li class="dropdown">
-            <a href="#"
-              >Profil <i class="fa-solid fa-chevron-down"></i
+            <a href="#">Profil <i class="fa-solid fa-chevron-down"></i
             ></a>
             <ul class="dropdown-menu">
               <li>
@@ -979,8 +1037,7 @@
           </li>
           <!-- Dropdown About -->
           <li class="dropdown">
-            <a href="#" class="active"
-            >About <i class="fa-solid fa-chevron-down"></i></a>
+            <a href="#">About <i class="fa-solid fa-chevron-down"></i></a>
             <ul class="dropdown-menu">
               <li>
                 <a href="#"
@@ -1000,12 +1057,12 @@
     <a href="cari.html" class="search-link">
         <div class="search-icon-wrapper">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <span class="search-text"></span>
         </div>
     </a>
   </li>
 </ul>
 </nav>
+
       <!-- Hamburger -->
     <div class="menu-toggle" id="menuBtn">
         <span class="line-1"></span>
@@ -1015,33 +1072,105 @@
     </header>
     <section class="hero">
     <div class="breadcrumb">
-        <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a> > <span>Panduan Pengguna</span>
+        <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a> > <span>Kebijakan Privasi</span>
     </div>
-    <h2>Panduan Pengguna <br> <span class="highlight-text">Website</span></h2>
-    <p> Panduan penggunaan situs web PMKN Tondano untuk memudahkan akses informasi dan layanan.</p>
+    <h2>Kebijakan <span class="highlight-text">Privasi</span></h2>
+    <p>Komitmen kami dalam melindungi privasi dan keamanan data pribadi Anda</p>
+
+    <span style="font-size: 0.85rem; color: #94a3b8; margin-top: -10px; display: block;">
+        <i class="fa-regular fa-calendar-check"></i> Terakhir diperbarui: 20 Februari 2026
+    </span>
 </section>
 
-    <section class="features-section">
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
-                <h4>Navigasi Bertingkat</h4>
-                <p>Memudahkan Anda menjelajahi struktur organisasi melalui menu profil dan informasi secara sistematis.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-                <h4>Akses Responsif</h4>
-                <p>Website dapat diakses dengan nyaman melalui PC, Tablet, maupun Smartphone tanpa merusak tata letak.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
-                <h4>Sistem Pencarian</h4>
-                <p>Gunakan bar pencarian untuk menemukan berita atau agenda penting dengan mengetik kata kunci saja.</p>
+<section class="policy-intro">
+    <div class="glow-bg"></div>
+    <div class="intro-container">
+        <div class="intro-card-modern intro-full">
+            <div class="card-inner">
+                <div class="content-box">
+    <div class="badge">
+        <span style="width: 6px; height: 6px; background: #2563eb; border-radius: 50%; margin-right: 8px; display: inline-block;"></span>
+        <i class="fa-solid fa-shield-heart" style="color: #ffffff; font-size: 1.5rem;"></i> Edisi Resmi 2026
+    </div>
+
+    <h3 class="title-gradient">Pendahuluan</h3>
+
+    <p class="p-lead">
+        <strong>Persatuan Mahasiswa Kristen (PMKN) di Tondano</strong> berkomitmen penuh melindungi privasi data pribadi seluruh stakeholder kami melalui pengelolaan informasi yang transparan dan profesional.
+    </p>
+
+    <p class="p-lead">
+        Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, menyimpan, dan melindungi informasi pribadi Anda saat menggunakan website kami.
+    </p>
+</div>
             </div>
         </div>
-    </section>
 
-<script>
+        <div class="policy-grid">
+            
+            <div class="policy-card">
+                <i class="fa-solid fa-file"></i>
+                <h3 class="title-gradient">1. Informasi yang Kami Kumpulkan</h3>
+                <ul>
+                    <li>Data Kontak (Nama, Email, Telp)</li>
+                    <li>Data Survei & Feedback</li>
+                    <li>Testimoni & Foto</li>
+                    <li>Informasi Akademik</li>
+                </ul>
+            </div>
+
+            <div class="policy-card">
+                <i class="fa-solid fa-gear"></i>
+                <h3 class="title-gradient">2. Cara Kami Menggunakan Informasi</h3>
+                <ul>
+                    <li>Administrasi keanggotaan</li>
+                    <li>Pengiriman informasi kegiatan</li>
+                    <li>Evaluasi kualitas layanan</li>
+                    <li>Verifikasi identitas resmi</li>
+                </ul>
+            </div>
+
+            <div class="policy-card">
+                <i class="fa-solid fa-lock"></i>
+                <h3 class="title-gradient">3.Perlindungan Data Pribadi</h3>
+                <p class="p-sub" style="font-style: normal;">Data disimpan dalam database terenkripsi yang hanya bisa diakses oleh pengurus berwenang (BPI/BPH).</p>
+            </div>
+
+            <div class="policy-card">
+                <i class="fa-solid fa-handshake-slash"></i>
+                <h3 class="title-gradient">4. Pihak Ketiga</h3>
+                <p class="p-sub" style="font-style: normal;">Kami tidak menjual data Anda. Berbagi data hanya dilakukan jika diwajibkan hukum atau koordinasi internal.</p>
+            </div>
+
+            <div class="policy-card">
+                <i class="fa-solid fa-user-gear"></i>
+                <h3 class="title-gradient">5. Hak Anda</h3>
+                <p class="p-sub" style="font-style: normal;">Anda berhak memperbarui atau menghapus data pribadi dengan menghubungi kami melalui halaman <a href="kontak.html" style="color: var(--primary); font-weight: 600;">Kontak</a>.</p>
+            </div>
+
+            <div class="policy-card">
+                <i class="fa-solid fa-file-pen"></i>
+                <h3 class="title-gradient">6. Perubahan Kebijakan</h3>
+                <ul>
+                    <li>Notifikasi di halaman utama website</li>
+                    <li>Email kepada pengguna terdaftar (jika berlaku)</li>
+                    <li>Update tanggal "Terakhir diperbarui" di bagian atas halaman ini</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="consent-box">
+            <div class="consent-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <p class="consent-text">
+                Dengan menggunakan website kami, Anda secara sadar <strong>menyetujui</strong> pengumpulan dan penggunaan informasi Anda sesuai dengan poin-poin yang tercantum dalam <strong><a href="kebijakan.html">Kebijakan Privasi</a></strong> ini.
+            </p>
+        </div>
+</section>
+
+    <script>
       window.addEventListener("load", () => {
         const loadingScreen = document.getElementById("loading-screen");
         loadingScreen.style.opacity = "0";
