@@ -498,6 +498,7 @@
       .menu-toggle.active .line-3 {
         transform: translateY(-8.5px) rotate(-45deg);
       }
+
       /* --- Hero Section --- */
       .hero {
         background: var(--white);
@@ -706,6 +707,244 @@
         background: var(--dark);
         transform: translateY(-2px);
       }
+
+      /* --- Chat Widget --- */
+.bot-avatar {
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.bot-icon-style {
+    font-size: 22px;
+    color: white;
+}
+
+#chat-trigger {
+    position: fixed; bottom: 30px; right: 30px;
+    width: 60px; height: 60px;
+    background: linear-gradient(135deg, #ff4d00, #ff8700);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 24px; cursor: pointer;
+    box-shadow: 0 10px 25px rgba(255, 77, 0, 0.3);
+    z-index: 9999; transition: 0.3s;
+}
+
+#chat-trigger:hover { transform: scale(1.1) rotate(5deg); }
+
+.notification-dot {
+    position: absolute; top: 5px; right: 5px;
+    width: 12px; height: 12px;
+    background: #22c55e; border: 2px solid white; border-radius: 50%;
+}
+
+#chat-window {
+    position: fixed; bottom: 100px; right: 30px;
+    width: 380px; height: 550px;
+    background: white; border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+    display: flex; flex-direction: column;
+    z-index: 9999; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+
+.chat-hidden { opacity: 0; transform: translateY(20px) scale(0.9); pointer-events: none; }
+
+.chat-header {
+    background: linear-gradient(to right, #ff4d00, #ff8700);
+    padding: 20px; color: white;
+    display: flex; justify-content: space-between; align-items: center;
+}
+
+.header-info { display: flex; align-items: center; gap: 12px; }
+.bot-avatar { position: relative; width: 45px; height: 45px; }
+.bot-avatar img { width: 100%; height: 100%; border-radius: 50%; border: 2px solid white; background: white; }
+.online-status {
+    position: absolute; bottom: 2px; right: 2px;
+    width: 10px; height: 10px; background: #22c55e;
+    border: 2px solid white; border-radius: 50%;
+}
+
+.header-info h4 { margin: 0; font-size: 16px; }
+.header-info p { margin: 0; font-size: 12px; opacity: 0.9; }
+.header-actions { display: flex; gap: 15px; cursor: pointer; }
+
+.chat-body { flex: 1; padding: 20px; overflow-y: auto; background: #f8fafc; }
+.chat-welcome { text-align: center; padding: 20px 0; }
+.welcome-icon { font-size: 40px; margin-bottom: 10px; }
+.chat-welcome h3 { margin: 0; color: #1e293b; }
+.chat-welcome p { font-size: 14px; color: #64748b; line-height: 1.5; }
+
+.quick-questions { margin-top: 20px; }
+.quick-questions .label { font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 10px; }
+.quick-questions button {
+    display: block; width: 100%; text-align: left;
+    padding: 12px 15px; margin-bottom: 8px;
+    background: white; border: 1px solid #e2e8f0;
+    border-radius: 12px; cursor: pointer; font-size: 13px;
+    transition: 0.2s; color: #334155;
+}
+.quick-questions button:hover { background: #fff7ed; border-color: #ff8700; color: #ff4d00; }
+
+.chat-footer { padding: 15px; background: white; border-top: 1px solid #f1f5f9; display: flex; gap: 10px; }
+.chat-footer input {
+    flex: 1; border: 1px solid #e2e8f0; padding: 10px 15px;
+    border-radius: 25px; outline: none; font-size: 14px;
+}
+.chat-footer button {
+    width: 40px; height: 40px; border-radius: 50%; border: none;
+    background: #ff4d00; color: white; cursor: pointer; transition: 0.3s;
+}
+.chat-footer button:hover { background: #cc3d00; transform: rotate(-20deg); }
+
+/* Balon Chat */
+.msg { margin-bottom: 15px; max-width: 80%; padding: 10px 15px; border-radius: 15px; font-size: 14px; line-height: 1.4; }
+.msg-bot { background: white; color: #334155; border-bottom-left-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.msg-user { background: #ff4d00; color: white; margin-left: auto; border-bottom-right-radius: 2px; }
+
+@media (max-width: 480px) {
+    #chat-window { width: calc(100% - 40px); height: 70vh; right: 20px; bottom: 90px; }
+}
+
+
+/* Styling Modal Konfirmasi */
+#confirm-modal {
+    position: absolute;
+    inset: 0;
+    background: rgba(17, 24, 39, 0.8);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    transition: 0.3s;
+}
+
+.confirm-hidden { opacity: 0; pointer-events: none; }
+
+.confirm-box {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.confirm-box p { color: #1e293b; font-size: 14px; margin-bottom: 15px; }
+
+.confirm-btns { display: flex; gap: 10px; justify-content: center; }
+
+.confirm-btns button {
+    padding: 8px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-ok { background: #ff4d00; color: white; }
+.btn-cancel { background: #e2e8f0; color: #64748b; }
+
+/* Gaya untuk penanda tanggal */
+.date-divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+    clear: both;
+}
+
+.date-divider span {
+    background: #f1f5f9;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Keterangan Waktu di Balon Chat */
+.chat-time {
+    display: block;
+    font-size: 10px;
+    margin-top: 5px;
+    text-align: right;
+    opacity: 0.7;
+}
+
+.msg-user .chat-time { color: #ffd6cc; }
+.msg-bot .chat-time { color: #94a3b8; }
+
+/* Container untuk reaksi */
+.msg-content-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
+
+/* Animasi Love Pop (muncul saat double click) */
+.love-pop {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: #ff4d4d;
+    font-size: 40px;
+    pointer-events: none;
+    z-index: 10;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.love-pop.animate {
+    animation: heartPop 0.8s ease-out forwards;
+}
+
+@keyframes heartPop {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+    50% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
+}
+
+/* Label Reaksi kecil di bawah balon chat */
+.reaction-badge {
+    position: absolute;
+    bottom: -10px;
+    left: 10px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 2px 6px;
+    font-size: 12px;
+    display: none; /* muncul saat ada reaksi */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.reaction-badge.visible { display: block; }
+
+/* Teks instruksi di bawah pesan bot */
+.reaction-hint {
+    font-size: 9px;
+    color: #94a3b8;
+    margin: -10px 0 15px 5px; /* mengatur jarak agar pas di bawah balon */
+    display: block;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* Penyesuaian agar badge reaksi tidak menabrak hint */
+.reaction-badge.visible {
+    display: block;
+    z-index: 2;
+}
 
       /* ================= FOOTER MODERN ================= */
       .footer {
@@ -1190,6 +1429,263 @@
           navbar.classList.remove("show");
         }),
       );
+
+      // chat wigded
+function toggleChat() {
+    const chat = document.getElementById('chat-window');
+    chat.classList.toggle('chat-hidden');
+}
+
+function handleKeyPress(e) {
+    if (e.key === 'Enter') sendMessage();
+}
+
+// --- Fungsi Pengiriman Pesan ---
+function sendMessage() {
+    const input = document.getElementById('userInput');
+    const text = input.value.trim();
+    if (text !== "") {
+        appendMessage('user', text);
+        input.value = "";
+        
+        // Simulasi bot berpikir
+        setTimeout(() => {
+            processBotResponse(text.toLowerCase());
+        }, 600);
+    }
+}
+
+function askBot(question) {
+    appendMessage('user', question);
+    setTimeout(() => {
+        processBotResponse(question.toLowerCase());
+    }, 600);
+}
+
+// --- Fungsi Inti Pesan & Waktu ---
+function getCurrentTime() {
+    const now = new Date();
+    return now.getHours().toString().padStart(2, '0') + ":" + 
+           now.getMinutes().toString().padStart(2, '0');
+}
+
+function getCurrentDateFormatted() {
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date().toLocaleDateString('id-ID', options);
+}
+
+// --- Logika Baru: Update Status Tombol Reset ---
+function updateResetButtonStatus() {
+    const chatBody = document.getElementById('chatBody');
+    const resetBtn = document.querySelector('.fa-rotate-left');
+    if (!resetBtn) return;
+
+    // Cek apakah ada pesan (elemen dengan class 'msg')
+    const hasMessages = chatBody.querySelectorAll('.msg').length > 0;
+    
+    if (hasMessages) {
+        resetBtn.style.opacity = "1";
+        resetBtn.style.pointerEvents = "auto";
+        resetBtn.style.transform = "scale(1)";
+    } else {
+        resetBtn.style.opacity = "0";
+        resetBtn.style.pointerEvents = "none";
+        resetBtn.style.transform = "scale(0.5)";
+    }
+}
+
+// --- Logika Penyimpanan (LocalStorage) ---
+function saveChat() {
+    const chatContent = document.getElementById('chatBody').innerHTML;
+    localStorage.setItem("pmkn_chat_history", chatContent);
+}
+
+function checkAndAppendDate() {
+    const chatBody = document.getElementById('chatBody');
+    const today = getCurrentDateFormatted();
+    const lastDate = localStorage.getItem('pmkn_last_date');
+
+    if (lastDate !== today) {
+        const dateDiv = document.createElement('div');
+        dateDiv.className = 'date-divider';
+        dateDiv.innerHTML = `<span>${today}</span>`;
+        chatBody.appendChild(dateDiv);
+        localStorage.setItem('pmkn_last_date', today);
+        saveChat();
+    }
+}
+
+// --- Logika Reset & Welcome ---
+function confirmReset() {
+    document.getElementById('confirm-modal').classList.remove('confirm-hidden');
+}
+
+function closeConfirm() {
+    document.getElementById('confirm-modal').classList.add('confirm-hidden');
+}
+
+function executeReset() {
+    localStorage.removeItem("pmkn_chat_history");
+    localStorage.removeItem("pmkn_last_date"); // Reset pembanding tanggal juga
+    showWelcomeMessage();
+    closeConfirm();
+    updateResetButtonStatus(); // Pastikan tombol reset langsung hilang
+}
+
+function showWelcomeMessage() {
+    const chatBody = document.getElementById('chatBody');
+    chatBody.innerHTML = `
+        <div class="chat-welcome">
+            <div class="welcome-icon">👋</div>
+            <h3>Halo, Yaahowu!</h3>
+            <p>Saya asisten virtual PMKN. Klik pertanyaan di bawah untuk info cepat:</p>
+        </div>
+        <div class="quick-questions">
+            <p class="label">Pertanyaan Populer</p>
+            <button onclick="askBot('Apa itu PMKN?')">Apa itu PMKN?</button>
+            <button onclick="askBot('Apa saja Organization Life?')">Apa saja Organization Life?</button>
+            <button onclick="askBot('Apa perbedaan BPI dan BPH?')">Apa Perbedaan BPI/BPH</button>
+            <button onclick="askBot('Bagaimana Sejarah PMKN?')">Bagaimana Sejarah PMKN</button>
+            <button onclick="askBot('Apa Visi dan Misi PMKN?')">Apa Visi Misi PMKN</button>
+            <button onclick="askBot('Apa itu GBHO?')">Apa itu GBHO?</button>
+            <button onclick="askBot('Apa Tugas Utama Bidang?')">Tugas Utama Bidang</button>
+            <button onclick="askBot('Siapa Mitra PMKN?')">Mitra Organisasi</button>
+            <button onclick="askBot('Bagaimana cara Kontak PMKN?')">Kontak Resmi</button>
+            <button onclick="askBot('Ada Panduan Pengguna?')">Panduan Pengguna</button>
+            <button onclick="askBot('Dimana lihat Pengumuman?')">Info Pengumuman</button>
+            <button onclick="askBot('Apa Agenda terdekat?')">Apa Agenda terdekat?</button>
+            <button onclick="askBot('Dimana Dokumentasi kegiatan?')">Dokumentasi</button>
+            <button onclick="askBot('Bagaimana cara daftar?')">Info Pendaftaran</button>
+            <button onclick="askBot('Lokasi Sekretariat?')">Lokasi Sekret</button>
+        </div>
+    `;
+    saveChat();
+    updateResetButtonStatus(); // Sembunyikan tombol saat welcome message muncul
+}
+
+// --- Init Saat Halaman Dimuat ---
+document.addEventListener("DOMContentLoaded", () => {
+    const savedChat = localStorage.getItem("pmkn_chat_history");
+    const chatBody = document.getElementById('chatBody');
+    
+    if (savedChat && savedChat.trim() !== "") {
+        chatBody.innerHTML = savedChat;
+        chatBody.scrollTop = chatBody.scrollHeight;
+        checkAndAppendDate();
+        updateResetButtonStatus(); // Tampilkan tombol jika ada riwayat chat
+    } else {
+        checkAndAppendDate(); 
+        showWelcomeMessage();
+    }
+});
+
+// --- Logika Jawaban Bot ---
+function processBotResponse(text) {
+    let response = "";
+    const input = text.toLowerCase();
+
+    if (input.includes('apa itu pmkn')) {
+        response = "PMKN (Persatuan Mahasiswa Kristen Nias) Tondano adalah wadah kekeluargaan bagi mahasiswa asal Nias di Tondano dan sekitarnya.";
+    } else if (input.includes('organization life')) {
+        response = "Organization Life mencakup seluruh dinamika kehidupan berorganisasi kita, mulai dari kebersamaan di dalam organisasi, kampus, hingga pelayanan.";
+    } else if (input.includes('perbedaan bpi dan bph')) {
+        response = "BPI (Badan Pengurus Inti) sebagai posisi tertitingi dalam struktur organisasi PMKN dan setara dengan Dewan Penasehat/Pengarah, sedangkan BPH (Badan Pengurus Harian) adalah pelaksana eksekutif organisasi.";
+    } else if (input.includes('sejarah')) {
+        response = "Sejarah PMKN di Tondano adalah: Awalnya ada pada tahun 2017 dan resmi tahun 2020. Dan kalo mau baca selengkapnya, silahkan menu profil > Sejarah PMKN.";
+    } else if (input.includes('visi dan misi')) {
+        response = "Visi: Menjadi wadah yang takut akan Tuhan dan unggul. Misi: Mempererat persaudaraan dan meningkatkan kreativitas mahasiswa Nias.";
+    } else if (input.includes('gbho')) {
+        response = "GBHO (Garis-Garis Besar Haluan Organisasi) adalah pedoman atau acuan bagi pengurus dalam menjalankan roda organisasi selama satu periode.";
+    } else if (input.includes('tugas utama bidang')) {
+        response = "Tiap bidang (Kaderisasi, Kerohanian, Minat Bakat, dll) memiliki tugas spesifik sesuai tupoksi di AD/ART untuk mencapai program kerja.";
+    } else if (input.includes('mitra')) {
+        response = "Mitra PMKN meliputi organisasi kemahasiswaan lainnya, pemerintah daerah, serta alumni (Ika-PMKN).";
+    } else if (input.includes('kontak')) {
+        response = "Kamu bisa menghubungi kami via DM Instagram @pmkn_tondano atau melalui nomor pengurus di halaman Kontak website ini.";
+    } else if (input.includes('panduan pengguna')) {
+        response = "Gunakan website ini untuk memantau data anggota, pengumuman, dan galeri kegiatan secara real-time.";
+    } else if (input.includes('pengumuman')) {
+        response = "Pengumuman terbaru bisa dilihat di section 'News PMKN' pada halaman utama website ini, atau ke menu Info > Pengumuman.";
+    } else if (input.includes('agenda')) {
+        response = "Agenda terdekat meliputi pertemuan rutin dan persiapan PAB. Detailnya akan diupdate di kalender kegiatan.";
+    } else if (input.includes('dokumentasi')) {
+        response = "Dokumentasi berupa foto dan video kegiatan bisa kamu akses di menu Galeri dan Youtube PMKN.";
+    } else if (input.includes('daftar')) {
+        response = "Pendaftaran anggota baru biasanya dibuka pada awal semester ganjil melalui tahapan PAB.";
+    } else if (input.includes('lokasi')) {
+        response = "Sekretariat PMKN Tondano terletak di area mahasiswa sekitar kampus UNIMA: Alamatnya Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2, Kec. Tondano Selatan, Sulawesi Utara. untuk selengkapnya silahkan Ke Menu About > Kontak.";
+    } else if (input.includes('halo') || input.includes('helo') || input.includes('hi') || input.includes('hy') || input === 'p' || input.includes('pagi') || input.includes('siang') || input.includes('malam')) {
+        response = "Halo! 👋 Selamat datang di Layanan Digital PMKN Tondano. Kami sangat senang Anda berkunjung! 😊 Sampaikan saja pertanyaan Anda, asisten robot kami siap membantu dengan sepenuh hati.";
+    } else if (input.includes('terima kasih') || input.includes('makasih') || input.includes('thanks') || input.includes('tq') || input.includes('syukur')) {
+        response = "Sama-sama! 😊 Senang bisa membantu Anda. Jangan ragu untuk bertanya lagi jika ada hal lain yang ingin diketahui tentang PMKN Tondano. Yaahowu! ✨";
+    } else if (input.includes('keren') || input.includes('mantap') || input.includes('oke') || input.includes('ok') || input.includes('waw') || input.includes('sip')) {
+        response = "Terima kasih atas apresiasinya! 🙌 Kami terus berusaha memberikan informasi terbaik untuk Anda. Ada lagi yang bisa asisten bantu?";
+    } else {
+        response = "Maaf, saya belum mengenali pertanyaan tersebut. Silakan hubungi admin secara langsung untuk informasi lebih detail.";
+    }
+
+    appendMessage('bot', response);
+}
+
+function appendMessage(sender, text) {
+    const chatBody = document.getElementById('chatBody');
+    
+    checkAndAppendDate();
+
+    // Wrapper untuk pesan
+    const wrapper = document.createElement('div');
+    wrapper.className = 'msg-content-wrapper';
+    if (sender === 'user') wrapper.style.width = '100%';
+
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `msg msg-${sender} active`;
+    
+    // Struktur balon chat
+    msgDiv.innerHTML = `
+        <span class="text-content">${text}</span>
+        <span class="chat-time">${getCurrentTime()}</span>
+        <div class="love-pop"><i class="fa-solid fa-heart"></i></div>
+        <div class="reaction-badge">❤️</div>
+    `;
+    
+    wrapper.appendChild(msgDiv);
+
+    // KHUSUS PESAN BOT: Tambahkan Fitur Double Click & Hint
+    if (sender === 'bot') {
+        const hint = document.createElement('span');
+        hint.className = 'reaction-hint';
+        hint.innerText = 'Ketuk 2 kali untuk bereaksi';
+        wrapper.appendChild(hint);
+
+        msgDiv.addEventListener('dblclick', function() {
+            const heart = this.querySelector('.love-pop');
+            const badge = this.querySelector('.reaction-badge');
+            
+            // Animasi Hati
+            heart.classList.add('animate');
+            setTimeout(() => heart.classList.remove('animate'), 800);
+            
+            // Munculkan badge ❤️ (Toggle)
+            badge.classList.toggle('visible');
+            
+            // Jika sudah bereaksi, sembunyikan hint agar lebih bersih
+            if(badge.classList.contains('visible')) {
+                hint.style.display = 'none';
+            } else {
+                hint.style.display = 'block';
+            }
+            
+            saveChat();
+        });
+    }
+
+    chatBody.appendChild(wrapper);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    
+    saveChat(); 
+    updateResetButtonStatus(); // Update tombol reset setiap ada pesan baru
+}
+
     </script>
     <footer class="footer">
       <div class="footer-container">
@@ -1236,6 +1732,7 @@
             <li><a href="adartgbhopopmkn.html">GBHO & PO</a></li>
             <li><a href="tugasutamabidang.html">Tugas Utama Bidang</a></li>
             <li><a href="#">Dokumentasi</a></li>
+            <li><a href="FAQ.html">Tanya Jawab (FAQ)</a></li>
           </ul>
         </div>
 
@@ -1274,5 +1771,48 @@
     </div>
 </div>
     </footer>
+
+    <!-- chat wigded -->
+<div id="chat-trigger" onclick="toggleChat()">
+    <i class="fa-brands fa-facebook-messenger"></i>
+    <span class="notification-dot"></span>
+</div>
+<div id="chat-window" class="chat-hidden">
+    <div id="confirm-modal" class="confirm-hidden">
+        <div class="confirm-box">
+            <p><strong>PMKN Assistant:</strong><br>Yakin mau hapus semua pesan?</p>
+            <div class="confirm-btns">
+                <button onclick="executeReset()" class="btn-ok">Ok</button>
+                <button onclick="closeConfirm()" class="btn-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-header">
+        <div class="header-info">
+            <div class="bot-avatar">
+                <i class="fa-solid fa-robot bot-icon-style"></i>
+                <span class="online-status"></span>
+            </div>
+            <div>
+                <h4>PMKN Assistant</h4>
+                <p>Online • Siap membantu</p>
+            </div>
+        </div>
+        <div class="header-actions">
+            <i class="fa-solid fa-rotate-left" onclick="confirmReset()"></i>
+            <i class="fa-solid fa-xmark" onclick="toggleChat()"></i>
+        </div>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+        </div>
+
+    <div class="chat-footer">
+        <input type="text" id="userInput" placeholder="Ketik pertanyaan Anda..." onkeypress="handleKeyPress(event)">
+        <button onclick="sendMessage()"><i class="fa-regular fa-paper-plane"></i></button>
+    </div>
+</div>
+
   </body>
 </html>
