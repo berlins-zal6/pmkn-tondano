@@ -234,356 +234,373 @@
         border-bottom: 2px solid #ff4d00;
       }
 
-/* DROPDOWN MODERN PMKN */
-.dropdown {
-    position: relative;
-    padding-bottom: 15px;
-    margin-bottom: -15px;
-}
+      /* DROPDOWN MODERN PMKN */
+      .dropdown {
+        position: relative;
+        padding-bottom: 15px;
+        margin-bottom: -15px;
+      }
 
-/* Mengatur warna teks menu utama saat di-hover agar tetap hitam */
-.dropdown:hover > a {
-    color: #000000 !important;
-}
+      /* Mengatur warna teks menu utama saat di-hover agar tetap hitam */
+      .dropdown:hover > a {
+        color: #000000 !important;
+      }
 
-.dropdown-menu {
-    position: absolute;
-    top: 110%;
-    left: -20px;
-    width: 280px;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-    z-index: 1000;
-    
-    /* State Awal */
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(15px) scale(0.95);
-    
-    /* Transition */
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
+      .dropdown-menu {
+        position: absolute;
+        top: 110%;
+        left: -20px;
+        width: 280px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        z-index: 1000;
 
-/* Jembatan Tak Kasat Mata */
-.dropdown-menu::before {
-    content: "";
-    position: absolute;
-    top: -20px;
-    left: 0;
-    inline-size: 100%;
-    height: 20px;
-}
+        /* State Awal */
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(15px) scale(0.95);
 
-/* Hover State */
-.dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0) scale(1);
-    transition-delay: 0s;
-}
+        /* Transition */
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
 
-/* List & Link Items */
-.dropdown-menu li {
-    list-style: none;
-    margin-bottom: 5px;
-}
-.dropdown-menu li:last-child { margin-bottom: 0; }
+      /* Jembatan Tak Kasat Mata */
+      .dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: 0;
+        inline-size: 100%;
+        height: 20px;
+      }
 
-.dropdown-menu a {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 12px 18px;
-    color: #000000; /* Warna Hitam Murni */
-    font-size: 0.95rem;
-    font-weight: 500; /* Ketebalan normal/sedang agar tidak terlalu tebal */
-    text-decoration: none;
-    border-radius: 12px;
-    transition: 0.3s ease;
-}
+      /* Hover State */
+      .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+        transition-delay: 0s;
+      }
 
-.dropdown-menu a i {
-    width: 24px;
-    font-size: 1.1rem;
-    text-align: center;
-    color: #64748b; 
-    transition: 0.3s;
-}
+      /* List & Link Items */
+      .dropdown-menu li {
+        list-style: none;
+        margin-bottom: 5px;
+      }
+      .dropdown-menu li:last-child {
+        margin-bottom: 0;
+      }
 
-.dropdown-menu a:hover i {
-    color: #ff4d00;
-    transform: rotate(5deg) scale(1.1);
-}
+      .dropdown-menu a {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 12px 18px;
+        color: #000000; /* Warna Hitam Murni */
+        font-size: 0.95rem;
+        font-weight: 500; /* Ketebalan normal/sedang agar tidak terlalu tebal */
+        text-decoration: none;
+        border-radius: 12px;
+        transition: 0.3s ease;
+      }
+
+      .dropdown-menu a i {
+        width: 24px;
+        font-size: 1.1rem;
+        text-align: center;
+        color: #64748b;
+        transition: 0.3s;
+      }
+
+      .dropdown-menu a:hover i {
+        color: #ff4d00;
+        transform: rotate(5deg) scale(1.1);
+      }
 
       /* ===== SEARCH BOX ===== */
       .search-icon-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
 
-.search-trigger {
-    background: none;
-    border: none;
-    font-size: 1.1rem;
-    color: #64748b;
-    cursor: pointer;
-    transition: 0.3s;
-    padding: 8px;
-    border-radius: 50%;
-}
-
-.search-trigger:hover {
-    background: rgba(37, 99, 235, 0.1);
-    color: #2563eb;
-}
-
-/* Input yang muncul saat aktif */
-.search-input-hidden {
-    width: 0;
-    opacity: 0;
-    border: none;
-    outline: none;
-    padding: 0;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    background: #f1f5f9;
-    border-radius: 20px;
-    font-size: 0.85rem;
-}
-
-.search-icon-wrapper.active .search-input-hidden {
-    width: 200px;
-    opacity: 1;
-    padding: 8px 15px;
-    margin-left: 10px;
-}
-
-      /* ===== MOBILE ===== */
-      .menu-toggle {
-        display: none;
-        flex-direction: column;
+      .search-trigger {
+        background: none;
+        border: none;
+        font-size: 1.1rem;
+        color: #64748b;
         cursor: pointer;
-        gap: 5px;
+        transition: 0.3s;
+        padding: 8px;
+        border-radius: 50%;
       }
 
-      .menu-toggle span {
-        width: 25px;
-        height: 3px;
-        background: #1e293b;
-        border-radius: 5px;
+      .search-trigger:hover {
+        background: rgba(37, 99, 235, 0.1);
+        color: #2563eb;
       }
 
-      /* Responsive */
-      @media (max-width: 900px) {
-        .menu-toggle {
-          display: flex;
-        }
-
-        .menu {
-          position: fixed;
-          top: 70px;
-          right: -100%;
-          width: 260px;
-          height: 100vh;
-          background: white;
-          flex-direction: column;
-          align-items: flex-start;
-          padding: 30px;
-          gap: 18px;
-          transition: 0.3s;
-        }
-
-        .menu.show {
-          right: 0;
-        }
-
-        .dropdown-menu {
-          position: static;
-          box-shadow: none;
-          width: 100%;
-          display: none;
-        }
-
-        .dropdown.open .dropdown-menu {
-          display: block;
-        }
-      }
-
-      /* Menu Toggle (Garis 3) */
-      .menu-toggle {
-        display: none;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 30px;
-        height: 20px;
-        cursor: pointer;
-        z-index: 2001;
-      }
-
-      .menu-toggle span {
-        display: block;
-        height: 3px;
-        background: var(--white);
-        border-radius: 10px;
-        transition: 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-      }
-
-      .line-1 {
-        width: 100%;
-      }
-
-      .line-2 {
-        width: 70%;
-        margin-left: auto;
-      }
-
-      .line-3 {
-        width: 100%;
-      }
-
-      /* Animasi Garis 3 ke X */
-      .menu-toggle.active .line-1 {
-        transform: translateY(8.5px) rotate(45deg);
-      }
-
-      .menu-toggle.active .line-2 {
+      /* Input yang muncul saat aktif */
+      .search-input-hidden {
+        width: 0;
         opacity: 0;
-        transform: translateX(10px);
+        border: none;
+        outline: none;
+        padding: 0;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        background: #f1f5f9;
+        border-radius: 20px;
+        font-size: 0.85rem;
       }
 
-      .menu-toggle.active .line-3 {
-        transform: translateY(-8.5px) rotate(-45deg);
+      .search-icon-wrapper.active .search-input-hidden {
+        width: 200px;
+        opacity: 1;
+        padding: 8px 15px;
+        margin-left: 10px;
       }
 
-      @media (max-width: 768px) {
-        .menu-toggle {
+      /* untuk mobile */
+      .menu-toggle,
+      #mobileMenu,
+      .sidebar-mobile-header,
+      .menu-divider {
+        display: none !important;
+      }
+
+      /* --- MEDIA QUERY MOBILE (900px kebawah) --- */
+      @media (max-width: 900px) {
+        /* 1. Header Adjustment */
+        .header {
+          position: relative;
+          min-height: 70px; /* Memberikan ruang cukup untuk logo & hamburger */
           display: flex;
+          align-items: center;
+          padding: 10px 5%;
         }
-        .nav-bar {
+
+        /* Mobile: show only homepage in the header navbar (hide other desktop nav items) */
+        .navbar .menu li {
+          display: none !important;
+        }
+        .navbar .menu li.home-link {
+          display: list-item !important;
+        }
+        .navbar .menu li.home-link a {
+          display: inline-flex !important;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 12px;
+        }
+
+        /* Hide the entire desktop navbar on mobile to avoid duplicate navigation */
+        .navbar {
+          display: none !important;
+        }
+
+        /* 2. Hamburger Toggle Modern - Posisi Presisi */
+        .menu-toggle {
+          display: flex !important;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 28px;
+          height: 18px; /* Tinggi disesuaikan sedikit agar proporsional */
+          cursor: pointer;
+          z-index: 1202;
+
+          /* Mengatur posisi di kanan tengah secara vertikal */
+          position: absolute;
+          right: 18px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        .menu-toggle span {
+          display: block;
+          width: 100%;
+          height: 3px;
+          background: #1e293b;
+          border-radius: 10px;
+          transition: all 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+        }
+
+        /* Animasi Hamburger ke X - Jarak translasi disesuaikan agar simetris */
+        body.menu-open .menu-toggle span:nth-child(1) {
+          transform: translateY(7.5px) rotate(45deg);
+          background: #ff4d00;
+        }
+        body.menu-open .menu-toggle span:nth-child(2) {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        body.menu-open .menu-toggle span:nth-child(3) {
+          transform: translateY(-7.5px) rotate(-45deg);
+          background: #ff4d00;
+        }
+
+        /* 3. Sidebar Style - Memperbaiki Transisi */
+        #mobileMenu {
+          display: flex !important; /* Diubah dari 'none' agar transisi berfungsi */
           position: fixed;
           top: 0;
-          right: -100%;
-          width: 75%;
-          height: 100vh;
-          background: rgba(30, 41, 59, 0.95);
-          backdrop-filter: blur(15px);
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-        }
-        .nav-bar.show {
-          right: 0;
-        }
-        .nav-bar a {
-          font-size: 1.2rem;
+          right: -100%; /* Sembunyi total di luar layar kanan */
           width: 80%;
-          justify-content: center;
+          max-width: 310px;
+          height: 100vh;
+          flex-direction: column;
+          padding: 20px 16px;
+          gap: 2px;
+          background: white;
+          z-index: 1201;
+          box-shadow: -15px 0 35px rgba(0, 0, 0, 0.15);
+          border-radius: 30px 0 0 30px;
+          overflow-y: auto;
+
+          /* Animasi geser yang halus */
+          transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #mobileMenu.show {
+          right: 0; /* Muncul ke posisi layar */
+        }
+
+        /* 4. Elemen Internal Sidebar */
+        .sidebar-mobile-header {
+          display: block !important;
+          padding: 15px 10px;
+          margin-bottom: 15px;
+          border-bottom: 1px solid #f1f5f9;
+        }
+
+        .menu-divider {
+          display: block !important;
+          padding: 20px 16px 8px 16px;
+          font-size: 0.7rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          color: #94a3b8;
+          letter-spacing: 0.1em;
+          list-style: none;
+        }
+
+        /* Styling Link Sidebar */
+        #mobileMenu li {
+          width: 100%;
+          list-style: none;
+        }
+        #mobileMenu li a {
+          display: flex !important;
+          align-items: center;
+          gap: 14px;
+          padding: 12px 16px;
+          border-radius: 14px;
+          font-size: 0.95rem;
+          color: #475569;
+          font-weight: 500;
+          text-decoration: none;
+          transition: all 0.2s;
+        }
+
+        #mobileMenu li a:hover {
+          background: #f8fafc;
+          color: #ff4d00;
         }
       }
 
-      /* Animasi Garis 3 ke X */
-      .menu-toggle.active .line-1 {
-        transform: translateY(8.5px) rotate(45deg);
-      }
-      .menu-toggle.active .line-2 {
-        opacity: 0;
-        transform: translateX(10px);
-      }
-      .menu-toggle.active .line-3 {
-        transform: translateY(-8.5px) rotate(-45deg);
-      }
-
-/* --- Hero Section Modern & Readable --- */
-.hero {
-  position: relative;
-  min-height: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 100px 6% 60px;
-  text-align: center;
-  background: 
+      /* --- Hero Section Modern & Readable --- */
+      .hero {
+        position: relative;
+        min-height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 100px 6% 60px;
+        text-align: center;
+        background: 
   
   /* Overlay gelap supaya teks putih menonjol */
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)),
-    url("fotbaragtpmkn.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* Efek parallax halus */
-  color: white;
-}
+          linear-gradient(
+            to bottom,
+            rgba(15, 23, 42, 0.7),
+            rgba(15, 23, 42, 0.9)
+          ),
+          url("fotbaragtpmkn.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed; /* Efek parallax halus */
+        color: white;
+      }
 
-.breadcrumb {
-  font-size: 0.85rem;
-  margin-bottom: 25px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 8px 16px;
-  border-radius: 50px;
-  backdrop-filter: blur(5px);
-  display: inline-block;
-  color: #e2e8f0;
-}
+      .breadcrumb {
+        font-size: 0.85rem;
+        margin-bottom: 25px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 8px 16px;
+        border-radius: 50px;
+        backdrop-filter: blur(5px);
+        display: inline-block;
+        color: #e2e8f0;
+      }
 
-.breadcrumb a {
-  color: var(--secondary); /* Warna biru muda agar kontras di gelap */
-  text-decoration: none;
-  font-weight: 600;
-}
+      .breadcrumb a {
+        color: var(--secondary); /* Warna biru muda agar kontras di gelap */
+        text-decoration: none;
+        font-weight: 600;
+      }
 
-.hero h2 {
-  font-size: clamp(2rem, 5vw, 3.5rem); /* Ukuran adaptif */
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 15px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  letter-spacing: -1px;
-}
+      .hero h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem); /* Ukuran adaptif */
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 15px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        letter-spacing: -1px;
+      }
 
-.hero p {
-  max-width: 800px;
-  margin: 0 auto 50px;
-  color: #cbd5e1;
-  font-size: 1.1rem;
-  line-height: 1.8;
-}
+      .hero p {
+        max-width: 800px;
+        margin: 0 auto 50px;
+        color: #cbd5e1;
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
 
-/* Teks Beda Warna pada Judul */
-.hero h2 {
-    font-size: 3rem; /* Ukuran judul diperbesar agar lebih gagah */
-    line-height: 1.2;
-    color: #ffffff;
-    font-weight: 700;
-}
+      /* Teks Beda Warna pada Judul */
+      .hero h2 {
+        font-size: 3rem; /* Ukuran judul diperbesar agar lebih gagah */
+        line-height: 1.2;
+        color: #ffffff;
+        font-weight: 700;
+      }
 
-.highlight-text {
-    /* Gradasi warna oranye khas PMKN ke arah kuning keemasan */
-    background: linear-gradient(90deg, #ff4d00, #ff9500);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    
-    /* Efek bayangan halus agar teks lebih 'pop' */
-    filter: drop-shadow(0px 4px 10px rgba(234, 182, 159, 0.3));
-    
-    /* Animasi muncul pelan saat halaman dimuat (Opsional) */
-    display: inline-block;
-    position: relative;
-}
+      .highlight-text {
+        /* Gradasi warna oranye khas PMKN ke arah kuning keemasan */
+        background: linear-gradient(90deg, #ff4d00, #ff9500);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
 
-/* Responsif untuk Mobile */
-@media (max-width: 768px) {
-    .hero h2 {
-        font-size: 2.2rem;
-    }
-}
+        /* Efek bayangan halus agar teks lebih 'pop' */
+        filter: drop-shadow(0px 4px 10px rgba(234, 182, 159, 0.3));
+
+        /* Animasi muncul pelan saat halaman dimuat (Opsional) */
+        display: inline-block;
+        position: relative;
+      }
+
+      /* Responsif untuk Mobile */
+      @media (max-width: 768px) {
+        .hero h2 {
+          font-size: 2.2rem;
+        }
+      }
 
       /* --- Main Content Container --- */
       .container {
@@ -799,410 +816,578 @@
       }
 
       /* Desain Modern Barisan (Row) */
-  .card-modern-row {
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    border: 1px solid #f0f0f0;
-    position: relative;
-    overflow: hidden;
-  }
+      .card-modern-row {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 25px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        border: 1px solid #f0f0f0;
+        position: relative;
+        overflow: hidden;
+      }
 
-  .card-modern-row:hover {
-    transform: translateX(10px); /* Efek bergeser sedikit ke kanan saat hover */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  }
+      .card-modern-row:hover {
+        transform: translateX(
+          10px
+        ); /* Efek bergeser sedikit ke kanan saat hover */
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      }
 
-  .row-header {
-    margin-bottom: 20px;
-    border-bottom: 2px solid #f8fafc;
-    padding-bottom: 15px;
-  }
+      .row-header {
+        margin-bottom: 20px;
+        border-bottom: 2px solid #f8fafc;
+        padding-bottom: 15px;
+      }
 
-  .title-group {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
+      .title-group {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
 
-  .title-group h3 {
-    margin: 0;
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: #1e293b;
-    letter-spacing: -0.5px;
-  }
+      .title-group h3 {
+        margin: 0;
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: #1e293b;
+        letter-spacing: -0.5px;
+      }
 
-  .main-icon {
-    font-size: 1.8rem;
-    color: #2563eb;
-    background: #eff6ff;
-    padding: 10px;
-    border-radius: 12px;
-  }
+      .main-icon {
+        font-size: 1.8rem;
+        color: #2563eb;
+        background: #eff6ff;
+        padding: 10px;
+        border-radius: 12px;
+      }
 
-  .task-list-modern {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: 1fr; /* Memastikan teks mengalir ke bawah */
-    gap: 12px;
-  }
+      .task-list-modern {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: 1fr; /* Memastikan teks mengalir ke bawah */
+        gap: 12px;
+      }
 
-  .task-list-modern li {
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #475569;
-    padding: 8px;
-    border-radius: 8px;
-    transition: background 0.2s;
-  }
+      .task-list-modern li {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #475569;
+        padding: 8px;
+        border-radius: 8px;
+        transition: background 0.2s;
+      }
 
-  .task-list-modern li:hover {
-    background: #f8fafc;
-  }
+      .task-list-modern li:hover {
+        background: #f8fafc;
+      }
 
-  .task-list-modern li i {
-    margin-top: 4px;
-    color: #2563eb;
-    font-size: 1.1rem;
-    min-width: 25px;
-    text-align: center;
-  }
+      .task-list-modern li i {
+        margin-top: 4px;
+        color: #2563eb;
+        font-size: 1.1rem;
+        min-width: 25px;
+        text-align: center;
+      }
 
-  /* Responsif Mobile */
-  @media (max-width: 600px) {
-    .card-modern-row:hover {
-      transform: translateY(-5px);
-    }
-  }
+      /* Responsif Mobile */
+      @media (max-width: 600px) {
+        .card-modern-row:hover {
+          transform: translateY(-5px);
+        }
+      }
 
-  /* kembali beranda struktur organisai*/
-  .action-buttons-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin-top: 60px;
-    padding-bottom: 80px;
-    flex-wrap: wrap; /* Agar rapi di layar HP */
-  }
+      /* kembali beranda struktur organisai*/
+      .action-buttons-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-top: 60px;
+        padding-bottom: 80px;
+        flex-wrap: wrap; /* Agar rapi di layar HP */
+      }
 
-  .btn-modern {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 16px 30px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.95rem;
-    border-radius: 14px; /* Sudut membulat modern */
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-    border: none;
-    min-width: 240px;
-    justify-content: center;
-  }
+      .btn-modern {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 30px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.95rem;
+        border-radius: 14px; /* Sudut membulat modern */
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+        border: none;
+        min-width: 240px;
+        justify-content: center;
+      }
 
-  /* Tombol Beranda - Warna Biru */
-  .btn-home {
-    background: #2563eb;
-    color: #ffffff;
-    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
-  }
+      /* Tombol Beranda - Warna Biru */
+      .btn-home {
+        background: #2563eb;
+        color: #ffffff;
+        box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+      }
 
-  /* Tombol Struktur - Warna Gelap Elegan */
-  .btn-structure {
-    background: #1e293b;
-    color: #ffffff;
-    box-shadow: 0 10px 20px rgba(30, 41, 59, 0.2);
-  }
+      /* Tombol Struktur - Warna Gelap Elegan */
+      .btn-structure {
+        background: #1e293b;
+        color: #ffffff;
+        box-shadow: 0 10px 20px rgba(30, 41, 59, 0.2);
+      }
 
-  /* Efek Hover */
-  .btn-modern:hover {
-    transform: translateY(-8px);
-    color: #ffffff;
-  }
+      /* Efek Hover */
+      .btn-modern:hover {
+        transform: translateY(-8px);
+        color: #ffffff;
+      }
 
-  .btn-home:hover {
-    background: #1d4ed8;
-    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
-  }
+      .btn-home:hover {
+        background: #1d4ed8;
+        box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+      }
 
-  .btn-structure:hover {
-    background: #0f172a;
-    box-shadow: 0 15px 30px rgba(30, 41, 59, 0.4);
-  }
+      .btn-structure:hover {
+        background: #0f172a;
+        box-shadow: 0 15px 30px rgba(30, 41, 59, 0.4);
+      }
 
-  .btn-modern i {
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
-  }
+      .btn-modern i {
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+      }
 
-  .btn-modern:hover i {
-    transform: scale(1.2);
-  }
+      .btn-modern:hover i {
+        transform: scale(1.2);
+      }
 
-  /* Efek Klik */
-  .btn-modern:active {
-    transform: translateY(-2px);
-  }
+      /* Efek Klik */
+      .btn-modern:active {
+        transform: translateY(-2px);
+      }
 
-  /* Responsif Mobile (Tombol jadi tumpuk di layar kecil) */
-  @media (max-width: 600px) {
-    .action-buttons-container {
-      flex-direction: column;
-      gap: 15px;
-      padding: 0 20px 60px 20px;
-    }
-    .btn-modern {
-      width: 100%;
-    }
-  }
+      /* Responsif Mobile (Tombol jadi tumpuk di layar kecil) */
+      @media (max-width: 600px) {
+        .action-buttons-container {
+          flex-direction: column;
+          gap: 15px;
+          padding: 0 20px 60px 20px;
+        }
+        .btn-modern {
+          width: 100%;
+        }
+      }
 
-  /* --- Chat Widget --- */
-.bot-avatar {
-    width: 45px;
-    height: 45px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-}
+      /* --- Chat Widget --- */
+      .bot-avatar {
+        width: 45px;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
 
-.bot-icon-style {
-    font-size: 22px;
-    color: white;
-}
+      .bot-icon-style {
+        font-size: 22px;
+        color: white;
+      }
 
-#chat-trigger {
-    position: fixed; bottom: 30px; right: 30px;
-    width: 60px; height: 60px;
-    background: linear-gradient(135deg, #ff4d00, #ff8700);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: white; font-size: 24px; cursor: pointer;
-    box-shadow: 0 10px 25px rgba(255, 77, 0, 0.3);
-    z-index: 9999; transition: 0.3s;
-}
+      #chat-trigger {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #ff4d00, #ff8700);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 10px 25px rgba(255, 77, 0, 0.3);
+        z-index: 9999;
+        transition: 0.3s;
+      }
 
-#chat-trigger:hover { transform: scale(1.1) rotate(5deg); }
+      #chat-trigger:hover {
+        transform: scale(1.1) rotate(5deg);
+      }
 
-.notification-dot {
-    position: absolute; top: 5px; right: 5px;
-    width: 12px; height: 12px;
-    background: #22c55e; border: 2px solid white; border-radius: 50%;
-}
+      .notification-dot {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 12px;
+        height: 12px;
+        background: #22c55e;
+        border: 2px solid white;
+        border-radius: 50%;
+      }
 
-#chat-window {
-    position: fixed; bottom: 100px; right: 30px;
-    width: 380px; height: 550px;
-    background: white; border-radius: 20px;
-    box-shadow: 0 15px 50px rgba(0,0,0,0.15);
-    display: flex; flex-direction: column;
-    z-index: 9999; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    overflow: hidden;
-}
+      #chat-window {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        width: 380px;
+        height: 550px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        z-index: 9999;
+        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        overflow: hidden;
+      }
 
-.chat-hidden { opacity: 0; transform: translateY(20px) scale(0.9); pointer-events: none; }
+      .chat-hidden {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+        pointer-events: none;
+      }
 
-.chat-header {
-    background: linear-gradient(to right, #ff4d00, #ff8700);
-    padding: 20px; color: white;
-    display: flex; justify-content: space-between; align-items: center;
-}
+      .chat-header {
+        background: linear-gradient(to right, #ff4d00, #ff8700);
+        padding: 20px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-.header-info { display: flex; align-items: center; gap: 12px; }
-.bot-avatar { position: relative; width: 45px; height: 45px; }
-.bot-avatar img { width: 100%; height: 100%; border-radius: 50%; border: 2px solid white; background: white; }
-.online-status {
-    position: absolute; bottom: 2px; right: 2px;
-    width: 10px; height: 10px; background: #22c55e;
-    border: 2px solid white; border-radius: 50%;
-}
+      .header-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .bot-avatar {
+        position: relative;
+        width: 45px;
+        height: 45px;
+      }
+      .bot-avatar img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 2px solid white;
+        background: white;
+      }
+      .online-status {
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        width: 10px;
+        height: 10px;
+        background: #22c55e;
+        border: 2px solid white;
+        border-radius: 50%;
+      }
 
-.header-info h4 { margin: 0; font-size: 16px; }
-.header-info p { margin: 0; font-size: 12px; opacity: 0.9; }
-.header-actions { display: flex; gap: 15px; cursor: pointer; }
+      .header-info h4 {
+        margin: 0;
+        font-size: 16px;
+      }
+      .header-info p {
+        margin: 0;
+        font-size: 12px;
+        opacity: 0.9;
+      }
+      .header-actions {
+        display: flex;
+        gap: 15px;
+        cursor: pointer;
+      }
 
-.chat-body { flex: 1; padding: 20px; overflow-y: auto; background: #f8fafc; }
-.chat-welcome { text-align: center; padding: 20px 0; }
-.welcome-icon { font-size: 40px; margin-bottom: 10px; }
-.chat-welcome h3 { margin: 0; color: #1e293b; }
-.chat-welcome p { font-size: 14px; color: #64748b; line-height: 1.5; }
+      .chat-body {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+        background: #f8fafc;
+      }
+      .chat-welcome {
+        text-align: center;
+        padding: 20px 0;
+      }
+      .welcome-icon {
+        font-size: 40px;
+        margin-bottom: 10px;
+      }
+      .chat-welcome h3 {
+        margin: 0;
+        color: #1e293b;
+      }
+      .chat-welcome p {
+        font-size: 14px;
+        color: #64748b;
+        line-height: 1.5;
+      }
 
-.quick-questions { margin-top: 20px; }
-.quick-questions .label { font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 10px; }
-.quick-questions button {
-    display: block; width: 100%; text-align: left;
-    padding: 12px 15px; margin-bottom: 8px;
-    background: white; border: 1px solid #e2e8f0;
-    border-radius: 12px; cursor: pointer; font-size: 13px;
-    transition: 0.2s; color: #334155;
-}
-.quick-questions button:hover { background: #fff7ed; border-color: #ff8700; color: #ff4d00; }
+      .quick-questions {
+        margin-top: 20px;
+      }
+      .quick-questions .label {
+        font-size: 12px;
+        font-weight: 700;
+        color: #94a3b8;
+        margin-bottom: 10px;
+      }
+      .quick-questions button {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 12px 15px;
+        margin-bottom: 8px;
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 13px;
+        transition: 0.2s;
+        color: #334155;
+      }
+      .quick-questions button:hover {
+        background: #fff7ed;
+        border-color: #ff8700;
+        color: #ff4d00;
+      }
 
-.chat-footer { padding: 15px; background: white; border-top: 1px solid #f1f5f9; display: flex; gap: 10px; }
-.chat-footer input {
-    flex: 1; border: 1px solid #e2e8f0; padding: 10px 15px;
-    border-radius: 25px; outline: none; font-size: 14px;
-}
-.chat-footer button {
-    width: 40px; height: 40px; border-radius: 50%; border: none;
-    background: #ff4d00; color: white; cursor: pointer; transition: 0.3s;
-}
-.chat-footer button:hover { background: #cc3d00; transform: rotate(-20deg); }
+      .chat-footer {
+        padding: 15px;
+        background: white;
+        border-top: 1px solid #f1f5f9;
+        display: flex;
+        gap: 10px;
+      }
+      .chat-footer input {
+        flex: 1;
+        border: 1px solid #e2e8f0;
+        padding: 10px 15px;
+        border-radius: 25px;
+        outline: none;
+        font-size: 14px;
+      }
+      .chat-footer button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        background: #ff4d00;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .chat-footer button:hover {
+        background: #cc3d00;
+        transform: rotate(-20deg);
+      }
 
-/* Balon Chat */
-.msg { margin-bottom: 15px; max-width: 80%; padding: 10px 15px; border-radius: 15px; font-size: 14px; line-height: 1.4; }
-.msg-bot { background: white; color: #334155; border-bottom-left-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-.msg-user { background: #ff4d00; color: white; margin-left: auto; border-bottom-right-radius: 2px; }
+      /* Balon Chat */
+      .msg {
+        margin-bottom: 15px;
+        max-width: 80%;
+        padding: 10px 15px;
+        border-radius: 15px;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      .msg-bot {
+        background: white;
+        color: #334155;
+        border-bottom-left-radius: 2px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
+      .msg-user {
+        background: #ff4d00;
+        color: white;
+        margin-left: auto;
+        border-bottom-right-radius: 2px;
+      }
 
-@media (max-width: 480px) {
-    #chat-window { width: calc(100% - 40px); height: 70vh; right: 20px; bottom: 90px; }
-}
+      @media (max-width: 480px) {
+        #chat-window {
+          width: calc(100% - 40px);
+          height: 70vh;
+          right: 20px;
+          bottom: 90px;
+        }
+      }
 
+      /* Styling Modal Konfirmasi */
+      #confirm-modal {
+        position: absolute;
+        inset: 0;
+        background: rgba(17, 24, 39, 0.8);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1001;
+        transition: 0.3s;
+      }
 
-/* Styling Modal Konfirmasi */
-#confirm-modal {
-    position: absolute;
-    inset: 0;
-    background: rgba(17, 24, 39, 0.8);
-    backdrop-filter: blur(4px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1001;
-    transition: 0.3s;
-}
+      .confirm-hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
 
-.confirm-hidden { opacity: 0; pointer-events: none; }
+      .confirm-box {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        width: 80%;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
 
-.confirm-box {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    width: 80%;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
+      .confirm-box p {
+        color: #1e293b;
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
 
-.confirm-box p { color: #1e293b; font-size: 14px; margin-bottom: 15px; }
+      .confirm-btns {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
 
-.confirm-btns { display: flex; gap: 10px; justify-content: center; }
+      .confirm-btns button {
+        padding: 8px 20px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+      }
 
-.confirm-btns button {
-    padding: 8px 20px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-}
+      .btn-ok {
+        background: #ff4d00;
+        color: white;
+      }
+      .btn-cancel {
+        background: #e2e8f0;
+        color: #64748b;
+      }
 
-.btn-ok { background: #ff4d00; color: white; }
-.btn-cancel { background: #e2e8f0; color: #64748b; }
+      /* Gaya untuk penanda tanggal */
+      .date-divider {
+        text-align: center;
+        margin: 20px 0;
+        position: relative;
+        clear: both;
+      }
 
-/* Gaya untuk penanda tanggal */
-.date-divider {
-    text-align: center;
-    margin: 20px 0;
-    position: relative;
-    clear: both;
-}
+      .date-divider span {
+        background: #f1f5f9;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 11px;
+        color: #64748b;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
 
-.date-divider span {
-    background: #f1f5f9;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 11px;
-    color: #64748b;
-    font-weight: 600;
-    text-transform: uppercase;
-}
+      /* Keterangan Waktu di Balon Chat */
+      .chat-time {
+        display: block;
+        font-size: 10px;
+        margin-top: 5px;
+        text-align: right;
+        opacity: 0.7;
+      }
 
-/* Keterangan Waktu di Balon Chat */
-.chat-time {
-    display: block;
-    font-size: 10px;
-    margin-top: 5px;
-    text-align: right;
-    opacity: 0.7;
-}
+      .msg-user .chat-time {
+        color: #ffd6cc;
+      }
+      .msg-bot .chat-time {
+        color: #94a3b8;
+      }
 
-.msg-user .chat-time { color: #ffd6cc; }
-.msg-bot .chat-time { color: #94a3b8; }
+      /* Container untuk reaksi */
+      .msg-content-wrapper {
+        position: relative;
+        display: inline-block;
+        max-width: 100%;
+      }
 
-/* Container untuk reaksi */
-.msg-content-wrapper {
-    position: relative;
-    display: inline-block;
-    max-width: 100%;
-}
+      /* Animasi Love Pop (muncul saat double click) */
+      .love-pop {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        color: #ff4d4d;
+        font-size: 40px;
+        pointer-events: none;
+        z-index: 10;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
 
-/* Animasi Love Pop (muncul saat double click) */
-.love-pop {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    color: #ff4d4d;
-    font-size: 40px;
-    pointer-events: none;
-    z-index: 10;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+      .love-pop.animate {
+        animation: heartPop 0.8s ease-out forwards;
+      }
 
-.love-pop.animate {
-    animation: heartPop 0.8s ease-out forwards;
-}
+      @keyframes heartPop {
+        0% {
+          transform: translate(-50%, -50%) scale(0);
+          opacity: 0;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.5);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1.2);
+          opacity: 0;
+        }
+      }
 
-@keyframes heartPop {
-    0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-    50% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
-}
+      /* Label Reaksi kecil di bawah balon chat */
+      .reaction-badge {
+        position: absolute;
+        bottom: -10px;
+        left: 10px;
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 2px 6px;
+        font-size: 12px;
+        display: none; /* muncul saat ada reaksi */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+      }
 
-/* Label Reaksi kecil di bawah balon chat */
-.reaction-badge {
-    position: absolute;
-    bottom: -10px;
-    left: 10px;
-    background: white;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 2px 6px;
-    font-size: 12px;
-    display: none; /* muncul saat ada reaksi */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    cursor: pointer;
-}
+      .reaction-badge.visible {
+        display: block;
+      }
 
-.reaction-badge.visible { display: block; }
+      /* Teks instruksi di bawah pesan bot */
+      .reaction-hint {
+        font-size: 9px;
+        color: #94a3b8;
+        margin: -10px 0 15px 5px; /* mengatur jarak agar pas di bawah balon */
+        display: block;
+        font-style: italic;
+        opacity: 0.8;
+      }
 
-/* Teks instruksi di bawah pesan bot */
-.reaction-hint {
-    font-size: 9px;
-    color: #94a3b8;
-    margin: -10px 0 15px 5px; /* mengatur jarak agar pas di bawah balon */
-    display: block;
-    font-style: italic;
-    opacity: 0.8;
-}
-
-/* Penyesuaian agar badge reaksi tidak menabrak hint */
-.reaction-badge.visible {
-    display: block;
-    z-index: 2;
-}
+      /* Penyesuaian agar badge reaksi tidak menabrak hint */
+      .reaction-badge.visible {
+        display: block;
+        z-index: 2;
+      }
 
       /* ================= FOOTER MODERN ================= */
       .footer {
@@ -1381,83 +1566,82 @@
         }
       }
 
-/* Container Utama yang dibuat Melayang */
-.footer-click-wrapper {
-    position: fixed;
-    bottom: 25px; /* Jarak dari bawah */
-    left: 25px;   /* Jarak dari kiri */
-    z-index: 9999;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    max-width: 350px; /* Batasi lebar agar tetap minimalis */
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+      /* Container Utama yang dibuat Melayang */
+      .footer-click-wrapper {
+        position: fixed;
+        bottom: 25px; /* Jarak dari bawah */
+        left: 25px; /* Jarak dari kiri */
+        z-index: 9999;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        max-width: 350px; /* Batasi lebar agar tetap minimalis */
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
 
-/* Kotak Konten dengan efek Blur */
-.footer-bottom-left {
-    padding: 18px 22px;
-    background: rgba(15, 23, 42, 0.8); /* Warna gelap transparan */
-    backdrop-filter: blur(12px);      /* Efek kaca */
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-}
+      /* Kotak Konten dengan efek Blur */
+      .footer-bottom-left {
+        padding: 18px 22px;
+        background: rgba(15, 23, 42, 0.8); /* Warna gelap transparan */
+        backdrop-filter: blur(12px); /* Efek kaca */
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+      }
 
-/* Animasi Hover: Terangkat & Cahaya Oranye */
-.footer-click-wrapper:hover {
-    transform: translateY(-8px) scale(1.02);
-}
+      /* Animasi Hover: Terangkat & Cahaya Oranye */
+      .footer-click-wrapper:hover {
+        transform: translateY(-8px) scale(1.02);
+      }
 
-.footer-click-wrapper:hover .footer-bottom-left {
-    background: rgba(15, 23, 42, 0.95);
-    border-color: rgba(255, 106, 0, 0.4); /* Highlight warna branding */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
+      .footer-click-wrapper:hover .footer-bottom-left {
+        background: rgba(15, 23, 42, 0.95);
+        border-color: rgba(255, 106, 0, 0.4); /* Highlight warna branding */
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
 
-.footer-bottom-left p {
-    font-size: 0.85rem;
-    color: #cbd5e1;
-    margin-bottom: 12px;
-    font-weight: 500;
-}
+      .footer-bottom-left p {
+        font-size: 0.85rem;
+        color: #cbd5e1;
+        margin-bottom: 12px;
+        font-weight: 500;
+      }
 
-/* Styling Daftar Link Internal */
-.footer-bottom-left ul {
-    display: flex;
-    flex-wrap: wrap; /* Supaya rapi jika layar sempit */
-    gap: 15px;
-    list-style: none;
-    padding: 0;
-}
+      /* Styling Daftar Link Internal */
+      .footer-bottom-left ul {
+        display: flex;
+        flex-wrap: wrap; /* Supaya rapi jika layar sempit */
+        gap: 15px;
+        list-style: none;
+        padding: 0;
+      }
 
-.footer-bottom-left ul li a {
-    font-size: 0.75rem;
-    color: #94a3b8;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: 0.3s;
-}
+      .footer-bottom-left ul li a {
+        font-size: 0.75rem;
+        color: #94a3b8;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: 0.3s;
+      }
 
-.footer-bottom-left ul li a:hover {
-    color: #ff6a00; /* Warna branding PMKN */
-}
+      .footer-bottom-left ul li a:hover {
+        color: #ff6a00; /* Warna branding PMKN */
+      }
 
-/* Responsif: Sembunyikan atau kecilkan di HP agar tidak menutupi tombol navigasi HP */
-@media (max-width: 768px) {
-    .footer-click-wrapper {
-        bottom: 15px;
-        left: 15px;
-        max-width: 280px;
-        transform: scale(0.9);
-        transform-origin: bottom left;
-    }
-}
-
+      /* Responsif: Sembunyikan atau kecilkan di HP agar tidak menutupi tombol navigasi HP */
+      @media (max-width: 768px) {
+        .footer-click-wrapper {
+          bottom: 15px;
+          left: 15px;
+          max-width: 280px;
+          transform: scale(0.9);
+          transform-origin: bottom left;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1470,6 +1654,132 @@
         <div class="loading-progress"></div>
       </div>
     </div>
+
+    <ul class="menu" id="mobileMenu">
+      <li class="sidebar-mobile-header">
+        <div style="display: flex; align-items: center; gap: 12px">
+          <img
+            src="icon pmkn.jpeg"
+            alt="Logo"
+            style="
+              width: 45px;
+              height: 45px;
+              border-radius: 50%;
+              object-fit: cover;
+            "
+          />
+          <div>
+            <div
+              style="
+                font-weight: 800;
+                color: #1e293b;
+                line-height: 1;
+                font-size: 1.1rem;
+              "
+            >
+              PMKN
+            </div>
+            <div
+              style="font-size: 0.75rem; color: #64748b; letter-spacing: 1px"
+            >
+              TONDANO
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <a href="cari.html"
+          ><i class="fa-solid fa-magnifying-glass"></i> Cari</a
+        >
+      </li>
+      <li>
+        <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+      </li>
+
+      <li class="menu-divider">Profil</li>
+      <li>
+        <a href="sejarahpmkn.html"
+          ><i class="fa-solid fa-clock-rotate-left"></i> Sejarah PMKN</a
+        >
+      </li>
+      <li>
+        <a href="perintispmkn.html"
+          ><i class="fa-solid fa-people-roof"></i> Perintis PMKN</a
+        >
+      </li>
+      <li>
+        <a href="visimisi.html"><i class="fa-solid fa-eye"></i> Visi Misi</a>
+      </li>
+      <li>
+        <a href="bpipmkn.html"><i class="fa-solid fa-user-tie"></i> BPI PMKN</a>
+      </li>
+      <li>
+        <a href="bphpmkn.html"><i class="fa-solid fa-users"></i> BPH PMKN</a>
+      </li>
+
+      <li class="menu-divider">Organisasi</li>
+      <li>
+        <a href="adartgbhopopmkn.html"
+          ><i class="fa-solid fa-gavel"></i> GBHO & PO</a
+        >
+      </li>
+      <li>
+        <a href="strukturorgpmkn.html"
+          ><i class="fa-solid fa-sitemap"></i> Struktur Organisasi</a
+        >
+      </li>
+      <li>
+        <a href="tugasutamabidang.html"
+          ><i class="fa-solid fa-building-circle-check"></i> Tugas Utama
+          Bidang</a
+        >
+      </li>
+      <li>
+        <a href="dataanggota.html"><i class="fa-solid fa-users"></i> Anggota</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-handshake"></i> Mitra PMKN</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-calendar-days"></i> Kegiatan</a>
+      </li>
+
+      <li class="menu-divider">Informasi</li>
+      <li>
+        <a href="pengumuman.html"
+          ><i class="fa-solid fa-bullhorn"></i> Pengumuman</a
+        >
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-calendar"></i> Agenda</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-photo-film"></i> Galeri</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-user-plus"></i> Join Member</a>
+      </li>
+
+      <li class="menu-divider">Kontak</li>
+      <li>
+        <a href="kontak.html"><i class="fa-solid fa-headset"></i> Kontak</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-info-circle"></i> Tentang PMKN</a>
+      </li>
+      <li>
+        <a href="panduan.html"
+          ><i class="fa-solid fa-book-open"></i> Panduan Pengguna</a
+        >
+      </li>
+      <li>
+        <a href="FAQ.html"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+      </li>
+    </ul>
+
+    <!-- /untuk mobile -->
+
     <header class="header">
       <div class="logo">
         <img src="icon pmkn.jpeg" alt="Logo PMKN" />
@@ -1477,7 +1787,10 @@
       </div>
       <nav class="navbar">
         <ul class="menu">
-          <li><a href="index.html">Beranda</a></li>
+          <li class="home-link">
+            <a href="index.html" class="active">Beranda</a>
+          </li>
+
           <!-- Dropdown Profil -->
           <li class="dropdown">
             <a href="#">Profil <i class="fa-solid fa-chevron-down"></i></a>
@@ -1498,46 +1811,60 @@
                 >
               </li>
               <li>
-                <a href="bpipmkn.html"><i class="fa-regular fa-user"></i> BPI PMKN</a>
+                <a href="bpipmkn.html"
+                  ><i class="fa-regular fa-user"></i> BPI PMKN</a
+                >
               </li>
               <li>
-                <a href="bphpmkn.html"><i class="fa-solid fa-users"></i> BPH PMKN</a>
+                <a href="bphpmkn.html"
+                  ><i class="fa-solid fa-users"></i> BPH PMKN</a
+                >
               </li>
-              <li>
             </ul>
           </li>
           <!-- Dropdown Organisasi -->
           <li class="dropdown">
-            <a href="#" class="active">
-              Organisasi <i class="fa-solid fa-chevron-down"></i
-            ></a>
+            <a href="#">Organisasi <i class="fa-solid fa-chevron-down"></i></a>
             <ul class="dropdown-menu">
-                    <li>
-                        <a href="adartgbhopopmkn.html"><i class="fa-solid fa-scale-balanced"></i> GBHO & PO</a>
-                    </li>
-                        <a href="strukturorgpmkn.html"><i class="fa-solid fa-sitemap"></i> Struktur Organisasi</a>
-                    </li>
-                    <li>
+              <li>
+                <a href="adartgbhopopmkn.html"
+                  ><i class="fa-solid fa-scale-balanced"></i> GBHO & PO</a
+                >
+              </li>
+              <li>
+                <a href="strukturorgpmkn.html"
+                  ><i class="fa-solid fa-sitemap"></i> Struktur Organisasi</a
+                >
+              </li>
+              <li>
                 <a href="tugasutamabidang.html"
                   ><i class="fa-solid fa-building-circle-check"></i> Tugas Utama
-                  Bidang</a> </li>
-                    <li>
-                        <a href="dataanggota.html"><i class="fa-solid fa-users"></i> Anggota</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa-solid fa-handshake"></i> Mitra PMKN</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa-solid fa-calendar-days"></i> Kegiatan</a>
-                    </li>
-                </ul>
+                  Bidang</a
+                >
+              </li>
+              <li>
+                <a href="dataanggota.html"
+                  ><i class="fa-solid fa-users"></i> Anggota</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fa-solid fa-handshake"></i> Mitra PMKN</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fa-solid fa-calendar-days"></i> Kegiatan</a
+                >
+              </li>
+            </ul>
           </li>
           <!-- Dropdown info -->
           <li class="dropdown">
             <a href="#">Info <i class="fa-solid fa-chevron-down"></i></a>
             <ul class="dropdown-menu">
               <li>
-                <a href="pengumuman.html"><i class="fa-solid fa-newspaper"></i> Pengumuman</a>
+                <a href="pengumuman.html"
+                  ><i class="fa-solid fa-newspaper"></i> Pengumuman</a
+                >
               </li>
               <li>
                 <a href="#"><i class="fa-solid fa-calendar"></i> Agenda</a>
@@ -1562,26 +1889,29 @@
                 >
               </li>
               <li>
-                <a href="kontak.html"><i class="fa-solid fa-address-card"></i> Kontak</a>
+                <a href="kontak.html"
+                  ><i class="fa-solid fa-headset"></i> Kontak</a
+                >
               </li>
               <li>
-                <a href="panduan.html"><i class="fa-solid fa-book"></i> Panduan Pengguna</a>
+                <a href="panduan.html"
+                  ><i class="fa-solid fa-book-open"></i> Panduan Pengguna</a
+                >
               </li>
             </ul>
           </li>
 
           <!-- Search -->
           <li class="nav-item-search">
-    <a href="cari.html" class="search-link">
-        <div class="search-icon-wrapper">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <span class="search-text"></span>
-        </div>
-    </a>
-  </li>
-</ul>
-</nav>
-      
+            <a href="cari.html" class="search-link">
+              <div class="search-icon-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
       <!-- Hamburger -->
       <div class="menu-toggle" id="menuBtn">
         <span class="line-1"></span>
@@ -1589,236 +1919,528 @@
         <span class="line-3"></span>
       </div>
     </header>
+
     <section class="hero">
       <div class="breadcrumb">
         <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a> >
         <span>Deskripsi Kerja</span>
       </div>
-      <h2>Tugas Utama Bidang <br> <span class="highlight-text">BPH PMKN Tondano</span></h2>
+      <h2>
+        Tugas Utama Bidang <br />
+        <span class="highlight-text">BPH PMKN Tondano</span>
+      </h2>
       <p>
-        Berdasarkan GBHO BAB 1 DESKRIPSI KERJA, maka inilah Tugas Pokok setiap bidang Badan Pengurus Harian (BPH) PMKN Tondano.
+        Berdasarkan GBHO BAB 1 DESKRIPSI KERJA, maka inilah Tugas Pokok setiap
+        bidang Badan Pengurus Harian (BPH) PMKN Tondano.
       </p>
     </section>
 
     <div class="container">
-  <div style="display: flex; flex-direction: column; gap: 20px; padding: 20px 0; max-width: 900px; margin: 0 auto;">
-    
-    <div class="card card-modern-row" style="border-left: 6px solid #1e293b;">
-      <div class="row-header">
-        <div class="title-group">
-          <i class="fa-solid fa-gavel main-icon"></i>
-          <h3>Dewan Penasehat</h3>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          padding: 20px 0;
+          max-width: 900px;
+          margin: 0 auto;
+        "
+      >
+        <div
+          class="card card-modern-row"
+          style="border-left: 6px solid #1e293b"
+        >
+          <div class="row-header">
+            <div class="title-group">
+              <i class="fa-solid fa-gavel main-icon"></i>
+              <h3>Dewan Penasehat</h3>
+            </div>
+          </div>
+          <ul class="task-list-modern">
+            <li>
+              <i class="fa-solid fa-comments"></i> Memberikan nasehat dan
+              saran-saran kepada BPH.
+            </li>
+            <li>
+              <i class="fa-solid fa-scale-balanced"></i> Sebagai tempat bagi BPH
+              untuk meminta arahan dan bimbingan pada permasalahan organisasi
+              yang tidak dapat diselesaikan oleh BPH.
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class="card card-modern-row"
+          style="border-left: 6px solid #475569"
+        >
+          <div class="row-header">
+            <div class="title-group">
+              <i class="fa-solid fa-compass main-icon"></i>
+              <h3>Dewan Pengarah</h3>
+            </div>
+          </div>
+          <ul class="task-list-modern">
+            <li>
+              <i class="fa-solid fa-eye"></i> Mengawasi Kinerja Badan Pengurus
+              Inti (BPI) dan Badan Pengurus Harian (BPH) PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-map-location-dot"></i> Memberikan
+              rekomendasi-rekomendasi kepada Badan Pengurus Harian PMKN yang
+              bersifat membangun.
+            </li>
+            <li>
+              <i class="fa-solid fa-chart-line"></i> Mengevaluasi Badan
+              Kepengurusan harian PMKN melalui rapat evaluasi triwulan.
+            </li>
+            <li>
+              <i class="fa-solid fa-arrows-to-circle"></i> Berkoodinasi dengan
+              BPH (Badan Pengurus Harian) PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-flask"></i> Mengevaluasi laporan pertanggung
+              jawaban BPH (Badan Pengurus Harian).
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class="card card-modern-row"
+          style="border-left: 6px solid #2563eb"
+        >
+          <div class="row-header">
+            <div class="title-group">
+              <i class="fa-solid fa-user-tie main-icon"></i>
+              <h3>Ketua Umum</h3>
+            </div>
+          </div>
+          <ul class="task-list-modern">
+            <li>
+              <i class="fa-solid fa-users-gear"></i> Memimpin, dan
+              mengoordinasikan kepada badan pengurus organisasi dalam
+              pelaksanaan seluruh kegiatan organisasi.
+            </li>
+            <li>
+              <i class="fa-brands fa-slack"></i> Bertanggung jawab penuh
+              terhadap kebijakan, aktivitas, dan Kinerja PMKN selama satu
+              periode.
+            </li>
+            <li>
+              <i class="fa-solid fa-bridge"></i> Menjalin hubungan dengan
+              organisasi-organisasi lain, beralaskan keagamaan dan sosial.
+            </li>
+            <li>
+              <i class="fa-solid fa-calendar-check"></i> Mengadakan rapat
+              kepengurusan anggota PMKN sebulan sekali.
+            </li>
+            <li>
+              <i class="fa-solid fa-file-signature"></i> Memberikan mandat,
+              mengangkat, dan memberhentikan pengurus, Badan Kepanitian, dan Tim
+              Kerja.
+            </li>
+            <li>
+              <i class="fa-solid fa-handshake"></i> Mewakili organisasi untuk
+              menghadiri acara tertentu atau agenda lainnya.
+            </li>
+            <li>
+              <i class="fa-solid fa-heart-circle-check"></i> Memelihara keutuhan
+              dan kekompakan seluruh pengurus dan anggota PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-gauge-high"></i> Mengoptimalkan fungsi dan
+              peran Koordinator bidang agar tercapianya efisiensi dan
+              efektivitas organisasi.
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class="card card-modern-row"
+          style="border-left: 6px solid #3b82f6"
+        >
+          <div class="row-header">
+            <div class="title-group">
+              <i class="fa-solid fa-users-rectangle main-icon"></i>
+              <h3>Wakil Ketua</h3>
+            </div>
+          </div>
+          <ul class="task-list-modern">
+            <li>
+              <i class="fa-solid fa-sync"></i> Mengadakan koordinasi dengan
+              ketua dalam menjalankan tugasnya serta berkoordinasi kepada
+              koordinator masing-masing bidang.
+            </li>
+            <li>
+              <i class="fa-solid fa-user-tie"></i> Dapat mewakilkan kedudukan
+              ketua dalam rapat atau kegiatan-kegiatan PMKN apabila ketua tidak
+              dapat hadir.
+            </li>
+            <li>
+              <i class="fa-solid fa-file-signature"></i> Membantu ketua dalam
+              menyusun program kerja jangka pendek dan jangka panjang.
+            </li>
+            <li>
+              <i class="fa-solid fa-clipboard-check"></i> Melakukan pengawasan
+              internal sesuai rencana kerja dan melaporkannya kepada BPI
+              lainnya.
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class="card card-modern-row"
+          style="border-left: 6px solid #64748b"
+        >
+          <div class="row-header">
+            <div class="title-group">
+              <i
+                class="fa-solid fa-file-lines main-icon"
+                style="color: #64748b; background: #f1f5f9"
+              ></i>
+              <h3>Sekretaris</h3>
+            </div>
+          </div>
+          <ul class="task-list-modern">
+            <li>
+              <i class="fa-solid fa-gears"></i> Sebagai motor penggerak roda
+              organisasi di PMKN secara administratif.
+            </li>
+            <li>
+              <i class="fa-solid fa-file-contract"></i> Menjalankan fungsi
+              administrasi dalam seluruh kepengurusan PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-box-archive"></i> Mengarsipkan berkas-berkas
+              penting PMKN secara sistematis.
+            </li>
+            <li>
+              <i class="fa-solid fa-file-export"></i> Memberikan laporan
+              tertulis kepada Ketua Umum sebagai bahan evaluasi bulanan.
+            </li>
+            <li>
+              <i class="fa-solid fa-pen-to-square"></i> Membuat notulen rapat
+              serta membantu ketua dalam pelaksanaan tugas.
+            </li>
+            <li>
+              <i class="fa-solid fa-list-check"></i> Bertanggung jawab penuh
+              terhadap seluruh inventaris milik PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-calendar-plus"></i> Menyusun Program Kerja
+              Tahunan bersama Ketua, Wakil, dan Bendahara.
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class="card card-modern-row"
+          style="border-left: 6px solid #10b981"
+        >
+          <div class="row-header">
+            <div class="title-group">
+              <i
+                class="fa-solid fa-wallet main-icon"
+                style="color: #10b981; background: #ecfdf5"
+              ></i>
+              <h3>Bendahara</h3>
+            </div>
+          </div>
+          <ul class="task-list-modern">
+            <li>
+              <i class="fa-solid fa-file-invoice-dollar"></i> Membuat data
+              keuangan dan laporan pertanggungjawaban pada setiap rapat serta
+              kegiatan PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-magnifying-glass-chart"></i> Melaksanakan
+              pengelolaan dan pengawasan terhadap penggunaan uang kas PMKN
+              secara intensif.
+            </li>
+            <li>
+              <i class="fa-brands fa-slack"></i> Bertanggung jawab penuh
+              terhadap seluruh sistem pengelolaan keuangan PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-receipt"></i> Memberikan laporan tertulis
+              kepada Ketua Umum sebagai bahan evaluasi rutin tiap akhir bulan.
+            </li>
+            <li>
+              <i class="fa-solid fa-eye"></i> Menjalankan fungsi perbendaharaan
+              secara jujur, terbuka, dan transparan.
+            </li>
+            <li>
+              <i class="fa-solid fa-calendar-check"></i> Menyusun Program Kerja
+              Tahunan bersama Ketua Umum, Wakil Ketua, dan Sekretaris.
+            </li>
+            <li>
+              <i class="fa-solid fa-handshake-slash"></i> Meminta persetujuan
+              Ketua sebelum pengeluaran dana serta berkoordinasi dengan pengurus
+              lain.
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class="card card-modern-row"
+          style="border-left: 6px solid #f59e0b"
+        >
+          <div class="row-header">
+            <div class="title-group">
+              <i
+                class="fa-solid fa-cross main-icon"
+                style="color: #f59e0b; background: #fffbeb"
+              ></i>
+              <h3>Bidang Kerohanian</h3>
+            </div>
+          </div>
+          <ul class="task-list-modern">
+            <li>
+              <i class="fa-solid fa-scroll"></i> Menyusun Program Kerja Bidang
+              Kerohanian selama satu periode kepengurusan.
+            </li>
+            <li>
+              <i class="fa-solid fa-dove"></i> Mengembangkan sisi religiusitas
+              dan spiritualitas organisasi PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-church"></i> Mengkoordinir pelaksanaan
+              kegiatan pada hari-hari besar keagamaan.
+            </li>
+            <li>
+              <i class="fa-solid fa-hand-holding-heart"></i> Bertanggung jawab
+              terhadap kegiatan suka maupun duka yang dialami anggota PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-users-viewfinder"></i> Memilih dan menyusun
+              pelayan-pelayan yang bertugas dalam ibadah rutin PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-book-bible"></i> Melaksanakan share ayat
+              Alkitab satu kali dalam seminggu di dalam grup PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-user-check"></i> Bertanggung jawab secara
+              langsung kepada Ketua Umum.
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class="card card-modern-row"
+          style="border-left: 6px solid #ef4444"
+        >
+          <div class="row-header">
+            <div class="title-group">
+              <i
+                class="fa-solid fa-sitemap main-icon"
+                style="color: #ef4444; background: #fef2f2"
+              ></i>
+              <h3>Bidang Organisasi & Kepemimpinan</h3>
+            </div>
+          </div>
+          <ul class="task-list-modern">
+            <li>
+              <i class="fa-solid fa-clipboard-list"></i> Menyusun Program Kerja
+              Bidang Organisasi dan Kepemimpinan selama satu periode.
+            </li>
+            <li>
+              <i class="fa-solid fa-seedling"></i> Mempersiapkan kaderisasi PMKN
+              yang memiliki jiwa kepemimpinan yang kuat.
+            </li>
+            <li>
+              <i class="fa-solid fa-user-shield"></i> Mewakili Ketua Umum dalam
+              menjalin hubungan eksternal apabila dimandatkan.
+            </li>
+            <li>
+              <i class="fa-solid fa-handshake-simple"></i> Memperluas dan
+              mengembangkan kerjasama dengan organisasi lain untuk kemajuan
+              PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-people-group"></i> Meningkatkan jiwa
+              solidaritas dan rasa memiliki di dalam internal organisasi PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-user-check"></i> Bertanggung jawab secara
+              langsung kepada Ketua Umum.
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class="card card-modern-row"
+          style="border-left: 6px solid #8b5cf6"
+        >
+          <div class="row-header">
+            <div class="title-group">
+              <i
+                class="fa-solid fa-store main-icon"
+                style="color: #8b5cf6; background: #f5f3ff"
+              ></i>
+              <h3>Bidang Kewirausahaan</h3>
+            </div>
+          </div>
+          <ul class="task-list-modern">
+            <li>
+              <i class="fa-solid fa-file-signature"></i> Menyusun Program Kerja
+              Bidang Kewirausahaan untuk satu periode kepengurusan.
+            </li>
+            <li>
+              <i class="fa-solid fa-money-bill-trend-up"></i> Membuat usaha
+              kreatif yang menunjang peningkatan kas organisasi PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-briefcase"></i> Bertanggung jawab terhadap
+              seluruh unit usaha peningkatan kas organisasi PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-comments-dollar"></i> Berkoordinasi dengan
+              bendahara dan melaporkan tugas kepada Ketua Umum.
+            </li>
+            <li>
+              <i class="fa-solid fa-handshake-angle"></i> Bekerjasama dengan
+              seluruh anggota PMKN dalam upaya meningkatkan kas.
+            </li>
+            <li>
+              <i class="fa-solid fa-lightbulb"></i> Mewadahi dan meningkatkan
+              kemampuan anggota PMKN dalam bidang kewirausahaan.
+            </li>
+            <li>
+              <i class="fa-solid fa-user-check"></i> Bertanggung jawab secara
+              langsung kepada Ketua Umum.
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class="card card-modern-row"
+          style="border-left: 6px solid #ec4899"
+        >
+          <div class="row-header">
+            <div class="title-group">
+              <i
+                class="fa-solid fa-handshake-angle main-icon"
+                style="color: #ec4899; background: #fdf2f8"
+              ></i>
+              <h3>Bidang Hubungan Masyarakat</h3>
+            </div>
+          </div>
+          <ul class="task-list-modern">
+            <li>
+              <i class="fa-solid fa-clipboard-list"></i> Menyusun Program Kerja
+              Bidang Hubungan Masyarakat selama satu periode.
+            </li>
+            <li>
+              <i class="fa-solid fa-bullhorn"></i> Mengkomunikasikan informasi
+              serta menjaga nama baik organisasi di internal maupun masyarakat.
+            </li>
+            <li>
+              <i class="fa-solid fa-magnifying-glass-chart"></i> Mengumpulkan
+              dan menganalisa informasi atau opini publik sebagai bahan
+              kebijakan Ketua Umum.
+            </li>
+            <li>
+              <i class="fa-solid fa-heart-pulse"></i> Meningkatkan rasa simpati
+              dan kepedulian terhadap anggota PMKN serta masyarakat luas.
+            </li>
+            <li>
+              <i class="fa-solid fa-leaf"></i> Menjaga dan melestarikan
+              lingkungan hidup serta melaksanakan kegiatan Bakti Sosial.
+            </li>
+            <li>
+              <i class="fa-solid fa-user-check"></i> Bertanggung jawab secara
+              langsung kepada Ketua Umum.
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class="card card-modern-row"
+          style="border-left: 6px solid #06b6d4"
+        >
+          <div class="row-header">
+            <div class="title-group">
+              <i
+                class="fa-solid fa-palette main-icon"
+                style="color: #06b6d4; background: #ecfeff"
+              ></i>
+              <h3>Bidang Minat & Bakat</h3>
+            </div>
+          </div>
+          <ul class="task-list-modern">
+            <li>
+              <i class="fa-solid fa-file-pen"></i> Menyusun Program Kerja Bidang
+              Minat dan Bakat untuk satu periode kepengurusan.
+            </li>
+            <li>
+              <i class="fa-solid fa-masks-theater"></i> Meningkatkan pengetahuan
+              serta melestarikan nilai-nilai budaya luhur suku Nias.
+            </li>
+            <li>
+              <i class="fa-solid fa-star"></i> Menampung serta mengembangkan
+              potensi minat dan bakat kreatif seluruh anggota PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-gears"></i> Berperan penting sebagai motor
+              teknis dalam segala kegiatan yang diadakan oleh PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-user-check"></i> Bertanggung jawab secara
+              langsung kepada Ketua Umum.
+            </li>
+          </ul>
+        </div>
+
+        <div
+          class="card card-modern-row"
+          style="border-left: 6px solid #f43f5e"
+        >
+          <div class="row-header">
+            <div class="title-group">
+              <i
+                class="fa-solid fa-tower-broadcast main-icon"
+                style="color: #f43f5e; background: #fff1f2"
+              ></i>
+              <h3>Bidang Komunikasi & Informasi</h3>
+            </div>
+          </div>
+          <ul class="task-list-modern">
+            <li>
+              <i class="fa-solid fa-hashtag"></i> Mengelola dan mengoptimalkan
+              seluruh akun media sosial resmi PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-bezier-curve"></i> Bertanggung jawab atas
+              proses desain kreatif dan publikasi informasi organisasi.
+            </li>
+            <li>
+              <i class="fa-solid fa-camera-retro"></i> Mendokumentasikan setiap
+              kegiatan yang dijalankan dalam program kerja BPH.
+            </li>
+            <li>
+              <i class="fa-solid fa-language"></i> Menjadi penghubung dan
+              penerjemah informasi baik di dalam maupun di luar PMKN.
+            </li>
+            <li>
+              <i class="fa-solid fa-user-check"></i> Bertanggung jawab secara
+              langsung kepada Ketua Umum.
+            </li>
+          </ul>
         </div>
       </div>
-      <ul class="task-list-modern">
-        <li><i class="fa-solid fa-comments"></i> Memberikan nasehat dan saran-saran kepada BPH.</li>
-        <li><i class="fa-solid fa-scale-balanced"></i> Sebagai tempat bagi BPH untuk meminta arahan dan bimbingan pada permasalahan organisasi yang tidak dapat diselesaikan oleh BPH.</li>
-      </ul>
     </div>
 
-    <div class="card card-modern-row" style="border-left: 6px solid #475569;">
-      <div class="row-header">
-        <div class="title-group">
-          <i class="fa-solid fa-compass main-icon"></i>
-          <h3>Dewan Pengarah</h3>
-        </div>
-      </div>
-      <ul class="task-list-modern">
-        <li><i class="fa-solid fa-eye"></i> Mengawasi Kinerja Badan Pengurus Inti (BPI) dan Badan Pengurus Harian (BPH) PMKN.</li>
-        <li><i class="fa-solid fa-map-location-dot"></i> Memberikan rekomendasi-rekomendasi kepada Badan Pengurus Harian PMKN yang bersifat membangun.</li>
-        <li><i class="fa-solid fa-chart-line"></i> Mengevaluasi Badan Kepengurusan harian PMKN melalui rapat evaluasi triwulan.</li>
-        <li><i class="fa-solid fa-arrows-to-circle"></i> Berkoodinasi dengan BPH (Badan Pengurus Harian) PMKN.</li>
-        <li><i class="fa-solid fa-flask"></i> Mengevaluasi laporan pertanggung jawaban BPH (Badan Pengurus Harian).</li>
-      </ul>
+    <div class="action-buttons-container">
+      <a href="index.html" class="btn-modern btn-home">
+        <i class="fa-solid fa-house-chimney"></i>
+        Kembali ke Beranda
+      </a>
+
+      <a href="strukturorgpmkn.html" class="btn-modern btn-structure">
+        <i class="fa-solid fa-sitemap"></i>
+        Lihat Struktur Organisasi
+      </a>
     </div>
-
-    <div class="card card-modern-row" style="border-left: 6px solid #2563eb;">
-      <div class="row-header">
-        <div class="title-group">
-          <i class="fa-solid fa-user-tie main-icon"></i>
-          <h3>Ketua Umum</h3>
-        </div>
-      </div>
-      <ul class="task-list-modern">
-        <li><i class="fa-solid fa-users-gear"></i> Memimpin, dan mengoordinasikan kepada badan pengurus organisasi dalam pelaksanaan seluruh kegiatan organisasi.</li>
-        <li><i class="fa-brands fa-slack"></i> Bertanggung jawab penuh terhadap kebijakan, aktivitas, dan Kinerja PMKN selama satu periode.</li>
-        <li><i class="fa-solid fa-bridge"></i> Menjalin hubungan dengan organisasi-organisasi lain, beralaskan keagamaan dan sosial.</li>
-        <li><i class="fa-solid fa-calendar-check"></i> Mengadakan rapat kepengurusan anggota PMKN sebulan sekali.</li>
-        <li><i class="fa-solid fa-file-signature"></i> Memberikan mandat, mengangkat, dan memberhentikan pengurus, Badan Kepanitian, dan Tim Kerja.</li>
-        <li><i class="fa-solid fa-handshake"></i> Mewakili organisasi untuk menghadiri acara tertentu atau agenda lainnya.</li>
-        <li><i class="fa-solid fa-heart-circle-check"></i> Memelihara keutuhan dan kekompakan seluruh pengurus dan anggota PMKN.</li>
-        <li><i class="fa-solid fa-gauge-high"></i> Mengoptimalkan fungsi dan peran Koordinator bidang agar tercapianya efisiensi dan efektivitas organisasi.</li>
-      </ul>
-    </div>
-
-    <div class="card card-modern-row" style="border-left: 6px solid #3b82f6;">
-      <div class="row-header">
-        <div class="title-group">
-          <i class="fa-solid fa-users-rectangle main-icon"></i>
-          <h3>Wakil Ketua</h3>
-        </div>
-      </div>
-      <ul class="task-list-modern">
-        <li><i class="fa-solid fa-sync"></i> Mengadakan koordinasi dengan ketua dalam menjalankan tugasnya serta berkoordinasi kepada koordinator masing-masing bidang.</li>
-        <li><i class="fa-solid fa-user-tie"></i> Dapat mewakilkan kedudukan ketua dalam rapat atau kegiatan-kegiatan PMKN apabila ketua tidak dapat hadir.</li>
-        <li><i class="fa-solid fa-file-signature"></i> Membantu ketua dalam menyusun program kerja jangka pendek dan jangka panjang.</li>
-        <li><i class="fa-solid fa-clipboard-check"></i> Melakukan pengawasan internal sesuai rencana kerja dan melaporkannya kepada BPI lainnya.</li>
-      </ul>
-    </div>
-
-    <div class="card card-modern-row" style="border-left: 6px solid #64748b;">
-      <div class="row-header">
-        <div class="title-group">
-          <i class="fa-solid fa-file-lines main-icon" style="color: #64748b; background: #f1f5f9;"></i>
-          <h3>Sekretaris</h3>
-        </div>
-      </div>
-      <ul class="task-list-modern">
-        <li><i class="fa-solid fa-gears"></i> Sebagai motor penggerak roda organisasi di PMKN secara administratif.</li>
-        <li><i class="fa-solid fa-file-contract"></i> Menjalankan fungsi administrasi dalam seluruh kepengurusan PMKN.</li>
-        <li><i class="fa-solid fa-box-archive"></i> Mengarsipkan berkas-berkas penting PMKN secara sistematis.</li>
-        <li><i class="fa-solid fa-file-export"></i> Memberikan laporan tertulis kepada Ketua Umum sebagai bahan evaluasi bulanan.</li>
-        <li><i class="fa-solid fa-pen-to-square"></i> Membuat notulen rapat serta membantu ketua dalam pelaksanaan tugas.</li>
-        <li><i class="fa-solid fa-list-check"></i> Bertanggung jawab penuh terhadap seluruh inventaris milik PMKN.</li>
-        <li><i class="fa-solid fa-calendar-plus"></i> Menyusun Program Kerja Tahunan bersama Ketua, Wakil, dan Bendahara.</li>
-      </ul>
-    </div>
-
-    <div class="card card-modern-row" style="border-left: 6px solid #10b981;">
-      <div class="row-header">
-        <div class="title-group">
-          <i class="fa-solid fa-wallet main-icon" style="color: #10b981; background: #ecfdf5;"></i>
-          <h3>Bendahara</h3>
-        </div>
-      </div>
-      <ul class="task-list-modern">
-        <li><i class="fa-solid fa-file-invoice-dollar"></i> Membuat data keuangan dan laporan pertanggungjawaban pada setiap rapat serta kegiatan PMKN.</li>
-        <li><i class="fa-solid fa-magnifying-glass-chart"></i> Melaksanakan pengelolaan dan pengawasan terhadap penggunaan uang kas PMKN secara intensif.</li>
-        <li><i class="fa-brands fa-slack"></i> Bertanggung jawab penuh terhadap seluruh sistem pengelolaan keuangan PMKN.</li>
-        <li><i class="fa-solid fa-receipt"></i> Memberikan laporan tertulis kepada Ketua Umum sebagai bahan evaluasi rutin tiap akhir bulan.</li>
-        <li><i class="fa-solid fa-eye"></i> Menjalankan fungsi perbendaharaan secara jujur, terbuka, dan transparan.</li>
-        <li><i class="fa-solid fa-calendar-check"></i> Menyusun Program Kerja Tahunan bersama Ketua Umum, Wakil Ketua, dan Sekretaris.</li>
-        <li><i class="fa-solid fa-handshake-slash"></i> Meminta persetujuan Ketua sebelum pengeluaran dana serta berkoordinasi dengan pengurus lain.</li>
-      </ul>
-    </div>
-
-    <div class="card card-modern-row" style="border-left: 6px solid #f59e0b;">
-      <div class="row-header">
-        <div class="title-group">
-          <i class="fa-solid fa-cross main-icon" style="color: #f59e0b; background: #fffbeb;"></i>
-          <h3>Bidang Kerohanian</h3>
-        </div>
-      </div>
-      <ul class="task-list-modern">
-        <li><i class="fa-solid fa-scroll"></i> Menyusun Program Kerja Bidang Kerohanian selama satu periode kepengurusan.</li>
-        <li><i class="fa-solid fa-dove"></i> Mengembangkan sisi religiusitas dan spiritualitas organisasi PMKN.</li>
-        <li><i class="fa-solid fa-church"></i> Mengkoordinir pelaksanaan kegiatan pada hari-hari besar keagamaan.</li>
-        <li><i class="fa-solid fa-hand-holding-heart"></i> Bertanggung jawab terhadap kegiatan suka maupun duka yang dialami anggota PMKN.</li>
-        <li><i class="fa-solid fa-users-viewfinder"></i> Memilih dan menyusun pelayan-pelayan yang bertugas dalam ibadah rutin PMKN.</li>
-        <li><i class="fa-solid fa-book-bible"></i> Melaksanakan share ayat Alkitab satu kali dalam seminggu di dalam grup PMKN.</li>
-        <li><i class="fa-solid fa-user-check"></i> Bertanggung jawab secara langsung kepada Ketua Umum.</li>
-      </ul>
-    </div>
-
-    <div class="card card-modern-row" style="border-left: 6px solid #ef4444;">
-      <div class="row-header">
-        <div class="title-group">
-          <i class="fa-solid fa-sitemap main-icon" style="color: #ef4444; background: #fef2f2;"></i>
-          <h3>Bidang Organisasi & Kepemimpinan</h3>
-        </div>
-      </div>
-      <ul class="task-list-modern">
-        <li><i class="fa-solid fa-clipboard-list"></i> Menyusun Program Kerja Bidang Organisasi dan Kepemimpinan selama satu periode.</li>
-        <li><i class="fa-solid fa-seedling"></i> Mempersiapkan kaderisasi PMKN yang memiliki jiwa kepemimpinan yang kuat.</li>
-        <li><i class="fa-solid fa-user-shield"></i> Mewakili Ketua Umum dalam menjalin hubungan eksternal apabila dimandatkan.</li>
-        <li><i class="fa-solid fa-handshake-simple"></i> Memperluas dan mengembangkan kerjasama dengan organisasi lain untuk kemajuan PMKN.</li>
-        <li><i class="fa-solid fa-people-group"></i> Meningkatkan jiwa solidaritas dan rasa memiliki di dalam internal organisasi PMKN.</li>
-        <li><i class="fa-solid fa-user-check"></i> Bertanggung jawab secara langsung kepada Ketua Umum.</li>
-      </ul>
-    </div>
-
-    <div class="card card-modern-row" style="border-left: 6px solid #8b5cf6;">
-      <div class="row-header">
-        <div class="title-group">
-          <i class="fa-solid fa-store main-icon" style="color: #8b5cf6; background: #f5f3ff;"></i>
-          <h3>Bidang Kewirausahaan</h3>
-        </div>
-      </div>
-      <ul class="task-list-modern">
-        <li><i class="fa-solid fa-file-signature"></i> Menyusun Program Kerja Bidang Kewirausahaan untuk satu periode kepengurusan.</li>
-        <li><i class="fa-solid fa-money-bill-trend-up"></i> Membuat usaha kreatif yang menunjang peningkatan kas organisasi PMKN.</li>
-        <li><i class="fa-solid fa-briefcase"></i> Bertanggung jawab terhadap seluruh unit usaha peningkatan kas organisasi PMKN.</li>
-        <li><i class="fa-solid fa-comments-dollar"></i> Berkoordinasi dengan bendahara dan melaporkan tugas kepada Ketua Umum.</li>
-        <li><i class="fa-solid fa-handshake-angle"></i> Bekerjasama dengan seluruh anggota PMKN dalam upaya meningkatkan kas.</li>
-        <li><i class="fa-solid fa-lightbulb"></i> Mewadahi dan meningkatkan kemampuan anggota PMKN dalam bidang kewirausahaan.</li>
-        <li><i class="fa-solid fa-user-check"></i> Bertanggung jawab secara langsung kepada Ketua Umum.</li>
-      </ul>
-    </div>
-
-    <div class="card card-modern-row" style="border-left: 6px solid #ec4899;">
-      <div class="row-header">
-        <div class="title-group">
-          <i class="fa-solid fa-handshake-angle main-icon" style="color: #ec4899; background: #fdf2f8;"></i>
-          <h3>Bidang Hubungan Masyarakat</h3>
-        </div>
-      </div>
-      <ul class="task-list-modern">
-        <li><i class="fa-solid fa-clipboard-list"></i> Menyusun Program Kerja Bidang Hubungan Masyarakat selama satu periode.</li>
-        <li><i class="fa-solid fa-bullhorn"></i> Mengkomunikasikan informasi serta menjaga nama baik organisasi di internal maupun masyarakat.</li>
-        <li><i class="fa-solid fa-magnifying-glass-chart"></i> Mengumpulkan dan menganalisa informasi atau opini publik sebagai bahan kebijakan Ketua Umum.</li>
-        <li><i class="fa-solid fa-heart-pulse"></i> Meningkatkan rasa simpati dan kepedulian terhadap anggota PMKN serta masyarakat luas.</li>
-        <li><i class="fa-solid fa-leaf"></i> Menjaga dan melestarikan lingkungan hidup serta melaksanakan kegiatan Bakti Sosial.</li>
-        <li><i class="fa-solid fa-user-check"></i> Bertanggung jawab secara langsung kepada Ketua Umum.</li>
-      </ul>
-    </div>
-
-    <div class="card card-modern-row" style="border-left: 6px solid #06b6d4;">
-      <div class="row-header">
-        <div class="title-group">
-          <i class="fa-solid fa-palette main-icon" style="color: #06b6d4; background: #ecfeff;"></i>
-          <h3>Bidang Minat & Bakat</h3>
-        </div>
-      </div>
-      <ul class="task-list-modern">
-        <li><i class="fa-solid fa-file-pen"></i> Menyusun Program Kerja Bidang Minat dan Bakat untuk satu periode kepengurusan.</li>
-        <li><i class="fa-solid fa-masks-theater"></i> Meningkatkan pengetahuan serta melestarikan nilai-nilai budaya luhur suku Nias.</li>
-        <li><i class="fa-solid fa-star"></i> Menampung serta mengembangkan potensi minat dan bakat kreatif seluruh anggota PMKN.</li>
-        <li><i class="fa-solid fa-gears"></i> Berperan penting sebagai motor teknis dalam segala kegiatan yang diadakan oleh PMKN.</li>
-        <li><i class="fa-solid fa-user-check"></i> Bertanggung jawab secara langsung kepada Ketua Umum.</li>
-      </ul>
-    </div>
-
-    <div class="card card-modern-row" style="border-left: 6px solid #f43f5e;">
-      <div class="row-header">
-        <div class="title-group">
-          <i class="fa-solid fa-tower-broadcast main-icon" style="color: #f43f5e; background: #fff1f2;"></i>
-          <h3>Bidang Komunikasi & Informasi</h3>
-        </div>
-      </div>
-      <ul class="task-list-modern">
-        <li><i class="fa-solid fa-hashtag"></i> Mengelola dan mengoptimalkan seluruh akun media sosial resmi PMKN.</li>
-        <li><i class="fa-solid fa-bezier-curve"></i> Bertanggung jawab atas proses desain kreatif dan publikasi informasi organisasi.</li>
-        <li><i class="fa-solid fa-camera-retro"></i> Mendokumentasikan setiap kegiatan yang dijalankan dalam program kerja BPH.</li>
-        <li><i class="fa-solid fa-language"></i> Menjadi penghubung dan penerjemah informasi baik di dalam maupun di luar PMKN.</li>
-        <li><i class="fa-solid fa-user-check"></i> Bertanggung jawab secara langsung kepada Ketua Umum.</li>
-      </ul>
-    </div>
-
-    </div>
-</div>
-
-<div class="action-buttons-container">
-  <a href="index.html" class="btn-modern btn-home">
-    <i class="fa-solid fa-house-chimney"></i>
-    Kembali ke Beranda
-  </a>
-  
-  <a href="strukturorgpmkn.html" class="btn-modern btn-structure">
-    <i class="fa-solid fa-sitemap"></i>
-    Lihat Struktur Organisasi
-  </a>
-</div>
-
 
     <script>
       window.addEventListener("load", () => {
@@ -1835,6 +2457,48 @@
       menuBtn.addEventListener("click", () => {
         menuBtn.classList.toggle("active");
         navbar.classList.toggle("show");
+      });
+
+      // sidebar
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const body = document.body;
+
+        // Pastikan elemen ditemukan sebelum memasang event
+        if (menuBtn && mobileMenu) {
+          menuBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            body.classList.toggle("menu-open");
+            mobileMenu.classList.toggle("show");
+
+            // Tambahan: Cegah layar belakang discroll saat menu buka
+            if (mobileMenu.classList.contains("show")) {
+              body.style.overflow = "hidden";
+            } else {
+              body.style.overflow = "auto";
+            }
+          });
+
+          // Menutup sidebar jika klik di luar area menu
+          document.addEventListener("click", (e) => {
+            if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+              body.classList.remove("menu-open");
+              mobileMenu.classList.remove("show");
+              body.style.overflow = "auto";
+            }
+          });
+
+          // Tambahan: Menutup menu saat link di dalam sidebar diklik
+          const mobileLinks = mobileMenu.querySelectorAll("a");
+          mobileLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+              body.classList.remove("menu-open");
+              mobileMenu.classList.remove("show");
+              body.style.overflow = "auto";
+            });
+          });
+        }
       });
 
       // Close menu if link clicked
@@ -1869,110 +2533,122 @@
       });
 
       // chat wigded
-function toggleChat() {
-    const chat = document.getElementById('chat-window');
-    chat.classList.toggle('chat-hidden');
-}
+      function toggleChat() {
+        const chat = document.getElementById("chat-window");
+        chat.classList.toggle("chat-hidden");
+      }
 
-function handleKeyPress(e) {
-    if (e.key === 'Enter') sendMessage();
-}
+      function handleKeyPress(e) {
+        if (e.key === "Enter") sendMessage();
+      }
 
-// --- Fungsi Pengiriman Pesan ---
-function sendMessage() {
-    const input = document.getElementById('userInput');
-    const text = input.value.trim();
-    if (text !== "") {
-        appendMessage('user', text);
-        input.value = "";
-        
-        // Simulasi bot berpikir
-        setTimeout(() => {
+      // --- Fungsi Pengiriman Pesan ---
+      function sendMessage() {
+        const input = document.getElementById("userInput");
+        const text = input.value.trim();
+        if (text !== "") {
+          appendMessage("user", text);
+          input.value = "";
+
+          // Simulasi bot berpikir
+          setTimeout(() => {
             processBotResponse(text.toLowerCase());
+          }, 600);
+        }
+      }
+
+      function askBot(question) {
+        appendMessage("user", question);
+        setTimeout(() => {
+          processBotResponse(question.toLowerCase());
         }, 600);
-    }
-}
+      }
 
-function askBot(question) {
-    appendMessage('user', question);
-    setTimeout(() => {
-        processBotResponse(question.toLowerCase());
-    }, 600);
-}
+      // --- Fungsi Inti Pesan & Waktu ---
+      function getCurrentTime() {
+        const now = new Date();
+        return (
+          now.getHours().toString().padStart(2, "0") +
+          ":" +
+          now.getMinutes().toString().padStart(2, "0")
+        );
+      }
 
-// --- Fungsi Inti Pesan & Waktu ---
-function getCurrentTime() {
-    const now = new Date();
-    return now.getHours().toString().padStart(2, '0') + ":" + 
-           now.getMinutes().toString().padStart(2, '0');
-}
+      function getCurrentDateFormatted() {
+        const options = {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        };
+        return new Date().toLocaleDateString("id-ID", options);
+      }
 
-function getCurrentDateFormatted() {
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date().toLocaleDateString('id-ID', options);
-}
+      // --- Logika Baru: Update Status Tombol Reset ---
+      function updateResetButtonStatus() {
+        const chatBody = document.getElementById("chatBody");
+        const resetBtn = document.querySelector(".fa-rotate-left");
+        if (!resetBtn) return;
 
-// --- Logika Baru: Update Status Tombol Reset ---
-function updateResetButtonStatus() {
-    const chatBody = document.getElementById('chatBody');
-    const resetBtn = document.querySelector('.fa-rotate-left');
-    if (!resetBtn) return;
+        // Cek apakah ada pesan (elemen dengan class 'msg')
+        const hasMessages = chatBody.querySelectorAll(".msg").length > 0;
 
-    // Cek apakah ada pesan (elemen dengan class 'msg')
-    const hasMessages = chatBody.querySelectorAll('.msg').length > 0;
-    
-    if (hasMessages) {
-        resetBtn.style.opacity = "1";
-        resetBtn.style.pointerEvents = "auto";
-        resetBtn.style.transform = "scale(1)";
-    } else {
-        resetBtn.style.opacity = "0";
-        resetBtn.style.pointerEvents = "none";
-        resetBtn.style.transform = "scale(0.5)";
-    }
-}
+        if (hasMessages) {
+          resetBtn.style.opacity = "1";
+          resetBtn.style.pointerEvents = "auto";
+          resetBtn.style.transform = "scale(1)";
+        } else {
+          resetBtn.style.opacity = "0";
+          resetBtn.style.pointerEvents = "none";
+          resetBtn.style.transform = "scale(0.5)";
+        }
+      }
 
-// --- Logika Penyimpanan (LocalStorage) ---
-function saveChat() {
-    const chatContent = document.getElementById('chatBody').innerHTML;
-    localStorage.setItem("pmkn_chat_history", chatContent);
-}
+      // --- Logika Penyimpanan (LocalStorage) ---
+      function saveChat() {
+        const chatContent = document.getElementById("chatBody").innerHTML;
+        localStorage.setItem("pmkn_chat_history", chatContent);
+      }
 
-function checkAndAppendDate() {
-    const chatBody = document.getElementById('chatBody');
-    const today = getCurrentDateFormatted();
-    const lastDate = localStorage.getItem('pmkn_last_date');
+      function checkAndAppendDate() {
+        const chatBody = document.getElementById("chatBody");
+        const today = getCurrentDateFormatted();
+        const lastDate = localStorage.getItem("pmkn_last_date");
 
-    if (lastDate !== today) {
-        const dateDiv = document.createElement('div');
-        dateDiv.className = 'date-divider';
-        dateDiv.innerHTML = `<span>${today}</span>`;
-        chatBody.appendChild(dateDiv);
-        localStorage.setItem('pmkn_last_date', today);
-        saveChat();
-    }
-}
+        if (lastDate !== today) {
+          const dateDiv = document.createElement("div");
+          dateDiv.className = "date-divider";
+          dateDiv.innerHTML = `<span>${today}</span>`;
+          chatBody.appendChild(dateDiv);
+          localStorage.setItem("pmkn_last_date", today);
+          saveChat();
+        }
+      }
 
-// --- Logika Reset & Welcome ---
-function confirmReset() {
-    document.getElementById('confirm-modal').classList.remove('confirm-hidden');
-}
+      // --- Logika Reset & Welcome ---
+      function confirmReset() {
+        document
+          .getElementById("confirm-modal")
+          .classList.remove("confirm-hidden");
+      }
 
-function closeConfirm() {
-    document.getElementById('confirm-modal').classList.add('confirm-hidden');
-}
+      function closeConfirm() {
+        document
+          .getElementById("confirm-modal")
+          .classList.add("confirm-hidden");
+      }
 
-function executeReset() {
-    localStorage.removeItem("pmkn_chat_history");
-    localStorage.removeItem("pmkn_last_date"); // Reset pembanding tanggal juga
-    showWelcomeMessage();
-    closeConfirm();
-    updateResetButtonStatus(); // Pastikan tombol reset langsung hilang
-}
+      function executeReset() {
+        localStorage.removeItem("pmkn_chat_history");
+        localStorage.removeItem("pmkn_last_date"); // Reset pembanding tanggal juga
+        showWelcomeMessage();
+        closeConfirm();
+        updateResetButtonStatus(); // Pastikan tombol reset langsung hilang
+      }
 
-function showWelcomeMessage() {
-    const chatBody = document.getElementById('chatBody');
-    chatBody.innerHTML = `
+      function showWelcomeMessage() {
+        const chatBody = document.getElementById("chatBody");
+        chatBody.innerHTML = `
         <div class="chat-welcome">
             <div class="welcome-icon">👋</div>
             <h3>Halo, Yaahowu!</h3>
@@ -1997,133 +2673,173 @@ function showWelcomeMessage() {
             <button onclick="askBot('Lokasi Sekretariat?')">Lokasi Sekret</button>
         </div>
     `;
-    saveChat();
-    updateResetButtonStatus(); // Sembunyikan tombol saat welcome message muncul
-}
+        saveChat();
+        updateResetButtonStatus(); // Sembunyikan tombol saat welcome message muncul
+      }
 
-// --- Init Saat Halaman Dimuat ---
-document.addEventListener("DOMContentLoaded", () => {
-    const savedChat = localStorage.getItem("pmkn_chat_history");
-    const chatBody = document.getElementById('chatBody');
-    
-    if (savedChat && savedChat.trim() !== "") {
-        chatBody.innerHTML = savedChat;
-        chatBody.scrollTop = chatBody.scrollHeight;
+      // --- Init Saat Halaman Dimuat ---
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedChat = localStorage.getItem("pmkn_chat_history");
+        const chatBody = document.getElementById("chatBody");
+
+        if (savedChat && savedChat.trim() !== "") {
+          chatBody.innerHTML = savedChat;
+          chatBody.scrollTop = chatBody.scrollHeight;
+          checkAndAppendDate();
+          updateResetButtonStatus(); // Tampilkan tombol jika ada riwayat chat
+        } else {
+          checkAndAppendDate();
+          showWelcomeMessage();
+        }
+      });
+
+      // --- Logika Jawaban Bot ---
+      function processBotResponse(text) {
+        let response = "";
+        const input = text.toLowerCase();
+
+        if (input.includes("apa itu pmkn")) {
+          response =
+            "PMKN (Persatuan Mahasiswa Kristen Nias) Tondano adalah wadah kekeluargaan bagi mahasiswa asal Nias di Tondano dan sekitarnya.";
+        } else if (input.includes("organization life")) {
+          response =
+            "Organization Life mencakup seluruh dinamika kehidupan berorganisasi kita, mulai dari kebersamaan di dalam organisasi, kampus, hingga pelayanan.";
+        } else if (input.includes("perbedaan bpi dan bph")) {
+          response =
+            "BPI (Badan Pengurus Inti) sebagai posisi tertitingi dalam struktur organisasi PMKN dan setara dengan Dewan Penasehat/Pengarah, sedangkan BPH (Badan Pengurus Harian) adalah pelaksana eksekutif organisasi.";
+        } else if (input.includes("sejarah")) {
+          response =
+            "Sejarah PMKN di Tondano adalah: Awalnya ada pada tahun 2017 dan resmi tahun 2020. Dan kalo mau baca selengkapnya, silahkan menu profil > Sejarah PMKN.";
+        } else if (input.includes("visi dan misi")) {
+          response =
+            "Visi: Menjadi wadah yang takut akan Tuhan dan unggul. Misi: Mempererat persaudaraan dan meningkatkan kreativitas mahasiswa Nias.";
+        } else if (input.includes("gbho")) {
+          response =
+            "GBHO (Garis-Garis Besar Haluan Organisasi) adalah pedoman atau acuan bagi pengurus dalam menjalankan roda organisasi selama satu periode.";
+        } else if (input.includes("tugas utama bidang")) {
+          response =
+            "Tiap bidang (Kaderisasi, Kerohanian, Minat Bakat, dll) memiliki tugas spesifik sesuai tupoksi di AD/ART untuk mencapai program kerja.";
+        } else if (input.includes("mitra")) {
+          response =
+            "Mitra PMKN meliputi organisasi kemahasiswaan lainnya, pemerintah daerah, serta alumni (Ika-PMKN).";
+        } else if (input.includes("kontak")) {
+          response =
+            "Kamu bisa menghubungi kami via DM Instagram @pmkn_tondano atau melalui nomor pengurus di halaman Kontak website ini.";
+        } else if (input.includes("panduan pengguna")) {
+          response =
+            "Gunakan website ini untuk memantau data anggota, pengumuman, dan galeri kegiatan secara real-time.";
+        } else if (input.includes("pengumuman")) {
+          response =
+            "Pengumuman terbaru bisa dilihat di section 'News PMKN' pada halaman utama website ini, atau ke menu Info > Pengumuman.";
+        } else if (input.includes("agenda")) {
+          response =
+            "Agenda terdekat meliputi pertemuan rutin dan persiapan PAB. Detailnya akan diupdate di kalender kegiatan.";
+        } else if (input.includes("dokumentasi")) {
+          response =
+            "Dokumentasi berupa foto dan video kegiatan bisa kamu akses di menu Galeri dan Youtube PMKN.";
+        } else if (input.includes("daftar")) {
+          response =
+            "Pendaftaran anggota baru biasanya dibuka pada awal semester ganjil melalui tahapan PAB.";
+        } else if (input.includes("lokasi")) {
+          response =
+            "Sekretariat PMKN Tondano terletak di area mahasiswa sekitar kampus UNIMA: Alamatnya Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2, Kec. Tondano Selatan, Sulawesi Utara. untuk selengkapnya silahkan Ke Menu About > Kontak.";
+        } else if (
+          input.includes("halo") ||
+          input.includes("helo") ||
+          input.includes("hi") ||
+          input.includes("hy") ||
+          input === "p" ||
+          input.includes("pagi") ||
+          input.includes("siang") ||
+          input.includes("malam")
+        ) {
+          response =
+            "Halo! 👋 Selamat datang di Layanan Digital PMKN Tondano. Kami sangat senang Anda berkunjung! 😊 Sampaikan saja pertanyaan Anda, asisten robot kami siap membantu dengan sepenuh hati.";
+        } else if (
+          input.includes("terima kasih") ||
+          input.includes("makasih") ||
+          input.includes("thanks") ||
+          input.includes("tq") ||
+          input.includes("syukur")
+        ) {
+          response =
+            "Sama-sama! 😊 Senang bisa membantu Anda. Jangan ragu untuk bertanya lagi jika ada hal lain yang ingin diketahui tentang PMKN Tondano. Yaahowu! ✨";
+        } else if (
+          input.includes("keren") ||
+          input.includes("mantap") ||
+          input.includes("oke") ||
+          input.includes("ok") ||
+          input.includes("waw") ||
+          input.includes("sip")
+        ) {
+          response =
+            "Terima kasih atas apresiasinya! 🙌 Kami terus berusaha memberikan informasi terbaik untuk Anda. Ada lagi yang bisa asisten bantu?";
+        } else {
+          response =
+            "Maaf, saya belum mengenali pertanyaan tersebut. Silakan hubungi admin secara langsung untuk informasi lebih detail.";
+        }
+
+        appendMessage("bot", response);
+      }
+
+      function appendMessage(sender, text) {
+        const chatBody = document.getElementById("chatBody");
+
         checkAndAppendDate();
-        updateResetButtonStatus(); // Tampilkan tombol jika ada riwayat chat
-    } else {
-        checkAndAppendDate(); 
-        showWelcomeMessage();
-    }
-});
 
-// --- Logika Jawaban Bot ---
-function processBotResponse(text) {
-    let response = "";
-    const input = text.toLowerCase();
+        // Wrapper untuk pesan
+        const wrapper = document.createElement("div");
+        wrapper.className = "msg-content-wrapper";
+        if (sender === "user") wrapper.style.width = "100%";
 
-    if (input.includes('apa itu pmkn')) {
-        response = "PMKN (Persatuan Mahasiswa Kristen Nias) Tondano adalah wadah kekeluargaan bagi mahasiswa asal Nias di Tondano dan sekitarnya.";
-    } else if (input.includes('organization life')) {
-        response = "Organization Life mencakup seluruh dinamika kehidupan berorganisasi kita, mulai dari kebersamaan di dalam organisasi, kampus, hingga pelayanan.";
-    } else if (input.includes('perbedaan bpi dan bph')) {
-        response = "BPI (Badan Pengurus Inti) sebagai posisi tertitingi dalam struktur organisasi PMKN dan setara dengan Dewan Penasehat/Pengarah, sedangkan BPH (Badan Pengurus Harian) adalah pelaksana eksekutif organisasi.";
-    } else if (input.includes('sejarah')) {
-        response = "Sejarah PMKN di Tondano adalah: Awalnya ada pada tahun 2017 dan resmi tahun 2020. Dan kalo mau baca selengkapnya, silahkan menu profil > Sejarah PMKN.";
-    } else if (input.includes('visi dan misi')) {
-        response = "Visi: Menjadi wadah yang takut akan Tuhan dan unggul. Misi: Mempererat persaudaraan dan meningkatkan kreativitas mahasiswa Nias.";
-    } else if (input.includes('gbho')) {
-        response = "GBHO (Garis-Garis Besar Haluan Organisasi) adalah pedoman atau acuan bagi pengurus dalam menjalankan roda organisasi selama satu periode.";
-    } else if (input.includes('tugas utama bidang')) {
-        response = "Tiap bidang (Kaderisasi, Kerohanian, Minat Bakat, dll) memiliki tugas spesifik sesuai tupoksi di AD/ART untuk mencapai program kerja.";
-    } else if (input.includes('mitra')) {
-        response = "Mitra PMKN meliputi organisasi kemahasiswaan lainnya, pemerintah daerah, serta alumni (Ika-PMKN).";
-    } else if (input.includes('kontak')) {
-        response = "Kamu bisa menghubungi kami via DM Instagram @pmkn_tondano atau melalui nomor pengurus di halaman Kontak website ini.";
-    } else if (input.includes('panduan pengguna')) {
-        response = "Gunakan website ini untuk memantau data anggota, pengumuman, dan galeri kegiatan secara real-time.";
-    } else if (input.includes('pengumuman')) {
-        response = "Pengumuman terbaru bisa dilihat di section 'News PMKN' pada halaman utama website ini, atau ke menu Info > Pengumuman.";
-    } else if (input.includes('agenda')) {
-        response = "Agenda terdekat meliputi pertemuan rutin dan persiapan PAB. Detailnya akan diupdate di kalender kegiatan.";
-    } else if (input.includes('dokumentasi')) {
-        response = "Dokumentasi berupa foto dan video kegiatan bisa kamu akses di menu Galeri dan Youtube PMKN.";
-    } else if (input.includes('daftar')) {
-        response = "Pendaftaran anggota baru biasanya dibuka pada awal semester ganjil melalui tahapan PAB.";
-    } else if (input.includes('lokasi')) {
-        response = "Sekretariat PMKN Tondano terletak di area mahasiswa sekitar kampus UNIMA: Alamatnya Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2, Kec. Tondano Selatan, Sulawesi Utara. untuk selengkapnya silahkan Ke Menu About > Kontak.";
-    } else if (input.includes('halo') || input.includes('helo') || input.includes('hi') || input.includes('hy') || input === 'p' || input.includes('pagi') || input.includes('siang') || input.includes('malam')) {
-        response = "Halo! 👋 Selamat datang di Layanan Digital PMKN Tondano. Kami sangat senang Anda berkunjung! 😊 Sampaikan saja pertanyaan Anda, asisten robot kami siap membantu dengan sepenuh hati.";
-    } else if (input.includes('terima kasih') || input.includes('makasih') || input.includes('thanks') || input.includes('tq') || input.includes('syukur')) {
-        response = "Sama-sama! 😊 Senang bisa membantu Anda. Jangan ragu untuk bertanya lagi jika ada hal lain yang ingin diketahui tentang PMKN Tondano. Yaahowu! ✨";
-    } else if (input.includes('keren') || input.includes('mantap') || input.includes('oke') || input.includes('ok') || input.includes('waw') || input.includes('sip')) {
-        response = "Terima kasih atas apresiasinya! 🙌 Kami terus berusaha memberikan informasi terbaik untuk Anda. Ada lagi yang bisa asisten bantu?";
-    } else {
-        response = "Maaf, saya belum mengenali pertanyaan tersebut. Silakan hubungi admin secara langsung untuk informasi lebih detail.";
-    }
+        const msgDiv = document.createElement("div");
+        msgDiv.className = `msg msg-${sender} active`;
 
-    appendMessage('bot', response);
-}
-
-function appendMessage(sender, text) {
-    const chatBody = document.getElementById('chatBody');
-    
-    checkAndAppendDate();
-
-    // Wrapper untuk pesan
-    const wrapper = document.createElement('div');
-    wrapper.className = 'msg-content-wrapper';
-    if (sender === 'user') wrapper.style.width = '100%';
-
-    const msgDiv = document.createElement('div');
-    msgDiv.className = `msg msg-${sender} active`;
-    
-    // Struktur balon chat
-    msgDiv.innerHTML = `
+        // Struktur balon chat
+        msgDiv.innerHTML = `
         <span class="text-content">${text}</span>
         <span class="chat-time">${getCurrentTime()}</span>
         <div class="love-pop"><i class="fa-solid fa-heart"></i></div>
         <div class="reaction-badge">❤️</div>
     `;
-    
-    wrapper.appendChild(msgDiv);
 
-    // KHUSUS PESAN BOT: Tambahkan Fitur Double Click & Hint
-    if (sender === 'bot') {
-        const hint = document.createElement('span');
-        hint.className = 'reaction-hint';
-        hint.innerText = 'Ketuk 2 kali untuk bereaksi';
-        wrapper.appendChild(hint);
+        wrapper.appendChild(msgDiv);
 
-        msgDiv.addEventListener('dblclick', function() {
-            const heart = this.querySelector('.love-pop');
-            const badge = this.querySelector('.reaction-badge');
-            
+        // KHUSUS PESAN BOT: Tambahkan Fitur Double Click & Hint
+        if (sender === "bot") {
+          const hint = document.createElement("span");
+          hint.className = "reaction-hint";
+          hint.innerText = "Ketuk 2 kali untuk bereaksi";
+          wrapper.appendChild(hint);
+
+          msgDiv.addEventListener("dblclick", function () {
+            const heart = this.querySelector(".love-pop");
+            const badge = this.querySelector(".reaction-badge");
+
             // Animasi Hati
-            heart.classList.add('animate');
-            setTimeout(() => heart.classList.remove('animate'), 800);
-            
+            heart.classList.add("animate");
+            setTimeout(() => heart.classList.remove("animate"), 800);
+
             // Munculkan badge ❤️ (Toggle)
-            badge.classList.toggle('visible');
-            
+            badge.classList.toggle("visible");
+
             // Jika sudah bereaksi, sembunyikan hint agar lebih bersih
-            if(badge.classList.contains('visible')) {
-                hint.style.display = 'none';
+            if (badge.classList.contains("visible")) {
+              hint.style.display = "none";
             } else {
-                hint.style.display = 'block';
+              hint.style.display = "block";
             }
-            
+
             saveChat();
-        });
-    }
+          });
+        }
 
-    chatBody.appendChild(wrapper);
-    chatBody.scrollTop = chatBody.scrollHeight;
-    
-    saveChat(); 
-    updateResetButtonStatus(); // Update tombol reset setiap ada pesan baru
-}
+        chatBody.appendChild(wrapper);
+        chatBody.scrollTop = chatBody.scrollHeight;
 
+        saveChat();
+        updateResetButtonStatus(); // Update tombol reset setiap ada pesan baru
+      }
     </script>
 
     <footer class="footer">
@@ -2193,65 +2909,92 @@ function appendMessage(sender, text) {
       </div>
 
       <div class="footer-bottom">
-    <div class="footer-bottom-left">
-        <p>&copy; 2026 PMKN Tondano • All Rights Reserved</p>
-        <ul>
-            <li><a href="kebijakan.html" onclick="event.stopPropagation()"><i class="fa-solid fa-shield-halved"></i> Kebijakan Privasi</a></li>
-            <li><a href="kontributor.html" onclick="event.stopPropagation()"><i class="fa-solid fa-code"></i> Kontributor</a></li>
-            <li><a href="FAQ.html" onclick="event.stopPropagation()"><i class="fa-solid fa-question-circle"></i> FAQ</a></li>
-        </ul>
-    </div>
-    
-    <div class="footer-bottom-right">
-        <a href="#" class="social-icon" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-        <a href="#" class="social-icon" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#" class="social-icon" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-        <a href="#" class="social-icon" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-    </div>
-</div>
+        <div class="footer-bottom-left">
+          <p>&copy; 2026 PMKN Tondano • All Rights Reserved</p>
+          <ul>
+            <li>
+              <a href="kebijakan.html" onclick="event.stopPropagation()"
+                ><i class="fa-solid fa-shield-halved"></i> Kebijakan Privasi</a
+              >
+            </li>
+            <li>
+              <a href="kontributor.html" onclick="event.stopPropagation()"
+                ><i class="fa-solid fa-code"></i> Kontributor</a
+              >
+            </li>
+            <li>
+              <a href="FAQ.html" onclick="event.stopPropagation()"
+                ><i class="fa-solid fa-question-circle"></i> FAQ</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-bottom-right">
+          <a href="#" class="social-icon" target="_blank"
+            ><i class="fa-brands fa-facebook"></i
+          ></a>
+          <a href="#" class="social-icon" target="_blank"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="#" class="social-icon" target="_blank"
+            ><i class="fa-brands fa-tiktok"></i
+          ></a>
+          <a href="#" class="social-icon" target="_blank"
+            ><i class="fa-brands fa-youtube"></i
+          ></a>
+        </div>
+      </div>
     </footer>
 
     <!-- chat wigded -->
-<div id="chat-trigger" onclick="toggleChat()">
-    <i class="fa-brands fa-facebook-messenger"></i>
-    <span class="notification-dot"></span>
-</div>
-<div id="chat-window" class="chat-hidden">
-    <div id="confirm-modal" class="confirm-hidden">
-        <div class="confirm-box">
-            <p><strong>PMKN Assistant:</strong><br>Yakin mau hapus semua pesan?</p>
-            <div class="confirm-btns">
-                <button onclick="executeReset()" class="btn-ok">Ok</button>
-                <button onclick="closeConfirm()" class="btn-cancel">Cancel</button>
-            </div>
-        </div>
+    <div id="chat-trigger" onclick="toggleChat()">
+      <i class="fa-brands fa-facebook-messenger"></i>
+      <span class="notification-dot"></span>
     </div>
+    <div id="chat-window" class="chat-hidden">
+      <div id="confirm-modal" class="confirm-hidden">
+        <div class="confirm-box">
+          <p>
+            <strong>PMKN Assistant:</strong><br />Yakin mau hapus semua pesan?
+          </p>
+          <div class="confirm-btns">
+            <button onclick="executeReset()" class="btn-ok">Ok</button>
+            <button onclick="closeConfirm()" class="btn-cancel">Cancel</button>
+          </div>
+        </div>
+      </div>
 
-    <div class="chat-header">
+      <div class="chat-header">
         <div class="header-info">
-            <div class="bot-avatar">
-                <i class="fa-solid fa-robot bot-icon-style"></i>
-                <span class="online-status"></span>
-            </div>
-            <div>
-                <h4>PMKN Assistant</h4>
-                <p>Online • Siap membantu</p>
-            </div>
+          <div class="bot-avatar">
+            <i class="fa-solid fa-robot bot-icon-style"></i>
+            <span class="online-status"></span>
+          </div>
+          <div>
+            <h4>PMKN Assistant</h4>
+            <p>Online • Siap membantu</p>
+          </div>
         </div>
         <div class="header-actions">
-            <i class="fa-solid fa-rotate-left" onclick="confirmReset()"></i>
-            <i class="fa-solid fa-xmark" onclick="toggleChat()"></i>
+          <i class="fa-solid fa-rotate-left" onclick="confirmReset()"></i>
+          <i class="fa-solid fa-xmark" onclick="toggleChat()"></i>
         </div>
+      </div>
+
+      <div class="chat-body" id="chatBody"></div>
+
+      <div class="chat-footer">
+        <input
+          type="text"
+          id="userInput"
+          placeholder="Ketik pertanyaan Anda..."
+          onkeypress="handleKeyPress(event)"
+        />
+        <button onclick="sendMessage()">
+          <i class="fa-regular fa-paper-plane"></i>
+        </button>
+      </div>
     </div>
-
-    <div class="chat-body" id="chatBody">
-        </div>
-
-    <div class="chat-footer">
-        <input type="text" id="userInput" placeholder="Ketik pertanyaan Anda..." onkeypress="handleKeyPress(event)">
-        <button onclick="sendMessage()"><i class="fa-regular fa-paper-plane"></i></button>
-    </div>
-</div>
-
   </body>
 </html>

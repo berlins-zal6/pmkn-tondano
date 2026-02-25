@@ -233,244 +233,284 @@
         color: #ff4d00;
         border-bottom: 2px solid #ff4d00;
       }
-      
-/* DROPDOWN MODERN PMKN */
-.dropdown {
-    position: relative;
-    padding-bottom: 15px;
-    margin-bottom: -15px;
-}
 
-/* Mengatur warna teks menu utama saat di-hover agar tetap hitam */
-.dropdown:hover > a {
-    color: #000000 !important;
-}
+      /* DROPDOWN MODERN PMKN */
+      .dropdown {
+        position: relative;
+        padding-bottom: 15px;
+        margin-bottom: -15px;
+      }
 
-.dropdown-menu {
-    position: absolute;
-    top: 110%;
-    left: -20px;
-    width: 280px;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-    z-index: 1000;
-    
-    /* State Awal */
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(15px) scale(0.95);
-    
-    /* Transition */
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
+      /* Mengatur warna teks menu utama saat di-hover agar tetap hitam */
+      .dropdown:hover > a {
+        color: #000000 !important;
+      }
 
-/* Jembatan Tak Kasat Mata */
-.dropdown-menu::before {
-    content: "";
-    position: absolute;
-    top: -20px;
-    left: 0;
-    inline-size: 100%;
-    height: 20px;
-}
+      .dropdown-menu {
+        position: absolute;
+        top: 110%;
+        left: -20px;
+        width: 280px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        z-index: 1000;
 
-/* Hover State */
-.dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0) scale(1);
-    transition-delay: 0s;
-}
+        /* State Awal */
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(15px) scale(0.95);
 
-/* List & Link Items */
-.dropdown-menu li {
-    list-style: none;
-    margin-bottom: 5px;
-}
-.dropdown-menu li:last-child { margin-bottom: 0; }
+        /* Transition */
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
 
-.dropdown-menu a {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 12px 18px;
-    color: #000000; /* Warna Hitam Murni */
-    font-size: 0.95rem;
-    font-weight: 500; /* Ketebalan normal/sedang agar tidak terlalu tebal */
-    text-decoration: none;
-    border-radius: 12px;
-    transition: 0.3s ease;
-}
+      /* Jembatan Tak Kasat Mata */
+      .dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: 0;
+        inline-size: 100%;
+        height: 20px;
+      }
 
-.dropdown-menu a i {
-    width: 24px;
-    font-size: 1.1rem;
-    text-align: center;
-    color: #64748b; 
-    transition: 0.3s;
-}
+      /* Hover State */
+      .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+        transition-delay: 0s;
+      }
 
-.dropdown-menu a:hover i {
-    color: #ff4d00;
-    transform: rotate(5deg) scale(1.1);
-}
+      /* List & Link Items */
+      .dropdown-menu li {
+        list-style: none;
+        margin-bottom: 5px;
+      }
+      .dropdown-menu li:last-child {
+        margin-bottom: 0;
+      }
 
-      /* ===== SEARCH BOX ===== */
-      .search-box {
+      .dropdown-menu a {
         display: flex;
         align-items: center;
-        gap: 8px;
-        background: #f1f5f9;
-        padding: 6px 12px;
-        border-radius: 8px;
+        gap: 15px;
+        padding: 12px 18px;
+        color: #000000; /* Warna Hitam Murni */
+        font-size: 0.95rem;
+        font-weight: 500; /* Ketebalan normal/sedang agar tidak terlalu tebal */
+        text-decoration: none;
+        border-radius: 12px;
+        transition: 0.3s ease;
       }
 
-      .search-box input {
+      .dropdown-menu a i {
+        width: 24px;
+        font-size: 1.1rem;
+        text-align: center;
+        color: #64748b;
+        transition: 0.3s;
+      }
+
+      .dropdown-menu a:hover i {
+        color: #ff4d00;
+        transform: rotate(5deg) scale(1.1);
+      }
+
+      /* ===== SEARCH BOX ===== */
+      .search-icon-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .search-trigger {
+        background: none;
         border: none;
-        background: transparent;
-        outline: none;
-      }
-
-      /* ===== MOBILE ===== */
-      .menu-toggle {
-        display: none;
-        flex-direction: column;
+        font-size: 1.1rem;
+        color: #64748b;
         cursor: pointer;
-        gap: 5px;
+        transition: 0.3s;
+        padding: 8px;
+        border-radius: 50%;
       }
 
-      .menu-toggle span {
-        width: 25px;
-        height: 3px;
-        background: #1e293b;
-        border-radius: 5px;
+      .search-trigger:hover {
+        background: rgba(37, 99, 235, 0.1);
+        color: #2563eb;
       }
 
-      /* Responsive */
-      @media (max-width: 900px) {
-        .menu-toggle {
-          display: flex;
-        }
-
-        .menu {
-          position: fixed;
-          top: 70px;
-          right: -100%;
-          width: 260px;
-          height: 100vh;
-          background: white;
-          flex-direction: column;
-          align-items: flex-start;
-          padding: 30px;
-          gap: 18px;
-          transition: 0.3s;
-        }
-
-        .menu.show {
-          right: 0;
-        }
-
-        .dropdown-menu {
-          position: static;
-          box-shadow: none;
-          width: 100%;
-          display: none;
-        }
-
-        .dropdown.open .dropdown-menu {
-          display: block;
-        }
-      }
-
-      /* Menu Toggle (Garis 3) */
-      .menu-toggle {
-        display: none;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 30px;
-        height: 20px;
-        cursor: pointer;
-        z-index: 2001;
-      }
-
-      .menu-toggle span {
-        display: block;
-        height: 3px;
-        background: var(--white);
-        border-radius: 10px;
-        transition: 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-      }
-
-      .line-1 {
-        width: 100%;
-      }
-
-      .line-2 {
-        width: 70%;
-        margin-left: auto;
-      }
-
-      .line-3 {
-        width: 100%;
-      }
-
-      /* Animasi Garis 3 ke X */
-      .menu-toggle.active .line-1 {
-        transform: translateY(8.5px) rotate(45deg);
-      }
-
-      .menu-toggle.active .line-2 {
+      /* Input yang muncul saat aktif */
+      .search-input-hidden {
+        width: 0;
         opacity: 0;
-        transform: translateX(10px);
+        border: none;
+        outline: none;
+        padding: 0;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        background: #f1f5f9;
+        border-radius: 20px;
+        font-size: 0.85rem;
       }
 
-      .menu-toggle.active .line-3 {
-        transform: translateY(-8.5px) rotate(-45deg);
+      .search-icon-wrapper.active .search-input-hidden {
+        width: 200px;
+        opacity: 1;
+        padding: 8px 15px;
+        margin-left: 10px;
       }
 
-      @media (max-width: 768px) {
-        .menu-toggle {
+      /* untuk mobile */
+      .menu-toggle,
+      #mobileMenu,
+      .sidebar-mobile-header,
+      .menu-divider {
+        display: none !important;
+      }
+
+      /* --- MEDIA QUERY MOBILE (900px kebawah) --- */
+      @media (max-width: 900px) {
+        /* 1. Header Adjustment */
+        .header {
+          position: relative;
+          min-height: 70px; /* Memberikan ruang cukup untuk logo & hamburger */
           display: flex;
+          align-items: center;
+          padding: 10px 5%;
         }
-        .nav-bar {
+
+        /* Mobile: show only homepage in the header navbar (hide other desktop nav items) */
+        .navbar .menu li {
+          display: none !important;
+        }
+        .navbar .menu li.home-link {
+          display: list-item !important;
+        }
+        .navbar .menu li.home-link a {
+          display: inline-flex !important;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 12px;
+        }
+
+        /* Hide the entire desktop navbar on mobile to avoid duplicate navigation */
+        .navbar {
+          display: none !important;
+        }
+
+        /* 2. Hamburger Toggle Modern - Posisi Presisi */
+        .menu-toggle {
+          display: flex !important;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 28px;
+          height: 18px; /* Tinggi disesuaikan sedikit agar proporsional */
+          cursor: pointer;
+          z-index: 1202;
+
+          /* Mengatur posisi di kanan tengah secara vertikal */
+          position: absolute;
+          right: 18px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        .menu-toggle span {
+          display: block;
+          width: 100%;
+          height: 3px;
+          background: #1e293b;
+          border-radius: 10px;
+          transition: all 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+        }
+
+        /* Animasi Hamburger ke X - Jarak translasi disesuaikan agar simetris */
+        body.menu-open .menu-toggle span:nth-child(1) {
+          transform: translateY(7.5px) rotate(45deg);
+          background: #ff4d00;
+        }
+        body.menu-open .menu-toggle span:nth-child(2) {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        body.menu-open .menu-toggle span:nth-child(3) {
+          transform: translateY(-7.5px) rotate(-45deg);
+          background: #ff4d00;
+        }
+
+        /* 3. Sidebar Style - Memperbaiki Transisi */
+        #mobileMenu {
+          display: flex !important; /* Diubah dari 'none' agar transisi berfungsi */
           position: fixed;
           top: 0;
-          right: -100%;
-          width: 75%;
-          height: 100vh;
-          background: rgba(30, 41, 59, 0.95);
-          backdrop-filter: blur(15px);
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-        }
-        .nav-bar.show {
-          right: 0;
-        }
-        .nav-bar a {
-          font-size: 1.2rem;
+          right: -100%; /* Sembunyi total di luar layar kanan */
           width: 80%;
-          justify-content: center;
-        }
-      }
+          max-width: 310px;
+          height: 100vh;
+          flex-direction: column;
+          padding: 20px 16px;
+          gap: 2px;
+          background: white;
+          z-index: 1201;
+          box-shadow: -15px 0 35px rgba(0, 0, 0, 0.15);
+          border-radius: 30px 0 0 30px;
+          overflow-y: auto;
 
-      /* Animasi Garis 3 ke X */
-      .menu-toggle.active .line-1 {
-        transform: translateY(8.5px) rotate(45deg);
-      }
-      .menu-toggle.active .line-2 {
-        opacity: 0;
-        transform: translateX(10px);
-      }
-      .menu-toggle.active .line-3 {
-        transform: translateY(-8.5px) rotate(-45deg);
+          /* Animasi geser yang halus */
+          transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #mobileMenu.show {
+          right: 0; /* Muncul ke posisi layar */
+        }
+
+        /* 4. Elemen Internal Sidebar */
+        .sidebar-mobile-header {
+          display: block !important;
+          padding: 15px 10px;
+          margin-bottom: 15px;
+          border-bottom: 1px solid #f1f5f9;
+        }
+
+        .menu-divider {
+          display: block !important;
+          padding: 20px 16px 8px 16px;
+          font-size: 0.7rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          color: #94a3b8;
+          letter-spacing: 0.1em;
+          list-style: none;
+        }
+
+        /* Styling Link Sidebar */
+        #mobileMenu li {
+          width: 100%;
+          list-style: none;
+        }
+        #mobileMenu li a {
+          display: flex !important;
+          align-items: center;
+          gap: 14px;
+          padding: 12px 16px;
+          border-radius: 14px;
+          font-size: 0.95rem;
+          color: #475569;
+          font-weight: 500;
+          text-decoration: none;
+          transition: all 0.2s;
+        }
+
+        #mobileMenu li a:hover {
+          background: #f8fafc;
+          color: #ff4d00;
+        }
       }
   
 /* --- Hero Section Modern & Readable --- */
@@ -1189,19 +1229,153 @@ a.perintis-link:hover {
         <div class="loading-progress"></div>
       </div>
     </div>
+
+    <ul class="menu" id="mobileMenu">
+      <li class="sidebar-mobile-header">
+        <div style="display: flex; align-items: center; gap: 12px">
+          <img
+            src="icon pmkn.jpeg"
+            alt="Logo"
+            style="
+              width: 45px;
+              height: 45px;
+              border-radius: 50%;
+              object-fit: cover;
+            "
+          />
+          <div>
+            <div
+              style="
+                font-weight: 800;
+                color: #1e293b;
+                line-height: 1;
+                font-size: 1.1rem;
+              "
+            >
+              PMKN
+            </div>
+            <div
+              style="font-size: 0.75rem; color: #64748b; letter-spacing: 1px"
+            >
+              TONDANO
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <a href="cari.html"
+          ><i class="fa-solid fa-magnifying-glass"></i> Cari</a
+        >
+      </li>
+      <li>
+        <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+      </li>
+
+      <li class="menu-divider">Profil</li>
+      <li>
+        <a href="sejarahpmkn.html"
+          ><i class="fa-solid fa-clock-rotate-left"></i> Sejarah PMKN</a
+        >
+      </li>
+      <li>
+        <a href="perintispmkn.html"
+          ><i class="fa-solid fa-people-roof"></i> Perintis PMKN</a
+        >
+      </li>
+      <li>
+        <a href="visimisi.html"><i class="fa-solid fa-eye"></i> Visi Misi</a>
+      </li>
+      <li>
+        <a href="bpipmkn.html"><i class="fa-solid fa-user-tie"></i> BPI PMKN</a>
+      </li>
+      <li>
+        <a href="bphpmkn.html"><i class="fa-solid fa-users"></i> BPH PMKN</a>
+      </li>
+
+      <li class="menu-divider">Organisasi</li>
+      <li>
+        <a href="adartgbhopopmkn.html"
+          ><i class="fa-solid fa-gavel"></i> GBHO & PO</a
+        >
+      </li>
+      <li>
+        <a href="strukturorgpmkn.html"
+          ><i class="fa-solid fa-sitemap"></i> Struktur Organisasi</a
+        >
+      </li>
+      <li>
+        <a href="tugasutamabidang.html"
+          ><i class="fa-solid fa-building-circle-check"></i> Tugas Utama
+          Bidang</a
+        >
+      </li>
+      <li>
+        <a href="dataanggota.html"
+          ><i class="fa-solid fa-users"></i> Anggota</a
+        >
+      </li>
+      <li>
+        <a href="#"
+          ><i class="fa-solid fa-handshake"></i> Mitra PMKN</a
+        >
+      </li>
+      <li>
+        <a href="#"
+          ><i class="fa-solid fa-calendar-days"></i> Kegiatan</a
+        >
+      </li>
+
+      <li class="menu-divider">Informasi</li>
+      <li>
+        <a href="pengumuman.html"
+          ><i class="fa-solid fa-bullhorn"></i> Pengumuman</a
+        >
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-calendar"></i> Agenda</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-photo-film"></i> Galeri</a>
+      </li>
+      <li>
+        <a href="#"
+        ><i class="fa-solid fa-user-plus"></i> Join Member</a>
+      </li>
+
+      <li class="menu-divider">Kontak</li>
+      <li>
+      <a href="kontak.html"><i class="fa-solid fa-headset"></i> Kontak</a>
+      </li>
+      <li>
+      <a href="#"><i class="fa-solid fa-info-circle"></i> Tentang PMKN</a>
+      </li>
+      <li>
+        <a href="panduan.html"
+          ><i class="fa-solid fa-book-open"></i> Panduan Pengguna</a
+        >
+      </li>
+      <li>
+        <a href="FAQ.html"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+      </li>
+    </ul>
+
+    <!-- /untuk mobile -->
+
     <header class="header">
-    <div class="logo">
+      <div class="logo">
         <img src="icon pmkn.jpeg" alt="Logo PMKN" />
         <span>PMKN Tondano</span>
-    </div>
-    <nav class="navbar">
+      </div>
+      <nav class="navbar">
         <ul class="menu">
-          <li><a href="index.html">Beranda</a></li>
+          <li class="home-link">
+            <a href="index.html" class="active">Beranda</a>
+          </li>
+
           <!-- Dropdown Profil -->
           <li class="dropdown">
-            <a href="#" class="active"
-              >Profil <i class="fa-solid fa-chevron-down"></i
-            ></a>
+            <a href="#">Profil <i class="fa-solid fa-chevron-down"></i></a>
             <ul class="dropdown-menu">
               <li>
                 <a href="sejarahpmkn.html"
@@ -1219,43 +1393,60 @@ a.perintis-link:hover {
                 >
               </li>
               <li>
-                <a href="bpipmkn.html"><i class="fa-regular fa-user"></i> BPI PMKN</a>
+                <a href="bpipmkn.html"
+                  ><i class="fa-regular fa-user"></i> BPI PMKN</a
+                >
               </li>
               <li>
-                <a href="bphpmkn.html"><i class="fa-solid fa-users"></i> BPH PMKN</a>
+                <a href="bphpmkn.html"
+                  ><i class="fa-solid fa-users"></i> BPH PMKN</a
+                >
               </li>
             </ul>
           </li>
-            <!-- Dropdown Organisasi -->
+          <!-- Dropdown Organisasi -->
           <li class="dropdown">
             <a href="#">Organisasi <i class="fa-solid fa-chevron-down"></i></a>
             <ul class="dropdown-menu">
-                    <li>
-                        <a href="adartgbhopopmkn.html"><i class="fa-solid fa-scale-balanced"></i> GBHO & PO</a>
-                    </li>
-                        <a href="strukturorgpmkn.html"><i class="fa-solid fa-sitemap"></i> Struktur Organisasi</a>
-                    </li>
-                    <li>
+              <li>
+                <a href="adartgbhopopmkn.html"
+                  ><i class="fa-solid fa-scale-balanced"></i> GBHO & PO</a
+                >
+              </li>
+              <li>
+                <a href="strukturorgpmkn.html"
+                  ><i class="fa-solid fa-sitemap"></i> Struktur Organisasi</a
+                >
+              </li>
+              <li>
                 <a href="tugasutamabidang.html"
                   ><i class="fa-solid fa-building-circle-check"></i> Tugas Utama
-                  Bidang</a> </li>
-                    <li>
-                        <a href="dataanggota.html"><i class="fa-solid fa-users"></i> Anggota</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa-solid fa-handshake"></i> Mitra PMKN</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa-solid fa-calendar-days"></i> Kegiatan</a>
-                    </li>
-                </ul>
+                  Bidang</a
+                >
+              </li>
+              <li>
+                <a href="dataanggota.html"
+                  ><i class="fa-solid fa-users"></i> Anggota</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fa-solid fa-handshake"></i> Mitra PMKN</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fa-solid fa-calendar-days"></i> Kegiatan</a
+                >
+              </li>
+            </ul>
           </li>
           <!-- Dropdown info -->
           <li class="dropdown">
             <a href="#">Info <i class="fa-solid fa-chevron-down"></i></a>
             <ul class="dropdown-menu">
               <li>
-                <a href="pengumuman.html"><i class="fa-solid fa-newspaper"></i> Pengumuman</a>
+                <a href="pengumuman.html"
+                  ><i class="fa-solid fa-newspaper"></i> Pengumuman</a
+                >
               </li>
               <li>
                 <a href="#"><i class="fa-solid fa-calendar"></i> Agenda</a>
@@ -1280,32 +1471,37 @@ a.perintis-link:hover {
                 >
               </li>
               <li>
-                <a href="kontak.html"><i class="fa-solid fa-address-card"></i> Kontak</a>
+                <a href="kontak.html"
+                  ><i class="fa-solid fa-headset"></i> Kontak</a
+                >
               </li>
               <li>
-                <a href="panduan.html"><i class="fa-solid fa-book"></i> Panduan Pengguna</a>
+                <a href="panduan.html"
+                  ><i class="fa-solid fa-book-open"></i> Panduan Pengguna</a
+                >
+              </li>
             </ul>
           </li>
 
           <!-- Search -->
           <li class="nav-item-search">
-    <a href="cari.html" class="search-link">
-        <div class="search-icon-wrapper">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <span class="search-text"></span>
-        </div>
-    </a>
-  </li>
-</ul>
-</nav>
+            <a href="cari.html" class="search-link">
+              <div class="search-icon-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </nav>
 
       <!-- Hamburger -->
-    <div class="menu-toggle" id="menuBtn">
+      <div class="menu-toggle" id="menuBtn">
         <span class="line-1"></span>
         <span class="line-2"></span>
         <span class="line-3"></span>
-    </div>
+      </div>
     </header>
+
     <section class="hero">
     <div class="breadcrumb">
         <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a> > <span>Sejarah PMKN Tondano</span>
@@ -1367,6 +1563,48 @@ a.perintis-link:hover {
         menuBtn.classList.toggle("active");
         navbar.classList.toggle("show");
     });
+
+    // sidebar
+      document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const body = document.body;
+
+    // Pastikan elemen ditemukan sebelum memasang event
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            body.classList.toggle("menu-open");
+            mobileMenu.classList.toggle("show");
+            
+            // Tambahan: Cegah layar belakang discroll saat menu buka
+            if(mobileMenu.classList.contains("show")) {
+                body.style.overflow = "hidden";
+            } else {
+                body.style.overflow = "auto";
+            }
+        });
+
+        // Menutup sidebar jika klik di luar area menu
+        document.addEventListener("click", (e) => {
+            if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                body.classList.remove("menu-open");
+                mobileMenu.classList.remove("show");
+                body.style.overflow = "auto";
+            }
+        });
+        
+        // Tambahan: Menutup menu saat link di dalam sidebar diklik
+        const mobileLinks = mobileMenu.querySelectorAll("a");
+        mobileLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                body.classList.remove("menu-open");
+                mobileMenu.classList.remove("show");
+                body.style.overflow = "auto";
+            });
+        });
+    }
+});
 
     // Close menu if link clicked
     document.querySelectorAll(".navbar a").forEach((n) =>

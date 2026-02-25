@@ -234,381 +234,398 @@
         border-bottom: 2px solid #ff4d00;
       }
 
-/* DROPDOWN MODERN PMKN */
-.dropdown {
-    position: relative;
-    padding-bottom: 15px;
-    margin-bottom: -15px;
-}
+      /* DROPDOWN MODERN PMKN */
+      .dropdown {
+        position: relative;
+        padding-bottom: 15px;
+        margin-bottom: -15px;
+      }
 
-/* Mengatur warna teks menu utama saat di-hover agar tetap hitam */
-.dropdown:hover > a {
-    color: #000000 !important;
-}
+      /* Mengatur warna teks menu utama saat di-hover agar tetap hitam */
+      .dropdown:hover > a {
+        color: #000000 !important;
+      }
 
-.dropdown-menu {
-    position: absolute;
-    top: 110%;
-    left: -20px;
-    width: 280px;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-    z-index: 1000;
-    
-    /* State Awal */
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(15px) scale(0.95);
-    
-    /* Transition */
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
+      .dropdown-menu {
+        position: absolute;
+        top: 110%;
+        left: -20px;
+        width: 280px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        z-index: 1000;
 
-/* Jembatan Tak Kasat Mata */
-.dropdown-menu::before {
-    content: "";
-    position: absolute;
-    top: -20px;
-    left: 0;
-    inline-size: 100%;
-    height: 20px;
-}
+        /* State Awal */
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(15px) scale(0.95);
 
-/* Hover State */
-.dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0) scale(1);
-    transition-delay: 0s;
-}
+        /* Transition */
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
 
-/* List & Link Items */
-.dropdown-menu li {
-    list-style: none;
-    margin-bottom: 5px;
-}
-.dropdown-menu li:last-child { margin-bottom: 0; }
+      /* Jembatan Tak Kasat Mata */
+      .dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: 0;
+        inline-size: 100%;
+        height: 20px;
+      }
 
-.dropdown-menu a {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 12px 18px;
-    color: #000000; /* Warna Hitam Murni */
-    font-size: 0.95rem;
-    font-weight: 500; /* Ketebalan normal/sedang agar tidak terlalu tebal */
-    text-decoration: none;
-    border-radius: 12px;
-    transition: 0.3s ease;
-}
+      /* Hover State */
+      .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+        transition-delay: 0s;
+      }
 
-.dropdown-menu a i {
-    width: 24px;
-    font-size: 1.1rem;
-    text-align: center;
-    color: #64748b; 
-    transition: 0.3s;
-}
+      /* List & Link Items */
+      .dropdown-menu li {
+        list-style: none;
+        margin-bottom: 5px;
+      }
+      .dropdown-menu li:last-child {
+        margin-bottom: 0;
+      }
 
-.dropdown-menu a:hover i {
-    color: #ff4d00;
-    transform: rotate(5deg) scale(1.1);
-}
+      .dropdown-menu a {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 12px 18px;
+        color: #000000; /* Warna Hitam Murni */
+        font-size: 0.95rem;
+        font-weight: 500; /* Ketebalan normal/sedang agar tidak terlalu tebal */
+        text-decoration: none;
+        border-radius: 12px;
+        transition: 0.3s ease;
+      }
+
+      .dropdown-menu a i {
+        width: 24px;
+        font-size: 1.1rem;
+        text-align: center;
+        color: #64748b;
+        transition: 0.3s;
+      }
+
+      .dropdown-menu a:hover i {
+        color: #ff4d00;
+        transform: rotate(5deg) scale(1.1);
+      }
 
       /* ===== SEARCH BOX ===== */
       .search-icon-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
 
-.search-trigger {
-    background: none;
-    border: none;
-    font-size: 1.1rem;
-    color: #64748b;
-    cursor: pointer;
-    transition: 0.3s;
-    padding: 8px;
-    border-radius: 50%;
-}
-
-.search-trigger:hover {
-    background: rgba(37, 99, 235, 0.1);
-    color: #2563eb;
-}
-
-/* Input yang muncul saat aktif */
-.search-input-hidden {
-    width: 0;
-    opacity: 0;
-    border: none;
-    outline: none;
-    padding: 0;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    background: #f1f5f9;
-    border-radius: 20px;
-    font-size: 0.85rem;
-}
-
-.search-icon-wrapper.active .search-input-hidden {
-    width: 200px;
-    opacity: 1;
-    padding: 8px 15px;
-    margin-left: 10px;
-}
-
-      /* ===== MOBILE ===== */
-      .menu-toggle {
-        display: none;
-        flex-direction: column;
+      .search-trigger {
+        background: none;
+        border: none;
+        font-size: 1.1rem;
+        color: #64748b;
         cursor: pointer;
-        gap: 5px;
+        transition: 0.3s;
+        padding: 8px;
+        border-radius: 50%;
       }
 
-      .menu-toggle span {
-        width: 25px;
-        height: 3px;
-        background: #1e293b;
-        border-radius: 5px;
+      .search-trigger:hover {
+        background: rgba(37, 99, 235, 0.1);
+        color: #2563eb;
       }
 
-      /* Responsive */
-      @media (max-width: 900px) {
-        .menu-toggle {
-          display: flex;
-        }
-
-        .menu {
-          position: fixed;
-          top: 70px;
-          right: -100%;
-          width: 260px;
-          height: 100vh;
-          background: white;
-          flex-direction: column;
-          align-items: flex-start;
-          padding: 30px;
-          gap: 18px;
-          transition: 0.3s;
-        }
-
-        .menu.show {
-          right: 0;
-        }
-
-        .dropdown-menu {
-          position: static;
-          box-shadow: none;
-          width: 100%;
-          display: none;
-        }
-
-        .dropdown.open .dropdown-menu {
-          display: block;
-        }
-      }
-
-      /* Menu Toggle (Garis 3) */
-      .menu-toggle {
-        display: none;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 30px;
-        height: 20px;
-        cursor: pointer;
-        z-index: 2001;
-      }
-
-      .menu-toggle span {
-        display: block;
-        height: 3px;
-        background: var(--white);
-        border-radius: 10px;
-        transition: 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-      }
-
-      .line-1 {
-        width: 100%;
-      }
-
-      .line-2 {
-        width: 70%;
-        margin-left: auto;
-      }
-
-      .line-3 {
-        width: 100%;
-      }
-
-      /* Animasi Garis 3 ke X */
-      .menu-toggle.active .line-1 {
-        transform: translateY(8.5px) rotate(45deg);
-      }
-
-      .menu-toggle.active .line-2 {
+      /* Input yang muncul saat aktif */
+      .search-input-hidden {
+        width: 0;
         opacity: 0;
-        transform: translateX(10px);
+        border: none;
+        outline: none;
+        padding: 0;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        background: #f1f5f9;
+        border-radius: 20px;
+        font-size: 0.85rem;
       }
 
-      .menu-toggle.active .line-3 {
-        transform: translateY(-8.5px) rotate(-45deg);
+      .search-icon-wrapper.active .search-input-hidden {
+        width: 200px;
+        opacity: 1;
+        padding: 8px 15px;
+        margin-left: 10px;
       }
 
-      @media (max-width: 768px) {
-        .menu-toggle {
+      /* untuk mobile */
+      .menu-toggle,
+      #mobileMenu,
+      .sidebar-mobile-header,
+      .menu-divider {
+        display: none !important;
+      }
+
+      /* --- MEDIA QUERY MOBILE (900px kebawah) --- */
+      @media (max-width: 900px) {
+        /* 1. Header Adjustment */
+        .header {
+          position: relative;
+          min-height: 70px; /* Memberikan ruang cukup untuk logo & hamburger */
           display: flex;
+          align-items: center;
+          padding: 10px 5%;
         }
-        .nav-bar {
+
+        /* Mobile: show only homepage in the header navbar (hide other desktop nav items) */
+        .navbar .menu li {
+          display: none !important;
+        }
+        .navbar .menu li.home-link {
+          display: list-item !important;
+        }
+        .navbar .menu li.home-link a {
+          display: inline-flex !important;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 12px;
+        }
+
+        /* Hide the entire desktop navbar on mobile to avoid duplicate navigation */
+        .navbar {
+          display: none !important;
+        }
+
+        /* 2. Hamburger Toggle Modern - Posisi Presisi */
+        .menu-toggle {
+          display: flex !important;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 28px;
+          height: 18px; /* Tinggi disesuaikan sedikit agar proporsional */
+          cursor: pointer;
+          z-index: 1202;
+
+          /* Mengatur posisi di kanan tengah secara vertikal */
+          position: absolute;
+          right: 18px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        .menu-toggle span {
+          display: block;
+          width: 100%;
+          height: 3px;
+          background: #1e293b;
+          border-radius: 10px;
+          transition: all 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+        }
+
+        /* Animasi Hamburger ke X - Jarak translasi disesuaikan agar simetris */
+        body.menu-open .menu-toggle span:nth-child(1) {
+          transform: translateY(7.5px) rotate(45deg);
+          background: #ff4d00;
+        }
+        body.menu-open .menu-toggle span:nth-child(2) {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        body.menu-open .menu-toggle span:nth-child(3) {
+          transform: translateY(-7.5px) rotate(-45deg);
+          background: #ff4d00;
+        }
+
+        /* 3. Sidebar Style - Memperbaiki Transisi */
+        #mobileMenu {
+          display: flex !important; /* Diubah dari 'none' agar transisi berfungsi */
           position: fixed;
           top: 0;
-          right: -100%;
-          width: 75%;
-          height: 100vh;
-          background: rgba(30, 41, 59, 0.95);
-          backdrop-filter: blur(15px);
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-        }
-        .nav-bar.show {
-          right: 0;
-        }
-        .nav-bar a {
-          font-size: 1.2rem;
+          right: -100%; /* Sembunyi total di luar layar kanan */
           width: 80%;
-          justify-content: center;
+          max-width: 310px;
+          height: 100vh;
+          flex-direction: column;
+          padding: 20px 16px;
+          gap: 2px;
+          background: white;
+          z-index: 1201;
+          box-shadow: -15px 0 35px rgba(0, 0, 0, 0.15);
+          border-radius: 30px 0 0 30px;
+          overflow-y: auto;
+
+          /* Animasi geser yang halus */
+          transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #mobileMenu.show {
+          right: 0; /* Muncul ke posisi layar */
+        }
+
+        /* 4. Elemen Internal Sidebar */
+        .sidebar-mobile-header {
+          display: block !important;
+          padding: 15px 10px;
+          margin-bottom: 15px;
+          border-bottom: 1px solid #f1f5f9;
+        }
+
+        .menu-divider {
+          display: block !important;
+          padding: 20px 16px 8px 16px;
+          font-size: 0.7rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          color: #94a3b8;
+          letter-spacing: 0.1em;
+          list-style: none;
+        }
+
+        /* Styling Link Sidebar */
+        #mobileMenu li {
+          width: 100%;
+          list-style: none;
+        }
+        #mobileMenu li a {
+          display: flex !important;
+          align-items: center;
+          gap: 14px;
+          padding: 12px 16px;
+          border-radius: 14px;
+          font-size: 0.95rem;
+          color: #475569;
+          font-weight: 500;
+          text-decoration: none;
+          transition: all 0.2s;
+        }
+
+        #mobileMenu li a:hover {
+          background: #f8fafc;
+          color: #ff4d00;
         }
       }
 
-      /* Animasi Garis 3 ke X */
-      .menu-toggle.active .line-1 {
-        transform: translateY(8.5px) rotate(45deg);
-      }
-      .menu-toggle.active .line-2 {
-        opacity: 0;
-        transform: translateX(10px);
-      }
-      .menu-toggle.active .line-3 {
-        transform: translateY(-8.5px) rotate(-45deg);
-      }
-      
-/* --- Hero Section Modern & Readable --- */
-.hero {
-  position: relative;
-  min-height: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 100px 6% 60px;
-  text-align: center;
-  background: 
+      /* --- Hero Section Modern & Readable --- */
+      .hero {
+        position: relative;
+        min-height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 100px 6% 60px;
+        text-align: center;
+        background: 
   
   /* Overlay gelap supaya teks putih menonjol */
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)),
-    url("fotbaragtpmkn.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* Efek parallax halus */
-  color: white;
-}
+          linear-gradient(
+            to bottom,
+            rgba(15, 23, 42, 0.7),
+            rgba(15, 23, 42, 0.9)
+          ),
+          url("fotbaragtpmkn.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed; /* Efek parallax halus */
+        color: white;
+      }
 
-.breadcrumb {
-  font-size: 0.85rem;
-  margin-bottom: 25px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 8px 16px;
-  border-radius: 50px;
-  backdrop-filter: blur(5px);
-  display: inline-block;
-  color: #e2e8f0;
-}
+      .breadcrumb {
+        font-size: 0.85rem;
+        margin-bottom: 25px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 8px 16px;
+        border-radius: 50px;
+        backdrop-filter: blur(5px);
+        display: inline-block;
+        color: #e2e8f0;
+      }
 
-.breadcrumb a {
-  color: var(--secondary); /* Warna biru muda agar kontras di gelap */
-  text-decoration: none;
-  font-weight: 600;
-}
+      .breadcrumb a {
+        color: var(--secondary); /* Warna biru muda agar kontras di gelap */
+        text-decoration: none;
+        font-weight: 600;
+      }
 
-.hero h2 {
-  font-size: clamp(2rem, 5vw, 3.5rem); /* Ukuran adaptif */
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 15px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  letter-spacing: -1px;
-}
+      .hero h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem); /* Ukuran adaptif */
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 15px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        letter-spacing: -1px;
+      }
 
-.hero p {
-  max-width: 800px;
-  margin: 0 auto 50px;
-  color: #cbd5e1;
-  font-size: 1.1rem;
-  line-height: 1.8;
-}
+      .hero p {
+        max-width: 800px;
+        margin: 0 auto 50px;
+        color: #cbd5e1;
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
 
-.breadcrumb {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    margin-bottom: 20px;
-    font-size: 0.9rem;
-    color: #64748b;
-}
+      .breadcrumb {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+        color: #64748b;
+      }
 
-.breadcrumb a {
-    color: #2563eb;
-    text-decoration: none;
-}
+      .breadcrumb a {
+        color: #2563eb;
+        text-decoration: none;
+      }
 
-.breadcrumb a:hover {
-    color: #ff4d00;
-}
+      .breadcrumb a:hover {
+        color: #ff4d00;
+      }
 
-.breadcrumb span {
-    color: #64748b;
-}
+      .breadcrumb span {
+        color: #64748b;
+      }
 
-/* Teks Beda Warna pada Judul */
-.hero h2 {
-    font-size: 3rem; /* Ukuran judul diperbesar agar lebih gagah */
-    line-height: 1.2;
-    color: #ffffff;
-    font-weight: 700;
-}
+      /* Teks Beda Warna pada Judul */
+      .hero h2 {
+        font-size: 3rem; /* Ukuran judul diperbesar agar lebih gagah */
+        line-height: 1.2;
+        color: #ffffff;
+        font-weight: 700;
+      }
 
-.highlight-text {
-    /* Gradasi warna oranye khas PMKN ke arah kuning keemasan */
-    background: linear-gradient(90deg, #ff4d00, #ff9500);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    
-    /* Efek bayangan halus agar teks lebih 'pop' */
-    filter: drop-shadow(0px 4px 10px rgba(234, 182, 159, 0.3));
-    
-    /* Animasi muncul pelan saat halaman dimuat (Opsional) */
-    display: inline-block;
-    position: relative;
-}
+      .highlight-text {
+        /* Gradasi warna oranye khas PMKN ke arah kuning keemasan */
+        background: linear-gradient(90deg, #ff4d00, #ff9500);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
 
-/* Responsif untuk Mobile */
-@media (max-width: 768px) {
-    .hero h2 {
-        font-size: 2.2rem;
-    }
-}
+        /* Efek bayangan halus agar teks lebih 'pop' */
+        filter: drop-shadow(0px 4px 10px rgba(234, 182, 159, 0.3));
 
-/* --- Contact Section Modern --- */
+        /* Animasi muncul pelan saat halaman dimuat (Opsional) */
+        display: inline-block;
+        position: relative;
+      }
+
+      /* Responsif untuk Mobile */
+      @media (max-width: 768px) {
+        .hero h2 {
+          font-size: 2.2rem;
+        }
+      }
+
+      /* --- Contact Section Modern --- */
       .contact-section {
         padding: 60px 5%;
         background: var(--light);
@@ -622,7 +639,8 @@
         margin: 0 auto;
       }
 
-      .contact-info-card, .map-card {
+      .contact-info-card,
+      .map-card {
         background: var(--white);
         padding: 30px;
         border-radius: 20px;
@@ -678,7 +696,8 @@
         margin-bottom: 2px;
       }
 
-      .contact-detail p, .contact-detail a {
+      .contact-detail p,
+      .contact-detail a {
         font-size: 0.9rem;
         color: #64748b;
         text-decoration: none;
@@ -718,44 +737,47 @@
       }
 
       /* Styling khusus link media sosial di dalam kartu kontak */
-.social-links-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Membagi jadi 2 kolom agar rapi */
-    gap: 10px;
-    margin-top: 8px;
-}
+      .social-links-container {
+        display: grid;
+        grid-template-columns: repeat(
+          2,
+          1fr
+        ); /* Membagi jadi 2 kolom agar rapi */
+        gap: 10px;
+        margin-top: 8px;
+      }
 
-.social-link-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    color: #475569;
-    font-size: 0.85rem;
-    padding: 6px 10px;
-    background: #f1f5f9;
-    border-radius: 8px;
-    transition: 0.3s;
-}
+      .social-link-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: #475569;
+        font-size: 0.85rem;
+        padding: 6px 10px;
+        background: #f1f5f9;
+        border-radius: 8px;
+        transition: 0.3s;
+      }
 
-.social-link-item:hover {
-    background: #e2e8f0;
-    transform: translateX(3px);
-    color: var(--primary);
-}
+      .social-link-item:hover {
+        background: #e2e8f0;
+        transform: translateX(3px);
+        color: var(--primary);
+      }
 
-.social-link-item i {
-    font-size: 1rem;
-}
+      .social-link-item i {
+        font-size: 1rem;
+      }
 
-/* Responsif untuk HP agar jadi 1 kolom saja jika layar sangat kecil */
-@media (max-width: 480px) {
-    .social-links-container {
-        grid-template-columns: 1fr;
-    }
-}
+      /* Responsif untuk HP agar jadi 1 kolom saja jika layar sangat kecil */
+      @media (max-width: 480px) {
+        .social-links-container {
+          grid-template-columns: 1fr;
+        }
+      }
 
-/* --- FAQ CTA Section --- */
+      /* --- FAQ CTA Section --- */
       .faq-cta-section {
         padding: 80px 5%;
         text-align: center;
@@ -846,7 +868,7 @@
         background: white;
         padding: 40px;
         border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
       }
       .feedback-form h2 {
         text-align: center;
@@ -862,7 +884,9 @@
         font-weight: 600;
         color: #475569;
       }
-      .form-group input, .form-group select, .form-group textarea {
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
         width: 100%;
         padding: 12px;
         border: 1px solid #e2e8f0;
@@ -899,75 +923,107 @@
 
       /* --- Rating Card Style --- */
       .rating-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    margin-top: 10px;
-}
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-top: 10px;
+      }
 
-.rating-card {
-    background: #f1f5f9;
-    border: 2px solid transparent;
-    border-radius: 15px;
-    padding: 20px 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
+      .rating-card {
+        background: #f1f5f9;
+        border: 2px solid transparent;
+        border-radius: 15px;
+        padding: 20px 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
 
-.rating-card .emoji {
-    font-size: 1.8rem;
-    color: #64748b; /* Warna default icon */
-    transition: 0.3s;
-}
+      .rating-card .emoji {
+        font-size: 1.8rem;
+        color: #64748b; /* Warna default icon */
+        transition: 0.3s;
+      }
 
-.rating-card span {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: #64748b;
-}
+      .rating-card span {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #64748b;
+      }
 
-/* Efek Hover & Active */
-.rating-card:hover {
-    background: #e2e8f0;
-    transform: translateY(-5px);
-}
+      /* Efek Hover & Active */
+      .rating-card:hover {
+        background: #e2e8f0;
+        transform: translateY(-5px);
+      }
 
-.rating-card.active {
-    background: white;
-    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
-}
+      .rating-card.active {
+        background: white;
+        box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+      }
 
-/* Warna Spesifik saat Aktif */
-.rating-card[data-value="Sangat Baik"].active { border-color: #e1306c; background: #fff5f8; }
-.rating-card[data-value="Sangat Baik"].active .emoji { color: #e1306c; }
+      /* Warna Spesifik saat Aktif */
+      .rating-card[data-value="Sangat Baik"].active {
+        border-color: #e1306c;
+        background: #fff5f8;
+      }
+      .rating-card[data-value="Sangat Baik"].active .emoji {
+        color: #e1306c;
+      }
 
-.rating-card[data-value="Baik"].active { border-color: #f59e0b; background: #fffbeb; }
-.rating-card[data-value="Baik"].active .emoji { color: #f59e0b; }
+      .rating-card[data-value="Baik"].active {
+        border-color: #f59e0b;
+        background: #fffbeb;
+      }
+      .rating-card[data-value="Baik"].active .emoji {
+        color: #f59e0b;
+      }
 
-.rating-card[data-value="Cukup"].active { border-color: #3b82f6; background: #eff6ff; }
-.rating-card[data-value="Cukup"].active .emoji { color: #3b82f6; }
+      .rating-card[data-value="Cukup"].active {
+        border-color: #3b82f6;
+        background: #eff6ff;
+      }
+      .rating-card[data-value="Cukup"].active .emoji {
+        color: #3b82f6;
+      }
 
-.rating-card[data-value="Kurang"].active { border-color: #64748b; background: #f8fafc; }
+      .rating-card[data-value="Kurang"].active {
+        border-color: #64748b;
+        background: #f8fafc;
+      }
 
-/* Responsif Mobile */
-@media (max-width: 500px) {
-    .rating-container { grid-template-columns: repeat(2, 1fr); }
-    .social-links-container { grid-template-columns: 1fr; }
-}
+      /* Responsif Mobile */
+      @media (max-width: 500px) {
+        .rating-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .social-links-container {
+          grid-template-columns: 1fr;
+        }
+      }
 
       /* Warna khusus saat active */
-      .rating-card[data-value="Sangat Baik"].active { border-color: #22c55e; }
-      .rating-card[data-value="Baik"].active { border-color: #3b82f6; }
-      .rating-card[data-value="Cukup"].active { border-color: #f59e0b; }
-      .rating-card[data-value="Kurang"].active { border-color: #ef4444; }
+      .rating-card[data-value="Sangat Baik"].active {
+        border-color: #22c55e;
+      }
+      .rating-card[data-value="Baik"].active {
+        border-color: #3b82f6;
+      }
+      .rating-card[data-value="Cukup"].active {
+        border-color: #f59e0b;
+      }
+      .rating-card[data-value="Kurang"].active {
+        border-color: #ef4444;
+      }
 
       @media (max-width: 480px) {
-        .rating-container { grid-template-columns: repeat(2, 1fr); }
+        .rating-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
 
       /* --- Saran Display Section --- */
@@ -987,7 +1043,7 @@
         padding: 25px;
         border-radius: 15px;
         border-left: 5px solid var(--primary);
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         transition: 0.3s;
       }
       .saran-card:hover {
@@ -1013,496 +1069,668 @@
         font-size: 0.95rem;
         line-height: 1.5;
       }
-      #loading-saran { text-align: center; color: #64748b; }
+      #loading-saran {
+        text-align: center;
+        color: #64748b;
+      }
 
       /* --- Chat Widget --- */
-.bot-avatar {
-    width: 45px;
-    height: 45px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-}
-
-.bot-icon-style {
-    font-size: 22px;
-    color: white;
-}
-
-#chat-trigger {
-    position: fixed; bottom: 30px; right: 30px;
-    width: 60px; height: 60px;
-    background: linear-gradient(135deg, #ff4d00, #ff8700);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: white; font-size: 24px; cursor: pointer;
-    box-shadow: 0 10px 25px rgba(255, 77, 0, 0.3);
-    z-index: 9999; transition: 0.3s;
-}
-
-#chat-trigger:hover { transform: scale(1.1) rotate(5deg); }
-
-.notification-dot {
-    position: absolute; top: 5px; right: 5px;
-    width: 12px; height: 12px;
-    background: #22c55e; border: 2px solid white; border-radius: 50%;
-}
-
-#chat-window {
-    position: fixed; bottom: 100px; right: 30px;
-    width: 380px; height: 550px;
-    background: white; border-radius: 20px;
-    box-shadow: 0 15px 50px rgba(0,0,0,0.15);
-    display: flex; flex-direction: column;
-    z-index: 9999; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    overflow: hidden;
-}
-
-.chat-hidden { opacity: 0; transform: translateY(20px) scale(0.9); pointer-events: none; }
-
-.chat-header {
-    background: linear-gradient(to right, #ff4d00, #ff8700);
-    padding: 20px; color: white;
-    display: flex; justify-content: space-between; align-items: center;
-}
-
-.header-info { display: flex; align-items: center; gap: 12px; }
-.bot-avatar { position: relative; width: 45px; height: 45px; }
-.bot-avatar img { width: 100%; height: 100%; border-radius: 50%; border: 2px solid white; background: white; }
-.online-status {
-    position: absolute; bottom: 2px; right: 2px;
-    width: 10px; height: 10px; background: #22c55e;
-    border: 2px solid white; border-radius: 50%;
-}
-
-.header-info h4 { margin: 0; font-size: 16px; }
-.header-info p { margin: 0; font-size: 12px; opacity: 0.9; }
-.header-actions { display: flex; gap: 15px; cursor: pointer; }
-
-.chat-body { flex: 1; padding: 20px; overflow-y: auto; background: #f8fafc; }
-.chat-welcome { text-align: center; padding: 20px 0; }
-.welcome-icon { font-size: 40px; margin-bottom: 10px; }
-.chat-welcome h3 { margin: 0; color: #1e293b; }
-.chat-welcome p { font-size: 14px; color: #64748b; line-height: 1.5; }
-
-.quick-questions { margin-top: 20px; }
-.quick-questions .label { font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 10px; }
-.quick-questions button {
-    display: block; width: 100%; text-align: left;
-    padding: 12px 15px; margin-bottom: 8px;
-    background: white; border: 1px solid #e2e8f0;
-    border-radius: 12px; cursor: pointer; font-size: 13px;
-    transition: 0.2s; color: #334155;
-}
-.quick-questions button:hover { background: #fff7ed; border-color: #ff8700; color: #ff4d00; }
-
-.chat-footer { padding: 15px; background: white; border-top: 1px solid #f1f5f9; display: flex; gap: 10px; }
-.chat-footer input {
-    flex: 1; border: 1px solid #e2e8f0; padding: 10px 15px;
-    border-radius: 25px; outline: none; font-size: 14px;
-}
-.chat-footer button {
-    width: 40px; height: 40px; border-radius: 50%; border: none;
-    background: #ff4d00; color: white; cursor: pointer; transition: 0.3s;
-}
-.chat-footer button:hover { background: #cc3d00; transform: rotate(-20deg); }
-
-/* Balon Chat */
-.msg { margin-bottom: 15px; max-width: 80%; padding: 10px 15px; border-radius: 15px; font-size: 14px; line-height: 1.4; }
-.msg-bot { background: white; color: #334155; border-bottom-left-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-.msg-user { background: #ff4d00; color: white; margin-left: auto; border-bottom-right-radius: 2px; }
-
-@media (max-width: 480px) {
-    #chat-window { width: calc(100% - 40px); height: 70vh; right: 20px; bottom: 90px; }
-}
-
-
-/* Styling Modal Konfirmasi */
-#confirm-modal {
-    position: absolute;
-    inset: 0;
-    background: rgba(17, 24, 39, 0.8);
-    backdrop-filter: blur(4px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1001;
-    transition: 0.3s;
-}
-
-.confirm-hidden { opacity: 0; pointer-events: none; }
-
-.confirm-box {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    width: 80%;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-.confirm-box p { color: #1e293b; font-size: 14px; margin-bottom: 15px; }
-
-.confirm-btns { display: flex; gap: 10px; justify-content: center; }
-
-.confirm-btns button {
-    padding: 8px 20px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-.btn-ok { background: #ff4d00; color: white; }
-.btn-cancel { background: #e2e8f0; color: #64748b; }
-
-/* Gaya untuk penanda tanggal */
-.date-divider {
-    text-align: center;
-    margin: 20px 0;
-    position: relative;
-    clear: both;
-}
-
-.date-divider span {
-    background: #f1f5f9;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 11px;
-    color: #64748b;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-/* Keterangan Waktu di Balon Chat */
-.chat-time {
-    display: block;
-    font-size: 10px;
-    margin-top: 5px;
-    text-align: right;
-    opacity: 0.7;
-}
-
-.msg-user .chat-time { color: #ffd6cc; }
-.msg-bot .chat-time { color: #94a3b8; }
-
-/* Container untuk reaksi */
-.msg-content-wrapper {
-    position: relative;
-    display: inline-block;
-    max-width: 100%;
-}
-
-/* Animasi Love Pop (muncul saat double click) */
-.love-pop {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    color: #ff4d4d;
-    font-size: 40px;
-    pointer-events: none;
-    z-index: 10;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.love-pop.animate {
-    animation: heartPop 0.8s ease-out forwards;
-}
-
-@keyframes heartPop {
-    0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-    50% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0; }
-}
-
-/* Label Reaksi kecil di bawah balon chat */
-.reaction-badge {
-    position: absolute;
-    bottom: -10px;
-    left: 10px;
-    background: white;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 2px 6px;
-    font-size: 12px;
-    display: none; /* muncul saat ada reaksi */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    cursor: pointer;
-}
-
-.reaction-badge.visible { display: block; }
-
-/* Teks instruksi di bawah pesan bot */
-.reaction-hint {
-    font-size: 9px;
-    color: #94a3b8;
-    margin: -10px 0 15px 5px; /* mengatur jarak agar pas di bawah balon */
-    display: block;
-    font-style: italic;
-    opacity: 0.8;
-}
-
-/* Penyesuaian agar badge reaksi tidak menabrak hint */
-.reaction-badge.visible {
-    display: block;
-    z-index: 2;
-}
-
-/* ================= FOOTER MODERN ================= */
-.footer {
-  position: relative;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: #e2e8f0;
-  padding: 60px 6% 30px;
-  overflow: hidden;
-}
-
-/* Pattern bulat background */
-.footer::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
-  background-size: 40px 40px;
-  opacity: 0.5;
-}
-
-/* Container */
-.footer-container {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1fr;
-  gap: 40px;
-}
-
-/* Logo Box */
-.footer-logo-box {
-  display: flex;
-  gap: 15px;
-  align-items: flex-start;
-}
-
-.footer-logo {
-  width: 55px;
-  height: 55px;
-  background: #ffffff;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-}
-
-.footer-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: white;
-}
-
-.footer-subtitle {
-  font-size: 0.9rem;
-  color: #94a3b8;
-}
-
-.footer-desc {
-  margin-top: 15px;
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-.footer-accredit {
-  color: #ff6a00;
-  margin-top: 12px;
-  font-weight: 600;
-}
-
-/* Column */
-.footer h4 {
-  color: white;
-  margin-bottom: 15px;
-}
-
-.footer ul {
-  list-style: none;
-}
-
-.footer ul li {
-  margin-bottom: 10px;
-}
-
-.footer ul li a {
-  color: #cbd5e1;
-  text-decoration: none;
-  transition: 0.25s;
-}
-
-.footer ul li a:hover {
-  color: #ff6a00;
-  transform: translateX(5px);
-}
-
-/* Contact */
-.footer-contact li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-.footer-contact i {
-  color: #ff6a00;
-  margin-top: 4px;
-}
-
-/* Bottom */
-.footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 6%;
-    border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.footer-bottom-left p {
-    font-size: 0.85rem;
-    color: #94a3b8;
-    margin-bottom: 10px;
-}
-
-.footer-bottom-left ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.footer-bottom-left ul li a {
-    font-size: 0.85rem;
-    color: #94a3b8;
-    text-decoration: none;
-    transition: 0.25s;
-}
-
-.footer-bottom-left ul li a:hover {
-    color: #ff6a00;
-}
-
-.footer-bottom-right {
-    display: flex;
-    gap: 15px;
-}
-
-.social-icon {
-    width: 35px;
-    height: 35px;
-    background: rgba(255,255,255,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    color: #94a3b8;
-    text-decoration: none;
-    transition: 0.25s;
-}
-
-.social-icon:hover {
-    background: #ff6a00;
-    color: white;
-    transform: translateY(-3px);
-}
-
-@media (max-width: 768px) {
-    .footer-bottom {
-        flex-direction: column;
+      .bot-avatar {
+        width: 45px;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
         align-items: center;
+        justify-content: center;
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+
+      .bot-icon-style {
+        font-size: 22px;
+        color: white;
+      }
+
+      #chat-trigger {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #ff4d00, #ff8700);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 10px 25px rgba(255, 77, 0, 0.3);
+        z-index: 9999;
+        transition: 0.3s;
+      }
+
+      #chat-trigger:hover {
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      .notification-dot {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 12px;
+        height: 12px;
+        background: #22c55e;
+        border: 2px solid white;
+        border-radius: 50%;
+      }
+
+      #chat-window {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        width: 380px;
+        height: 550px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        z-index: 9999;
+        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        overflow: hidden;
+      }
+
+      .chat-hidden {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+        pointer-events: none;
+      }
+
+      .chat-header {
+        background: linear-gradient(to right, #ff4d00, #ff8700);
+        padding: 20px;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .header-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .bot-avatar {
+        position: relative;
+        width: 45px;
+        height: 45px;
+      }
+      .bot-avatar img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 2px solid white;
+        background: white;
+      }
+      .online-status {
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        width: 10px;
+        height: 10px;
+        background: #22c55e;
+        border: 2px solid white;
+        border-radius: 50%;
+      }
+
+      .header-info h4 {
+        margin: 0;
+        font-size: 16px;
+      }
+      .header-info p {
+        margin: 0;
+        font-size: 12px;
+        opacity: 0.9;
+      }
+      .header-actions {
+        display: flex;
+        gap: 15px;
+        cursor: pointer;
+      }
+
+      .chat-body {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+        background: #f8fafc;
+      }
+      .chat-welcome {
         text-align: center;
-    }
-    
-    .footer-bottom-right {
+        padding: 20px 0;
+      }
+      .welcome-icon {
+        font-size: 40px;
+        margin-bottom: 10px;
+      }
+      .chat-welcome h3 {
+        margin: 0;
+        color: #1e293b;
+      }
+      .chat-welcome p {
+        font-size: 14px;
+        color: #64748b;
+        line-height: 1.5;
+      }
+
+      .quick-questions {
         margin-top: 20px;
-    }
-}
+      }
+      .quick-questions .label {
+        font-size: 12px;
+        font-weight: 700;
+        color: #94a3b8;
+        margin-bottom: 10px;
+      }
+      .quick-questions button {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 12px 15px;
+        margin-bottom: 8px;
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        cursor: pointer;
+        font-size: 13px;
+        transition: 0.2s;
+        color: #334155;
+      }
+      .quick-questions button:hover {
+        background: #fff7ed;
+        border-color: #ff8700;
+        color: #ff4d00;
+      }
 
-/* Container Utama yang dibuat Melayang */
-.footer-click-wrapper {
-    position: fixed;
-    bottom: 25px; /* Jarak dari bawah */
-    left: 25px;   /* Jarak dari kiri */
-    z-index: 9999;
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    max-width: 350px; /* Batasi lebar agar tetap minimalis */
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+      .chat-footer {
+        padding: 15px;
+        background: white;
+        border-top: 1px solid #f1f5f9;
+        display: flex;
+        gap: 10px;
+      }
+      .chat-footer input {
+        flex: 1;
+        border: 1px solid #e2e8f0;
+        padding: 10px 15px;
+        border-radius: 25px;
+        outline: none;
+        font-size: 14px;
+      }
+      .chat-footer button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        background: #ff4d00;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .chat-footer button:hover {
+        background: #cc3d00;
+        transform: rotate(-20deg);
+      }
 
-/* Kotak Konten dengan efek Blur */
-.footer-bottom-left {
-    padding: 18px 22px;
-    background: rgba(15, 23, 42, 0.8); /* Warna gelap transparan */
-    backdrop-filter: blur(12px);      /* Efek kaca */
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-}
+      /* Balon Chat */
+      .msg {
+        margin-bottom: 15px;
+        max-width: 80%;
+        padding: 10px 15px;
+        border-radius: 15px;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      .msg-bot {
+        background: white;
+        color: #334155;
+        border-bottom-left-radius: 2px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
+      .msg-user {
+        background: #ff4d00;
+        color: white;
+        margin-left: auto;
+        border-bottom-right-radius: 2px;
+      }
 
-/* Animasi Hover: Terangkat & Cahaya Oranye */
-.footer-click-wrapper:hover {
-    transform: translateY(-8px) scale(1.02);
-}
+      @media (max-width: 480px) {
+        #chat-window {
+          width: calc(100% - 40px);
+          height: 70vh;
+          right: 20px;
+          bottom: 90px;
+        }
+      }
 
-.footer-click-wrapper:hover .footer-bottom-left {
-    background: rgba(15, 23, 42, 0.95);
-    border-color: rgba(255, 106, 0, 0.4); /* Highlight warna branding */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
+      /* Styling Modal Konfirmasi */
+      #confirm-modal {
+        position: absolute;
+        inset: 0;
+        background: rgba(17, 24, 39, 0.8);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1001;
+        transition: 0.3s;
+      }
 
-.footer-bottom-left p {
-    font-size: 0.85rem;
-    color: #cbd5e1;
-    margin-bottom: 12px;
-    font-weight: 500;
-}
+      .confirm-hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
 
-/* Styling Daftar Link Internal */
-.footer-bottom-left ul {
-    display: flex;
-    flex-wrap: wrap; /* Supaya rapi jika layar sempit */
-    gap: 15px;
-    list-style: none;
-    padding: 0;
-}
+      .confirm-box {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        width: 80%;
+        text-align: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
 
-.footer-bottom-left ul li a {
-    font-size: 0.75rem;
-    color: #94a3b8;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: 0.3s;
-}
+      .confirm-box p {
+        color: #1e293b;
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
 
-.footer-bottom-left ul li a:hover {
-    color: #ff6a00; /* Warna branding PMKN */
-}
+      .confirm-btns {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
 
-/* Responsif: Sembunyikan atau kecilkan di HP agar tidak menutupi tombol navigasi HP */
-@media (max-width: 768px) {
-    .footer-click-wrapper {
-        bottom: 15px;
-        left: 15px;
-        max-width: 280px;
-        transform: scale(0.9);
-        transform-origin: bottom left;
-    }
-}
+      .confirm-btns button {
+        padding: 8px 20px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+      }
 
+      .btn-ok {
+        background: #ff4d00;
+        color: white;
+      }
+      .btn-cancel {
+        background: #e2e8f0;
+        color: #64748b;
+      }
+
+      /* Gaya untuk penanda tanggal */
+      .date-divider {
+        text-align: center;
+        margin: 20px 0;
+        position: relative;
+        clear: both;
+      }
+
+      .date-divider span {
+        background: #f1f5f9;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 11px;
+        color: #64748b;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      /* Keterangan Waktu di Balon Chat */
+      .chat-time {
+        display: block;
+        font-size: 10px;
+        margin-top: 5px;
+        text-align: right;
+        opacity: 0.7;
+      }
+
+      .msg-user .chat-time {
+        color: #ffd6cc;
+      }
+      .msg-bot .chat-time {
+        color: #94a3b8;
+      }
+
+      /* Container untuk reaksi */
+      .msg-content-wrapper {
+        position: relative;
+        display: inline-block;
+        max-width: 100%;
+      }
+
+      /* Animasi Love Pop (muncul saat double click) */
+      .love-pop {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        color: #ff4d4d;
+        font-size: 40px;
+        pointer-events: none;
+        z-index: 10;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .love-pop.animate {
+        animation: heartPop 0.8s ease-out forwards;
+      }
+
+      @keyframes heartPop {
+        0% {
+          transform: translate(-50%, -50%) scale(0);
+          opacity: 0;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.5);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1.2);
+          opacity: 0;
+        }
+      }
+
+      /* Label Reaksi kecil di bawah balon chat */
+      .reaction-badge {
+        position: absolute;
+        bottom: -10px;
+        left: 10px;
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 2px 6px;
+        font-size: 12px;
+        display: none; /* muncul saat ada reaksi */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+      }
+
+      .reaction-badge.visible {
+        display: block;
+      }
+
+      /* Teks instruksi di bawah pesan bot */
+      .reaction-hint {
+        font-size: 9px;
+        color: #94a3b8;
+        margin: -10px 0 15px 5px; /* mengatur jarak agar pas di bawah balon */
+        display: block;
+        font-style: italic;
+        opacity: 0.8;
+      }
+
+      /* Penyesuaian agar badge reaksi tidak menabrak hint */
+      .reaction-badge.visible {
+        display: block;
+        z-index: 2;
+      }
+
+      /* ================= FOOTER MODERN ================= */
+      .footer {
+        position: relative;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #e2e8f0;
+        padding: 60px 6% 30px;
+        overflow: hidden;
+      }
+
+      /* Pattern bulat background */
+      .footer::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+          circle at 1px 1px,
+          rgba(255, 255, 255, 0.05) 1px,
+          transparent 0
+        );
+        background-size: 40px 40px;
+        opacity: 0.5;
+      }
+
+      /* Container */
+      .footer-container {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 40px;
+      }
+
+      /* Logo Box */
+      .footer-logo-box {
+        display: flex;
+        gap: 15px;
+        align-items: flex-start;
+      }
+
+      .footer-logo {
+        width: 55px;
+        height: 55px;
+        background: #ffffff;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+      }
+
+      .footer-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: white;
+      }
+
+      .footer-subtitle {
+        font-size: 0.9rem;
+        color: #94a3b8;
+      }
+
+      .footer-desc {
+        margin-top: 15px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .footer-accredit {
+        color: #ff6a00;
+        margin-top: 12px;
+        font-weight: 600;
+      }
+
+      /* Column */
+      .footer h4 {
+        color: white;
+        margin-bottom: 15px;
+      }
+
+      .footer ul {
+        list-style: none;
+      }
+
+      .footer ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer ul li a {
+        color: #cbd5e1;
+        text-decoration: none;
+        transition: 0.25s;
+      }
+
+      .footer ul li a:hover {
+        color: #ff6a00;
+        transform: translateX(5px);
+      }
+
+      /* Contact */
+      .footer-contact li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .footer-contact i {
+        color: #ff6a00;
+        margin-top: 4px;
+      }
+
+      /* Bottom */
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 6%;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-bottom-left p {
+        font-size: 0.85rem;
+        color: #94a3b8;
+        margin-bottom: 10px;
+      }
+
+      .footer-bottom-left ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+
+      .footer-bottom-left ul li a {
+        font-size: 0.85rem;
+        color: #94a3b8;
+        text-decoration: none;
+        transition: 0.25s;
+      }
+
+      .footer-bottom-left ul li a:hover {
+        color: #ff6a00;
+      }
+
+      .footer-bottom-right {
+        display: flex;
+        gap: 15px;
+      }
+
+      .social-icon {
+        width: 35px;
+        height: 35px;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: #94a3b8;
+        text-decoration: none;
+        transition: 0.25s;
+      }
+
+      .social-icon:hover {
+        background: #ff6a00;
+        color: white;
+        transform: translateY(-3px);
+      }
+
+      @media (max-width: 768px) {
+        .footer-bottom {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .footer-bottom-right {
+          margin-top: 20px;
+        }
+      }
+
+      /* Container Utama yang dibuat Melayang */
+      .footer-click-wrapper {
+        position: fixed;
+        bottom: 25px; /* Jarak dari bawah */
+        left: 25px; /* Jarak dari kiri */
+        z-index: 9999;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        max-width: 350px; /* Batasi lebar agar tetap minimalis */
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      /* Kotak Konten dengan efek Blur */
+      .footer-bottom-left {
+        padding: 18px 22px;
+        background: rgba(15, 23, 42, 0.8); /* Warna gelap transparan */
+        backdrop-filter: blur(12px); /* Efek kaca */
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+      }
+
+      /* Animasi Hover: Terangkat & Cahaya Oranye */
+      .footer-click-wrapper:hover {
+        transform: translateY(-8px) scale(1.02);
+      }
+
+      .footer-click-wrapper:hover .footer-bottom-left {
+        background: rgba(15, 23, 42, 0.95);
+        border-color: rgba(255, 106, 0, 0.4); /* Highlight warna branding */
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      .footer-bottom-left p {
+        font-size: 0.85rem;
+        color: #cbd5e1;
+        margin-bottom: 12px;
+        font-weight: 500;
+      }
+
+      /* Styling Daftar Link Internal */
+      .footer-bottom-left ul {
+        display: flex;
+        flex-wrap: wrap; /* Supaya rapi jika layar sempit */
+        gap: 15px;
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-bottom-left ul li a {
+        font-size: 0.75rem;
+        color: #94a3b8;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: 0.3s;
+      }
+
+      .footer-bottom-left ul li a:hover {
+        color: #ff6a00; /* Warna branding PMKN */
+      }
+
+      /* Responsif: Sembunyikan atau kecilkan di HP agar tidak menutupi tombol navigasi HP */
+      @media (max-width: 768px) {
+        .footer-click-wrapper {
+          bottom: 15px;
+          left: 15px;
+          max-width: 280px;
+          transform: scale(0.9);
+          transform-origin: bottom left;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1515,19 +1743,146 @@
         <div class="loading-progress"></div>
       </div>
     </div>
+
+    <ul class="menu" id="mobileMenu">
+      <li class="sidebar-mobile-header">
+        <div style="display: flex; align-items: center; gap: 12px">
+          <img
+            src="icon pmkn.jpeg"
+            alt="Logo"
+            style="
+              width: 45px;
+              height: 45px;
+              border-radius: 50%;
+              object-fit: cover;
+            "
+          />
+          <div>
+            <div
+              style="
+                font-weight: 800;
+                color: #1e293b;
+                line-height: 1;
+                font-size: 1.1rem;
+              "
+            >
+              PMKN
+            </div>
+            <div
+              style="font-size: 0.75rem; color: #64748b; letter-spacing: 1px"
+            >
+              TONDANO
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <a href="cari.html"
+          ><i class="fa-solid fa-magnifying-glass"></i> Cari</a
+        >
+      </li>
+      <li>
+        <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+      </li>
+
+      <li class="menu-divider">Profil</li>
+      <li>
+        <a href="sejarahpmkn.html"
+          ><i class="fa-solid fa-clock-rotate-left"></i> Sejarah PMKN</a
+        >
+      </li>
+      <li>
+        <a href="perintispmkn.html"
+          ><i class="fa-solid fa-people-roof"></i> Perintis PMKN</a
+        >
+      </li>
+      <li>
+        <a href="visimisi.html"><i class="fa-solid fa-eye"></i> Visi Misi</a>
+      </li>
+      <li>
+        <a href="bpipmkn.html"><i class="fa-solid fa-user-tie"></i> BPI PMKN</a>
+      </li>
+      <li>
+        <a href="bphpmkn.html"><i class="fa-solid fa-users"></i> BPH PMKN</a>
+      </li>
+
+      <li class="menu-divider">Organisasi</li>
+      <li>
+        <a href="adartgbhopopmkn.html"
+          ><i class="fa-solid fa-gavel"></i> GBHO & PO</a
+        >
+      </li>
+      <li>
+        <a href="strukturorgpmkn.html"
+          ><i class="fa-solid fa-sitemap"></i> Struktur Organisasi</a
+        >
+      </li>
+      <li>
+        <a href="tugasutamabidang.html"
+          ><i class="fa-solid fa-building-circle-check"></i> Tugas Utama
+          Bidang</a
+        >
+      </li>
+      <li>
+        <a href="dataanggota.html"><i class="fa-solid fa-users"></i> Anggota</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-handshake"></i> Mitra PMKN</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-calendar-days"></i> Kegiatan</a>
+      </li>
+
+      <li class="menu-divider">Informasi</li>
+      <li>
+        <a href="pengumuman.html"
+          ><i class="fa-solid fa-bullhorn"></i> Pengumuman</a
+        >
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-calendar"></i> Agenda</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-photo-film"></i> Galeri</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-user-plus"></i> Join Member</a>
+      </li>
+
+      <li class="menu-divider">Kontak</li>
+      <li>
+        <a href="kontak.html"><i class="fa-solid fa-headset"></i> Kontak</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-info-circle"></i> Tentang PMKN</a>
+      </li>
+      <li>
+        <a href="panduan.html"
+          ><i class="fa-solid fa-book-open"></i> Panduan Pengguna</a
+        >
+      </li>
+      <li>
+        <a href="FAQ.html"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+      </li>
+    </ul>
+
+    <!-- /untuk mobile -->
+
     <header class="header">
-    <div class="logo">
+      <div class="logo">
         <img src="icon pmkn.jpeg" alt="Logo PMKN" />
         <span>PMKN Tondano</span>
-    </div>
-    <nav class="navbar">
+      </div>
+      <nav class="navbar">
         <ul class="menu">
-          <li><a href="index.html">Beranda</a></li>
+          <li class="home-link">
+            <a href="index.html" class="active">Beranda</a>
+          </li>
+
           <!-- Dropdown Profil -->
           <li class="dropdown">
-            <a href="#"
-              >Profil <i class="fa-solid fa-chevron-down"></i
-            ></a>
+            <a href="#">Profil <i class="fa-solid fa-chevron-down"></i></a>
             <ul class="dropdown-menu">
               <li>
                 <a href="sejarahpmkn.html"
@@ -1545,43 +1900,60 @@
                 >
               </li>
               <li>
-                <a href="bpipmkn.html"><i class="fa-regular fa-user"></i> BPI PMKN</a>
+                <a href="bpipmkn.html"
+                  ><i class="fa-regular fa-user"></i> BPI PMKN</a
+                >
               </li>
               <li>
-                <a href="bphpmkn.html"><i class="fa-solid fa-users"></i> BPH PMKN</a>
+                <a href="bphpmkn.html"
+                  ><i class="fa-solid fa-users"></i> BPH PMKN</a
+                >
               </li>
             </ul>
           </li>
-            <!-- Dropdown Organisasi -->
+          <!-- Dropdown Organisasi -->
           <li class="dropdown">
             <a href="#">Organisasi <i class="fa-solid fa-chevron-down"></i></a>
             <ul class="dropdown-menu">
-                    <li>
-                        <a href="adartgbhopopmkn.html"><i class="fa-solid fa-scale-balanced"></i> GBHO & PO</a>
-                    </li>
-                        <a href="strukturorgpmkn.html"><i class="fa-solid fa-sitemap"></i> Struktur Organisasi</a>
-                    </li>
-                    <li>
+              <li>
+                <a href="adartgbhopopmkn.html"
+                  ><i class="fa-solid fa-scale-balanced"></i> GBHO & PO</a
+                >
+              </li>
+              <li>
+                <a href="strukturorgpmkn.html"
+                  ><i class="fa-solid fa-sitemap"></i> Struktur Organisasi</a
+                >
+              </li>
+              <li>
                 <a href="tugasutamabidang.html"
                   ><i class="fa-solid fa-building-circle-check"></i> Tugas Utama
-                  Bidang</a> </li>
-                    <li>
-                        <a href="dataanggota.html"><i class="fa-solid fa-users"></i> Anggota</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa-solid fa-handshake"></i> Mitra PMKN</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa-solid fa-calendar-days"></i> Kegiatan</a>
-                    </li>
-                </ul>
+                  Bidang</a
+                >
+              </li>
+              <li>
+                <a href="dataanggota.html"
+                  ><i class="fa-solid fa-users"></i> Anggota</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fa-solid fa-handshake"></i> Mitra PMKN</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fa-solid fa-calendar-days"></i> Kegiatan</a
+                >
+              </li>
+            </ul>
           </li>
           <!-- Dropdown info -->
           <li class="dropdown">
             <a href="#">Info <i class="fa-solid fa-chevron-down"></i></a>
             <ul class="dropdown-menu">
               <li>
-                <a href="pengumuman.html"><i class="fa-solid fa-newspaper"></i> Pengumuman</a>
+                <a href="pengumuman.html"
+                  ><i class="fa-solid fa-newspaper"></i> Pengumuman</a
+                >
               </li>
               <li>
                 <a href="#"><i class="fa-solid fa-calendar"></i> Agenda</a>
@@ -1598,8 +1970,7 @@
           </li>
           <!-- Dropdown About -->
           <li class="dropdown">
-            <a href="#" class="active">About
-               <i class="fa-solid fa-chevron-down"></i></a>
+            <a href="#">About <i class="fa-solid fa-chevron-down"></i></a>
             <ul class="dropdown-menu">
               <li>
                 <a href="#"
@@ -1607,51 +1978,67 @@
                 >
               </li>
               <li>
-                <a href="kontak.html"><i class="fa-solid fa-address-card"></i> Kontak</a>
+                <a href="kontak.html"
+                  ><i class="fa-solid fa-headset"></i> Kontak</a
+                >
               </li>
               <li>
-                <a href="panduan.html"><i class="fa-solid fa-book"></i> Panduan Pengguna</a>
+                <a href="panduan.html"
+                  ><i class="fa-solid fa-book-open"></i> Panduan Pengguna</a
+                >
+              </li>
             </ul>
           </li>
-          
+
           <!-- Search -->
           <li class="nav-item-search">
-    <a href="cari.html" class="search-link">
-        <div class="search-icon-wrapper">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
-    </a>
-  </li>
-</ul>
-</nav>
+            <a href="cari.html" class="search-link">
+              <div class="search-icon-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </nav>
 
       <!-- Hamburger -->
-    <div class="menu-toggle" id="menuBtn">
+      <div class="menu-toggle" id="menuBtn">
         <span class="line-1"></span>
         <span class="line-2"></span>
         <span class="line-3"></span>
-    </div>
+      </div>
     </header>
-    <section class="hero">
-    <div class="breadcrumb">
-        <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a> > <span>Kontak</span>
-    </div>
-    <h2>Kontak <span class="highlight-text">Kami</span></h2>
-    <p>Jangan ragu untuk menghubungi kami. Kami siap membantu Anda.</p>
-</section>
 
-<section class="contact-section">
+    <section class="hero">
+      <div class="breadcrumb">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a> >
+        <span>Kontak</span>
+      </div>
+      <h2>Kontak <span class="highlight-text">Kami</span></h2>
+      <p>Jangan ragu untuk menghubungi kami. Kami siap membantu Anda.</p>
+    </section>
+
+    <section class="contact-section">
       <div class="contact-container">
-        
         <div class="contact-info-card">
-          <h3 class="section-title"><i class="fa-solid fa-circle-info"></i> Informasi Kontak</h3>
-          <p class="info-text">Hubungi kami melalui berbagai saluran komunikasi yang tersedia. Tim kami siap membantu menjawab pertanyaan Anda seputar PMKN di Tondano.</p>
-          
+          <h3 class="section-title">
+            <i class="fa-solid fa-circle-info"></i> Informasi Kontak
+          </h3>
+          <p class="info-text">
+            Hubungi kami melalui berbagai saluran komunikasi yang tersedia. Tim
+            kami siap membantu menjawab pertanyaan Anda seputar PMKN di Tondano.
+          </p>
+
           <div class="contact-item">
-            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="contact-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
             <div class="contact-detail">
               <h5>Alamat</h5>
-              <p>Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2, Kec. Tondano Selatan, Sulawesi Utara</p>
+              <p>
+                Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2, Kec. Tondano
+                Selatan, Sulawesi Utara
+              </p>
             </div>
           </div>
 
@@ -1672,59 +2059,87 @@
           </div>
 
           <div class="contact-item">
-  <div class="contact-icon"><i class="fa-solid fa-share-nodes"></i></div>
-  <div class="contact-detail">
-    <h5>Media Sosial</h5>
-    <div class="social-links-container">
-      <a href="https://www.instagram.com/pmkn_tondano" target="_blank" class="social-link-item">
-        <i class="fa-brands fa-instagram" style="color: #E1306C;"></i>
-        <span>Instagram</span>
-      </a>
-      <a href="https://www.tiktok.com/@pmkn_tondano" target="_blank" class="social-link-item">
-        <i class="fa-brands fa-tiktok" style="color: #000000;"></i>
-        <span>TikTok</span>
-      </a>
-      <a href="https://www.facebook.com/pmkn.tondano" target="_blank" class="social-link-item">
-        <i class="fa-brands fa-facebook" style="color: #1877F2;"></i>
-        <span>Facebook</span>
-      </a>
-      <a href="https://www.youtube.com/@PMKN_Tondano" target="_blank" class="social-link-item">
-        <i class="fa-brands fa-youtube" style="color: #FF0000;"></i>
-        <span>YouTube</span>
-      </a>
-    </div>
-  </div>
-</div>
+            <div class="contact-icon">
+              <i class="fa-solid fa-share-nodes"></i>
+            </div>
+            <div class="contact-detail">
+              <h5>Media Sosial</h5>
+              <div class="social-links-container">
+                <a
+                  href="https://www.instagram.com/pmkn_tondano"
+                  target="_blank"
+                  class="social-link-item"
+                >
+                  <i class="fa-brands fa-instagram" style="color: #e1306c"></i>
+                  <span>Instagram</span>
+                </a>
+                <a
+                  href="https://www.tiktok.com/@pmkn_tondano"
+                  target="_blank"
+                  class="social-link-item"
+                >
+                  <i class="fa-brands fa-tiktok" style="color: #000000"></i>
+                  <span>TikTok</span>
+                </a>
+                <a
+                  href="https://www.facebook.com/pmkn.tondano"
+                  target="_blank"
+                  class="social-link-item"
+                >
+                  <i class="fa-brands fa-facebook" style="color: #1877f2"></i>
+                  <span>Facebook</span>
+                </a>
+                <a
+                  href="https://www.youtube.com/@PMKN_Tondano"
+                  target="_blank"
+                  class="social-link-item"
+                >
+                  <i class="fa-brands fa-youtube" style="color: #ff0000"></i>
+                  <span>YouTube</span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
 
-  <div class="map-card">
-  <h3 class="section-title"><i class="fa-solid fa-map-location-dot"></i> Lokasi Kami</h3>
-  <p class="info-text">PMKN-Tondano terletak di Tondano, Kabupaten Minahasa. Berikut peta lokasi untuk memudahkan Anda menemukan kami:</p>
-          
-    <div class="map-wrapper">
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.123456789!2d124.8763017!3d1.2640516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x328715cae10b176b%3A0xd2d0f3231761ba33!2sSekretariat%20PMK-Tondano!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
-      width="100%" 
-      height="100%" 
-      style="border:0;" 
-      allowfullscreen="" 
-      loading="lazy" 
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </div>
-  <a href="https://maps.app.goo.gl/5S5dXXNJkhroq6AX8" target="_blank" class="btn-direction">
-    <i class="fa-solid fa-route"></i> Petunjuk Arah
-  </a>
-</div>
-</div>
-</section>
+        <div class="map-card">
+          <h3 class="section-title">
+            <i class="fa-solid fa-map-location-dot"></i> Lokasi Kami
+          </h3>
+          <p class="info-text">
+            PMKN-Tondano terletak di Tondano, Kabupaten Minahasa. Berikut peta
+            lokasi untuk memudahkan Anda menemukan kami:
+          </p>
 
-<section class="faq-cta-section">
+          <div class="map-wrapper">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.123456789!2d124.8763017!3d1.2640516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x328715cae10b176b%3A0xd2d0f3231761ba33!2sSekretariat%20PMK-Tondano!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </div>
+          <a
+            href="https://maps.app.goo.gl/5S5dXXNJkhroq6AX8"
+            target="_blank"
+            class="btn-direction"
+          >
+            <i class="fa-solid fa-route"></i> Petunjuk Arah
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-cta-section">
       <div class="faq-cta-container">
         <h3>Ada Pertanyaan Lain?</h3>
         <p>
-          Kunjungi halaman FAQ kami untuk menemukan jawaban atas pertanyaan yang sering diajukan, 
-          atau hubungi kami langsung melalui email.
+          Kunjungi halaman FAQ kami untuk menemukan jawaban atas pertanyaan yang
+          sering diajukan, atau hubungi kami langsung melalui email.
         </p>
         <div class="cta-button-group">
           <a href="FAQ.html" class="btn-cta btn-faq">
@@ -1738,101 +2153,145 @@
     </section>
 
     <section class="feedback-section">
-    <div class="feedback-container">
+      <div class="feedback-container">
         <form class="feedback-form" id="sheetdb-form">
-            <h2>Beri Kami Penilaian & Saran</h2>
-            
-            <div class="form-group">
-                <label>Nama Lengkap</label>
-                <input type="text" name="Nama" placeholder="Masukan Nama Anda" required>
-            </div>
+          <h2>Beri Kami Penilaian & Saran</h2>
 
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" name="Email" placeholder="Email Aktif" required>
-            </div>
+          <div class="form-group">
+            <label>Nama Lengkap</label>
+            <input
+              type="text"
+              name="Nama"
+              placeholder="Masukan Nama Anda"
+              required
+            />
+          </div>
 
-              <div class="form-group">
-              <label>Bagaimana Penilaian Anda terhadap Website Kami?</label>
-              
-              <input type="hidden" name="Penilaian" id="selectedRating" required>
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              name="Email"
+              placeholder="Email Aktif"
+              required
+            />
+          </div>
 
-              <div class="rating-container">
-                  <div class="rating-card" data-value="Sangat Baik" onclick="selectRating(this)">
-                      <div class="emoji"><i class="fa-solid fa-face-kiss-wink-heart"></i></div>
-                      <span>Sangat Baik</span>
-                  </div>
-                  <div class="rating-card" data-value="Baik" onclick="selectRating(this)">
-                      <div class="emoji"><i class="fa-regular fa-face-grin-stars"></i></div>
-                      <span>Baik</span>
-                  </div>
-                  <div class="rating-card" data-value="Cukup" onclick="selectRating(this)">
-                      <div class="emoji"><i class="fa-solid fa-face-grin"></i></div>
-                      <span>Cukup</span>
-                  </div>
-                  <div class="rating-card" data-value="Kurang" onclick="selectRating(this)">
-                      <div class="emoji"><i class="fa-solid fa-face-sad-tear"></i></div>
-                      <span>Kurang</span>
-                  </div>
+          <div class="form-group">
+            <label>Bagaimana Penilaian Anda terhadap Website Kami?</label>
+
+            <input
+              type="hidden"
+              name="Penilaian"
+              id="selectedRating"
+              required
+            />
+
+            <div class="rating-container">
+              <div
+                class="rating-card"
+                data-value="Sangat Baik"
+                onclick="selectRating(this)"
+              >
+                <div class="emoji">
+                  <i class="fa-solid fa-face-kiss-wink-heart"></i>
+                </div>
+                <span>Sangat Baik</span>
+              </div>
+              <div
+                class="rating-card"
+                data-value="Baik"
+                onclick="selectRating(this)"
+              >
+                <div class="emoji">
+                  <i class="fa-regular fa-face-grin-stars"></i>
+                </div>
+                <span>Baik</span>
+              </div>
+              <div
+                class="rating-card"
+                data-value="Cukup"
+                onclick="selectRating(this)"
+              >
+                <div class="emoji"><i class="fa-solid fa-face-grin"></i></div>
+                <span>Cukup</span>
+              </div>
+              <div
+                class="rating-card"
+                data-value="Kurang"
+                onclick="selectRating(this)"
+              >
+                <div class="emoji">
+                  <i class="fa-solid fa-face-sad-tear"></i>
+                </div>
+                <span>Kurang</span>
               </div>
             </div>
+          </div>
 
-            <div class="form-group">
-                <label>Saran & Masukan</label>
-                <textarea name="Saran" rows="4" placeholder="Apa yang perlu kami tingkatkan?" required></textarea>
-            </div>
+          <div class="form-group">
+            <label>Saran & Masukan</label>
+            <textarea
+              name="Saran"
+              rows="4"
+              placeholder="Apa yang perlu kami tingkatkan?"
+              required
+            ></textarea>
+          </div>
 
-            <button type="submit" class="btn-submit" id="submitBtn">Kirim Masukan</button>
-            <div id="status-msg"></div>
+          <button type="submit" class="btn-submit" id="submitBtn">
+            Kirim Masukan
+          </button>
+          <div id="status-msg"></div>
         </form>
-    </div>
+      </div>
 
-<section class="saran-display-section">
-    <div style="text-align: center; margin-bottom: 40px;">
-        <h2>Apa Kata Mereka?</h2>
-        <p>Saran dan masukan dari komentar civitas PMKN Tondano</p>
-    </div>
-    
-    <div id="loading-saran">Memuat ...</div>
-    <div class="saran-grid" id="saranContainer"></div>
-</section>
+      <section class="saran-display-section">
+        <div style="text-align: center; margin-bottom: 40px">
+          <h2>Apa Kata Mereka?</h2>
+          <p>Saran dan masukan dari komentar civitas PMKN Tondano</p>
+        </div>
 
-</section>
+        <div id="loading-saran">Memuat ...</div>
+        <div class="saran-grid" id="saranContainer"></div>
+      </section>
+    </section>
 
-<script>
-  const form = document.getElementById('sheetdb-form');
-  const btn = document.getElementById('submitBtn');
-  const msg = document.getElementById('status-msg');
+    <script>
+      const form = document.getElementById("sheetdb-form");
+      const btn = document.getElementById("submitBtn");
+      const msg = document.getElementById("status-msg");
 
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    btn.disabled = true;
-    btn.innerHTML = "Mengirim...";
-    msg.style.display = "block";
-    msg.innerHTML = "Sedang diproses...";
-    msg.style.color = "#64748b";
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerHTML = "Mengirim...";
+        msg.style.display = "block";
+        msg.innerHTML = "Sedang diproses...";
+        msg.style.color = "#64748b";
 
-    // GANTI URL DI BAWAH INI dengan URL dari Google Apps Script Anda
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbw1MWG6RwPQ9XEgZxwZSVm_p-rLeZpC5OWnwiy24VWxYso40E01L-sFDMBu6feoYNby/exec';
+        // GANTI URL DI BAWAH INI dengan URL dari Google Apps Script Anda
+        const scriptURL =
+          "https://script.google.com/macros/s/AKfycbw1MWG6RwPQ9XEgZxwZSVm_p-rLeZpC5OWnwiy24VWxYso40E01L-sFDMBu6feoYNby/exec";
 
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => {
-          btn.disabled = false;
-          btn.innerHTML = "Kirim Masukan";
-          msg.innerHTML = "Terima kasih! Saran Anda telah kami terima.";
-          msg.style.color = "#16a34a";
-          form.reset();
-      })
-      .catch(error => {
-          btn.disabled = false;
-          btn.innerHTML = "Kirim Ulang";
-          msg.innerHTML = "Maaf, terjadi kesalahan. Coba lagi.";
-          msg.style.color = "#dc2626";
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            btn.disabled = false;
+            btn.innerHTML = "Kirim Masukan";
+            msg.innerHTML = "Terima kasih! Saran Anda telah kami terima.";
+            msg.style.color = "#16a34a";
+            form.reset();
+          })
+          .catch((error) => {
+            btn.disabled = false;
+            btn.innerHTML = "Kirim Ulang";
+            msg.innerHTML = "Maaf, terjadi kesalahan. Coba lagi.";
+            msg.style.color = "#dc2626";
+          });
       });
-  });
-</script>
+    </script>
 
-<script>
+    <script>
       window.addEventListener("load", () => {
         const loadingScreen = document.getElementById("loading-screen");
         loadingScreen.style.opacity = "0";
@@ -1842,174 +2301,229 @@
       });
 
       // --- Mobile Menu Logic ---
-    const menuBtn = document.getElementById("menuBtn");
-    const navbar = document.querySelector(".navbar");
-    menuBtn.addEventListener("click", () => {
+      const menuBtn = document.getElementById("menuBtn");
+      const navbar = document.querySelector(".navbar");
+      menuBtn.addEventListener("click", () => {
         menuBtn.classList.toggle("active");
         navbar.classList.toggle("show");
-    });
+      });
 
-    // Close menu if link clicked
-    document.querySelectorAll(".navbar a").forEach((n) =>
+      // sidebar
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const body = document.body;
+
+        // Pastikan elemen ditemukan sebelum memasang event
+        if (menuBtn && mobileMenu) {
+          menuBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            body.classList.toggle("menu-open");
+            mobileMenu.classList.toggle("show");
+
+            // Tambahan: Cegah layar belakang discroll saat menu buka
+            if (mobileMenu.classList.contains("show")) {
+              body.style.overflow = "hidden";
+            } else {
+              body.style.overflow = "auto";
+            }
+          });
+
+          // Menutup sidebar jika klik di luar area menu
+          document.addEventListener("click", (e) => {
+            if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+              body.classList.remove("menu-open");
+              mobileMenu.classList.remove("show");
+              body.style.overflow = "auto";
+            }
+          });
+
+          // Tambahan: Menutup menu saat link di dalam sidebar diklik
+          const mobileLinks = mobileMenu.querySelectorAll("a");
+          mobileLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+              body.classList.remove("menu-open");
+              mobileMenu.classList.remove("show");
+              body.style.overflow = "auto";
+            });
+          });
+        }
+      });
+
+      // Close menu if link clicked
+      document.querySelectorAll(".navbar a").forEach((n) =>
         n.addEventListener("click", () => {
-            menuBtn.classList.remove("active");
-            navbar.classList.remove("show");
+          menuBtn.classList.remove("active");
+          navbar.classList.remove("show");
         }),
-    );
+      );
 
-    function selectRating(element) {
-    // 1. Hapus kelas 'active' dari semua kartu
-    const cards = document.querySelectorAll('.rating-card');
-    cards.forEach(card => card.classList.remove('active'));
+      function selectRating(element) {
+        // 1. Hapus kelas 'active' dari semua kartu
+        const cards = document.querySelectorAll(".rating-card");
+        cards.forEach((card) => card.classList.remove("active"));
 
-    // 2. Tambahkan kelas 'active' ke kartu yang diklik
-    element.classList.add('active');
+        // 2. Tambahkan kelas 'active' ke kartu yang diklik
+        element.classList.add("active");
 
-    // 3. Masukkan nilai data-value ke dalam input hidden
-    const val = element.getAttribute('data-value');
-    document.getElementById('selectedRating').value = val;
-    
-    console.log("Rating dipilih: " + val); // Untuk cek di console
-}
-    async function loadSaran() {
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbw1MWG6RwPQ9XEgZxwZSVm_p-rLeZpC5OWnwiy24VWxYso40E01L-sFDMBu6feoYNby/exec';
-        const container = document.getElementById('saranContainer');
-        const loader = document.getElementById('loading-saran');
+        // 3. Masukkan nilai data-value ke dalam input hidden
+        const val = element.getAttribute("data-value");
+        document.getElementById("selectedRating").value = val;
+
+        console.log("Rating dipilih: " + val); // Untuk cek di console
+      }
+      async function loadSaran() {
+        const scriptURL =
+          "https://script.google.com/macros/s/AKfycbw1MWG6RwPQ9XEgZxwZSVm_p-rLeZpC5OWnwiy24VWxYso40E01L-sFDMBu6feoYNby/exec";
+        const container = document.getElementById("saranContainer");
+        const loader = document.getElementById("loading-saran");
 
         try {
-            const response = await fetch(scriptURL);
-            const data = await response.json();
-            
-            // Ambil 6 saran terbaru dan balik urutannya (terbaru di atas)
-            const displayData = data.reverse().slice(0, 6);
+          const response = await fetch(scriptURL);
+          const data = await response.json();
 
-            loader.style.display = 'none';
-            container.innerHTML = '';
+          // Ambil 6 saran terbaru dan balik urutannya (terbaru di atas)
+          const displayData = data.reverse().slice(0, 6);
 
-            displayData.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'saran-card';
-                card.innerHTML = `
+          loader.style.display = "none";
+          container.innerHTML = "";
+
+          displayData.forEach((item) => {
+            const card = document.createElement("div");
+            card.className = "saran-card";
+            card.innerHTML = `
                     <div class="rating-tag">${item.Penilaian}</div>
                     <h4>${item.Nama}</h4>
                     <p class="saran-text">"${item.Saran}"</p>
                 `;
-                container.appendChild(card);
-            });
+            container.appendChild(card);
+          });
         } catch (error) {
-            console.error('Error:', error);
-            loader.innerHTML = 'Gagal memuat saran.';
+          console.error("Error:", error);
+          loader.innerHTML = "Gagal memuat saran.";
         }
-    }
+      }
 
-    // Jalankan fungsi saat halaman dibuka
-    loadSaran();
+      // Jalankan fungsi saat halaman dibuka
+      loadSaran();
 
-    // chat wigded
-function toggleChat() {
-    const chat = document.getElementById('chat-window');
-    chat.classList.toggle('chat-hidden');
-}
+      // chat wigded
+      function toggleChat() {
+        const chat = document.getElementById("chat-window");
+        chat.classList.toggle("chat-hidden");
+      }
 
-function handleKeyPress(e) {
-    if (e.key === 'Enter') sendMessage();
-}
+      function handleKeyPress(e) {
+        if (e.key === "Enter") sendMessage();
+      }
 
-// --- Fungsi Pengiriman Pesan ---
-function sendMessage() {
-    const input = document.getElementById('userInput');
-    const text = input.value.trim();
-    if (text !== "") {
-        appendMessage('user', text);
-        input.value = "";
-        
-        // Simulasi bot berpikir
-        setTimeout(() => {
+      // --- Fungsi Pengiriman Pesan ---
+      function sendMessage() {
+        const input = document.getElementById("userInput");
+        const text = input.value.trim();
+        if (text !== "") {
+          appendMessage("user", text);
+          input.value = "";
+
+          // Simulasi bot berpikir
+          setTimeout(() => {
             processBotResponse(text.toLowerCase());
+          }, 600);
+        }
+      }
+
+      function askBot(question) {
+        appendMessage("user", question);
+        setTimeout(() => {
+          processBotResponse(question.toLowerCase());
         }, 600);
-    }
-}
+      }
 
-function askBot(question) {
-    appendMessage('user', question);
-    setTimeout(() => {
-        processBotResponse(question.toLowerCase());
-    }, 600);
-}
+      // --- Fungsi Inti Pesan & Waktu ---
+      function getCurrentTime() {
+        const now = new Date();
+        return (
+          now.getHours().toString().padStart(2, "0") +
+          ":" +
+          now.getMinutes().toString().padStart(2, "0")
+        );
+      }
 
-// --- Fungsi Inti Pesan & Waktu ---
-function getCurrentTime() {
-    const now = new Date();
-    return now.getHours().toString().padStart(2, '0') + ":" + 
-           now.getMinutes().toString().padStart(2, '0');
-}
+      function getCurrentDateFormatted() {
+        const options = {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        };
+        return new Date().toLocaleDateString("id-ID", options);
+      }
 
-function getCurrentDateFormatted() {
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date().toLocaleDateString('id-ID', options);
-}
+      // --- Logika Baru: Update Status Tombol Reset ---
+      function updateResetButtonStatus() {
+        const chatBody = document.getElementById("chatBody");
+        const resetBtn = document.querySelector(".fa-rotate-left");
+        if (!resetBtn) return;
 
-// --- Logika Baru: Update Status Tombol Reset ---
-function updateResetButtonStatus() {
-    const chatBody = document.getElementById('chatBody');
-    const resetBtn = document.querySelector('.fa-rotate-left');
-    if (!resetBtn) return;
+        // Cek apakah ada pesan (elemen dengan class 'msg')
+        const hasMessages = chatBody.querySelectorAll(".msg").length > 0;
 
-    // Cek apakah ada pesan (elemen dengan class 'msg')
-    const hasMessages = chatBody.querySelectorAll('.msg').length > 0;
-    
-    if (hasMessages) {
-        resetBtn.style.opacity = "1";
-        resetBtn.style.pointerEvents = "auto";
-        resetBtn.style.transform = "scale(1)";
-    } else {
-        resetBtn.style.opacity = "0";
-        resetBtn.style.pointerEvents = "none";
-        resetBtn.style.transform = "scale(0.5)";
-    }
-}
+        if (hasMessages) {
+          resetBtn.style.opacity = "1";
+          resetBtn.style.pointerEvents = "auto";
+          resetBtn.style.transform = "scale(1)";
+        } else {
+          resetBtn.style.opacity = "0";
+          resetBtn.style.pointerEvents = "none";
+          resetBtn.style.transform = "scale(0.5)";
+        }
+      }
 
-// --- Logika Penyimpanan (LocalStorage) ---
-function saveChat() {
-    const chatContent = document.getElementById('chatBody').innerHTML;
-    localStorage.setItem("pmkn_chat_history", chatContent);
-}
+      // --- Logika Penyimpanan (LocalStorage) ---
+      function saveChat() {
+        const chatContent = document.getElementById("chatBody").innerHTML;
+        localStorage.setItem("pmkn_chat_history", chatContent);
+      }
 
-function checkAndAppendDate() {
-    const chatBody = document.getElementById('chatBody');
-    const today = getCurrentDateFormatted();
-    const lastDate = localStorage.getItem('pmkn_last_date');
+      function checkAndAppendDate() {
+        const chatBody = document.getElementById("chatBody");
+        const today = getCurrentDateFormatted();
+        const lastDate = localStorage.getItem("pmkn_last_date");
 
-    if (lastDate !== today) {
-        const dateDiv = document.createElement('div');
-        dateDiv.className = 'date-divider';
-        dateDiv.innerHTML = `<span>${today}</span>`;
-        chatBody.appendChild(dateDiv);
-        localStorage.setItem('pmkn_last_date', today);
-        saveChat();
-    }
-}
+        if (lastDate !== today) {
+          const dateDiv = document.createElement("div");
+          dateDiv.className = "date-divider";
+          dateDiv.innerHTML = `<span>${today}</span>`;
+          chatBody.appendChild(dateDiv);
+          localStorage.setItem("pmkn_last_date", today);
+          saveChat();
+        }
+      }
 
-// --- Logika Reset & Welcome ---
-function confirmReset() {
-    document.getElementById('confirm-modal').classList.remove('confirm-hidden');
-}
+      // --- Logika Reset & Welcome ---
+      function confirmReset() {
+        document
+          .getElementById("confirm-modal")
+          .classList.remove("confirm-hidden");
+      }
 
-function closeConfirm() {
-    document.getElementById('confirm-modal').classList.add('confirm-hidden');
-}
+      function closeConfirm() {
+        document
+          .getElementById("confirm-modal")
+          .classList.add("confirm-hidden");
+      }
 
-function executeReset() {
-    localStorage.removeItem("pmkn_chat_history");
-    localStorage.removeItem("pmkn_last_date"); // Reset pembanding tanggal juga
-    showWelcomeMessage();
-    closeConfirm();
-    updateResetButtonStatus(); // Pastikan tombol reset langsung hilang
-}
+      function executeReset() {
+        localStorage.removeItem("pmkn_chat_history");
+        localStorage.removeItem("pmkn_last_date"); // Reset pembanding tanggal juga
+        showWelcomeMessage();
+        closeConfirm();
+        updateResetButtonStatus(); // Pastikan tombol reset langsung hilang
+      }
 
-function showWelcomeMessage() {
-    const chatBody = document.getElementById('chatBody');
-    chatBody.innerHTML = `
+      function showWelcomeMessage() {
+        const chatBody = document.getElementById("chatBody");
+        chatBody.innerHTML = `
         <div class="chat-welcome">
             <div class="welcome-icon">👋</div>
             <h3>Halo, Yaahowu!</h3>
@@ -2034,261 +2548,328 @@ function showWelcomeMessage() {
             <button onclick="askBot('Lokasi Sekretariat?')">Lokasi Sekret</button>
         </div>
     `;
-    saveChat();
-    updateResetButtonStatus(); // Sembunyikan tombol saat welcome message muncul
-}
+        saveChat();
+        updateResetButtonStatus(); // Sembunyikan tombol saat welcome message muncul
+      }
 
-// --- Init Saat Halaman Dimuat ---
-document.addEventListener("DOMContentLoaded", () => {
-    const savedChat = localStorage.getItem("pmkn_chat_history");
-    const chatBody = document.getElementById('chatBody');
-    
-    if (savedChat && savedChat.trim() !== "") {
-        chatBody.innerHTML = savedChat;
-        chatBody.scrollTop = chatBody.scrollHeight;
+      // --- Init Saat Halaman Dimuat ---
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedChat = localStorage.getItem("pmkn_chat_history");
+        const chatBody = document.getElementById("chatBody");
+
+        if (savedChat && savedChat.trim() !== "") {
+          chatBody.innerHTML = savedChat;
+          chatBody.scrollTop = chatBody.scrollHeight;
+          checkAndAppendDate();
+          updateResetButtonStatus(); // Tampilkan tombol jika ada riwayat chat
+        } else {
+          checkAndAppendDate();
+          showWelcomeMessage();
+        }
+      });
+
+      // --- Logika Jawaban Bot ---
+      function processBotResponse(text) {
+        let response = "";
+        const input = text.toLowerCase();
+
+        if (input.includes("apa itu pmkn")) {
+          response =
+            "PMKN (Persatuan Mahasiswa Kristen Nias) Tondano adalah wadah kekeluargaan bagi mahasiswa asal Nias di Tondano dan sekitarnya.";
+        } else if (input.includes("organization life")) {
+          response =
+            "Organization Life mencakup seluruh dinamika kehidupan berorganisasi kita, mulai dari kebersamaan di dalam organisasi, kampus, hingga pelayanan.";
+        } else if (input.includes("perbedaan bpi dan bph")) {
+          response =
+            "BPI (Badan Pengurus Inti) sebagai posisi tertitingi dalam struktur organisasi PMKN dan setara dengan Dewan Penasehat/Pengarah, sedangkan BPH (Badan Pengurus Harian) adalah pelaksana eksekutif organisasi.";
+        } else if (input.includes("sejarah")) {
+          response =
+            "Sejarah PMKN di Tondano adalah: Awalnya ada pada tahun 2017 dan resmi tahun 2020. Dan kalo mau baca selengkapnya, silahkan menu profil > Sejarah PMKN.";
+        } else if (input.includes("visi dan misi")) {
+          response =
+            "Visi: Menjadi wadah yang takut akan Tuhan dan unggul. Misi: Mempererat persaudaraan dan meningkatkan kreativitas mahasiswa Nias.";
+        } else if (input.includes("gbho")) {
+          response =
+            "GBHO (Garis-Garis Besar Haluan Organisasi) adalah pedoman atau acuan bagi pengurus dalam menjalankan roda organisasi selama satu periode.";
+        } else if (input.includes("tugas utama bidang")) {
+          response =
+            "Tiap bidang (Kaderisasi, Kerohanian, Minat Bakat, dll) memiliki tugas spesifik sesuai tupoksi di AD/ART untuk mencapai program kerja.";
+        } else if (input.includes("mitra")) {
+          response =
+            "Mitra PMKN meliputi organisasi kemahasiswaan lainnya, pemerintah daerah, serta alumni (Ika-PMKN).";
+        } else if (input.includes("kontak")) {
+          response =
+            "Kamu bisa menghubungi kami via DM Instagram @pmkn_tondano atau melalui nomor pengurus di halaman Kontak website ini.";
+        } else if (input.includes("panduan pengguna")) {
+          response =
+            "Gunakan website ini untuk memantau data anggota, pengumuman, dan galeri kegiatan secara real-time.";
+        } else if (input.includes("pengumuman")) {
+          response =
+            "Pengumuman terbaru bisa dilihat di section 'News PMKN' pada halaman utama website ini, atau ke menu Info > Pengumuman.";
+        } else if (input.includes("agenda")) {
+          response =
+            "Agenda terdekat meliputi pertemuan rutin dan persiapan PAB. Detailnya akan diupdate di kalender kegiatan.";
+        } else if (input.includes("dokumentasi")) {
+          response =
+            "Dokumentasi berupa foto dan video kegiatan bisa kamu akses di menu Galeri dan Youtube PMKN.";
+        } else if (input.includes("daftar")) {
+          response =
+            "Pendaftaran anggota baru biasanya dibuka pada awal semester ganjil melalui tahapan PAB.";
+        } else if (input.includes("lokasi")) {
+          response =
+            "Sekretariat PMKN Tondano terletak di area mahasiswa sekitar kampus UNIMA: Alamatnya Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2, Kec. Tondano Selatan, Sulawesi Utara. untuk selengkapnya silahkan Ke Menu About > Kontak.";
+        } else if (
+          input.includes("halo") ||
+          input.includes("helo") ||
+          input.includes("hi") ||
+          input.includes("hy") ||
+          input === "p" ||
+          input.includes("pagi") ||
+          input.includes("siang") ||
+          input.includes("malam")
+        ) {
+          response =
+            "Halo! 👋 Selamat datang di Layanan Digital PMKN Tondano. Kami sangat senang Anda berkunjung! 😊 Sampaikan saja pertanyaan Anda, asisten robot kami siap membantu dengan sepenuh hati.";
+        } else if (
+          input.includes("terima kasih") ||
+          input.includes("makasih") ||
+          input.includes("thanks") ||
+          input.includes("tq") ||
+          input.includes("syukur")
+        ) {
+          response =
+            "Sama-sama! 😊 Senang bisa membantu Anda. Jangan ragu untuk bertanya lagi jika ada hal lain yang ingin diketahui tentang PMKN Tondano. Yaahowu! ✨";
+        } else if (
+          input.includes("keren") ||
+          input.includes("mantap") ||
+          input.includes("oke") ||
+          input.includes("ok") ||
+          input.includes("waw") ||
+          input.includes("sip")
+        ) {
+          response =
+            "Terima kasih atas apresiasinya! 🙌 Kami terus berusaha memberikan informasi terbaik untuk Anda. Ada lagi yang bisa asisten bantu?";
+        } else {
+          response =
+            "Maaf, saya belum mengenali pertanyaan tersebut. Silakan hubungi admin secara langsung untuk informasi lebih detail.";
+        }
+
+        appendMessage("bot", response);
+      }
+
+      function appendMessage(sender, text) {
+        const chatBody = document.getElementById("chatBody");
+
         checkAndAppendDate();
-        updateResetButtonStatus(); // Tampilkan tombol jika ada riwayat chat
-    } else {
-        checkAndAppendDate(); 
-        showWelcomeMessage();
-    }
-});
 
-// --- Logika Jawaban Bot ---
-function processBotResponse(text) {
-    let response = "";
-    const input = text.toLowerCase();
+        // Wrapper untuk pesan
+        const wrapper = document.createElement("div");
+        wrapper.className = "msg-content-wrapper";
+        if (sender === "user") wrapper.style.width = "100%";
 
-    if (input.includes('apa itu pmkn')) {
-        response = "PMKN (Persatuan Mahasiswa Kristen Nias) Tondano adalah wadah kekeluargaan bagi mahasiswa asal Nias di Tondano dan sekitarnya.";
-    } else if (input.includes('organization life')) {
-        response = "Organization Life mencakup seluruh dinamika kehidupan berorganisasi kita, mulai dari kebersamaan di dalam organisasi, kampus, hingga pelayanan.";
-    } else if (input.includes('perbedaan bpi dan bph')) {
-        response = "BPI (Badan Pengurus Inti) sebagai posisi tertitingi dalam struktur organisasi PMKN dan setara dengan Dewan Penasehat/Pengarah, sedangkan BPH (Badan Pengurus Harian) adalah pelaksana eksekutif organisasi.";
-    } else if (input.includes('sejarah')) {
-        response = "Sejarah PMKN di Tondano adalah: Awalnya ada pada tahun 2017 dan resmi tahun 2020. Dan kalo mau baca selengkapnya, silahkan menu profil > Sejarah PMKN.";
-    } else if (input.includes('visi dan misi')) {
-        response = "Visi: Menjadi wadah yang takut akan Tuhan dan unggul. Misi: Mempererat persaudaraan dan meningkatkan kreativitas mahasiswa Nias.";
-    } else if (input.includes('gbho')) {
-        response = "GBHO (Garis-Garis Besar Haluan Organisasi) adalah pedoman atau acuan bagi pengurus dalam menjalankan roda organisasi selama satu periode.";
-    } else if (input.includes('tugas utama bidang')) {
-        response = "Tiap bidang (Kaderisasi, Kerohanian, Minat Bakat, dll) memiliki tugas spesifik sesuai tupoksi di AD/ART untuk mencapai program kerja.";
-    } else if (input.includes('mitra')) {
-        response = "Mitra PMKN meliputi organisasi kemahasiswaan lainnya, pemerintah daerah, serta alumni (Ika-PMKN).";
-    } else if (input.includes('kontak')) {
-        response = "Kamu bisa menghubungi kami via DM Instagram @pmkn_tondano atau melalui nomor pengurus di halaman Kontak website ini.";
-    } else if (input.includes('panduan pengguna')) {
-        response = "Gunakan website ini untuk memantau data anggota, pengumuman, dan galeri kegiatan secara real-time.";
-    } else if (input.includes('pengumuman')) {
-        response = "Pengumuman terbaru bisa dilihat di section 'News PMKN' pada halaman utama website ini, atau ke menu Info > Pengumuman.";
-    } else if (input.includes('agenda')) {
-        response = "Agenda terdekat meliputi pertemuan rutin dan persiapan PAB. Detailnya akan diupdate di kalender kegiatan.";
-    } else if (input.includes('dokumentasi')) {
-        response = "Dokumentasi berupa foto dan video kegiatan bisa kamu akses di menu Galeri dan Youtube PMKN.";
-    } else if (input.includes('daftar')) {
-        response = "Pendaftaran anggota baru biasanya dibuka pada awal semester ganjil melalui tahapan PAB.";
-    } else if (input.includes('lokasi')) {
-        response = "Sekretariat PMKN Tondano terletak di area mahasiswa sekitar kampus UNIMA: Alamatnya Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2, Kec. Tondano Selatan, Sulawesi Utara. untuk selengkapnya silahkan Ke Menu About > Kontak.";
-    } else if (input.includes('halo') || input.includes('helo') || input.includes('hi') || input.includes('hy') || input === 'p' || input.includes('pagi') || input.includes('siang') || input.includes('malam')) {
-        response = "Halo! 👋 Selamat datang di Layanan Digital PMKN Tondano. Kami sangat senang Anda berkunjung! 😊 Sampaikan saja pertanyaan Anda, asisten robot kami siap membantu dengan sepenuh hati.";
-    } else if (input.includes('terima kasih') || input.includes('makasih') || input.includes('thanks') || input.includes('tq') || input.includes('syukur')) {
-        response = "Sama-sama! 😊 Senang bisa membantu Anda. Jangan ragu untuk bertanya lagi jika ada hal lain yang ingin diketahui tentang PMKN Tondano. Yaahowu! ✨";
-    } else if (input.includes('keren') || input.includes('mantap') || input.includes('oke') || input.includes('ok') || input.includes('waw') || input.includes('sip')) {
-        response = "Terima kasih atas apresiasinya! 🙌 Kami terus berusaha memberikan informasi terbaik untuk Anda. Ada lagi yang bisa asisten bantu?";
-    } else {
-        response = "Maaf, saya belum mengenali pertanyaan tersebut. Silakan hubungi admin secara langsung untuk informasi lebih detail.";
-    }
+        const msgDiv = document.createElement("div");
+        msgDiv.className = `msg msg-${sender} active`;
 
-    appendMessage('bot', response);
-}
-
-function appendMessage(sender, text) {
-    const chatBody = document.getElementById('chatBody');
-    
-    checkAndAppendDate();
-
-    // Wrapper untuk pesan
-    const wrapper = document.createElement('div');
-    wrapper.className = 'msg-content-wrapper';
-    if (sender === 'user') wrapper.style.width = '100%';
-
-    const msgDiv = document.createElement('div');
-    msgDiv.className = `msg msg-${sender} active`;
-    
-    // Struktur balon chat
-    msgDiv.innerHTML = `
+        // Struktur balon chat
+        msgDiv.innerHTML = `
         <span class="text-content">${text}</span>
         <span class="chat-time">${getCurrentTime()}</span>
         <div class="love-pop"><i class="fa-solid fa-heart"></i></div>
         <div class="reaction-badge">❤️</div>
     `;
-    
-    wrapper.appendChild(msgDiv);
 
-    // KHUSUS PESAN BOT: Tambahkan Fitur Double Click & Hint
-    if (sender === 'bot') {
-        const hint = document.createElement('span');
-        hint.className = 'reaction-hint';
-        hint.innerText = 'Ketuk 2 kali untuk bereaksi';
-        wrapper.appendChild(hint);
+        wrapper.appendChild(msgDiv);
 
-        msgDiv.addEventListener('dblclick', function() {
-            const heart = this.querySelector('.love-pop');
-            const badge = this.querySelector('.reaction-badge');
-            
+        // KHUSUS PESAN BOT: Tambahkan Fitur Double Click & Hint
+        if (sender === "bot") {
+          const hint = document.createElement("span");
+          hint.className = "reaction-hint";
+          hint.innerText = "Ketuk 2 kali untuk bereaksi";
+          wrapper.appendChild(hint);
+
+          msgDiv.addEventListener("dblclick", function () {
+            const heart = this.querySelector(".love-pop");
+            const badge = this.querySelector(".reaction-badge");
+
             // Animasi Hati
-            heart.classList.add('animate');
-            setTimeout(() => heart.classList.remove('animate'), 800);
-            
+            heart.classList.add("animate");
+            setTimeout(() => heart.classList.remove("animate"), 800);
+
             // Munculkan badge ❤️ (Toggle)
-            badge.classList.toggle('visible');
-            
+            badge.classList.toggle("visible");
+
             // Jika sudah bereaksi, sembunyikan hint agar lebih bersih
-            if(badge.classList.contains('visible')) {
-                hint.style.display = 'none';
+            if (badge.classList.contains("visible")) {
+              hint.style.display = "none";
             } else {
-                hint.style.display = 'block';
+              hint.style.display = "block";
             }
-            
+
             saveChat();
-        });
-    }
+          });
+        }
 
-    chatBody.appendChild(wrapper);
-    chatBody.scrollTop = chatBody.scrollHeight;
-    
-    saveChat(); 
-    updateResetButtonStatus(); // Update tombol reset setiap ada pesan baru
-}
+        chatBody.appendChild(wrapper);
+        chatBody.scrollTop = chatBody.scrollHeight;
 
+        saveChat();
+        updateResetButtonStatus(); // Update tombol reset setiap ada pesan baru
+      }
     </script>
 
     <footer class="footer">
-  <div class="footer-container">
-
-    <!-- LOGO & DESKRIPSI -->
-    <div>
-      <div class="footer-logo-box">
-        <div class="footer-logo">
-          <img src="icon pmkn.jpeg" alt="Logo PMKN" width="30" />
-        </div>
+      <div class="footer-container">
+        <!-- LOGO & DESKRIPSI -->
         <div>
-          <div class="footer-title">PMKN TONDANO</div>
-          <div class="footer-subtitle">Persatuan Mahasiswa Kristen Nias</div>
-        </div>
-      </div>
-
-      <p class="footer-desc">
-        Wadah persekutuan mahasiswa Kristen Nias di Tondano untuk membangun iman,
-        persaudaraan, komunikasi, dan pelayanan yang berlandaskan kasih Kristus.
-      </p>
-
-      <div class="footer-accredit">
-        Berdiri sejak 2014 • Resmi 2020
-      </div>
-    </div>
-
-    <!-- TAUTAN CEPAT -->
-    <div>
-      <h4>Tautan Cepat</h4>
-      <ul>
-        <li><a href="sejarahpmkn.html">Sejarah PMKN</a></li>
-        <li><a href="perintispmkn.html">Perintis PMKN</a></li>
-        <li><a href="visimisi.html">Visi & Misi</a></li>
-        <li><a href="bphpmkn.html">BPH PMKN</a></li>
-        <li><a href="bpipmkn.html">BPI PMKN</a></li>
-      </ul>
-    </div>
-
-    <!-- AKADEMIK -->
-    <div>
-      <h4>Organisasi</h4>
-      <ul>
-        <li><a href="strukturorgpmkn.html">Struktur Organisasi</a></li>
-        <li><a href="adartgbhopopmkn.html">GBHO & PO</a></li>
-        <li><a href="tugasutamabidang.html">Tugas Utama Bidang</a></li>
-        <li><a href="#">Dokumentasi</a></li>
-        <li><a href="FAQ.html">Tanya Jawab (FAQ)</a></li>
-      </ul>
-    </div>
-
-    <!-- KONTAK -->
-    <div>
-      <h4>Kontak Kami</h4>
-      <ul class="footer-contact">
-        <li>
-          <i class="fa-solid fa-location-dot"></i>
-          Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2<br />Kec. Tondano Selatan Sulawesi Utara
-        </li>
-        <li>
-          <i class="fa-solid fa-envelope"></i>
-          pmkntondano@gmail.com
-        </li>
-      </ul>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    <div class="footer-bottom-left">
-        <p>&copy; 2026 PMKN Tondano • All Rights Reserved</p>
-        <ul>
-            <li><a href="kebijakan.html" onclick="event.stopPropagation()"><i class="fa-solid fa-shield-halved"></i> Kebijakan Privasi</a></li>
-            <li><a href="kontributor.html" onclick="event.stopPropagation()"><i class="fa-solid fa-code"></i> Kontributor</a></li>
-            <li><a href="FAQ.html" onclick="event.stopPropagation()"><i class="fa-solid fa-question-circle"></i> FAQ</a></li>
-        </ul>
-    </div>
-    
-    <div class="footer-bottom-right">
-        <a href="#" class="social-icon" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-        <a href="#" class="social-icon" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#" class="social-icon" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-        <a href="#" class="social-icon" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-    </div>
-</div>
-</footer>
-
-<!-- chat wigded -->
-<div id="chat-trigger" onclick="toggleChat()">
-    <i class="fa-brands fa-facebook-messenger"></i>
-    <span class="notification-dot"></span>
-</div>
-<div id="chat-window" class="chat-hidden">
-    <div id="confirm-modal" class="confirm-hidden">
-        <div class="confirm-box">
-            <p><strong>PMKN Assistant:</strong><br>Yakin mau hapus semua pesan?</p>
-            <div class="confirm-btns">
-                <button onclick="executeReset()" class="btn-ok">Ok</button>
-                <button onclick="closeConfirm()" class="btn-cancel">Cancel</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="chat-header">
-        <div class="header-info">
-            <div class="bot-avatar">
-                <i class="fa-solid fa-robot bot-icon-style"></i>
-                <span class="online-status"></span>
+          <div class="footer-logo-box">
+            <div class="footer-logo">
+              <img src="icon pmkn.jpeg" alt="Logo PMKN" width="30" />
             </div>
             <div>
-                <h4>PMKN Assistant</h4>
-                <p>Online • Siap membantu</p>
+              <div class="footer-title">PMKN TONDANO</div>
+              <div class="footer-subtitle">
+                Persatuan Mahasiswa Kristen Nias
+              </div>
             </div>
+          </div>
+
+          <p class="footer-desc">
+            Wadah persekutuan mahasiswa Kristen Nias di Tondano untuk membangun
+            iman, persaudaraan, komunikasi, dan pelayanan yang berlandaskan
+            kasih Kristus.
+          </p>
+
+          <div class="footer-accredit">Berdiri sejak 2014 • Resmi 2020</div>
+        </div>
+
+        <!-- TAUTAN CEPAT -->
+        <div>
+          <h4>Tautan Cepat</h4>
+          <ul>
+            <li><a href="sejarahpmkn.html">Sejarah PMKN</a></li>
+            <li><a href="perintispmkn.html">Perintis PMKN</a></li>
+            <li><a href="visimisi.html">Visi & Misi</a></li>
+            <li><a href="bphpmkn.html">BPH PMKN</a></li>
+            <li><a href="bpipmkn.html">BPI PMKN</a></li>
+          </ul>
+        </div>
+
+        <!-- AKADEMIK -->
+        <div>
+          <h4>Organisasi</h4>
+          <ul>
+            <li><a href="strukturorgpmkn.html">Struktur Organisasi</a></li>
+            <li><a href="adartgbhopopmkn.html">GBHO & PO</a></li>
+            <li><a href="tugasutamabidang.html">Tugas Utama Bidang</a></li>
+            <li><a href="#">Dokumentasi</a></li>
+            <li><a href="FAQ.html">Tanya Jawab (FAQ)</a></li>
+          </ul>
+        </div>
+
+        <!-- KONTAK -->
+        <div>
+          <h4>Kontak Kami</h4>
+          <ul class="footer-contact">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2<br />Kec. Tondano
+              Selatan Sulawesi Utara
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              pmkntondano@gmail.com
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-left">
+          <p>&copy; 2026 PMKN Tondano • All Rights Reserved</p>
+          <ul>
+            <li>
+              <a href="kebijakan.html" onclick="event.stopPropagation()"
+                ><i class="fa-solid fa-shield-halved"></i> Kebijakan Privasi</a
+              >
+            </li>
+            <li>
+              <a href="kontributor.html" onclick="event.stopPropagation()"
+                ><i class="fa-solid fa-code"></i> Kontributor</a
+              >
+            </li>
+            <li>
+              <a href="FAQ.html" onclick="event.stopPropagation()"
+                ><i class="fa-solid fa-question-circle"></i> FAQ</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-bottom-right">
+          <a href="#" class="social-icon" target="_blank"
+            ><i class="fa-brands fa-facebook"></i
+          ></a>
+          <a href="#" class="social-icon" target="_blank"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a href="#" class="social-icon" target="_blank"
+            ><i class="fa-brands fa-tiktok"></i
+          ></a>
+          <a href="#" class="social-icon" target="_blank"
+            ><i class="fa-brands fa-youtube"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- chat wigded -->
+    <div id="chat-trigger" onclick="toggleChat()">
+      <i class="fa-brands fa-facebook-messenger"></i>
+      <span class="notification-dot"></span>
+    </div>
+    <div id="chat-window" class="chat-hidden">
+      <div id="confirm-modal" class="confirm-hidden">
+        <div class="confirm-box">
+          <p>
+            <strong>PMKN Assistant:</strong><br />Yakin mau hapus semua pesan?
+          </p>
+          <div class="confirm-btns">
+            <button onclick="executeReset()" class="btn-ok">Ok</button>
+            <button onclick="closeConfirm()" class="btn-cancel">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-header">
+        <div class="header-info">
+          <div class="bot-avatar">
+            <i class="fa-solid fa-robot bot-icon-style"></i>
+            <span class="online-status"></span>
+          </div>
+          <div>
+            <h4>PMKN Assistant</h4>
+            <p>Online • Siap membantu</p>
+          </div>
         </div>
         <div class="header-actions">
-            <i class="fa-solid fa-rotate-left" onclick="confirmReset()"></i>
-            <i class="fa-solid fa-xmark" onclick="toggleChat()"></i>
+          <i class="fa-solid fa-rotate-left" onclick="confirmReset()"></i>
+          <i class="fa-solid fa-xmark" onclick="toggleChat()"></i>
         </div>
+      </div>
+
+      <div class="chat-body" id="chatBody"></div>
+
+      <div class="chat-footer">
+        <input
+          type="text"
+          id="userInput"
+          placeholder="Ketik pertanyaan Anda..."
+          onkeypress="handleKeyPress(event)"
+        />
+        <button onclick="sendMessage()">
+          <i class="fa-regular fa-paper-plane"></i>
+        </button>
+      </div>
     </div>
-
-    <div class="chat-body" id="chatBody">
-        </div>
-
-    <div class="chat-footer">
-        <input type="text" id="userInput" placeholder="Ketik pertanyaan Anda..." onkeypress="handleKeyPress(event)">
-        <button onclick="sendMessage()"><i class="fa-regular fa-paper-plane"></i></button>
-    </div>
-</div>
-
   </body>
 </html>
