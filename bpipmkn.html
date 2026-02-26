@@ -600,6 +600,33 @@
         .hero h2 {
           font-size: 2.2rem;
         }
+        .hero p {
+          padding: 0 20px;
+          font-size: 1rem;
+        }
+        /* BPI section mobile adjustments */
+        .bpi-wrapper {
+          padding: 0 5%;
+          margin: 30px auto 60px;
+        }
+        .bpi-container {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .bpi-member-card {
+          padding: 25px 20px;
+          margin-bottom: 10px;
+        }
+        .bpi-photo-wrapper {
+          width: 100px;
+          height: 100px;
+        }
+        .bpi-member-card h3 {
+          font-size: 1.1rem;
+        }
+        .bpi-member-card .job-desk {
+          font-size: 0.85rem;
+        }
       }
 
       /* --- BPI Team Section --- */
@@ -843,14 +870,19 @@
       .chat-welcome {
         text-align: center;
         padding: 20px 0;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       }
       .welcome-icon {
-        font-size: 40px;
-        margin-bottom: 10px;
+        font-size: 50px;
+        margin-bottom: 12px;
+        color: var(--primary);
       }
       .chat-welcome h3 {
         margin: 0;
         color: #1e293b;
+        font-size: 1.4rem;
       }
       .chat-welcome p {
         font-size: 14px;
@@ -1917,8 +1949,8 @@
         chatBody.innerHTML = `
         <div class="chat-welcome">
             <div class="welcome-icon">👋</div>
-            <h3>Halo, Yaahowu!</h3>
-            <p>Saya asisten virtual PMKN. Klik pertanyaan di bawah untuk info cepat:</p>
+            <h3>Hello, Yaahowu!</h3>
+            <p>I'm PMKN's virtual assistant. Click the question below for quick information:</p>
         </div>
         <div class="quick-questions">
             <p class="label">Pertanyaan Populer</p>
@@ -2130,7 +2162,7 @@
             kasih Kristus.
           </p>
 
-          <div class="footer-accredit">Berdiri sejak 2014 • Resmi 2020</div>
+          <div class="footer-accredit">Berdiri sejak 2017 • Resmi 2020</div>
         </div>
 
         <!-- TAUTAN CEPAT -->

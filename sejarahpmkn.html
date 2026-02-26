@@ -700,6 +700,27 @@
         .hero h2 {
           font-size: 1.8rem;
         }
+        .hero p {
+          padding: 0 20px;
+          font-size: 1rem;
+        }
+        /* improve container spacing on mobile */
+        .container {
+          padding: 15px;
+        }
+        /* adjust card padding for small screens */
+        .card {
+          padding: 20px;
+          margin-bottom: 15px;
+        }
+        .card h3 {
+          font-size: 1.3rem;
+          margin-bottom: 15px;
+        }
+        .card p {
+          font-size: 0.95rem;
+          line-height: 1.5;
+        }
       }
 
       .hero-btn {
@@ -798,9 +819,19 @@ a.perintis-link:hover {
 .header-actions { display: flex; gap: 15px; cursor: pointer; }
 
 .chat-body { flex: 1; padding: 20px; overflow-y: auto; background: #f8fafc; }
-.chat-welcome { text-align: center; padding: 20px 0; }
-.welcome-icon { font-size: 40px; margin-bottom: 10px; }
-.chat-welcome h3 { margin: 0; color: #1e293b; }
+.chat-welcome {
+    text-align: center;
+    padding: 20px 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.welcome-icon {
+    font-size: 50px;
+    margin-bottom: 12px;
+    color: var(--primary);
+}
+.chat-welcome h3 { margin: 0; color: #1e293b; font-size: 1.4rem; }
 .chat-welcome p { font-size: 14px; color: #64748b; line-height: 1.5; }
 
 .quick-questions { margin-top: 20px; }
@@ -1528,7 +1559,7 @@ a.perintis-link:hover {
       <div class="card">
         <h3>Berdirinya</h3>
         <p>
-          Cikal bakal PMKN bermula pada tahun 2014, ketika beberapa mahasiswa
+          Cikal bakal PMKN bermula pada tahun 2017, ketika beberapa mahasiswa
           Nias yang merantau ke Tondano merasakan kebutuhan akan sebuah keluarga
           dan wadah persekutuan yang dapat menyatukan mereka dalam iman,
           persaudaraan, dan kebersamaan. Pada awalnya, perkumpulan ini dikenal
@@ -1721,8 +1752,8 @@ function showWelcomeMessage() {
     chatBody.innerHTML = `
         <div class="chat-welcome">
             <div class="welcome-icon">👋</div>
-            <h3>Halo, Yaahowu!</h3>
-            <p>Saya asisten virtual PMKN. Klik pertanyaan di bawah untuk info cepat:</p>
+            <h3>Hello, Yaahowu!</h3>
+            <p>I'm PMKN's virtual assistant. Click the question below for quick information:</p>
         </div>
         <div class="quick-questions">
             <p class="label">Pertanyaan Populer</p>
@@ -1893,7 +1924,7 @@ function appendMessage(sender, text) {
       </p>
 
       <div class="footer-accredit">
-        Berdiri sejak 2014 • Resmi 2020
+        Berdiri sejak 2017 • Resmi 2020
       </div>
     </div>
 
