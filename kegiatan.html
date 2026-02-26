@@ -378,11 +378,17 @@
       @media (max-width: 900px) {
         /* 1. Header Adjustment */
         .header {
-          position: relative;
-          min-height: 70px; /* Memberikan ruang cukup untuk logo & hamburger */
+          position: fixed; /* Mengunci posisi agar tidak ikut ter-scroll */
+          top: 0;
+          left: 0;
+          width: 100%;
+          min-height: 65px;
           display: flex;
           align-items: center;
           padding: 10px 5%;
+          background: white;
+          z-index: 1200;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         /* Mobile: show only homepage in the header navbar (hide other desktop nav items) */
