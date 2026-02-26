@@ -1621,14 +1621,145 @@
         <div class="loading-progress"></div>
       </div>
     </div>
+
+    <ul class="menu" id="mobileMenu">
+      <li class="sidebar-mobile-header">
+        <div style="display: flex; align-items: center; gap: 12px">
+          <img
+            src="icon pmkn.jpeg"
+            alt="Logo"
+            style="
+              width: 45px;
+              height: 45px;
+              border-radius: 50%;
+              object-fit: cover;
+            "
+          />
+          <div>
+            <div
+              style="
+                font-weight: 800;
+                color: #1e293b;
+                line-height: 1;
+                font-size: 1.1rem;
+              "
+            >
+              PMKN
+            </div>
+            <div
+              style="font-size: 0.75rem; color: #64748b; letter-spacing: 1px"
+            >
+              TONDANO
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <a href="cari.html"
+          ><i class="fa-solid fa-magnifying-glass"></i> Cari</a
+        >
+      </li>
+      <li>
+        <a href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+      </li>
+
+      <li class="menu-divider">Profil</li>
+      <li>
+        <a href="sejarahpmkn.html"
+          ><i class="fa-solid fa-clock-rotate-left"></i> Sejarah PMKN</a
+        >
+      </li>
+      <li>
+        <a href="perintispmkn.html"
+          ><i class="fa-solid fa-people-roof"></i> Perintis PMKN</a
+        >
+      </li>
+      <li>
+        <a href="visimisi.html"><i class="fa-solid fa-eye"></i> Visi Misi</a>
+      </li>
+      <li>
+        <a href="bpipmkn.html"><i class="fa-solid fa-user-tie"></i> BPI PMKN</a>
+      </li>
+      <li>
+        <a href="bphpmkn.html"><i class="fa-solid fa-users"></i> BPH PMKN</a>
+      </li>
+
+      <li class="menu-divider">Organisasi</li>
+      <li>
+        <a href="adartgbhopopmkn.html"
+          ><i class="fa-solid fa-gavel"></i> GBHO & PO</a
+        >
+      </li>
+      <li>
+        <a href="strukturorgpmkn.html"
+          ><i class="fa-solid fa-sitemap"></i> Struktur Organisasi</a
+        >
+      </li>
+      <li>
+        <a href="tugasutamabidang.html"
+          ><i class="fa-solid fa-building-circle-check"></i> Tugas Utama
+          Bidang</a
+        >
+      </li>
+      <li>
+        <a href="dataanggota.html"><i class="fa-solid fa-users"></i> Anggota</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-handshake"></i> Mitra PMKN</a>
+      </li>
+      <li>
+        <a href="kegiatan.html"
+          ><i class="fa-solid fa-calendar-days"></i> Kegiatan</a
+        >
+      </li>
+
+      <li class="menu-divider">Informasi</li>
+      <li>
+        <a href="pengumuman.html"
+          ><i class="fa-solid fa-bullhorn"></i> Pengumuman</a
+        >
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-calendar"></i> Agenda</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-photo-film"></i> Galeri</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-user-plus"></i> Join Member</a>
+      </li>
+
+      <li class="menu-divider">Kontak</li>
+      <li>
+        <a href="kontak.html"><i class="fa-solid fa-headset"></i> Kontak</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa-solid fa-info-circle"></i> Tentang PMKN</a>
+      </li>
+      <li>
+        <a href="panduan.html"
+          ><i class="fa-solid fa-book-open"></i> Panduan Pengguna</a
+        >
+      </li>
+      <li>
+        <a href="FAQ.html"><i class="fa-solid fa-circle-question"></i> FAQ</a>
+      </li>
+    </ul>
+
+    <!-- /untuk mobile -->
+
     <header class="header">
-    <div class="logo">
+      <div class="logo">
         <img src="icon pmkn.jpeg" alt="Logo PMKN" />
         <span>PMKN Tondano</span>
-    </div>
-    <nav class="navbar">
+      </div>
+      <nav class="navbar">
         <ul class="menu">
-          <li><a href="index.html">Beranda</a></li>
+          <li class="home-link">
+            <a href="index.html">Beranda</a>
+          </li>
+
           <!-- Dropdown Profil -->
           <li class="dropdown">
             <a href="#" class="active"
@@ -1651,43 +1782,60 @@
                 >
               </li>
               <li>
-                <a href="bpipmkn.html"><i class="fa-regular fa-user"></i> BPI PMKN</a>
+                <a href="bpipmkn.html"
+                  ><i class="fa-regular fa-user"></i> BPI PMKN</a
+                >
               </li>
               <li>
-                <a href="bphpmkn.html"><i class="fa-solid fa-users"></i> BPH PMKN</a>
+                <a href="bphpmkn.html"
+                  ><i class="fa-solid fa-users"></i> BPH PMKN</a
+                >
               </li>
             </ul>
           </li>
-            <!-- Dropdown Organisasi -->
+          <!-- Dropdown Organisasi -->
           <li class="dropdown">
             <a href="#">Organisasi <i class="fa-solid fa-chevron-down"></i></a>
             <ul class="dropdown-menu">
-                    <li>
-                        <a href="adartgbhopopmkn.html"><i class="fa-solid fa-scale-balanced"></i> GBHO & PO</a>
-                    </li>
-                        <a href="strukturorgpmkn.html"><i class="fa-solid fa-sitemap"></i> Struktur Organisasi</a>
-                    </li>
-                    <li>
+              <li>
+                <a href="adartgbhopopmkn.html"
+                  ><i class="fa-solid fa-scale-balanced"></i> GBHO & PO</a
+                >
+              </li>
+              <li>
+                <a href="strukturorgpmkn.html"
+                  ><i class="fa-solid fa-sitemap"></i> Struktur Organisasi</a
+                >
+              </li>
+              <li>
                 <a href="tugasutamabidang.html"
                   ><i class="fa-solid fa-building-circle-check"></i> Tugas Utama
-                  Bidang</a> </li>
-                    <li>
-                        <a href="dataanggota.html"><i class="fa-solid fa-users"></i> Anggota</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa-solid fa-handshake"></i> Mitra PMKN</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa-solid fa-calendar-days"></i> Kegiatan</a>
-                    </li>
-                </ul>
+                  Bidang</a
+                >
+              </li>
+              <li>
+                <a href="dataanggota.html"
+                  ><i class="fa-solid fa-users"></i> Anggota</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fa-solid fa-handshake"></i> Mitra PMKN</a>
+              </li>
+              <li>
+                <a href="kegiatan.html"
+                  ><i class="fa-solid fa-calendar-days"></i> Kegiatan</a
+                >
+              </li>
+            </ul>
           </li>
           <!-- Dropdown info -->
           <li class="dropdown">
             <a href="#">Info <i class="fa-solid fa-chevron-down"></i></a>
             <ul class="dropdown-menu">
               <li>
-                <a href="pengumuman.html"><i class="fa-solid fa-newspaper"></i> Pengumuman</a>
+                <a href="pengumuman.html"
+                  ><i class="fa-solid fa-newspaper"></i> Pengumuman</a
+                >
               </li>
               <li>
                 <a href="#"><i class="fa-solid fa-calendar"></i> Agenda</a>
@@ -1712,30 +1860,35 @@
                 >
               </li>
               <li>
-                <a href="kontak.html"><i class="fa-solid fa-address-card"></i> Kontak</a>
+                <a href="kontak.html"
+                  ><i class="fa-solid fa-headset"></i> Kontak</a
+                >
               </li>
               <li>
-                <a href="panduan.html"><i class="fa-solid fa-book"></i> Panduan Pengguna</a>
+                <a href="panduan.html"
+                  ><i class="fa-solid fa-book-open"></i> Panduan Pengguna</a
+                >
+              </li>
             </ul>
           </li>
 
           <!-- Search -->
           <li class="nav-item-search">
-    <a href="cari.html" class="search-link">
-        <div class="search-icon-wrapper">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
-    </a>
-  </li>
-</ul>
-</nav>
+            <a href="cari.html" class="search-link">
+              <div class="search-icon-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </nav>
 
       <!-- Hamburger -->
-    <div class="menu-toggle" id="menuBtn">
+      <div class="menu-toggle" id="menuBtn">
         <span class="line-1"></span>
         <span class="line-2"></span>
         <span class="line-3"></span>
-    </div>
+      </div>
     </header>
 
     <section class="hero">
