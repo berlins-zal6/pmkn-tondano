@@ -1228,6 +1228,41 @@
     #chat-window { width: calc(100% - 40px); height: 70vh; right: 20px; bottom: 90px; }
 }
 
+/* Gaya Balon sedang Mengetik */
+      .typing-active {
+        display: flex !important;
+        gap: 4px;
+        padding: 12px 15px !important;
+        width: fit-content;
+        min-width: 50px;
+      }
+
+      .dot-flashing {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #e67e22; /* Warna oranye PMKN */
+        animation: dot-jump 0.8s infinite alternate;
+      }
+
+      .dot-flashing:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .dot-flashing:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes dot-jump {
+        from {
+          opacity: 0.3;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(-5px);
+        }
+      }
+
 
 /* Styling Modal Konfirmasi */
 #confirm-modal {
@@ -1527,16 +1562,94 @@
       }
 
       @media (max-width: 768px) {
-        .footer-bottom {
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-        }
+  .footer {
+    padding: 50px 20px 20px; /* Padding lebih proporsional */
+  }
 
-        .footer-bottom-right {
-          margin-top: 20px;
-        }
-      }
+  /* Grid dengan pemisah visual yang halus */
+  .footer-container {
+    grid-template-columns: 1fr; 
+    gap: 40px;
+    text-align: center;
+  }
+
+  /* Box Logo lebih menonjol (Modern Look) */
+  .footer-logo-box {
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03); /* Card transparan tipis */
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .footer-logo {
+    width: 65px; /* Sedikit lebih besar */
+    height: 65px;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+
+  /* Tipografi lebih rapi */
+  .footer-title {
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+  }
+
+  .footer-desc {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-top: 15px;
+  }
+
+  /* Accordion-style look untuk section links */
+  .footer h4 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ff6a00; /* Warna aksen pada judul */
+    margin-bottom: 20px;
+  }
+
+  /* Kontak dibuat seperti kartu info */
+  .footer-contact li {
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 10px;
+    padding: 12px 15px;
+    border-radius: 12px;
+    justify-content: flex-start; /* Tetap rata kiri di dalam box */
+  }
+
+  /* Footer Bottom yang lebih minimalis */
+  .footer-bottom {
+    flex-direction: column-reverse; /* Sosmed di atas, copyright di bawah */
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 30px 0;
+    gap: 25px;
+  }
+
+  .footer-bottom-right {
+    gap: 15px;
+  }
+
+  .social-icon {
+    width: 45px; /* Lebih besar agar 'tappable' (mudah ditekan jari) */
+    height: 45px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer-bottom-left ul {
+    gap: 12px;
+    margin-top: 15px;
+  }
+
+  .footer-bottom-left p {
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+}
 
 /* Container Utama yang dibuat Melayang */
 .footer-click-wrapper {
@@ -2544,110 +2657,149 @@ function resetSearch() {
 }
 
 // chat wigded
-function toggleChat() {
-    const chat = document.getElementById('chat-window');
-    chat.classList.toggle('chat-hidden');
-}
+// chat wigded
+      function toggleChat() {
+        const chat = document.getElementById("chat-window");
+        chat.classList.toggle("chat-hidden");
+      }
 
-function handleKeyPress(e) {
-    if (e.key === 'Enter') sendMessage();
-}
+      function handleKeyPress(e) {
+        if (e.key === "Enter") sendMessage();
+      }
 
-// --- Fungsi Pengiriman Pesan ---
-function sendMessage() {
-    const input = document.getElementById('userInput');
-    const text = input.value.trim();
-    if (text !== "") {
-        appendMessage('user', text);
-        input.value = "";
-        
-        // Simulasi bot berpikir
-        setTimeout(() => {
+      // --- Fungsi Pengiriman Pesan ---
+      function sendMessage() {
+        const input = document.getElementById("userInput");
+        const text = input.value.trim();
+        if (text !== "") {
+          appendMessage("user", text);
+          input.value = "";
+          
+          // Tampilkan indikator mengetik
+          showTypingIndicator();
+
+          setTimeout(() => {
+            removeTypingIndicator();
             processBotResponse(text.toLowerCase());
-        }, 600);
-    }
-}
+          }, 1500); // Bot "mikir" selama 1.5 detik
+        }
+      }
 
-function askBot(question) {
-    appendMessage('user', question);
-    setTimeout(() => {
-        processBotResponse(question.toLowerCase());
-    }, 600);
-}
+      function askBot(question) {
+        appendMessage("user", question);
+        showTypingIndicator();
+        
+        setTimeout(() => {
+          removeTypingIndicator();
+          processBotResponse(question.toLowerCase());
+        }, 1500);
+      }
 
-// --- Fungsi Inti Pesan & Waktu ---
-function getCurrentTime() {
-    const now = new Date();
-    return now.getHours().toString().padStart(2, '0') + ":" + 
-           now.getMinutes().toString().padStart(2, '0');
-}
+      // Fungsi pembantu untuk indikator
+      function showTypingIndicator() {
+        const chatBody = document.getElementById("chatBody");
+        const typingDiv = document.createElement("div");
+        typingDiv.id = "typing-indicator";
+        typingDiv.className = "msg msg-bot typing-active";
+        typingDiv.innerHTML = `
+          <div class="dot-flashing"></div>
+          <div class="dot-flashing"></div>
+          <div class="dot-flashing"></div>
+        `;
+        chatBody.appendChild(typingDiv);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
 
-function getCurrentDateFormatted() {
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date().toLocaleDateString('id-ID', options);
-}
+      function removeTypingIndicator() {
+        const indicator = document.getElementById("typing-indicator");
+        if (indicator) indicator.remove();
+      }
 
-// --- Logika Baru: Update Status Tombol Reset ---
-function updateResetButtonStatus() {
-    const chatBody = document.getElementById('chatBody');
-    const resetBtn = document.querySelector('.fa-rotate-left');
-    if (!resetBtn) return;
+      // --- Fungsi Inti Pesan & Waktu ---
+      function getCurrentTime() {
+        const now = new Date();
+        return (
+          now.getHours().toString().padStart(2, "0") +
+          ":" +
+          now.getMinutes().toString().padStart(2, "0")
+        );
+      }
 
-    // Cek apakah ada pesan (elemen dengan class 'msg')
-    const hasMessages = chatBody.querySelectorAll('.msg').length > 0;
-    
-    if (hasMessages) {
-        resetBtn.style.opacity = "1";
-        resetBtn.style.pointerEvents = "auto";
-        resetBtn.style.transform = "scale(1)";
-    } else {
-        resetBtn.style.opacity = "0";
-        resetBtn.style.pointerEvents = "none";
-        resetBtn.style.transform = "scale(0.5)";
-    }
-}
+      function getCurrentDateFormatted() {
+        const options = {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        };
+        return new Date().toLocaleDateString("id-ID", options);
+      }
 
-// --- Logika Penyimpanan (LocalStorage) ---
-function saveChat() {
-    const chatContent = document.getElementById('chatBody').innerHTML;
-    localStorage.setItem("pmkn_chat_history", chatContent);
-}
+      // --- Logika Baru: Update Status Tombol Reset ---
+      function updateResetButtonStatus() {
+        const chatBody = document.getElementById("chatBody");
+        const resetBtn = document.querySelector(".fa-rotate-left");
+        if (!resetBtn) return;
 
-function checkAndAppendDate() {
-    const chatBody = document.getElementById('chatBody');
-    const today = getCurrentDateFormatted();
-    const lastDate = localStorage.getItem('pmkn_last_date');
+        // Cek apakah ada pesan (elemen dengan class 'msg')
+        const hasMessages = chatBody.querySelectorAll(".msg").length > 0;
 
-    if (lastDate !== today) {
-        const dateDiv = document.createElement('div');
-        dateDiv.className = 'date-divider';
-        dateDiv.innerHTML = `<span>${today}</span>`;
-        chatBody.appendChild(dateDiv);
-        localStorage.setItem('pmkn_last_date', today);
-        saveChat();
-    }
-}
+        if (hasMessages) {
+          resetBtn.style.opacity = "1";
+          resetBtn.style.pointerEvents = "auto";
+          resetBtn.style.transform = "scale(1)";
+        } else {
+          resetBtn.style.opacity = "0";
+          resetBtn.style.pointerEvents = "none";
+          resetBtn.style.transform = "scale(0.5)";
+        }
+      }
 
-// --- Logika Reset & Welcome ---
-function confirmReset() {
-    document.getElementById('confirm-modal').classList.remove('confirm-hidden');
-}
+      // --- Logika Penyimpanan (LocalStorage) ---
+      function saveChat() {
+        const chatContent = document.getElementById("chatBody").innerHTML;
+        localStorage.setItem("pmkn_chat_history", chatContent);
+      }
 
-function closeConfirm() {
-    document.getElementById('confirm-modal').classList.add('confirm-hidden');
-}
+      function checkAndAppendDate() {
+        const chatBody = document.getElementById("chatBody");
+        const today = getCurrentDateFormatted();
+        const lastDate = localStorage.getItem("pmkn_last_date");
 
-function executeReset() {
-    localStorage.removeItem("pmkn_chat_history");
-    localStorage.removeItem("pmkn_last_date"); // Reset pembanding tanggal juga
-    showWelcomeMessage();
-    closeConfirm();
-    updateResetButtonStatus(); // Pastikan tombol reset langsung hilang
-}
+        if (lastDate !== today) {
+          const dateDiv = document.createElement("div");
+          dateDiv.className = "date-divider";
+          dateDiv.innerHTML = `<span>${today}</span>`;
+          chatBody.appendChild(dateDiv);
+          localStorage.setItem("pmkn_last_date", today);
+          saveChat();
+        }
+      }
 
-function showWelcomeMessage() {
-    const chatBody = document.getElementById('chatBody');
-    chatBody.innerHTML = `
+      // --- Logika Reset & Welcome ---
+      function confirmReset() {
+        document
+          .getElementById("confirm-modal")
+          .classList.remove("confirm-hidden");
+      }
+
+      function closeConfirm() {
+        document
+          .getElementById("confirm-modal")
+          .classList.add("confirm-hidden");
+      }
+
+      function executeReset() {
+        localStorage.removeItem("pmkn_chat_history");
+        localStorage.removeItem("pmkn_last_date"); // Reset pembanding tanggal juga
+        showWelcomeMessage();
+        closeConfirm();
+        updateResetButtonStatus(); // Pastikan tombol reset langsung hilang
+      }
+
+      function showWelcomeMessage() {
+        const chatBody = document.getElementById("chatBody");
+        chatBody.innerHTML = `
         <div class="chat-welcome">
             <div class="welcome-icon">👋</div>
             <h3>Halo, Yaahowu!</h3>
@@ -2672,132 +2824,196 @@ function showWelcomeMessage() {
             <button onclick="askBot('Lokasi Sekretariat?')">Lokasi Sekret</button>
         </div>
     `;
-    saveChat();
-    updateResetButtonStatus(); // Sembunyikan tombol saat welcome message muncul
-}
+        saveChat();
+        updateResetButtonStatus(); // Sembunyikan tombol saat welcome message muncul
+      }
 
-// --- Init Saat Halaman Dimuat ---
-document.addEventListener("DOMContentLoaded", () => {
-    const savedChat = localStorage.getItem("pmkn_chat_history");
-    const chatBody = document.getElementById('chatBody');
-    
-    if (savedChat && savedChat.trim() !== "") {
-        chatBody.innerHTML = savedChat;
-        chatBody.scrollTop = chatBody.scrollHeight;
+      // --- Init Saat Halaman Dimuat ---
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedChat = localStorage.getItem("pmkn_chat_history");
+        const chatBody = document.getElementById("chatBody");
+
+        if (savedChat && savedChat.trim() !== "") {
+          chatBody.innerHTML = savedChat;
+          chatBody.scrollTop = chatBody.scrollHeight;
+          checkAndAppendDate();
+          updateResetButtonStatus(); // Tampilkan tombol jika ada riwayat chat
+        } else {
+          checkAndAppendDate();
+          showWelcomeMessage();
+        }
+      });
+
+      // --- Logika Jawaban Bot ---
+      function processBotResponse(text) {
+        let response = "";
+        const input = text.toLowerCase();
+
+        if (input.includes("apa itu pmkn")) {
+          response =
+            "PMKN (Persatuan Mahasiswa Kristen Nias) Tondano adalah wadah kekeluargaan bagi mahasiswa asal Nias di Tondano dan sekitarnya.";
+        } else if (input.includes("organization life")) {
+          response =
+            "Organization Life mencakup seluruh dinamika kehidupan berorganisasi kita, mulai dari kebersamaan di dalam organisasi, kampus, hingga pelayanan.";
+        } else if (input.includes("perbedaan bpi dan bph")) {
+          response =
+            "BPI (Badan Pengurus Inti) sebagai posisi tertitingi dalam struktur organisasi PMKN dan setara dengan Dewan Penasehat/Pengarah, sedangkan BPH (Badan Pengurus Harian) adalah pelaksana eksekutif organisasi.";
+        } else if (input.includes("sejarah")) {
+          response =
+            "Sejarah PMKN di Tondano adalah: Awalnya ada pada tahun 2017 dan resmi tahun 2020. Dan kalo mau baca selengkapnya, silahkan menu profil > Sejarah PMKN.";
+        } else if (input.includes("visi dan misi")) {
+          response =
+            "Visi: Menjadi wadah yang takut akan Tuhan dan unggul. Misi: Mempererat persaudaraan dan meningkatkan kreativitas mahasiswa Nias.";
+        } else if (input.includes("gbho")) {
+          response =
+            "GBHO (Garis-Garis Besar Haluan Organisasi) adalah pedoman atau acuan bagi pengurus dalam menjalankan roda organisasi selama satu periode.";
+        } else if (input.includes("tugas utama bidang")) {
+          response =
+            "Tiap bidang (Kaderisasi, Kerohanian, Minat Bakat, dll) memiliki tugas spesifik sesuai tupoksi di AD/ART untuk mencapai program kerja.";
+        } else if (input.includes("mitra")) {
+          response =
+            "Mitra PMKN meliputi organisasi kemahasiswaan lainnya, pemerintah daerah, serta alumni (Ika-PMKN).";
+        } else if (input.includes("kontak")) {
+          response =
+            "Kamu bisa menghubungi kami via DM Instagram @pmkn_tondano atau melalui nomor pengurus di halaman Kontak website ini.";
+        } else if (input.includes("panduan pengguna")) {
+          response =
+            "Gunakan website ini untuk memantau data anggota, pengumuman, dan galeri kegiatan secara real-time.";
+        } else if (input.includes("pengumuman")) {
+          response =
+            "Pengumuman terbaru bisa dilihat di section 'News PMKN' pada halaman utama website ini, atau ke menu Info > Pengumuman.";
+        } else if (input.includes("agenda")) {
+          response =
+            "Agenda terdekat meliputi pertemuan rutin dan persiapan PAB. Detailnya akan diupdate di kalender kegiatan.";
+        } else if (input.includes("dokumentasi")) {
+          response =
+            "Dokumentasi berupa foto dan video kegiatan bisa kamu akses di menu Galeri dan Youtube PMKN.";
+        } else if (input.includes("daftar")) {
+          response =
+            "Pendaftaran anggota baru biasanya dibuka pada awal semester ganjil melalui tahapan PAB.";
+        } else if (input.includes("lokasi")) {
+          response =
+            "Sekretariat PMKN Tondano terletak di area mahasiswa sekitar kampus UNIMA: Alamatnya Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2, Kec. Tondano Selatan, Sulawesi Utara. untuk selengkapnya silahkan Ke Menu About > Kontak.";
+        } else if (
+          input.includes("halo") ||
+          input.includes("helo") ||
+          input.includes("hi") ||
+          input.includes("hy") ||
+          input === "p" ||
+          input.includes("pagi") ||
+          input.includes("siang") ||
+          input.includes("malam")
+        ) {
+          response =
+            "Halo! 👋 Selamat datang di Layanan Digital PMKN Tondano. Kami sangat senang Anda berkunjung! 😊 Sampaikan saja pertanyaan Anda, asisten robot kami siap membantu dengan sepenuh hati.";
+        } else if (
+          input.includes("terima kasih") ||
+          input.includes("makasih") ||
+          input.includes("thanks") ||
+          input.includes("tq") ||
+          input.includes("syukur")
+        ) {
+          response =
+            "Sama-sama! 😊 Senang bisa membantu Anda. Jangan ragu untuk bertanya lagi jika ada hal lain yang ingin diketahui tentang PMKN Tondano. Yaahowu! ✨";
+        } else if (
+          input.includes("keren") ||
+          input.includes("mantap") ||
+          input.includes("oke") ||
+          input.includes("ok") ||
+          input.includes("waw") ||
+          input.includes("sip")
+        ) {
+          response =
+            "Terima kasih atas apresiasinya! 🙌 Kami terus berusaha memberikan informasi terbaik untuk Anda. Ada lagi yang bisa asisten bantu?";
+        } else {
+          response =
+            "Maaf, saya belum mengenali pertanyaan tersebut. Silakan hubungi admin secara langsung untuk informasi lebih detail.";
+        }
+
+        appendMessage("bot", response);
+      }
+
+      // --- Fungsi Inti Pesan dengan Ikon Profil Bot (Updated) ---
+      function appendMessage(sender, text) {
+        const chatBody = document.getElementById("chatBody");
+
         checkAndAppendDate();
-        updateResetButtonStatus(); // Tampilkan tombol jika ada riwayat chat
-    } else {
-        checkAndAppendDate(); 
-        showWelcomeMessage();
-    }
-});
 
-// --- Logika Jawaban Bot ---
-function processBotResponse(text) {
-    let response = "";
-    const input = text.toLowerCase();
+        // 1. Buat Wrapper Utama untuk Baris Pesan
+        const messageRow = document.createElement("div");
+        messageRow.className = `message-row ${sender}`; // Akan jadi 'message-row bot' atau 'message-row user'
 
-    if (input.includes('apa itu pmkn')) {
-        response = "PMKN (Persatuan Mahasiswa Kristen Nias) Tondano adalah wadah kekeluargaan bagi mahasiswa asal Nias di Tondano dan sekitarnya.";
-    } else if (input.includes('organization life')) {
-        response = "Organization Life mencakup seluruh dinamika kehidupan berorganisasi kita, mulai dari kebersamaan di dalam organisasi, kampus, hingga pelayanan.";
-    } else if (input.includes('perbedaan bpi dan bph')) {
-        response = "BPI (Badan Pengurus Inti) sebagai posisi tertitingi dalam struktur organisasi PMKN dan setara dengan Dewan Penasehat/Pengarah, sedangkan BPH (Badan Pengurus Harian) adalah pelaksana eksekutif organisasi.";
-    } else if (input.includes('sejarah')) {
-        response = "Sejarah PMKN di Tondano adalah: Awalnya ada pada tahun 2017 dan resmi tahun 2020. Dan kalo mau baca selengkapnya, silahkan menu profil > Sejarah PMKN.";
-    } else if (input.includes('visi dan misi')) {
-        response = "Visi: Menjadi wadah yang takut akan Tuhan dan unggul. Misi: Mempererat persaudaraan dan meningkatkan kreativitas mahasiswa Nias.";
-    } else if (input.includes('gbho')) {
-        response = "GBHO (Garis-Garis Besar Haluan Organisasi) adalah pedoman atau acuan bagi pengurus dalam menjalankan roda organisasi selama satu periode.";
-    } else if (input.includes('tugas utama bidang')) {
-        response = "Tiap bidang (Kaderisasi, Kerohanian, Minat Bakat, dll) memiliki tugas spesifik sesuai tupoksi di AD/ART untuk mencapai program kerja.";
-    } else if (input.includes('mitra')) {
-        response = "Mitra PMKN meliputi organisasi kemahasiswaan lainnya, pemerintah daerah, serta alumni (Ika-PMKN).";
-    } else if (input.includes('kontak')) {
-        response = "Kamu bisa menghubungi kami via DM Instagram @pmkn_tondano atau melalui nomor pengurus di halaman Kontak website ini.";
-    } else if (input.includes('panduan pengguna')) {
-        response = "Gunakan website ini untuk memantau data anggota, pengumuman, dan galeri kegiatan secara real-time.";
-    } else if (input.includes('pengumuman')) {
-        response = "Pengumuman terbaru bisa dilihat di section 'News PMKN' pada halaman utama website ini, atau ke menu Info > Pengumuman.";
-    } else if (input.includes('agenda')) {
-        response = "Agenda terdekat meliputi pertemuan rutin dan persiapan PAB. Detailnya akan diupdate di kalender kegiatan.";
-    } else if (input.includes('dokumentasi')) {
-        response = "Dokumentasi berupa foto dan video kegiatan bisa kamu akses di menu Galeri dan Youtube PMKN.";
-    } else if (input.includes('daftar')) {
-        response = "Pendaftaran anggota baru biasanya dibuka pada awal semester ganjil melalui tahapan PAB.";
-    } else if (input.includes('lokasi')) {
-        response = "Sekretariat PMKN Tondano terletak di area mahasiswa sekitar kampus UNIMA: Alamatnya Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2, Kec. Tondano Selatan, Sulawesi Utara. untuk selengkapnya silahkan Ke Menu About > Kontak.";
-    } else if (input.includes('halo') || input.includes('helo') || input.includes('hi') || input.includes('hy') || input === 'p' || input.includes('pagi') || input.includes('siang') || input.includes('malam')) {
-        response = "Halo! 👋 Selamat datang di Layanan Digital PMKN Tondano. Kami sangat senang Anda berkunjung! 😊 Sampaikan saja pertanyaan Anda, asisten robot kami siap membantu dengan sepenuh hati.";
-    } else if (input.includes('terima kasih') || input.includes('makasih') || input.includes('thanks') || input.includes('tq') || input.includes('syukur')) {
-        response = "Sama-sama! 😊 Senang bisa membantu Anda. Jangan ragu untuk bertanya lagi jika ada hal lain yang ingin diketahui tentang PMKN Tondano. Yaahowu! ✨";
-    } else if (input.includes('keren') || input.includes('mantap') || input.includes('oke') || input.includes('ok') || input.includes('waw') || input.includes('sip')) {
-        response = "Terima kasih atas apresiasinya! 🙌 Kami terus berusaha memberikan informasi terbaik untuk Anda. Ada lagi yang bisa asisten bantu?";
-    } else {
-        response = "Maaf, saya belum mengenali pertanyaan tersebut. Silakan hubungi admin secara langsung untuk informasi lebih detail.";
-    }
+        // Wrapper untuk konten balon chat & hint
+        const wrapper = document.createElement("div");
+        wrapper.className = "msg-content-wrapper";
+        if (sender === "user") wrapper.style.width = "100%";
 
-    appendMessage('bot', response);
-}
+        // 2. Buat Balon Chat
+        const msgDiv = document.createElement("div");
+        msgDiv.className = `msg msg-${sender} active`;
 
-function appendMessage(sender, text) {
-    const chatBody = document.getElementById('chatBody');
-    
-    checkAndAppendDate();
+        // Struktur balon chat (Waktu pindah ke bawah, reaction badge tetap)
+        msgDiv.innerHTML = `
+          <span class="text-content">${text}</span>
+          <span class="chat-time">${getCurrentTime()}</span>
+          <div class="love-pop"><i class="fa-solid fa-heart"></i></div>
+          <div class="reaction-badge">❤️</div>
+        `;
 
-    // Wrapper untuk pesan
-    const wrapper = document.createElement('div');
-    wrapper.className = 'msg-content-wrapper';
-    if (sender === 'user') wrapper.style.width = '100%';
+        // --- LOGIKA BARU: TAMBAHKAN IKON PROFIL JIKA PENGIRIM ADALAH BOT ---
+        if (sender === "bot") {
+          // Buat elemen Ikon Profil Bot
+          const botIconDiv = document.createElement("div");
+          botIconDiv.className = "msg-bot-icon";
+          // Gunakan ikon robot yang sama dengan header chat
+          botIconDiv.innerHTML = `<i class="fa-solid fa-robot"></i>`;
 
-    const msgDiv = document.createElement('div');
-    msgDiv.className = `msg msg-${sender} active`;
-    
-    // Struktur balon chat
-    msgDiv.innerHTML = `
-        <span class="text-content">${text}</span>
-        <span class="chat-time">${getCurrentTime()}</span>
-        <div class="love-pop"><i class="fa-solid fa-heart"></i></div>
-        <div class="reaction-badge">❤️</div>
-    `;
-    
-    wrapper.appendChild(msgDiv);
+          // Masukkan Ikon dipaling depan baris pesan
+          messageRow.appendChild(botIconDiv);
+        }
 
-    // KHUSUS PESAN BOT: Tambahkan Fitur Double Click & Hint
-    if (sender === 'bot') {
-        const hint = document.createElement('span');
-        hint.className = 'reaction-hint';
-        hint.innerText = 'Ketuk 2 kali untuk bereaksi';
-        wrapper.appendChild(hint);
+        // Masukkan balon chat ke dalam wrapper konten
+        wrapper.appendChild(msgDiv);
 
-        msgDiv.addEventListener('dblclick', function() {
-            const heart = this.querySelector('.love-pop');
-            const badge = this.querySelector('.reaction-badge');
-            
+        // Masukkan wrapper konten ke dalam baris pesan
+        messageRow.appendChild(wrapper);
+
+        // 3. KHUSUS PESAN BOT: Tambahkan Fitur Double Click & Hint
+        if (sender === "bot") {
+          const hint = document.createElement("span");
+          hint.className = "reaction-hint";
+          hint.innerText = "Ketuk 2 kali untuk bereaksi";
+          wrapper.appendChild(hint);
+
+          msgDiv.addEventListener("dblclick", function () {
+            const heart = this.querySelector(".love-pop");
+            const badge = this.querySelector(".reaction-badge");
+
             // Animasi Hati
-            heart.classList.add('animate');
-            setTimeout(() => heart.classList.remove('animate'), 800);
-            
-            // Munculkan badge ❤️ (Toggle)
-            badge.classList.toggle('visible');
-            
-            // Jika sudah bereaksi, sembunyikan hint agar lebih bersih
-            if(badge.classList.contains('visible')) {
-                hint.style.display = 'none';
-            } else {
-                hint.style.display = 'block';
-            }
-            
-            saveChat();
-        });
-    }
+            heart.classList.add("animate");
+            setTimeout(() => heart.classList.remove("animate"), 800);
 
-    chatBody.appendChild(wrapper);
-    chatBody.scrollTop = chatBody.scrollHeight;
-    
-    saveChat(); 
-    updateResetButtonStatus(); // Update tombol reset setiap ada pesan baru
-}
+            // Munculkan badge ❤️ (Toggle)
+            badge.classList.toggle("visible");
+
+            // Jika sudah bereaksi, sembunyikan hint agar lebih bersih
+            if (badge.classList.contains("visible")) {
+              hint.style.display = "none";
+            } else {
+              hint.style.display = "block";
+            }
+
+            saveChat();
+          });
+        }
+
+        // 4. Masukkan seluruh baris pesan ke chat body
+        chatBody.appendChild(messageRow);
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        saveChat();
+        updateResetButtonStatus(); // Update tombol reset setiap ada pesan baru
+      }
     </script>
 
     <footer class="footer">
@@ -2927,5 +3143,355 @@ function appendMessage(sender, text) {
     </div>
 </div>
 
+    <!-- game offline -->
+  <div id="offline-game-overlay" style="display: none">
+    <div id="game-intro" class="full-screen-view">
+        <div class="intro-content">
+            <div class="sticker-container">
+                <img src="lelahstk.png" alt="Koneksi Terputus" class="sad-sticker">
+            </div>
+            
+            <h1 class="sad-title">koneksi terputus...</h1>
+            <p class="sad-subtitle">Sepertinya sinyal Anda sedang beristirahat. Sambil menunggu ia kembali, mau mencoba tantangan kecil?</p>
+
+            <div class="game-preview">
+                <div class="preview-brick"></div>
+                <div class="preview-brick"></div>
+                <div class="preview-brick"></div>
+                <div class="preview-ball"></div>
+                <div class="preview-paddle"></div>
+            </div>
+
+            <div class="action-buttons">
+    <button onclick="showActualGame()" class="btn-main-green">
+        Mainkan Game
+    </button>
+    
+    <button onclick="location.reload()" class="btn-retry-red">
+        Segarkan Halaman
+    </button>
+</div>
+        </div>
+    </div>
+
+    <div id="game-play" class="game-container" style="display: none">
+        <div class="game-header">
+            <h2 style="color: #ff4d00; margin-bottom: 5px">Brick Breaker PMKN</h2>
+            <p style="font-size: 0.8rem; color: #888">Buktikan keahlianmu!</p>
+        </div>
+
+        <div class="canvas-wrapper">
+            <canvas id="gameCanvas"></canvas>
+            <div id="game-status" style="display: none">
+                <h3 id="status-text">GAME OVER</h3>
+                <p>Ketuk untuk main lagi</p>
+            </div>
+        </div>
+
+        <div class="game-stats">
+            <div class="stat-box"><i class="fa-solid fa-medal"></i> : <span id="score">0</span></div>
+            <div class="stat-box"><i class="fa-solid fa-heart-circle-check"></i> : <span id="lives">3</span></div>
+        </div>
+        <p class="instruction">Geser atau gunakan Panah Keyboard</p>
+    </div>
+</div>
+
+        <div class="game-stats">
+          <div class="stat-box">
+            <i class="fa-solid fa-medal"></i> : <span id="score">0</span>
+          </div>
+          <div class="stat-box">
+            <i class="fa-solid fa-heart-circle-check"></i> :
+            <span id="lives">3</span>
+          </div>
+        </div>
+
+        <p class="instruction">
+          Geser layar atau gunakan <b>Panah Keyboard</b>
+        </p>
+
+        <button onclick="location.reload()" class="btn-refresh">
+          Coba Segarkan Halaman
+        </button>
+      </div>
+    </div>
+
+<style>
+    /* 1. Base Overlay: Menjaga semua di tengah layar */
+    #offline-game-overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: 100000;
+        font-family: 'Poppins', sans-serif;
+        display: none; 
+        justify-content: center; 
+        align-items: center;
+        background: radial-gradient(circle, #f3f4f6 0%, #d1d5db 100%);
+    }
+
+    /* 2. Intro View: Konten di tengah presisi */
+    .full-screen-view {
+        width: 100%; height: 100%;
+        display: flex; justify-content: center; align-items: center;
+        text-align: center; color: #374151;
+    }
+
+    .intro-content { 
+        max-width: 500px; width: 90%; 
+        display: flex; flex-direction: column; align-items: center;
+        animation: fadeIn 0.8s ease; 
+    }
+
+    /* 3. Sad Sticker: Turun lebih bawah dengan margin-top */
+    .sad-sticker {
+        width: 150px; height: auto;
+        filter: grayscale(1); opacity: 0.7;
+        margin-top: 60px; /* Lebih turun sedikit sesuai permintaan */
+        margin-bottom: 25px;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .sad-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -1px; margin-top: 0; }
+    .sad-subtitle { font-size: 1rem; color: #6b7280; margin-bottom: 40px; line-height: 1.6; max-width: 400px; }
+
+    /* 4. Ilustrasi Game */
+    .game-preview {
+        position: relative; width: 200px; height: 100px;
+        margin: 0 auto 40px; border-bottom: 2px solid #9ca3af;
+    }
+    .preview-brick { width: 40px; height: 15px; background: #9ca3af; position: absolute; top: 0; border-radius: 3px; }
+    .preview-brick:nth-child(1) { left: 30px; }
+    .preview-brick:nth-child(2) { left: 80px; }
+    .preview-brick:nth-child(3) { left: 130px; }
+    .preview-ball { width: 12px; height: 12px; background: #ff4d00; border-radius: 50%; position: absolute; bottom: 30px; left: 94px; animation: bounce 2s infinite; }
+    .preview-paddle { width: 60px; height: 6px; background: #374151; position: absolute; bottom: 0; left: 70px; border-radius: 10px; }
+
+    /* 5. Buttons: Hanya Huruf */
+    .action-buttons {
+        display: flex; flex-direction: column; gap: 15px;
+        width: 100%; max-width: 250px; margin: 0 auto; align-items: center;
+    }
+
+    .btn-main-green, .btn-retry-red {
+        background: none; border: none; padding: 5px 10px;
+        font-weight: 700; font-size: 14px; cursor: pointer;
+        transition: all 0.2s ease; width: auto;
+        text-transform: uppercase; letter-spacing: 1.5px;
+    }
+
+    .btn-main-green { color: #22c55e; }
+    .btn-retry-red { color: #ef4444; }
+
+    .btn-main-green:hover, .btn-retry-red:hover { opacity: 0.7; transform: translateY(-1px); }
+    .btn-main-green:active, .btn-retry-red:active { transform: scale(0.95); }
+
+    /* 6. Arena Game */
+    .game-container {
+        width: 95%; max-width: 450px;
+        background: #222; padding: 25px; border-radius: 24px;
+        border: 2px solid #ff4d00; text-align: center;
+        box-shadow: 0 0 40px rgba(255, 77, 0, 0.25); color: white;
+    }
+    .canvas-wrapper { position: relative; margin: 15px 0; background: #000; border-radius: 12px; overflow: hidden; }
+    #gameCanvas { width: 100%; height: auto; display: block; cursor: none; }
+    #game-status { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 10; }
+    .game-stats { display: flex; justify-content: space-around; margin: 15px 0; }
+    .stat-box { background: #333; padding: 8px 20px; border-radius: 10px; color: #ff4d00; font-weight: bold; }
+
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+    @keyframes bounce { 0%, 100% { bottom: 30px; } 50% { bottom: 80px; } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+</style>
+
+<script>
+    // Inisialisasi variabel global agar terbaca oleh semua fungsi
+    let canvas, ctx, statusDiv, statusText;
+    let ballRadius = 8;
+    let x, y, dx, dy;
+    let paddleHeight = 12;
+    let paddleWidth = 85;
+    let paddleX;
+    let rightPressed = false;
+    let leftPressed = false;
+    let brickRowCount = 6;
+    let brickColumnCount = 5;
+    let brickWidth = 70;
+    let brickHeight = 20;
+    let brickPadding = 7;
+    let brickOffsetTop = 30;
+    let brickOffsetLeft = 12;
+    let bricks = [];
+    let score = 0;
+    let lives = 3;
+    let gameRunning = false;
+
+    // Fungsi Utama Koneksi
+    function updateOnlineStatus() {
+        const overlay = document.getElementById("offline-game-overlay");
+        const intro = document.getElementById("game-intro");
+        const gamePlay = document.getElementById("game-play");
+
+        if (navigator.onLine) {
+            overlay.style.display = "none";
+            gameRunning = false;
+        } else {
+            overlay.style.display = "flex";
+            overlay.style.background = "radial-gradient(circle, #f3f4f6 0%, #d1d5db 100%)";
+            intro.style.display = "flex";
+            gamePlay.style.display = "none";
+            gameRunning = false;
+        }
+    }
+
+    function showActualGame() {
+        document.getElementById("game-intro").style.display = "none";
+        document.getElementById("game-play").style.display = "block";
+        document.getElementById("offline-game-overlay").style.background = "rgba(17, 17, 17, 0.98)";
+        startGame();
+    }
+
+    // Engine Game
+    function initGameCore() {
+        canvas = document.getElementById("gameCanvas");
+        if(!canvas) return;
+        ctx = canvas.getContext("2d");
+        statusDiv = document.getElementById("game-status");
+        statusText = document.getElementById("status-text");
+        canvas.width = 400;
+        canvas.height = 500;
+    }
+
+    function initBricks() {
+        for (let c = 0; c < brickColumnCount; c++) {
+            bricks[c] = [];
+            for (let r = 0; r < brickRowCount; r++) {
+                bricks[c][r] = { x: 0, y: 0, status: 1 };
+            }
+        }
+    }
+
+    function resetBall() {
+        x = canvas.width / 2;
+        y = canvas.height - 30;
+        dx = 3; dy = -3;
+        paddleX = (canvas.width - paddleWidth) / 2;
+    }
+
+    function startGame() {
+        score = 0; lives = 3;
+        document.getElementById("score").innerText = score;
+        document.getElementById("lives").innerText = lives;
+        statusDiv.style.display = "none";
+        initBricks();
+        resetBall();
+        gameRunning = true;
+        draw();
+    }
+
+    function showStatus(text) {
+        gameRunning = false;
+        statusText.innerText = text;
+        statusDiv.style.display = "flex";
+    }
+
+    function draw() {
+        if (!gameRunning) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw Bricks
+        for (let c = 0; c < brickColumnCount; c++) {
+            for (let r = 0; r < brickRowCount; r++) {
+                if (bricks[c][r].status === 1) {
+                    let brickX = c * (brickWidth + brickPadding) + brickOffsetLeft;
+                    let brickY = r * (brickHeight + brickPadding) + brickOffsetTop;
+                    bricks[c][r].x = brickX;
+                    bricks[c][r].y = brickY;
+                    ctx.beginPath();
+                    ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                    ctx.fillStyle = r < 2 ? "#ff4d00" : r < 4 ? "#ff8c00" : "#ffae00";
+                    ctx.fill(); ctx.closePath();
+                }
+            }
+        }
+
+        // Draw Ball
+        ctx.beginPath();
+        ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+        ctx.fillStyle = "#ff4d00";
+        ctx.fill(); ctx.closePath();
+
+        // Draw Paddle
+        ctx.beginPath();
+        ctx.rect(paddleX, canvas.height - paddleHeight - 5, paddleWidth, paddleHeight);
+        ctx.fillStyle = "#ff4d00";
+        ctx.fill(); ctx.closePath();
+
+        // Collision Detection
+        for (let c = 0; c < brickColumnCount; c++) {
+            for (let r = 0; r < brickRowCount; r++) {
+                let b = bricks[c][r];
+                if (b.status === 1) {
+                    if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
+                        dy = -dy; b.status = 0; score++;
+                        document.getElementById("score").innerText = score;
+                        if (score === brickRowCount * brickColumnCount) showStatus("YOU WIN!");
+                    }
+                }
+            }
+        }
+
+        // Walls
+        if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) dx = -dx;
+        if (y + dy < ballRadius) dy = -dy;
+        else if (y + dy > canvas.height - ballRadius - 10) {
+            if (x > paddleX && x < paddleX + paddleWidth) {
+                dy = -dy;
+                dx = 8 * ((x - (paddleX + paddleWidth / 2)) / paddleWidth);
+            } else {
+                lives--;
+                document.getElementById("lives").innerText = lives;
+                if (!lives) showStatus("GAME OVER");
+                else resetBall();
+            }
+        }
+
+        if (rightPressed && paddleX < canvas.width - paddleWidth) paddleX += 7;
+        else if (leftPressed && paddleX > 0) paddleX -= 7;
+
+        x += dx; y += dy;
+        requestAnimationFrame(draw);
+    }
+
+    // Event Listeners
+    window.addEventListener("online", updateOnlineStatus);
+    window.addEventListener("offline", updateOnlineStatus);
+    
+    document.addEventListener("DOMContentLoaded", () => {
+        initGameCore();
+        updateOnlineStatus();
+        
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Right" || e.key === "ArrowRight") rightPressed = true;
+            else if (e.key === "Left" || e.key === "ArrowLeft") leftPressed = true;
+        });
+        document.addEventListener("keyup", (e) => {
+            if (e.key === "Right" || e.key === "ArrowRight") rightPressed = false;
+            else if (e.key === "Left" || e.key === "ArrowLeft") leftPressed = false;
+        });
+        
+        // Mouse/Touch Control
+        const handleMove = (clientX) => {
+            let relativeX = clientX - canvas.offsetLeft;
+            if (relativeX > 0 && relativeX < canvas.width)
+                paddleX = relativeX - paddleWidth / 2;
+        };
+
+        window.addEventListener("mousemove", (e) => handleMove(e.clientX));
+        window.addEventListener("touchmove", (e) => {
+            handleMove(e.touches[0].clientX);
+            if(!gameRunning) return; e.preventDefault();
+        }, { passive: false });
+    });
+</script>
   </body>
 </html>

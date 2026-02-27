@@ -1179,51 +1179,128 @@
 /* PANEL KANAN */
 .dev-right {
   width: 65%;
-  padding: 40px;
-  background: white; /* Memberi kontras dengan sisi oranye */
+  padding: 40px 50px; /* Memberi ruang lebih di sisi kiri & kanan */
+  background: white;
+  display: flex;
+  flex-direction: column; /* MEMAKSA SEMUA TURUN KE BAWAH */
+  align-items: flex-start; /* SEMUA RATA KIRI */
+  justify-content: center;
 }
 
-.name { margin: 0; font-size: 1.8rem; color: #333; }
-.role { color: #ff7a00; font-weight: bold; margin-top: 5px; }
-.description { color: #666; font-size: 0.9rem; line-height: 1.5; }
+/* Tipografi Nama Utama */
+.name { 
+  margin: 0; 
+  font-size: 2.5rem; /* Ukuran lebih besar agar menonjol */
+  color: #0c1e33; 
+  font-weight: 800; 
+  line-height: 1.1;
+  text-align: left;
+}
 
+/* Role / Jabatan */
+.role { 
+  color: #ff7a00; 
+  font-weight: 700; 
+  margin-top: 10px; /* Jarak pas di bawah nama */
+  font-size: 1.15rem;
+  text-align: left;
+}
+
+/* Deskripsi Profil */
+.description { 
+  color: #555; 
+  font-size: 1rem; 
+  line-height: 1.6; 
+  margin: 20px 0 30px 0; /* Jarak atas dan bawah */
+  text-align: left;
+  max-width: 100%; /* Memastikan teks membungkus dengan benar */
+}
+
+/* Label Section (Keahlian & Kontribusi) */
 .section-label { 
-  font-weight: bold; 
-  font-size: 0.85rem; 
-  margin-bottom: 10px; 
-  color: #444;
+  font-weight: 700; 
+  font-size: 0.9rem; 
+  margin-bottom: 15px; 
+  color: #333;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  text-align: left;
 }
-.section-label i { color: #ff7a00; }
 
-/* TAGS */
-.tags { display: flex; gap: 8px; margin-bottom: 20px; }
+/* Ikon bintang/centang kecil (opsional) */
+.section-label i {
+  color: #ff7a00;
+  font-size: 1rem;
+}
+
+/* --- BAGIAN TAG KEAHLIAN --- */
+.tags { 
+  display: flex; 
+  flex-wrap: wrap; /* Jika banyak, otomatis pindah ke baris bawah */
+  gap: 10px; 
+  margin-bottom: 30px; 
+}
+
 .tags span {
   background: #fff5eb;
   color: #d35400;
-  border: 1px solid #ffe0c1;
-  padding: 4px 12px;
-  border-radius: 6px;
-  font-size: 0.75rem;
+  border: 1px solid #ffdec0;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
-/* LIST */
-.contribute-list { list-style: none; padding: 0; }
-.contribute-list li {
-  font-size: 0.85rem;
-  color: #555;
-  margin-bottom: 8px;
-  padding-left: 15px;
-  position: relative;
+/* --- BAGIAN LIST KONTRIBUSI --- */
+.contribute-list { 
+  list-style: none; 
+  padding: 0; 
+  margin-bottom: 35px;
+  width: 100%;
 }
+
+.contribute-list li {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 12px;
+  padding-left: 25px;
+  position: relative;
+  text-align: left;
+}
+
+/* Titik Oranye (Bullet) */
 .contribute-list li::before {
-  content: "•";
+  content: "●"; 
   color: #ff7a00;
   position: absolute;
   left: 0;
-  font-weight: bold;
+  font-size: 0.75rem;
+  top: 2px;
+}
+
+/* --- BAGIAN TOMBOL --- */
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  justify-content: flex-start; /* Tombol ikut rata kiri */
+}
+
+/* Menyesuaikan Bullet Point agar kecil dan bulat oranye seperti di gambar */
+.contribute-list li::before {
+  content: "●"; /* Menggunakan simbol lingkaran penuh */
+  color: #ff7a00;
+  position: absolute;
+  left: 0;
+  font-size: 0.7rem; /* Ukuran bullet diperkecil */
+  top: 2px;
+}
+
+/* Garis Tipis Pemisah Sebelum Tombol (Optional, terlihat ada di gambar) */
+.dev-right::after {
+  /* Jika ingin ada garis samar sebelum tombol, aktifkan ini */
+  /* content: ""; border-top: 1px solid #eee; margin-bottom: 20px; */
 }
 
 /* BUTTONS */
@@ -1241,6 +1318,11 @@
 .btn-black { background: #1a1a1a; }
 .btn-blue { background: #2962ff; }
 .btn-orange { background: #ff7a00; }
+
+@media (max-width: 600px) {
+  .developer-card { flex-direction: column; }
+  .dev-left, .dev-right { width: 100%; }
+}
 
 /* --- Chat Widget --- */
 .bot-avatar {
@@ -1347,6 +1429,40 @@
     #chat-window { width: calc(100% - 40px); height: 70vh; right: 20px; bottom: 90px; }
 }
 
+/* Gaya Balon sedang Mengetik */
+      .typing-active {
+        display: flex !important;
+        gap: 4px;
+        padding: 12px 15px !important;
+        width: fit-content;
+        min-width: 50px;
+      }
+
+      .dot-flashing {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #e67e22; /* Warna oranye PMKN */
+        animation: dot-jump 0.8s infinite alternate;
+      }
+
+      .dot-flashing:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .dot-flashing:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes dot-jump {
+        from {
+          opacity: 0.3;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(-5px);
+        }
+      }
 
 /* Styling Modal Konfirmasi */
 #confirm-modal {
@@ -1646,16 +1762,94 @@
       }
 
       @media (max-width: 768px) {
-        .footer-bottom {
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-        }
+  .footer {
+    padding: 50px 20px 20px; /* Padding lebih proporsional */
+  }
 
-        .footer-bottom-right {
-          margin-top: 20px;
-        }
-      }
+  /* Grid dengan pemisah visual yang halus */
+  .footer-container {
+    grid-template-columns: 1fr; 
+    gap: 40px;
+    text-align: center;
+  }
+
+  /* Box Logo lebih menonjol (Modern Look) */
+  .footer-logo-box {
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03); /* Card transparan tipis */
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .footer-logo {
+    width: 65px; /* Sedikit lebih besar */
+    height: 65px;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+
+  /* Tipografi lebih rapi */
+  .footer-title {
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+  }
+
+  .footer-desc {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-top: 15px;
+  }
+
+  /* Accordion-style look untuk section links */
+  .footer h4 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ff6a00; /* Warna aksen pada judul */
+    margin-bottom: 20px;
+  }
+
+  /* Kontak dibuat seperti kartu info */
+  .footer-contact li {
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 10px;
+    padding: 12px 15px;
+    border-radius: 12px;
+    justify-content: flex-start; /* Tetap rata kiri di dalam box */
+  }
+
+  /* Footer Bottom yang lebih minimalis */
+  .footer-bottom {
+    flex-direction: column-reverse; /* Sosmed di atas, copyright di bawah */
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 30px 0;
+    gap: 25px;
+  }
+
+  .footer-bottom-right {
+    gap: 15px;
+  }
+
+  .social-icon {
+    width: 45px; /* Lebih besar agar 'tappable' (mudah ditekan jari) */
+    height: 45px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer-bottom-left ul {
+    gap: 12px;
+    margin-top: 15px;
+  }
+
+  .footer-bottom-left p {
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+}
 
 /* Container Utama yang dibuat Melayang */
 .footer-click-wrapper {
@@ -2070,7 +2264,7 @@
     <div class="bg-line"></div>
     
     <div class="photo-container">
-      <img src="devoloper1.jpg" alt="Berlin Septenus Zalukhu" class="profile-img">
+      <img src="devoloper1.jpg" alt="Berlin S. Zal" class="profile-img">
     </div>
     
     <div class="status-badge">
@@ -2080,7 +2274,7 @@
 
   <div class="dev-right">
     <div class="header-info">
-      <h2 class="name">Berlin Septenus Zalukhu</h2>
+      <h2 class="name">Berlin S. Zalukhu</h2>
       <p class="role">Lead Developer</p>
       <p class="description">
         Pengembang utama dan arsitek sistem. Bertanggung jawab atas desain, pengembangan, dan maintenance keseluruhan website.
@@ -2183,110 +2377,149 @@
       );
 
       // chat wigded
-function toggleChat() {
-    const chat = document.getElementById('chat-window');
-    chat.classList.toggle('chat-hidden');
-}
+// chat wigded
+      function toggleChat() {
+        const chat = document.getElementById("chat-window");
+        chat.classList.toggle("chat-hidden");
+      }
 
-function handleKeyPress(e) {
-    if (e.key === 'Enter') sendMessage();
-}
+      function handleKeyPress(e) {
+        if (e.key === "Enter") sendMessage();
+      }
 
-// --- Fungsi Pengiriman Pesan ---
-function sendMessage() {
-    const input = document.getElementById('userInput');
-    const text = input.value.trim();
-    if (text !== "") {
-        appendMessage('user', text);
-        input.value = "";
-        
-        // Simulasi bot berpikir
-        setTimeout(() => {
+      // --- Fungsi Pengiriman Pesan ---
+      function sendMessage() {
+        const input = document.getElementById("userInput");
+        const text = input.value.trim();
+        if (text !== "") {
+          appendMessage("user", text);
+          input.value = "";
+          
+          // Tampilkan indikator mengetik
+          showTypingIndicator();
+
+          setTimeout(() => {
+            removeTypingIndicator();
             processBotResponse(text.toLowerCase());
-        }, 600);
-    }
-}
+          }, 1500); // Bot "mikir" selama 1.5 detik
+        }
+      }
 
-function askBot(question) {
-    appendMessage('user', question);
-    setTimeout(() => {
-        processBotResponse(question.toLowerCase());
-    }, 600);
-}
+      function askBot(question) {
+        appendMessage("user", question);
+        showTypingIndicator();
+        
+        setTimeout(() => {
+          removeTypingIndicator();
+          processBotResponse(question.toLowerCase());
+        }, 1500);
+      }
 
-// --- Fungsi Inti Pesan & Waktu ---
-function getCurrentTime() {
-    const now = new Date();
-    return now.getHours().toString().padStart(2, '0') + ":" + 
-           now.getMinutes().toString().padStart(2, '0');
-}
+      // Fungsi pembantu untuk indikator
+      function showTypingIndicator() {
+        const chatBody = document.getElementById("chatBody");
+        const typingDiv = document.createElement("div");
+        typingDiv.id = "typing-indicator";
+        typingDiv.className = "msg msg-bot typing-active";
+        typingDiv.innerHTML = `
+          <div class="dot-flashing"></div>
+          <div class="dot-flashing"></div>
+          <div class="dot-flashing"></div>
+        `;
+        chatBody.appendChild(typingDiv);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
 
-function getCurrentDateFormatted() {
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date().toLocaleDateString('id-ID', options);
-}
+      function removeTypingIndicator() {
+        const indicator = document.getElementById("typing-indicator");
+        if (indicator) indicator.remove();
+      }
 
-// --- Logika Baru: Update Status Tombol Reset ---
-function updateResetButtonStatus() {
-    const chatBody = document.getElementById('chatBody');
-    const resetBtn = document.querySelector('.fa-rotate-left');
-    if (!resetBtn) return;
+      // --- Fungsi Inti Pesan & Waktu ---
+      function getCurrentTime() {
+        const now = new Date();
+        return (
+          now.getHours().toString().padStart(2, "0") +
+          ":" +
+          now.getMinutes().toString().padStart(2, "0")
+        );
+      }
 
-    // Cek apakah ada pesan (elemen dengan class 'msg')
-    const hasMessages = chatBody.querySelectorAll('.msg').length > 0;
-    
-    if (hasMessages) {
-        resetBtn.style.opacity = "1";
-        resetBtn.style.pointerEvents = "auto";
-        resetBtn.style.transform = "scale(1)";
-    } else {
-        resetBtn.style.opacity = "0";
-        resetBtn.style.pointerEvents = "none";
-        resetBtn.style.transform = "scale(0.5)";
-    }
-}
+      function getCurrentDateFormatted() {
+        const options = {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        };
+        return new Date().toLocaleDateString("id-ID", options);
+      }
 
-// --- Logika Penyimpanan (LocalStorage) ---
-function saveChat() {
-    const chatContent = document.getElementById('chatBody').innerHTML;
-    localStorage.setItem("pmkn_chat_history", chatContent);
-}
+      // --- Logika Baru: Update Status Tombol Reset ---
+      function updateResetButtonStatus() {
+        const chatBody = document.getElementById("chatBody");
+        const resetBtn = document.querySelector(".fa-rotate-left");
+        if (!resetBtn) return;
 
-function checkAndAppendDate() {
-    const chatBody = document.getElementById('chatBody');
-    const today = getCurrentDateFormatted();
-    const lastDate = localStorage.getItem('pmkn_last_date');
+        // Cek apakah ada pesan (elemen dengan class 'msg')
+        const hasMessages = chatBody.querySelectorAll(".msg").length > 0;
 
-    if (lastDate !== today) {
-        const dateDiv = document.createElement('div');
-        dateDiv.className = 'date-divider';
-        dateDiv.innerHTML = `<span>${today}</span>`;
-        chatBody.appendChild(dateDiv);
-        localStorage.setItem('pmkn_last_date', today);
-        saveChat();
-    }
-}
+        if (hasMessages) {
+          resetBtn.style.opacity = "1";
+          resetBtn.style.pointerEvents = "auto";
+          resetBtn.style.transform = "scale(1)";
+        } else {
+          resetBtn.style.opacity = "0";
+          resetBtn.style.pointerEvents = "none";
+          resetBtn.style.transform = "scale(0.5)";
+        }
+      }
 
-// --- Logika Reset & Welcome ---
-function confirmReset() {
-    document.getElementById('confirm-modal').classList.remove('confirm-hidden');
-}
+      // --- Logika Penyimpanan (LocalStorage) ---
+      function saveChat() {
+        const chatContent = document.getElementById("chatBody").innerHTML;
+        localStorage.setItem("pmkn_chat_history", chatContent);
+      }
 
-function closeConfirm() {
-    document.getElementById('confirm-modal').classList.add('confirm-hidden');
-}
+      function checkAndAppendDate() {
+        const chatBody = document.getElementById("chatBody");
+        const today = getCurrentDateFormatted();
+        const lastDate = localStorage.getItem("pmkn_last_date");
 
-function executeReset() {
-    localStorage.removeItem("pmkn_chat_history");
-    localStorage.removeItem("pmkn_last_date"); // Reset pembanding tanggal juga
-    showWelcomeMessage();
-    closeConfirm();
-    updateResetButtonStatus(); // Pastikan tombol reset langsung hilang
-}
+        if (lastDate !== today) {
+          const dateDiv = document.createElement("div");
+          dateDiv.className = "date-divider";
+          dateDiv.innerHTML = `<span>${today}</span>`;
+          chatBody.appendChild(dateDiv);
+          localStorage.setItem("pmkn_last_date", today);
+          saveChat();
+        }
+      }
 
-function showWelcomeMessage() {
-    const chatBody = document.getElementById('chatBody');
-    chatBody.innerHTML = `
+      // --- Logika Reset & Welcome ---
+      function confirmReset() {
+        document
+          .getElementById("confirm-modal")
+          .classList.remove("confirm-hidden");
+      }
+
+      function closeConfirm() {
+        document
+          .getElementById("confirm-modal")
+          .classList.add("confirm-hidden");
+      }
+
+      function executeReset() {
+        localStorage.removeItem("pmkn_chat_history");
+        localStorage.removeItem("pmkn_last_date"); // Reset pembanding tanggal juga
+        showWelcomeMessage();
+        closeConfirm();
+        updateResetButtonStatus(); // Pastikan tombol reset langsung hilang
+      }
+
+      function showWelcomeMessage() {
+        const chatBody = document.getElementById("chatBody");
+        chatBody.innerHTML = `
         <div class="chat-welcome">
             <div class="welcome-icon">👋</div>
             <h3>Halo, Yaahowu!</h3>
@@ -2311,132 +2544,196 @@ function showWelcomeMessage() {
             <button onclick="askBot('Lokasi Sekretariat?')">Lokasi Sekret</button>
         </div>
     `;
-    saveChat();
-    updateResetButtonStatus(); // Sembunyikan tombol saat welcome message muncul
-}
+        saveChat();
+        updateResetButtonStatus(); // Sembunyikan tombol saat welcome message muncul
+      }
 
-// --- Init Saat Halaman Dimuat ---
-document.addEventListener("DOMContentLoaded", () => {
-    const savedChat = localStorage.getItem("pmkn_chat_history");
-    const chatBody = document.getElementById('chatBody');
-    
-    if (savedChat && savedChat.trim() !== "") {
-        chatBody.innerHTML = savedChat;
-        chatBody.scrollTop = chatBody.scrollHeight;
+      // --- Init Saat Halaman Dimuat ---
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedChat = localStorage.getItem("pmkn_chat_history");
+        const chatBody = document.getElementById("chatBody");
+
+        if (savedChat && savedChat.trim() !== "") {
+          chatBody.innerHTML = savedChat;
+          chatBody.scrollTop = chatBody.scrollHeight;
+          checkAndAppendDate();
+          updateResetButtonStatus(); // Tampilkan tombol jika ada riwayat chat
+        } else {
+          checkAndAppendDate();
+          showWelcomeMessage();
+        }
+      });
+
+      // --- Logika Jawaban Bot ---
+      function processBotResponse(text) {
+        let response = "";
+        const input = text.toLowerCase();
+
+        if (input.includes("apa itu pmkn")) {
+          response =
+            "PMKN (Persatuan Mahasiswa Kristen Nias) Tondano adalah wadah kekeluargaan bagi mahasiswa asal Nias di Tondano dan sekitarnya.";
+        } else if (input.includes("organization life")) {
+          response =
+            "Organization Life mencakup seluruh dinamika kehidupan berorganisasi kita, mulai dari kebersamaan di dalam organisasi, kampus, hingga pelayanan.";
+        } else if (input.includes("perbedaan bpi dan bph")) {
+          response =
+            "BPI (Badan Pengurus Inti) sebagai posisi tertitingi dalam struktur organisasi PMKN dan setara dengan Dewan Penasehat/Pengarah, sedangkan BPH (Badan Pengurus Harian) adalah pelaksana eksekutif organisasi.";
+        } else if (input.includes("sejarah")) {
+          response =
+            "Sejarah PMKN di Tondano adalah: Awalnya ada pada tahun 2017 dan resmi tahun 2020. Dan kalo mau baca selengkapnya, silahkan menu profil > Sejarah PMKN.";
+        } else if (input.includes("visi dan misi")) {
+          response =
+            "Visi: Menjadi wadah yang takut akan Tuhan dan unggul. Misi: Mempererat persaudaraan dan meningkatkan kreativitas mahasiswa Nias.";
+        } else if (input.includes("gbho")) {
+          response =
+            "GBHO (Garis-Garis Besar Haluan Organisasi) adalah pedoman atau acuan bagi pengurus dalam menjalankan roda organisasi selama satu periode.";
+        } else if (input.includes("tugas utama bidang")) {
+          response =
+            "Tiap bidang (Kaderisasi, Kerohanian, Minat Bakat, dll) memiliki tugas spesifik sesuai tupoksi di AD/ART untuk mencapai program kerja.";
+        } else if (input.includes("mitra")) {
+          response =
+            "Mitra PMKN meliputi organisasi kemahasiswaan lainnya, pemerintah daerah, serta alumni (Ika-PMKN).";
+        } else if (input.includes("kontak")) {
+          response =
+            "Kamu bisa menghubungi kami via DM Instagram @pmkn_tondano atau melalui nomor pengurus di halaman Kontak website ini.";
+        } else if (input.includes("panduan pengguna")) {
+          response =
+            "Gunakan website ini untuk memantau data anggota, pengumuman, dan galeri kegiatan secara real-time.";
+        } else if (input.includes("pengumuman")) {
+          response =
+            "Pengumuman terbaru bisa dilihat di section 'News PMKN' pada halaman utama website ini, atau ke menu Info > Pengumuman.";
+        } else if (input.includes("agenda")) {
+          response =
+            "Agenda terdekat meliputi pertemuan rutin dan persiapan PAB. Detailnya akan diupdate di kalender kegiatan.";
+        } else if (input.includes("dokumentasi")) {
+          response =
+            "Dokumentasi berupa foto dan video kegiatan bisa kamu akses di menu Galeri dan Youtube PMKN.";
+        } else if (input.includes("daftar")) {
+          response =
+            "Pendaftaran anggota baru biasanya dibuka pada awal semester ganjil melalui tahapan PAB.";
+        } else if (input.includes("lokasi")) {
+          response =
+            "Sekretariat PMKN Tondano terletak di area mahasiswa sekitar kampus UNIMA: Alamatnya Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2, Kec. Tondano Selatan, Sulawesi Utara. untuk selengkapnya silahkan Ke Menu About > Kontak.";
+        } else if (
+          input.includes("halo") ||
+          input.includes("helo") ||
+          input.includes("hi") ||
+          input.includes("hy") ||
+          input === "p" ||
+          input.includes("pagi") ||
+          input.includes("siang") ||
+          input.includes("malam")
+        ) {
+          response =
+            "Halo! 👋 Selamat datang di Layanan Digital PMKN Tondano. Kami sangat senang Anda berkunjung! 😊 Sampaikan saja pertanyaan Anda, asisten robot kami siap membantu dengan sepenuh hati.";
+        } else if (
+          input.includes("terima kasih") ||
+          input.includes("makasih") ||
+          input.includes("thanks") ||
+          input.includes("tq") ||
+          input.includes("syukur")
+        ) {
+          response =
+            "Sama-sama! 😊 Senang bisa membantu Anda. Jangan ragu untuk bertanya lagi jika ada hal lain yang ingin diketahui tentang PMKN Tondano. Yaahowu! ✨";
+        } else if (
+          input.includes("keren") ||
+          input.includes("mantap") ||
+          input.includes("oke") ||
+          input.includes("ok") ||
+          input.includes("waw") ||
+          input.includes("sip")
+        ) {
+          response =
+            "Terima kasih atas apresiasinya! 🙌 Kami terus berusaha memberikan informasi terbaik untuk Anda. Ada lagi yang bisa asisten bantu?";
+        } else {
+          response =
+            "Maaf, saya belum mengenali pertanyaan tersebut. Silakan hubungi admin secara langsung untuk informasi lebih detail.";
+        }
+
+        appendMessage("bot", response);
+      }
+
+      // --- Fungsi Inti Pesan dengan Ikon Profil Bot (Updated) ---
+      function appendMessage(sender, text) {
+        const chatBody = document.getElementById("chatBody");
+
         checkAndAppendDate();
-        updateResetButtonStatus(); // Tampilkan tombol jika ada riwayat chat
-    } else {
-        checkAndAppendDate(); 
-        showWelcomeMessage();
-    }
-});
 
-// --- Logika Jawaban Bot ---
-function processBotResponse(text) {
-    let response = "";
-    const input = text.toLowerCase();
+        // 1. Buat Wrapper Utama untuk Baris Pesan
+        const messageRow = document.createElement("div");
+        messageRow.className = `message-row ${sender}`; // Akan jadi 'message-row bot' atau 'message-row user'
 
-    if (input.includes('apa itu pmkn')) {
-        response = "PMKN (Persatuan Mahasiswa Kristen Nias) Tondano adalah wadah kekeluargaan bagi mahasiswa asal Nias di Tondano dan sekitarnya.";
-    } else if (input.includes('organization life')) {
-        response = "Organization Life mencakup seluruh dinamika kehidupan berorganisasi kita, mulai dari kebersamaan di dalam organisasi, kampus, hingga pelayanan.";
-    } else if (input.includes('perbedaan bpi dan bph')) {
-        response = "BPI (Badan Pengurus Inti) sebagai posisi tertitingi dalam struktur organisasi PMKN dan setara dengan Dewan Penasehat/Pengarah, sedangkan BPH (Badan Pengurus Harian) adalah pelaksana eksekutif organisasi.";
-    } else if (input.includes('sejarah')) {
-        response = "Sejarah PMKN di Tondano adalah: Awalnya ada pada tahun 2017 dan resmi tahun 2020. Dan kalo mau baca selengkapnya, silahkan menu profil > Sejarah PMKN.";
-    } else if (input.includes('visi dan misi')) {
-        response = "Visi: Menjadi wadah yang takut akan Tuhan dan unggul. Misi: Mempererat persaudaraan dan meningkatkan kreativitas mahasiswa Nias.";
-    } else if (input.includes('gbho')) {
-        response = "GBHO (Garis-Garis Besar Haluan Organisasi) adalah pedoman atau acuan bagi pengurus dalam menjalankan roda organisasi selama satu periode.";
-    } else if (input.includes('tugas utama bidang')) {
-        response = "Tiap bidang (Kaderisasi, Kerohanian, Minat Bakat, dll) memiliki tugas spesifik sesuai tupoksi di AD/ART untuk mencapai program kerja.";
-    } else if (input.includes('mitra')) {
-        response = "Mitra PMKN meliputi organisasi kemahasiswaan lainnya, pemerintah daerah, serta alumni (Ika-PMKN).";
-    } else if (input.includes('kontak')) {
-        response = "Kamu bisa menghubungi kami via DM Instagram @pmkn_tondano atau melalui nomor pengurus di halaman Kontak website ini.";
-    } else if (input.includes('panduan pengguna')) {
-        response = "Gunakan website ini untuk memantau data anggota, pengumuman, dan galeri kegiatan secara real-time.";
-    } else if (input.includes('pengumuman')) {
-        response = "Pengumuman terbaru bisa dilihat di section 'News PMKN' pada halaman utama website ini, atau ke menu Info > Pengumuman.";
-    } else if (input.includes('agenda')) {
-        response = "Agenda terdekat meliputi pertemuan rutin dan persiapan PAB. Detailnya akan diupdate di kalender kegiatan.";
-    } else if (input.includes('dokumentasi')) {
-        response = "Dokumentasi berupa foto dan video kegiatan bisa kamu akses di menu Galeri dan Youtube PMKN.";
-    } else if (input.includes('daftar')) {
-        response = "Pendaftaran anggota baru biasanya dibuka pada awal semester ganjil melalui tahapan PAB.";
-    } else if (input.includes('lokasi')) {
-        response = "Sekretariat PMKN Tondano terletak di area mahasiswa sekitar kampus UNIMA: Alamatnya Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2, Kec. Tondano Selatan, Sulawesi Utara. untuk selengkapnya silahkan Ke Menu About > Kontak.";
-    } else if (input.includes('halo') || input.includes('helo') || input.includes('hi') || input.includes('hy') || input === 'p' || input.includes('pagi') || input.includes('siang') || input.includes('malam')) {
-        response = "Halo! 👋 Selamat datang di Layanan Digital PMKN Tondano. Kami sangat senang Anda berkunjung! 😊 Sampaikan saja pertanyaan Anda, asisten robot kami siap membantu dengan sepenuh hati.";
-    } else if (input.includes('terima kasih') || input.includes('makasih') || input.includes('thanks') || input.includes('tq') || input.includes('syukur')) {
-        response = "Sama-sama! 😊 Senang bisa membantu Anda. Jangan ragu untuk bertanya lagi jika ada hal lain yang ingin diketahui tentang PMKN Tondano. Yaahowu! ✨";
-    } else if (input.includes('keren') || input.includes('mantap') || input.includes('oke') || input.includes('ok') || input.includes('waw') || input.includes('sip')) {
-        response = "Terima kasih atas apresiasinya! 🙌 Kami terus berusaha memberikan informasi terbaik untuk Anda. Ada lagi yang bisa asisten bantu?";
-    } else {
-        response = "Maaf, saya belum mengenali pertanyaan tersebut. Silakan hubungi admin secara langsung untuk informasi lebih detail.";
-    }
+        // Wrapper untuk konten balon chat & hint
+        const wrapper = document.createElement("div");
+        wrapper.className = "msg-content-wrapper";
+        if (sender === "user") wrapper.style.width = "100%";
 
-    appendMessage('bot', response);
-}
+        // 2. Buat Balon Chat
+        const msgDiv = document.createElement("div");
+        msgDiv.className = `msg msg-${sender} active`;
 
-function appendMessage(sender, text) {
-    const chatBody = document.getElementById('chatBody');
-    
-    checkAndAppendDate();
+        // Struktur balon chat (Waktu pindah ke bawah, reaction badge tetap)
+        msgDiv.innerHTML = `
+          <span class="text-content">${text}</span>
+          <span class="chat-time">${getCurrentTime()}</span>
+          <div class="love-pop"><i class="fa-solid fa-heart"></i></div>
+          <div class="reaction-badge">❤️</div>
+        `;
 
-    // Wrapper untuk pesan
-    const wrapper = document.createElement('div');
-    wrapper.className = 'msg-content-wrapper';
-    if (sender === 'user') wrapper.style.width = '100%';
+        // --- LOGIKA BARU: TAMBAHKAN IKON PROFIL JIKA PENGIRIM ADALAH BOT ---
+        if (sender === "bot") {
+          // Buat elemen Ikon Profil Bot
+          const botIconDiv = document.createElement("div");
+          botIconDiv.className = "msg-bot-icon";
+          // Gunakan ikon robot yang sama dengan header chat
+          botIconDiv.innerHTML = `<i class="fa-solid fa-robot"></i>`;
 
-    const msgDiv = document.createElement('div');
-    msgDiv.className = `msg msg-${sender} active`;
-    
-    // Struktur balon chat
-    msgDiv.innerHTML = `
-        <span class="text-content">${text}</span>
-        <span class="chat-time">${getCurrentTime()}</span>
-        <div class="love-pop"><i class="fa-solid fa-heart"></i></div>
-        <div class="reaction-badge">❤️</div>
-    `;
-    
-    wrapper.appendChild(msgDiv);
+          // Masukkan Ikon dipaling depan baris pesan
+          messageRow.appendChild(botIconDiv);
+        }
 
-    // KHUSUS PESAN BOT: Tambahkan Fitur Double Click & Hint
-    if (sender === 'bot') {
-        const hint = document.createElement('span');
-        hint.className = 'reaction-hint';
-        hint.innerText = 'Ketuk 2 kali untuk bereaksi';
-        wrapper.appendChild(hint);
+        // Masukkan balon chat ke dalam wrapper konten
+        wrapper.appendChild(msgDiv);
 
-        msgDiv.addEventListener('dblclick', function() {
-            const heart = this.querySelector('.love-pop');
-            const badge = this.querySelector('.reaction-badge');
-            
+        // Masukkan wrapper konten ke dalam baris pesan
+        messageRow.appendChild(wrapper);
+
+        // 3. KHUSUS PESAN BOT: Tambahkan Fitur Double Click & Hint
+        if (sender === "bot") {
+          const hint = document.createElement("span");
+          hint.className = "reaction-hint";
+          hint.innerText = "Ketuk 2 kali untuk bereaksi";
+          wrapper.appendChild(hint);
+
+          msgDiv.addEventListener("dblclick", function () {
+            const heart = this.querySelector(".love-pop");
+            const badge = this.querySelector(".reaction-badge");
+
             // Animasi Hati
-            heart.classList.add('animate');
-            setTimeout(() => heart.classList.remove('animate'), 800);
-            
-            // Munculkan badge ❤️ (Toggle)
-            badge.classList.toggle('visible');
-            
-            // Jika sudah bereaksi, sembunyikan hint agar lebih bersih
-            if(badge.classList.contains('visible')) {
-                hint.style.display = 'none';
-            } else {
-                hint.style.display = 'block';
-            }
-            
-            saveChat();
-        });
-    }
+            heart.classList.add("animate");
+            setTimeout(() => heart.classList.remove("animate"), 800);
 
-    chatBody.appendChild(wrapper);
-    chatBody.scrollTop = chatBody.scrollHeight;
-    
-    saveChat(); 
-    updateResetButtonStatus(); // Update tombol reset setiap ada pesan baru
-}
+            // Munculkan badge ❤️ (Toggle)
+            badge.classList.toggle("visible");
+
+            // Jika sudah bereaksi, sembunyikan hint agar lebih bersih
+            if (badge.classList.contains("visible")) {
+              hint.style.display = "none";
+            } else {
+              hint.style.display = "block";
+            }
+
+            saveChat();
+          });
+        }
+
+        // 4. Masukkan seluruh baris pesan ke chat body
+        chatBody.appendChild(messageRow);
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        saveChat();
+        updateResetButtonStatus(); // Update tombol reset setiap ada pesan baru
+      }
 
     </script>
     <footer class="footer">
@@ -2566,5 +2863,399 @@ function appendMessage(sender, text) {
     </div>
 </div>
 
+<div id="pmkn-greet-overlay" class="pmkn-greet-layer" style="display: none">
+  <div class="pmkn-greet-container">
+    <div class="pmkn-greet-stk-box">
+      <img src="lelahstk.png" alt="Sticker" class="pmkn-greet-stk-img" />
+    </div>
+    <h1 id="pmkn-greet-msg-title">huffft...</h1>
+    <p id="pmkn-greet-msg-desc">
+      Kami kira Anda meninggalkan kami selamanya.<br />Selamat datang kembali!
+    </p>
+    <button onclick="closePmknGreet()" class="pmkn-greet-btn">
+      Lanjutkan Menjelajah
+    </button>
+  </div>
+</div>
+
+<style>
+  .pmkn-greet-layer {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: radial-gradient(circle, #f3f4f6 0%, #d1d5db 100%);
+    z-index: 999999; /* Sangat tinggi agar tetap di depan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    animation: pmknFadeIn 0.8s ease;
+  }
+
+  .pmkn-greet-container {
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    animation: pmknZoomIn 1s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .pmkn-greet-stk-box { margin-bottom: 30px; }
+
+  .pmkn-greet-stk-img {
+    width: 200px;
+    height: auto;
+    filter: grayscale(0.8) contrast(1.1);
+    opacity: 0.8;
+    animation: pmknBreathe 4s ease-in-out infinite;
+    transition: all 0.5s ease;
+  }
+
+  .pmkn-greet-stk-img:hover {
+    filter: grayscale(0.2);
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  #pmkn-greet-msg-title {
+    color: #374151;
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+    letter-spacing: -2px;
+    text-transform: lowercase;
+  }
+
+  #pmkn-greet-msg-desc {
+    color: #6b7280;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    font-size: 1.2rem;
+  }
+
+  .pmkn-greet-btn {
+    background: transparent;
+    color: #ca4d17;
+    border: none;
+    padding: 10px 20px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    opacity: 0.6;
+  }
+
+  .pmkn-greet-btn:hover {
+    opacity: 1;
+    color: #111827;
+    transform: translateY(-2px);
+  }
+
+  @keyframes pmknFadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes pmknZoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  @keyframes pmknBreathe {
+    0%, 100% { transform: scale(1); filter: grayscale(0.8); }
+    50% { transform: scale(1.08); filter: grayscale(0.4); }
+  }
+
+  @media (max-width: 600px) {
+    #pmkn-greet-msg-title { font-size: 2.5rem; }
+    .pmkn-greet-stk-img { width: 150px; }
+  }
+</style>
+
+<script>
+  function closePmknGreet() {
+    const layer = document.getElementById("pmkn-greet-overlay");
+    layer.style.transition = "opacity 0.5s ease";
+    layer.style.opacity = "0";
+    setTimeout(() => {
+      layer.style.display = "none";
+      layer.style.opacity = "1";
+    }, 500);
+  }
+
+  function initPmknGreetLogic() {
+    const now = new Date().getTime();
+    const lastActive = localStorage.getItem("pmkn_v3_last_seen");
+    const overlay = document.getElementById("pmkn-greet-overlay");
+    const titleEl = document.getElementById("pmkn-greet-msg-title");
+    const descEl = document.getElementById("pmkn-greet-msg-desc");
+
+    const pool = [
+      { t: "Huffft...", d: "Kami kira Anda meninggalkan kami selamanya. Senang melihat Anda kembali!" },
+      { t: "Rindu Itu Berat!", d: "Baru ditinggal sebentar saja sudah terasa sepi. Selamat datang kembali di PMKN!" },
+      { t: "Masih Hidup?", d: "Kirain tadi website ini cuma milik hantu karena saking sepinya. Hehe, selamat datang!" },
+      { t: "Akhirnya...", d: "Capek tau nungguin kamu balik. Duduk yang manis lagi ya!" },
+      { t: "Cuma Mampir?", d: "Habis dari mana saja? Jangan sering-sering menghilang, server kami butuh kehadiranmu." },
+      { t: "Halo Stranger!", d: "Hampir saja kami buatkan pengumuman orang hilang. Untung kamu sudah balik!" },
+      { t: "Welcome Home,", d: "Sejauh mana pun kamu scrolling, tempat ternyaman untuk pulang tetaplah ke sini." },
+      { t: "Ehem! Sibuk?", d: "Kami hampir cemburu karena kamu berpaling ke tab sebelah. Yuk, fokus ke sini lagi!" },
+      { t: "Back in Action!", d: "Dunia luar memang seru, tapi petualanganmu di PMKN belum selesai. Lanjutkan!" }
+    ];
+
+    if (lastActive) {
+      const diff = now - lastActive;
+      const limit = 30 * 60 * 1000; // 30 Menit
+      // const limit = 5 * 1000; // 5 Detik untuk testing
+
+      if (diff > limit) {
+        const item = pool[Math.floor(Math.random() * pool.length)];
+        titleEl.innerText = item.t;
+        descEl.innerText = item.d;
+        overlay.style.display = "flex";
+      }
+    }
+
+    // Update timestamp
+    localStorage.setItem("pmkn_v3_last_seen", now);
+  }
+
+  window.addEventListener("load", initPmknGreetLogic);
+</script>
+
+    <!-- game offline -->
+<div id="pmkn-offline-layer" style="display: none">
+    <div id="pmkn-offline-intro" class="pmkn-offline-screen">
+        <div class="pmkn-offline-inner">
+            <div class="pmkn-offline-sticker-box">
+                <img src="lelahstk.png" alt="Offline" class="pmkn-offline-img">
+            </div>
+            
+            <h1 class="pmkn-offline-title">koneksi terputus...</h1>
+            <p class="pmkn-offline-text">Sepertinya sinyal Anda sedang beristirahat. Sambil menunggu ia kembali, mau mencoba tantangan kecil?</p>
+
+            <div class="pmkn-offline-preview">
+                <div class="pmkn-preview-brick"></div>
+                <div class="pmkn-preview-brick"></div>
+                <div class="pmkn-preview-brick"></div>
+                <div class="pmkn-preview-ball"></div>
+                <div class="pmkn-preview-paddle"></div>
+            </div>
+
+            <div class="pmkn-offline-actions">
+                <button onclick="pmknStartActualGame()" class="pmkn-btn-text-green">Mainkan Game</button>
+                <button onclick="location.reload()" class="pmkn-btn-text-red">Segarkan Halaman</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="pmkn-offline-arena" class="pmkn-game-box" style="display: none">
+        <div class="pmkn-game-header">
+            <h2 style="color: #ff4d00; margin-bottom: 5px">Brick Breaker PMKN</h2>
+            <p style="font-size: 0.8rem; color: #888">Buktikan keahlianmu!</p>
+        </div>
+
+        <div class="pmkn-canvas-container">
+            <canvas id="pmknGameCanvas"></canvas>
+            <div id="pmkn-game-over-status" style="display: none" onclick="pmknRestartEngine()">
+                <h3 id="pmkn-status-msg">GAME OVER</h3>
+                <p>Ketuk untuk main lagi</p>
+            </div>
+        </div>
+
+        <div class="pmkn-game-stats">
+            <div class="pmkn-stat-item">SKOR: <span id="pmkn-score">0</span></div>
+            <div class="pmkn-stat-item">NYAWA: <span id="pmkn-lives">3</span></div>
+        </div>
+        <p class="pmkn-hint">Geser layar atau gunakan Panah Keyboard</p>
+    </div>
+</div>
+
+<style>
+    /* Base Layer */
+    #pmkn-offline-layer {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: 999999;
+        font-family: 'Poppins', sans-serif;
+        display: none; justify-content: center; align-items: center;
+        background: radial-gradient(circle, #f3f4f6 0%, #d1d5db 100%);
+    }
+
+    .pmkn-offline-screen {
+        width: 100%; height: 100%;
+        display: flex; justify-content: center; align-items: center;
+        text-align: center; color: #374151;
+    }
+
+    .pmkn-offline-inner { max-width: 500px; width: 90%; animation: pmknFadeIn 0.8s ease; }
+
+    .pmkn-offline-img {
+        width: 150px; height: auto;
+        filter: grayscale(1); opacity: 0.7;
+        margin-top: 60px; margin-bottom: 25px;
+        animation: pmknFloat 3s ease-in-out infinite;
+    }
+
+    .pmkn-offline-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -1px; }
+    .pmkn-offline-text { font-size: 1rem; color: #6b7280; margin-bottom: 40px; line-height: 1.6; }
+
+    /* Preview Illustration */
+    .pmkn-offline-preview {
+        position: relative; width: 200px; height: 100px;
+        margin: 0 auto 40px; border-bottom: 2px solid #9ca3af;
+    }
+    .pmkn-preview-brick { width: 40px; height: 15px; background: #9ca3af; position: absolute; top: 0; border-radius: 3px; }
+    .pmkn-preview-brick:nth-child(1) { left: 30px; }
+    .pmkn-preview-brick:nth-child(2) { left: 80px; }
+    .pmkn-preview-brick:nth-child(3) { left: 130px; }
+    .pmkn-preview-ball { width: 12px; height: 12px; background: #ff4d00; border-radius: 50%; position: absolute; bottom: 30px; left: 94px; animation: pmknBounce 2s infinite; }
+    .pmkn-preview-paddle { width: 60px; height: 6px; background: #374151; position: absolute; bottom: 0; left: 70px; border-radius: 10px; }
+
+    /* Minimalist Buttons */
+    .pmkn-offline-actions { display: flex; flex-direction: column; gap: 15px; align-items: center; }
+    .pmkn-btn-text-green, .pmkn-btn-text-red {
+        background: none; border: none; font-weight: 700; font-size: 14px; 
+        cursor: pointer; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.2s;
+    }
+    .pmkn-btn-text-green { color: #22c55e; }
+    .pmkn-btn-text-red { color: #ef4444; }
+    .pmkn-btn-text-green:hover, .pmkn-btn-text-red:hover { opacity: 0.6; transform: translateY(-1px); }
+
+    /* Game Styles */
+    .pmkn-game-box {
+        width: 95%; max-width: 450px;
+        background: #222; padding: 25px; border-radius: 24px;
+        border: 2px solid #ff4d00; text-align: center; color: white;
+    }
+    .pmkn-canvas-container { position: relative; margin: 15px 0; background: #000; border-radius: 12px; overflow: hidden; }
+    #pmknGameCanvas { width: 100%; height: auto; display: block; }
+    #pmkn-game-over-status { 
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+        background: rgba(0,0,0,0.85); display: flex; flex-direction: column; 
+        justify-content: center; align-items: center; cursor: pointer;
+    }
+
+    .pmkn-game-stats { display: flex; justify-content: space-around; margin: 15px 0; }
+    .pmkn-stat-item { background: #333; padding: 8px 20px; border-radius: 10px; color: #ff4d00; font-weight: bold; }
+    .pmkn-hint { font-size: 0.8rem; color: #666; }
+
+    @keyframes pmknFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+    @keyframes pmknBounce { 0%, 100% { bottom: 30px; } 50% { bottom: 80px; } }
+    @keyframes pmknFadeIn { from { opacity: 0; } to { opacity: 1; } }
+</style>
+
+<script>
+    let pmkn_canvas, pmkn_ctx, pmkn_status_div, pmkn_status_txt;
+    let pmkn_x, pmkn_y, pmkn_dx, pmkn_dy, pmkn_paddleX;
+    let pmkn_bricks = [], pmkn_score = 0, pmkn_lives = 3, pmkn_running = false;
+    const pmkn_ballR = 8, pmkn_pW = 85, pmkn_pH = 12;
+
+    function pmknCheckConnection() {
+        const layer = document.getElementById("pmkn-offline-layer");
+        const intro = document.getElementById("pmkn-offline-intro");
+        const arena = document.getElementById("pmkn-offline-arena");
+
+        if (navigator.onLine) {
+            layer.style.display = "none";
+            pmkn_running = false;
+        } else {
+            layer.style.display = "flex";
+            layer.style.background = "radial-gradient(circle, #f3f4f6 0%, #d1d5db 100%)";
+            intro.style.display = "flex";
+            arena.style.display = "none";
+        }
+    }
+
+    function pmknStartActualGame() {
+        document.getElementById("pmkn-offline-intro").style.display = "none";
+        document.getElementById("pmkn-offline-arena").style.display = "block";
+        document.getElementById("pmkn-offline-layer").style.background = "#111";
+        if(!pmkn_canvas) pmknInitEngine();
+        pmknRestartEngine();
+    }
+
+    function pmknInitEngine() {
+        pmkn_canvas = document.getElementById("pmknGameCanvas");
+        pmkn_ctx = pmkn_canvas.getContext("2d");
+        pmkn_status_div = document.getElementById("pmkn-game-over-status");
+        pmkn_status_txt = document.getElementById("pmkn-status-msg");
+        pmkn_canvas.width = 400;
+        pmkn_canvas.height = 500;
+    }
+
+    function pmknRestartEngine() {
+        pmkn_score = 0; pmkn_lives = 3;
+        document.getElementById("pmkn-score").innerText = pmkn_score;
+        document.getElementById("pmkn-lives").innerText = pmkn_lives;
+        pmkn_status_div.style.display = "none";
+        
+        for(let c=0; c<5; c++) {
+            pmkn_bricks[c] = [];
+            for(let r=0; r<6; r++) pmkn_bricks[c][r] = { x: 0, y: 0, status: 1 };
+        }
+        pmkn_x = pmkn_canvas.width/2; pmkn_y = pmkn_canvas.height-30;
+        pmkn_dx = 3; pmkn_dy = -3;
+        pmkn_paddleX = (pmkn_canvas.width - pmkn_pW)/2;
+        pmkn_running = true;
+        pmknDraw();
+    }
+
+    function pmknDraw() {
+        if(!pmkn_running) return;
+        pmkn_ctx.clearRect(0, 0, pmkn_canvas.width, pmkn_canvas.height);
+
+        // Bricks
+        for(let c=0; c<5; c++){
+            for(let r=0; r<6; r++){
+                if(pmkn_bricks[c][r].status == 1){
+                    let bX = c*(70+7)+12; let bY = r*(20+7)+30;
+                    pmkn_bricks[c][r].x = bX; pmkn_bricks[c][r].y = bY;
+                    pmkn_ctx.fillStyle = r < 2 ? "#ff4d00" : "#ffae00";
+                    pmkn_ctx.fillRect(bX, bY, 70, 20);
+                }
+            }
+        }
+
+        // Ball & Paddle
+        pmkn_ctx.beginPath(); pmkn_ctx.arc(pmkn_x, pmkn_y, pmkn_ballR, 0, Math.PI*2);
+        pmkn_ctx.fillStyle = "#ff4d00"; pmkn_ctx.fill(); pmkn_ctx.closePath();
+        pmkn_ctx.fillStyle = "#ff4d00"; pmkn_ctx.fillRect(pmkn_paddleX, pmkn_canvas.height-17, pmkn_pW, pmkn_pH);
+
+        // Logic
+        for(let c=0; c<5; c++){
+            for(let r=0; r<6; r++){
+                let b = pmkn_bricks[c][r];
+                if(b.status == 1 && pmkn_x > b.x && pmkn_x < b.x+70 && pmkn_y > b.y && pmkn_y < b.y+20){
+                    pmkn_dy = -pmkn_dy; b.status = 0; pmkn_score++;
+                    document.getElementById("pmkn-score").innerText = pmkn_score;
+                }
+            }
+        }
+
+        if(pmkn_x + pmkn_dx > pmkn_canvas.width-pmkn_ballR || pmkn_x + pmkn_dx < pmkn_ballR) pmkn_dx = -pmkn_dx;
+        if(pmkn_y + pmkn_dy < pmkn_ballR) pmkn_dy = -pmkn_dy;
+        else if(pmkn_y + pmkn_dy > pmkn_canvas.height-pmkn_ballR-5){
+            if(pmkn_x > pmkn_paddleX && pmkn_x < pmkn_paddleX + pmkn_pW) pmkn_dy = -pmkn_dy;
+            else {
+                pmkn_lives--;
+                document.getElementById("pmkn-lives").innerText = pmkn_lives;
+                if(!pmkn_lives) { 
+                    pmkn_running = false; 
+                    pmkn_status_txt.innerText = "GAME OVER";
+                    pmkn_status_div.style.display = "flex";
+                } else { pmkn_x = pmkn_canvas.width/2; pmkn_y = pmkn_canvas.height-30; pmkn_dx = 3; pmkn_dy = -3; }
+            }
+        }
+
+        pmkn_x += pmkn_dx; pmkn_y += pmkn_dy;
+        requestAnimationFrame(pmknDraw);
+    }
+
+    // Controls
+    window.addEventListener("mousemove", (e) => {
+        if(pmkn_canvas){
+            let r = pmkn_canvas.getBoundingClientRect();
+            let rx = e.clientX - r.left;
+            if(rx > 0 && rx < pmkn_canvas.width) pmkn_paddleX = rx - pmkn_pW/2;
+        }
+    });
+
+    window.addEventListener("online", pmknCheckConnection);
+    window.addEventListener("offline", pmknCheckConnection);
+    window.onload = pmknCheckConnection;
+</script>
   </body>
 </html>
