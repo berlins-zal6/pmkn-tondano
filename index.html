@@ -4530,9 +4530,10 @@
 
         if (lastSeen) {
           const timeGap = currentTime - lastSeen;
-          const thirtyMinutes = 30 * 60 * 1000; // 30 Menit
+          const limit = 15 * 60 * 1000; // 15 Menit
+          // const limit = 5 * 1000; // 5 Detik untuk testing
 
-          if (timeGap > thirtyMinutes) {
+          if (timeGap > limit) {
             const pick = messages[Math.floor(Math.random() * messages.length)];
             title.innerText = pick.t;
             description.innerText = pick.d;
