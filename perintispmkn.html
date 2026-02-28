@@ -3033,355 +3033,656 @@
       </div>
     </div>
 
-        <!-- game offline -->
-  <div id="offline-game-overlay" style="display: none">
-    <div id="game-intro" class="full-screen-view">
-        <div class="intro-content">
-            <div class="sticker-container">
-                <img src="lelahstk.png" alt="Koneksi Terputus" class="sad-sticker">
-            </div>
-            
-            <h1 class="sad-title">koneksi terputus...</h1>
-            <p class="sad-subtitle">Sepertinya sinyal Anda sedang beristirahat. Sambil menunggu ia kembali, mau mencoba tantangan kecil?</p>
+    <!-- game offline -->
+    <div id="pmkn-offline-layer" style="display: none">
+      <div id="pmkn-offline-intro" class="pmkn-offline-screen">
+        <div class="pmkn-offline-inner">
+          <div class="pmkn-offline-sticker-box">
+            <img src="lelahstk.png" alt="Offline" class="pmkn-offline-img" />
 
-            <div class="game-preview">
-                <div class="preview-brick"></div>
-                <div class="preview-brick"></div>
-                <div class="preview-brick"></div>
-                <div class="preview-ball"></div>
-                <div class="preview-paddle"></div>
-            </div>
+            <div class="pmkn-clouds-overlay"></div>
 
-            <div class="action-buttons">
-    <button onclick="showActualGame()" class="btn-main-green">
-        Mainkan Game
-    </button>
-    
-    <button onclick="location.reload()" class="btn-retry-red">
-        Segarkan Halaman
-    </button>
-</div>
-        </div>
-    </div>
-
-    <div id="game-play" class="game-container" style="display: none">
-        <div class="game-header">
-            <h2 style="color: #ff4d00; margin-bottom: 5px">Brick Breaker PMKN</h2>
-            <p style="font-size: 0.8rem; color: #888">Buktikan keahlianmu!</p>
-        </div>
-
-        <div class="canvas-wrapper">
-            <canvas id="gameCanvas"></canvas>
-            <div id="game-status" style="display: none">
-                <h3 id="status-text">GAME OVER</h3>
-                <p>Ketuk untuk main lagi</p>
-            </div>
-        </div>
-
-        <div class="game-stats">
-            <div class="stat-box"><i class="fa-solid fa-medal"></i> : <span id="score">0</span></div>
-            <div class="stat-box"><i class="fa-solid fa-heart-circle-check"></i> : <span id="lives">3</span></div>
-        </div>
-        <p class="instruction">Geser atau gunakan Panah Keyboard</p>
-    </div>
-</div>
-
-        <div class="game-stats">
-          <div class="stat-box">
-            <i class="fa-solid fa-medal"></i> : <span id="score">0</span>
+            <div class="pmkn-rain-overlay"></div>
           </div>
-          <div class="stat-box">
-            <i class="fa-solid fa-heart-circle-check"></i> :
-            <span id="lives">3</span>
+
+          <h1 class="pmkn-offline-title">
+            <i class="fa-solid fa-wifi"></i> Sinyal drop ...
+          </h1>
+          <p class="pmkn-offline-text">
+            Sinyal sedang 'off'. Mau coba tantangan kecil?
+          </p>
+
+          <div class="pmkn-offline-preview">
+            <div class="pmkn-preview-brick"></div>
+            <div class="pmkn-preview-brick"></div>
+            <div class="pmkn-preview-brick"></div>
+            <div class="pmkn-preview-ball"></div>
+            <div class="pmkn-preview-paddle"></div>
+          </div>
+
+          <div class="pmkn-offline-actions">
+            <button onclick="pmknStartActualGame()" class="pmkn-btn-text-green">
+              Mainkan Game
+            </button>
+            <button onclick="location.reload()" class="pmkn-btn-text-red">
+              Segarkan Halaman
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="pmkn-offline-arena" class="pmkn-game-box" style="display: none">
+        <div class="pmkn-game-header">
+          <h2 style="color: #ff4d00; margin-bottom: 5px">Brick Breaker PMKN</h2>
+          <p style="font-size: 0.8rem; color: #888">Buktikan keahlianmu!</p>
+        </div>
+
+        <div class="pmkn-canvas-container">
+          <canvas id="pmknGameCanvas"></canvas>
+          <div
+            id="pmkn-game-over-status"
+            style="display: none"
+            onclick="pmknRestartEngine()"
+          >
+            <h3 id="pmkn-status-msg">GAME OVER</h3>
+            <p style="font-size: 0.9rem; color: #fff">
+              Ketuk di sini untuk main lagi
+            </p>
           </div>
         </div>
 
-        <p class="instruction">
-          Geser layar atau gunakan <b>Panah Keyboard</b>
-        </p>
-
-        <button onclick="location.reload()" class="btn-refresh">
+        <div class="pmkn-game-stats">
+          <div class="pmkn-stat-item">SKOR: <span id="pmkn-score">0</span></div>
+          <div class="pmkn-stat-item">
+            NYAWA: <span id="pmkn-lives">3</span>
+          </div>
+        </div>
+        <p class="pmkn-hint">Geser layar atau gunakan <b>Panah Keyboard</b></p>
+        <button onclick="location.reload()" class="pmkn-btn-refresh-small">
           Coba Segarkan Halaman
         </button>
       </div>
     </div>
 
-<style>
-    /* 1. Base Overlay: Menjaga semua di tengah layar */
-    #offline-game-overlay {
+    <style>
+      /* CSS dengan Prefix unik pmkn- */
+      #pmkn-offline-layer {
         position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        z-index: 100000;
-        font-family: 'Poppins', sans-serif;
-        display: none; 
-        justify-content: center; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999999;
+        font-family: "Poppins", sans-serif;
+        display: none;
+        justify-content: center;
         align-items: center;
         background: radial-gradient(circle, #f3f4f6 0%, #d1d5db 100%);
-    }
+      }
 
-    /* 2. Intro View: Konten di tengah presisi */
-    .full-screen-view {
-        width: 100%; height: 100%;
-        display: flex; justify-content: center; align-items: center;
-        text-align: center; color: #374151;
-    }
-
-    .intro-content { 
-        max-width: 500px; width: 90%; 
-        display: flex; flex-direction: column; align-items: center;
-        animation: fadeIn 0.8s ease; 
-    }
-
-    /* 3. Sad Sticker: Turun lebih bawah dengan margin-top */
-    .sad-sticker {
-        width: 150px; height: auto;
-        filter: grayscale(1); opacity: 0.7;
-        margin-top: 60px; /* Lebih turun sedikit sesuai permintaan */
+      .pmkn-offline-screen {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .pmkn-offline-inner {
+        max-width: 500px;
+        width: 90%;
+        animation: pmknFadeIn 0.8s ease;
+      }
+      /* efek stiker */
+      .pmkn-offline-sticker-box {
+        position: relative;
+        display: inline-block;
+        width: clamp(
+          140px,
+          30vw,
+          200px
+        ); /* Sedikit diperbesar agar elemen awan muat */
         margin-bottom: 25px;
-        animation: float 3s ease-in-out infinite;
-    }
+        padding: 20px; /* Padding luas agar elemen bernapas */
+        border-radius: 30px; /* Sudut melengkung halus */
+        overflow: hidden; /* Memastikan hujan/awan tidak meluap keluar */
 
-    .sad-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -1px; margin-top: 0; }
-    .sad-subtitle { font-size: 1rem; color: #6b7280; margin-bottom: 40px; line-height: 1.6; max-width: 400px; }
+        /* EFEK MODERN: Kaca Transparan (Glassmorphism) */
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2); /* Bingkai kaca tipis */
+        backdrop-filter: blur(8px); /* Efek blur di belakang kotak */
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
 
-    /* 4. Ilustrasi Game */
-    .game-preview {
-        position: relative; width: 200px; height: 100px;
-        margin: 0 auto 40px; border-bottom: 2px solid #9ca3af;
-    }
-    .preview-brick { width: 40px; height: 15px; background: #9ca3af; position: absolute; top: 0; border-radius: 3px; }
-    .preview-brick:nth-child(1) { left: 30px; }
-    .preview-brick:nth-child(2) { left: 80px; }
-    .preview-brick:nth-child(3) { left: 130px; }
-    .preview-ball { width: 12px; height: 12px; background: #ff4d00; border-radius: 50%; position: absolute; bottom: 30px; left: 94px; animation: bounce 2s infinite; }
-    .preview-paddle { width: 60px; height: 6px; background: #374151; position: absolute; bottom: 0; left: 70px; border-radius: 10px; }
+        /* Animasi mengambang yang perlahan/slow */
+        animation: pmknModernOfflineFloat 6s ease-in-out infinite;
+        z-index: 10;
+      }
 
-    /* 5. Buttons: Hanya Huruf */
-    .action-buttons {
-        display: flex; flex-direction: column; gap: 15px;
-        width: 100%; max-width: 250px; margin: 0 auto; align-items: center;
-    }
+      /* 2. Style Gambar Stiker Offline */
+      .pmkn-offline-img {
+        width: 100%;
+        height: auto;
+        /* Filter visual 'Sangat Lelah' */
+        filter: grayscale(1) /* Pucat tanpa warna */ brightness(0.9) /* Redup */
+          contrast(0.8) /* Kusam, melembutkan detail */;
+        opacity: 0.8; /* Transparan kelelahan */
+        transform: rotate(-4deg); /* Terkulai permanently */
+        z-index: 1;
+        position: relative;
+      }
 
-    .btn-main-green, .btn-retry-red {
-        background: none; border: none; padding: 5px 10px;
-        font-weight: 700; font-size: 14px; cursor: pointer;
-        transition: all 0.2s ease; width: auto;
-        text-transform: uppercase; letter-spacing: 1.5px;
-    }
+      /* 3. Efek Awan Mendung Murni CSS */
+      .pmkn-clouds-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2; /* Di atas stiker, di bawah hujan */
+        pointer-events: none;
+        opacity: 0.6;
+      }
 
-    .btn-main-green { color: #22c55e; }
-    .btn-retry-red { color: #ef4444; }
+      /* Membuat Awan Besar menggunakan pseudo-elements */
+      .pmkn-clouds-overlay::before,
+      .pmkn-clouds-overlay::after {
+        content: "";
+        position: absolute;
+        background: #e2e8f0; /* Warna abu-abu mendung sangat muda */
+        border-radius: 50%; /* Bentuk dasar lingkaran */
+        filter: blur(10px); /* Membuat awan halus/tidak tajam */
+      }
 
-    .btn-main-green:hover, .btn-retry-red:hover { opacity: 0.7; transform: translateY(-1px); }
-    .btn-main-green:active, .btn-retry-red:active { transform: scale(0.95); }
+      /* Awan Besar Kiri Atas */
+      .pmkn-clouds-overlay::before {
+        width: 100px;
+        height: 100px;
+        top: -30px;
+        left: -40px;
+        opacity: 0.8;
+      }
 
-    /* 6. Arena Game */
-    .game-container {
-        width: 95%; max-width: 450px;
-        background: #222; padding: 25px; border-radius: 24px;
-        border: 2px solid #ff4d00; text-align: center;
-        box-shadow: 0 0 40px rgba(255, 77, 0, 0.25); color: white;
-    }
-    .canvas-wrapper { position: relative; margin: 15px 0; background: #000; border-radius: 12px; overflow: hidden; }
-    #gameCanvas { width: 100%; height: auto; display: block; cursor: none; }
-    #game-status { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 10; }
-    .game-stats { display: flex; justify-content: space-around; margin: 15px 0; }
-    .stat-box { background: #333; padding: 8px 20px; border-radius: 10px; color: #ff4d00; font-weight: bold; }
+      /* Awan Kecil Kanan Bawah */
+      .pmkn-clouds-overlay::after {
+        width: 80px;
+        height: 80px;
+        bottom: -10px;
+        right: -20px;
+        opacity: 0.5;
+      }
 
-    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-    @keyframes bounce { 0%, 100% { bottom: 30px; } 50% { bottom: 80px; } }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-</style>
+      /* 4. Efek Hujan CSS Modern */
+      .pmkn-rain-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3; /* Elemen paling atas */
+        pointer-events: none;
+        opacity: 0.7;
 
-<script>
-    // Inisialisasi variabel global agar terbaca oleh semua fungsi
-    let canvas, ctx, statusDiv, statusText;
-    let ballRadius = 8;
-    let x, y, dx, dy;
-    let paddleHeight = 12;
-    let paddleWidth = 85;
-    let paddleX;
-    let rightPressed = false;
-    let leftPressed = false;
-    let brickRowCount = 6;
-    let brickColumnCount = 5;
-    let brickWidth = 70;
-    let brickHeight = 20;
-    let brickPadding = 7;
-    let brickOffsetTop = 30;
-    let brickOffsetLeft = 12;
-    let bricks = [];
-    let score = 0;
-    let lives = 3;
-    let gameRunning = false;
+        /* Pola Hujan dengan Gradasi Putih-Biru Muda Transparan */
+        background-image:
+          linear-gradient(
+            170deg,
+            rgba(186, 230, 253, 0.2) 20%,
+            transparent 20%
+          ),
+          linear-gradient(
+            170deg,
+            rgba(255, 255, 255, 0.15) 15%,
+            transparent 15%
+          ),
+          linear-gradient(170deg, rgba(186, 230, 253, 0.1) 10%, transparent 10%);
 
-    // Fungsi Utama Koneksi
-    function updateOnlineStatus() {
-        const overlay = document.getElementById("offline-game-overlay");
-        const intro = document.getElementById("game-intro");
-        const gamePlay = document.getElementById("game-play");
+        background-size:
+          3px 60px,
+          2px 50px,
+          1px 40px; /* Ukuran acak */
+        background-repeat: repeat;
 
+        /* Animasi hujan jatuh yang halus */
+        animation: pmknRainFalling 0.8s linear infinite;
+      }
+
+      /* --- KEYFRAMES ANIMASI BARU --- */
+
+      /* Animasi Mengambang Modern (Halus dengan Sedikit Skala) */
+      @keyframes pmknModernOfflineFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-4deg);
+        }
+        50% {
+          transform: translateY(-8px) rotate(-1deg);
+        }
+      }
+
+      /* Animasi Hujan Jatuh (Looping Smooth) */
+      @keyframes pmknRainFalling {
+        0% {
+          background-position:
+            0px 0px,
+            0px 0px,
+            0px 0px;
+        }
+        100% {
+          /* Pergeseran diagonal tipis agar terlihat seperti hujan tertiup angin lembut */
+          background-position:
+            20px 600px,
+            -15px 500px,
+            10px 400px;
+        }
+      }
+
+      /* --- KEYFRAMES ANIMASI --- */
+
+      /* Animasi Mengambang Lesu (Sangat Slow) */
+      @keyframes pmknOfflineFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-5deg);
+        }
+        50% {
+          transform: translateY(-5px) rotate(-2deg); /* Gerakan ke atas sangat sedikit */
+        }
+      }
+
+      /* Animasi Hujan Jatuh (Looping Cepat) */
+      @keyframes pmknRainFalling {
+        0% {
+          background-position:
+            0px 0px,
+            0px 0px,
+            0px 0px;
+        }
+        100% {
+          /* Menggeser background ke bawah */
+          background-position:
+            10px 500px,
+            -15px 400px,
+            20px 300px;
+        }
+      }
+
+      .pmkn-offline-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #374151;
+        letter-spacing: -1px;
+        margin: 0;
+      }
+      .pmkn-offline-text {
+        font-size: 1rem;
+        color: #6b7280;
+        margin-top: 10px;
+        margin-bottom: 40px;
+        line-height: 1.6;
+      }
+
+      /* Preview Anim */
+      .pmkn-offline-preview {
+        position: relative;
+        width: 200px;
+        height: 100px;
+        margin: 0 auto 40px;
+        border-bottom: 2px solid #9ca3af;
+      }
+      .pmkn-preview-brick {
+        width: 40px;
+        height: 15px;
+        background: #9ca3af;
+        position: absolute;
+        top: 0;
+        border-radius: 3px;
+      }
+      .pmkn-preview-brick:nth-child(1) {
+        left: 30px;
+      }
+      .pmkn-preview-brick:nth-child(2) {
+        left: 80px;
+      }
+      .pmkn-preview-brick:nth-child(3) {
+        left: 130px;
+      }
+      .pmkn-preview-ball {
+        width: 12px;
+        height: 12px;
+        background: #ff4d00;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 30px;
+        left: 94px;
+        animation: pmknBounce 2s infinite;
+      }
+      .pmkn-preview-paddle {
+        width: 60px;
+        height: 6px;
+        background: #374151;
+        position: absolute;
+        bottom: 0;
+        left: 70px;
+        border-radius: 10px;
+      }
+
+      /* Buttons */
+      .pmkn-offline-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+      }
+      .pmkn-btn-text-green {
+        color: #22c55e;
+        border: none;
+        background: none;
+        font-weight: 700;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+      }
+      .pmkn-btn-text-red {
+        color: #ef4444;
+        border: none;
+        background: none;
+        font-weight: 700;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+      }
+      .pmkn-btn-refresh-small {
+        background: none;
+        border: none;
+        color: #888;
+        text-decoration: underline;
+        font-size: 0.75rem;
+        margin-top: 15px;
+        cursor: pointer;
+      }
+
+      /* Game Box */
+      .pmkn-game-box {
+        width: 95%;
+        max-width: 450px;
+        background: #222;
+        padding: 25px;
+        border-radius: 24px;
+        border: 2px solid #ff4d00;
+        text-align: center;
+        color: white;
+      }
+      .pmkn-canvas-container {
+        position: relative;
+        margin: 15px 0;
+        background: #000;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      #pmknGameCanvas {
+        width: 100%;
+        height: auto;
+        display: block;
+        background: #000;
+        cursor: crosshair;
+      }
+      #pmkn-game-over-status {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        cursor: pointer;
+      }
+      #pmkn-status-msg {
+        color: #ff4d00;
+        font-size: 2rem;
+        margin: 0;
+        font-weight: 900;
+      }
+      .pmkn-game-stats {
+        display: flex;
+        justify-content: space-around;
+        margin: 15px 0;
+      }
+      .pmkn-stat-item {
+        background: #333;
+        padding: 8px 20px;
+        border-radius: 10px;
+        color: #ff4d00;
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+      .pmkn-hint {
+        font-size: 0.8rem;
+        color: #666;
+        margin-bottom: 0;
+      }
+
+      @keyframes pmknFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+      @keyframes pmknBounce {
+        0%,
+        100% {
+          bottom: 30px;
+        }
+        50% {
+          bottom: 80px;
+        }
+      }
+      @keyframes pmknFadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+
+    <script>
+      let pmkn_canvas, pmkn_ctx, pmkn_status_div, pmkn_status_txt;
+      let pmkn_x, pmkn_y, pmkn_dx, pmkn_dy, pmkn_paddleX;
+      let pmkn_bricks = [],
+        pmkn_score = 0,
+        pmkn_lives = 3,
+        pmkn_running = false;
+      let pmkn_rightPressed = false,
+        pmkn_leftPressed = false;
+      const pmkn_ballR = 8,
+        pmkn_pW = 85,
+        pmkn_pH = 12;
+
+      function pmknUpdateStatus() {
+        const layer = document.getElementById("pmkn-offline-layer");
         if (navigator.onLine) {
-            overlay.style.display = "none";
-            gameRunning = false;
+          layer.style.display = "none";
+          pmkn_running = false;
         } else {
-            overlay.style.display = "flex";
-            overlay.style.background = "radial-gradient(circle, #f3f4f6 0%, #d1d5db 100%)";
-            intro.style.display = "flex";
-            gamePlay.style.display = "none";
-            gameRunning = false;
+          layer.style.display = "flex";
+          document.getElementById("pmkn-offline-intro").style.display = "flex";
+          document.getElementById("pmkn-offline-arena").style.display = "none";
         }
-    }
+      }
 
-    function showActualGame() {
-        document.getElementById("game-intro").style.display = "none";
-        document.getElementById("game-play").style.display = "block";
-        document.getElementById("offline-game-overlay").style.background = "rgba(17, 17, 17, 0.98)";
-        startGame();
-    }
+      function pmknStartActualGame() {
+        document.getElementById("pmkn-offline-intro").style.display = "none";
+        document.getElementById("pmkn-offline-arena").style.display = "block";
+        document.getElementById("pmkn-offline-layer").style.background = "#111";
+        if (!pmkn_canvas) pmknInitEngine();
+        pmknRestartEngine();
+      }
 
-    // Engine Game
-    function initGameCore() {
-        canvas = document.getElementById("gameCanvas");
-        if(!canvas) return;
-        ctx = canvas.getContext("2d");
-        statusDiv = document.getElementById("game-status");
-        statusText = document.getElementById("status-text");
-        canvas.width = 400;
-        canvas.height = 500;
-    }
+      function pmknInitEngine() {
+        pmkn_canvas = document.getElementById("pmknGameCanvas");
+        pmkn_ctx = pmkn_canvas.getContext("2d");
+        pmkn_status_div = document.getElementById("pmkn-game-over-status");
+        pmkn_status_txt = document.getElementById("pmkn-status-msg");
+        pmkn_canvas.width = 400;
+        pmkn_canvas.height = 500;
 
-    function initBricks() {
-        for (let c = 0; c < brickColumnCount; c++) {
-            bricks[c] = [];
-            for (let r = 0; r < brickRowCount; r++) {
-                bricks[c][r] = { x: 0, y: 0, status: 1 };
-            }
-        }
-    }
-
-    function resetBall() {
-        x = canvas.width / 2;
-        y = canvas.height - 30;
-        dx = 3; dy = -3;
-        paddleX = (canvas.width - paddleWidth) / 2;
-    }
-
-    function startGame() {
-        score = 0; lives = 3;
-        document.getElementById("score").innerText = score;
-        document.getElementById("lives").innerText = lives;
-        statusDiv.style.display = "none";
-        initBricks();
-        resetBall();
-        gameRunning = true;
-        draw();
-    }
-
-    function showStatus(text) {
-        gameRunning = false;
-        statusText.innerText = text;
-        statusDiv.style.display = "flex";
-    }
-
-    function draw() {
-        if (!gameRunning) return;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        // Draw Bricks
-        for (let c = 0; c < brickColumnCount; c++) {
-            for (let r = 0; r < brickRowCount; r++) {
-                if (bricks[c][r].status === 1) {
-                    let brickX = c * (brickWidth + brickPadding) + brickOffsetLeft;
-                    let brickY = r * (brickHeight + brickPadding) + brickOffsetTop;
-                    bricks[c][r].x = brickX;
-                    bricks[c][r].y = brickY;
-                    ctx.beginPath();
-                    ctx.rect(brickX, brickY, brickWidth, brickHeight);
-                    ctx.fillStyle = r < 2 ? "#ff4d00" : r < 4 ? "#ff8c00" : "#ffae00";
-                    ctx.fill(); ctx.closePath();
-                }
-            }
-        }
-
-        // Draw Ball
-        ctx.beginPath();
-        ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-        ctx.fillStyle = "#ff4d00";
-        ctx.fill(); ctx.closePath();
-
-        // Draw Paddle
-        ctx.beginPath();
-        ctx.rect(paddleX, canvas.height - paddleHeight - 5, paddleWidth, paddleHeight);
-        ctx.fillStyle = "#ff4d00";
-        ctx.fill(); ctx.closePath();
-
-        // Collision Detection
-        for (let c = 0; c < brickColumnCount; c++) {
-            for (let r = 0; r < brickRowCount; r++) {
-                let b = bricks[c][r];
-                if (b.status === 1) {
-                    if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
-                        dy = -dy; b.status = 0; score++;
-                        document.getElementById("score").innerText = score;
-                        if (score === brickRowCount * brickColumnCount) showStatus("YOU WIN!");
-                    }
-                }
-            }
-        }
-
-        // Walls
-        if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) dx = -dx;
-        if (y + dy < ballRadius) dy = -dy;
-        else if (y + dy > canvas.height - ballRadius - 10) {
-            if (x > paddleX && x < paddleX + paddleWidth) {
-                dy = -dy;
-                dx = 8 * ((x - (paddleX + paddleWidth / 2)) / paddleWidth);
-            } else {
-                lives--;
-                document.getElementById("lives").innerText = lives;
-                if (!lives) showStatus("GAME OVER");
-                else resetBall();
-            }
-        }
-
-        if (rightPressed && paddleX < canvas.width - paddleWidth) paddleX += 7;
-        else if (leftPressed && paddleX > 0) paddleX -= 7;
-
-        x += dx; y += dy;
-        requestAnimationFrame(draw);
-    }
-
-    // Event Listeners
-    window.addEventListener("online", updateOnlineStatus);
-    window.addEventListener("offline", updateOnlineStatus);
-    
-    document.addEventListener("DOMContentLoaded", () => {
-        initGameCore();
-        updateOnlineStatus();
-        
+        // Keyboard Listener
         document.addEventListener("keydown", (e) => {
-            if (e.key === "Right" || e.key === "ArrowRight") rightPressed = true;
-            else if (e.key === "Left" || e.key === "ArrowLeft") leftPressed = true;
+          if (e.key == "Right" || e.key == "ArrowRight")
+            pmkn_rightPressed = true;
+          else if (e.key == "Left" || e.key == "ArrowLeft")
+            pmkn_leftPressed = true;
         });
         document.addEventListener("keyup", (e) => {
-            if (e.key === "Right" || e.key === "ArrowRight") rightPressed = false;
-            else if (e.key === "Left" || e.key === "ArrowLeft") leftPressed = false;
+          if (e.key == "Right" || e.key == "ArrowRight")
+            pmkn_rightPressed = false;
+          else if (e.key == "Left" || e.key == "ArrowLeft")
+            pmkn_leftPressed = false;
         });
-        
-        // Mouse/Touch Control
-        const handleMove = (clientX) => {
-            let relativeX = clientX - canvas.offsetLeft;
-            if (relativeX > 0 && relativeX < canvas.width)
-                paddleX = relativeX - paddleWidth / 2;
-        };
 
-        window.addEventListener("mousemove", (e) => handleMove(e.clientX));
-        window.addEventListener("touchmove", (e) => {
-            handleMove(e.touches[0].clientX);
-            if(!gameRunning) return; e.preventDefault();
-        }, { passive: false });
-    });
-</script>
+        // Touch/Mouse Move
+        const moveHandler = (ex) => {
+          let rect = pmkn_canvas.getBoundingClientRect();
+          let rx = ex - rect.left;
+          if (rx > 0 && rx < pmkn_canvas.width) pmkn_paddleX = rx - pmkn_pW / 2;
+        };
+        window.addEventListener("mousemove", (e) => moveHandler(e.clientX));
+        window.addEventListener(
+          "touchmove",
+          (e) => {
+            moveHandler(e.touches[0].clientX);
+            if (pmkn_running) e.preventDefault();
+          },
+          { passive: false },
+        );
+      }
+
+      function pmknRestartEngine() {
+        pmkn_score = 0;
+        pmkn_lives = 3;
+        document.getElementById("pmkn-score").innerText = pmkn_score;
+        document.getElementById("pmkn-lives").innerText = pmkn_lives;
+        pmkn_status_div.style.display = "none";
+
+        for (let c = 0; c < 5; c++) {
+          pmkn_bricks[c] = [];
+          for (let r = 0; r < 6; r++)
+            pmkn_bricks[c][r] = { x: 0, y: 0, status: 1 };
+        }
+        pmkn_x = pmkn_canvas.width / 2;
+        pmkn_y = pmkn_canvas.height - 30;
+        pmkn_dx = 3;
+        pmkn_dy = -3;
+        pmkn_paddleX = (pmkn_canvas.width - pmkn_pW) / 2;
+        pmkn_running = true;
+        pmknDraw();
+      }
+
+      function pmknDraw() {
+        if (!pmkn_running) return;
+        pmkn_ctx.clearRect(0, 0, pmkn_canvas.width, pmkn_canvas.height);
+
+        // Bricks
+        for (let c = 0; c < 5; c++) {
+          for (let r = 0; r < 6; r++) {
+            if (pmkn_bricks[c][r].status == 1) {
+              let bX = c * (70 + 7) + 12;
+              let bY = r * (20 + 7) + 30;
+              pmkn_bricks[c][r].x = bX;
+              pmkn_bricks[c][r].y = bY;
+              pmkn_ctx.fillStyle =
+                r < 2 ? "#ff4d00" : r < 4 ? "#ff8c00" : "#ffae00";
+              pmkn_ctx.fillRect(bX, bY, 70, 20);
+            }
+          }
+        }
+
+        // Ball
+        pmkn_ctx.beginPath();
+        pmkn_ctx.arc(pmkn_x, pmkn_y, pmkn_ballR, 0, Math.PI * 2);
+        pmkn_ctx.fillStyle = "#ff4d00";
+        pmkn_ctx.fill();
+        pmkn_ctx.closePath();
+
+        // Paddle
+        pmkn_ctx.fillStyle = "#ff4d00";
+        pmkn_ctx.fillRect(
+          pmkn_paddleX,
+          pmkn_canvas.height - 17,
+          pmkn_pW,
+          pmkn_pH,
+        );
+
+        // Logic Collision
+        for (let c = 0; c < 5; c++) {
+          for (let r = 0; r < 6; r++) {
+            let b = pmkn_bricks[c][r];
+            if (
+              b.status == 1 &&
+              pmkn_x > b.x &&
+              pmkn_x < b.x + 70 &&
+              pmkn_y > b.y &&
+              pmkn_y < b.y + 20
+            ) {
+              pmkn_dy = -pmkn_dy;
+              b.status = 0;
+              pmkn_score++;
+              document.getElementById("pmkn-score").innerText = pmkn_score;
+              if (pmkn_score == 30) {
+                pmkn_running = false;
+                pmkn_status_txt.innerText = "YOU WIN!";
+                pmkn_status_div.style.display = "flex";
+              }
+            }
+          }
+        }
+
+        // Bounce
+        if (
+          pmkn_x + pmkn_dx > pmkn_canvas.width - pmkn_ballR ||
+          pmkn_x + pmkn_dx < pmkn_ballR
+        )
+          pmkn_dx = -pmkn_dx;
+        if (pmkn_y + pmkn_dy < pmkn_ballR) pmkn_dy = -pmkn_dy;
+        else if (pmkn_y + pmkn_dy > pmkn_canvas.height - pmkn_ballR - 5) {
+          if (pmkn_x > pmkn_paddleX && pmkn_x < pmkn_paddleX + pmkn_pW)
+            pmkn_dy = -pmkn_dy;
+          else {
+            pmkn_lives--;
+            document.getElementById("pmkn-lives").innerText = pmkn_lives;
+            if (!pmkn_lives) {
+              pmkn_running = false;
+              pmkn_status_txt.innerText = "GAME OVER";
+              pmkn_status_div.style.display = "flex";
+            } else {
+              pmkn_x = pmkn_canvas.width / 2;
+              pmkn_y = pmkn_canvas.height - 30;
+              pmkn_dx = 3;
+              pmkn_dy = -3;
+            }
+          }
+        }
+
+        if (pmkn_rightPressed && pmkn_paddleX < pmkn_canvas.width - pmkn_pW)
+          pmkn_paddleX += 7;
+        else if (pmkn_leftPressed && pmkn_paddleX > 0) pmkn_paddleX -= 7;
+
+        pmkn_x += pmkn_dx;
+        pmkn_y += pmkn_dy;
+        requestAnimationFrame(pmknDraw);
+      }
+
+      window.addEventListener("online", pmknUpdateStatus);
+      window.addEventListener("offline", pmknUpdateStatus);
+      window.addEventListener("load", pmknUpdateStatus);
+    </script>
   </body>
 </html>

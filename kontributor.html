@@ -2863,399 +2863,1204 @@
     </div>
 </div>
 
-<div id="pmkn-greet-overlay" class="pmkn-greet-layer" style="display: none">
-  <div class="pmkn-greet-container">
-    <div class="pmkn-greet-stk-box">
-      <img src="lelahstk.png" alt="Sticker" class="pmkn-greet-stk-img" />
-    </div>
-    <h1 id="pmkn-greet-msg-title">huffft...</h1>
-    <p id="pmkn-greet-msg-desc">
-      Kami kira Anda meninggalkan kami selamanya.<br />Selamat datang kembali!
-    </p>
-    <button onclick="closePmknGreet()" class="pmkn-greet-btn">
-      Lanjutkan Menjelajah
-    </button>
-  </div>
-</div>
+<!-- kata rindu web -->
+<!-- kata rindu web -->
+    <div id="pmkn-greet-overlay" class="pmkn-greet-layer">
+      <div class="pmkn-greet-container">
+        
+        <div id="pmkn-step-1">
+          <div class="pmkn-stk-wrapper">
+            <img src="lelahstk.png" alt="Sticker" class="pmkn-greet-stk-img" />
+            <div class="pmkn-tear-puddle"></div>
+          </div>
+          <h1 id="pmkn-greet-msg-title">huffft...</h1>
+          <p id="pmkn-greet-msg-desc">Selamat datang kembali!</p>
+          <button onclick="pmknShowChallenge()" class="pmkn-greet-btn">Lanjutkan...</button>
+        </div>
 
-<style>
+        <div id="pmkn-step-2" style="display: none">
+          <h2>Yaahowu,<br>Verifikasi Dulu Ya</h2>
+          <p id="pmkn-question-text"></p>
+          <input type="text" id="pmkn-answer-input" placeholder="Tulis jawaban..." autocomplete="off">
+          <br>
+          <button onclick="pmknCheckAnswer()" class="pmkn-greet-btn-submit">Masuk</button>
+          <p id="pmkn-error-msg">Jawaban salah! Coba ingat lagi</p>
+        </div>
+    <style>
+  /* Import Font Modern & Clean */
+  @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&display=swap");
+
   .pmkn-greet-layer {
     position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background: radial-gradient(circle, #f3f4f6 0%, #d1d5db 100%);
-    z-index: 999999; /* Sangat tinggi agar tetap di depan */
-    display: flex;
+    z-index: 999999;
+    display: none; 
     justify-content: center;
     align-items: center;
-    font-family: "Poppins", sans-serif;
-    animation: pmknFadeIn 0.8s ease;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    text-align: center;
+    color: #334155;
+    text-transform: capitalize;
   }
 
   .pmkn-greet-container {
-    text-align: center;
-    max-width: 600px;
+    background: transparent;
+    max-width: 800px;
     width: 90%;
-    animation: pmknZoomIn 1s cubic-bezier(0.19, 1, 0.22, 1);
+    animation: pmknEnter 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Memastikan kontainer mewarisi format kapital */
+    text-transform: capitalize;
   }
 
-  .pmkn-greet-stk-box { margin-bottom: 30px; }
-
-  .pmkn-greet-stk-img {
-    width: 200px;
-    height: auto;
-    filter: grayscale(0.8) contrast(1.1);
-    opacity: 0.8;
-    animation: pmknBreathe 4s ease-in-out infinite;
-    transition: all 0.5s ease;
-  }
-
-  .pmkn-greet-stk-img:hover {
-    filter: grayscale(0.2);
-    opacity: 1;
-    transform: scale(1.05);
-  }
-
+  /* Tambahan: Pastikan judul tidak dipaksa huruf kecil lagi */
   #pmkn-greet-msg-title {
-    color: #374151;
-    font-size: 3.5rem;
-    font-weight: 900;
-    margin-bottom: 15px;
-    letter-spacing: -2px;
+    text-transform: capitalize !important;
+  }
+
+  /* Sticker Grayscale */
+/* 1. Container Wrapper Stiker */
+.pmkn-stk-wrapper {
+  position: relative;
+  display: inline-block;
+  width: clamp(120px, 20vw, 160px);
+  margin-bottom: 60px; /* Ruang untuk genangan banjir */
+  /* Perbaikan: Animasi mengambang yang lesu */
+  animation: pmknFloatLeleh 8s ease-in-out infinite;
+}
+
+/* 2. Style Gambar Stiker Asli */
+.pmkn-greet-stk-img {
+  width: 100%;
+  height: auto;
+  filter: 
+    drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15)) 
+    grayscale(1)      /* Pucat */
+    brightness(0.9)   /* Redup */
+    sepia(0.2);       /* Kusam */
+  opacity: 0.75;
+  transform: rotate(-3deg); /* Posisi terkulai */
+}
+
+/* 3. Efek Air Mata (Tetesan) */
+.pmkn-stk-wrapper::before,
+.pmkn-stk-wrapper::after {
+  content: '';
+  position: absolute;
+  background: rgba(186, 230, 253, 0.6);
+  border-radius: 50%;
+  border-bottom-left-radius: 0;
+  transform: rotate(-45deg);
+  opacity: 0;
+  z-index: 2;
+}
+
+/* Air Mata Kiri */
+.pmkn-stk-wrapper::before {
+  width: 8px;
+  height: 8px;
+  left: 35%; /* Sesuaikan ke posisi mata kiri */
+  animation: pmknAirMataKiri 4s infinite 1s;
+}
+
+/* Air Mata Kanan */
+.pmkn-stk-wrapper::after {
+  width: 10px;
+  height: 10px;
+  right: 32%; /* Sesuaikan ke posisi mata kanan */
+  animation: pmknAirMataKanan 4s infinite 2.5s;
+}
+
+/* 4. Efek Genangan Air (Banjir) */
+.pmkn-tear-puddle {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 12px;
+  background: rgba(186, 230, 253, 0.4);
+  border-radius: 50%;
+  filter: blur(2px);
+  z-index: 1;
+  animation: pmknBanjir 4s ease-in-out infinite;
+}
+
+.pmkn-tear-puddle::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  width: 30%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+}
+
+/* --- KEYFRAMES --- */
+
+@keyframes pmknFloatLeleh {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-8px) rotate(-1deg); }
+}
+
+@keyframes pmknBanjir {
+  0%, 100% { width: 80%; opacity: 0.4; }
+  50% { width: 110%; opacity: 0.7; filter: blur(3px); }
+}
+
+@keyframes pmknAirMataKiri {
+  0% { top: 40%; opacity: 0; }
+  20% { opacity: 1; }
+  80% { top: 95%; opacity: 0; }
+  100% { top: 95%; opacity: 0; }
+}
+
+@keyframes pmknAirMataKanan {
+  0% { top: 43%; opacity: 0; }
+  25% { opacity: 1; }
+  85% { top: 100%; opacity: 0; }
+  100% { top: 100%; opacity: 0; }
+}
+
+  /* Judul Minimalis */
+  #pmkn-greet-msg-title {
+    font-size: clamp(2.5rem, 10vw, 5rem);
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -3px;
+    color: #1e293b;
     text-transform: lowercase;
+    text-transform: capitalize; 
   }
 
   #pmkn-greet-msg-desc {
-    color: #6b7280;
-    line-height: 1.8;
-    margin-bottom: 40px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #64748b;
+    margin: 15px auto 40px;
+    max-width: 500px;
+    letter-spacing: 0.5px;
   }
 
+  /* Tombol Teks Merah Sesuai Request */
   .pmkn-greet-btn {
-    background: transparent;
-    color: #ca4d17;
-    border: none;
-    padding: 10px 20px;
+  background: transparent;
+  color: #e11d48;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  /* Format Aa (Kapital di awal kata) */
+  text-transform: capitalize; 
+  letter-spacing: 1px;
+  opacity: 0.8;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.pmkn-greet-btn:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+  /* STEP 2 - QUIZ MODERN STYLE */
+  #pmkn-step-2 {
+    animation: pmknEnter 0.8s ease-out;
+    border: 1px solid #cbd5e1; /* Garis bingkai tipis */
+    padding: 60px 40px; /* Jarak luas di dalam bingkai */
+    border-radius: 30px; /* Sudut melengkung halus */
+    background: rgba(255, 255, 255, 0.2); /* Efek kaca transparan tipis */
+    backdrop-filter: blur(5px);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* Judul Yaahowu */
+  #pmkn-step-2 h2 {
+    font-size: 1rem;
     font-weight: 500;
-    font-size: 0.95rem;
+    color: #64748b;
+    margin-bottom: 35px; /* Jarak lebih renggang */
+    line-height: 1.6;
+    text-transform: capitalize;
+  }
+
+  /* Teks Pertanyaan */
+  #pmkn-question-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 45px; /* Jarak ke input diperlebar */
+    line-height: 1.3;
+  }
+
+  /* Input Jawaban Minimalis */
+  #pmkn-answer-input {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid #94a3b8 !important; /* Garis lebih tipis agar elegan */
+    color: #1e293b !important;
+    font-size: 1.2rem !important;
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    padding: 12px 0 !important;
+    outline: none !important;
+    transition: all 0.4s ease !important;
+    margin-bottom: 40px; /* Jarak ke tombol submit */
+  }
+
+  #pmkn-answer-input:focus {
+    border-bottom-color: #1e293b !important;
+    border-bottom-width: 2px !important;
+  }
+
+  #pmkn-answer-input::placeholder {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+
+  /* Tombol Submit Outline */
+  .pmkn-greet-btn-submit {
+    background: transparent;
+    color: #1e293b;
+    border: 1.5px solid #1e293b;
+    padding: 12px 40px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase; /* Membuat tombol terlihat tegas */
+    letter-spacing: 2px;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-decoration: underline;
-    text-underline-offset: 5px;
-    opacity: 0.6;
   }
 
-  .pmkn-greet-btn:hover {
-    opacity: 1;
-    color: #111827;
-    transform: translateY(-2px);
+  .pmkn-greet-btn-submit:hover {
+    background: #1e293b;
+    color: #ffffff;
+    transform: scale(1.05);
   }
 
-  @keyframes pmknFadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes pmknZoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-  @keyframes pmknBreathe {
-    0%, 100% { transform: scale(1); filter: grayscale(0.8); }
-    50% { transform: scale(1.08); filter: grayscale(0.4); }
+  /* Pesan Error */
+  #pmkn-error-msg {
+    color: #e11d48;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 25px;
+    display: none;
+    text-transform: capitalize;
   }
 
-  @media (max-width: 600px) {
-    #pmkn-greet-msg-title { font-size: 2.5rem; }
-    .pmkn-greet-stk-img { width: 150px; }
+  /* Animations */
+  @keyframes pmknFloatLeleh {
+    0%, 100% {
+      transform: translateY(0) rotate(-3deg);
+    }
+    50% {
+      transform: translateY(-5px) rotate(-1deg); /* Gerakan ke atas sangat sedikit */
+    }
+  }
+
+  /* Animasi Air Mata Menetes (Kiri) */
+  @keyframes pmknAirMataKiri {
+    0% {
+      top: 45%; /* Posisi awal mata */
+      opacity: 0;
+      transform: rotate(-45deg) scale(0.5);
+    }
+    10%, 20% {
+      opacity: 1; /* Muncul */
+      transform: rotate(-45deg) scale(1);
+    }
+    80% {
+      top: 75%; /* Mengalir ke bawah pipi */
+      opacity: 0; /* Menghilang di ujung */
+      transform: rotate(-45deg) scale(1);
+    }
+    100% {
+      top: 75%;
+      opacity: 0;
+    }
+  }
+
+  /* Animasi Air Mata Menetes (Kanan - Lebih Panjang) */
+  @keyframes pmknAirMataKanan {
+    0% {
+      top: 48%;
+      opacity: 0;
+      transform: rotate(-45deg) scale(0.5);
+    }
+    15%, 25% {
+      opacity: 1;
+      transform: rotate(-45deg) scale(1.1); /* Sedikit lebih besar */
+    }
+    85% {
+      top: 85%; /* Mengalir lebih jauh ke dagu */
+      opacity: 0;
+      transform: rotate(-45deg) scale(1.1);
+    }
+    100% {
+      top: 85%;
+      opacity: 0;
+    }
+  }
+  /* Animasi Banjir yang Bergelombang */
+@keyframes pmknBanjir {
+  0%, 100% {
+    width: 80%;
+    height: 10px;
+    opacity: 0.4;
+  }
+  50% {
+    width: 100%; /* Air seolah meluap */
+    height: 15px;
+    opacity: 0.7;
+    filter: blur(3px);
+  }
+}
+
+/* Pastikan air mata jatuh seolah masuk ke genangan */
+@keyframes pmknAirMataKiri {
+  0% { top: 45%; opacity: 0; transform: rotate(-45deg) scale(0.5); }
+  10%, 20% { opacity: 1; transform: rotate(-45deg) scale(1); }
+  90% { 
+    top: 95%; /* Jatuh sampai ke area banjir */
+    opacity: 0; 
+    transform: rotate(-45deg) scale(0.8); 
+  }
+  100% { top: 95%; opacity: 0; }
+}
+
+@keyframes pmknAirMataKanan {
+  0% { top: 48%; opacity: 0; transform: rotate(-45deg) scale(0.5); }
+  15%, 25% { opacity: 1; transform: rotate(-45deg) scale(1.1); }
+  95% { 
+    top: 100%; /* Jatuh sampai ke area banjir */
+    opacity: 0; 
+    transform: rotate(-45deg) scale(0.9); 
+  }
+  100% { top: 100%; opacity: 0; }
+}
+
+  /* Animasi Masuk yang Sophisticated */
+  @keyframes pmknEnter {
+    0% {
+      opacity: 0;
+      filter: blur(15px) brightness(1.5); /* Mulai dari sangat blur dan terang */
+      transform: scale(0.9) translateY(30px);
+    }
+    /* Menggunakan teknik overshoot (sedikit melewati posisi asli lalu kembali) */
+    70% {
+      opacity: 0.8;
+      filter: blur(5px);
+      transform: scale(1.02) translateY(-5px);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0) brightness(1);
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  /* Cara penggunaan pada container agar lebih smooth */
+  .pmkn-greet-container {
+    animation: pmknEnter 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .pmkn-greet-stk-img {
+    animation: pmknFloat 6s ease-in-out infinite;
   }
 </style>
 
-<script>
-  function closePmknGreet() {
-    const layer = document.getElementById("pmkn-greet-overlay");
-    layer.style.transition = "opacity 0.5s ease";
-    layer.style.opacity = "0";
-    setTimeout(() => {
-      layer.style.display = "none";
-      layer.style.opacity = "1";
-    }, 500);
+    <script>
+      const pmknQuestions = [
+  { 
+    q: "Apa singkatan dari PMKN?", 
+    a: "Persatuan Mahasiswa Kristen Nias" 
+  },
+  { 
+    q: "Tahun berapa pertama kali PMKN didirikan?", 
+    a: "2017" 
+  },
+  { 
+    q: "Tahun berapa resmi PMKN di Tondano?", 
+    a: ["2020", "29 Oktober 2020"]
+  },
+  { 
+    q: "Dimana lokasi PMKN sekrang?", 
+    a: ["Tondano", "Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2, Kec. Tondano Selatan Sulawesi Utara", "Brother House", "Kost Putra", "Kost Putra Blok B No.2"]
+  },
+  { 
+    q: "Bulan berapa PMKN merayakan Diesnatalis ?", 
+    a: ["Oktober", "October", "29 Oktober"] 
+  },
+  { 
+    q: "Siapa saja anggota PMKN?", 
+    a: ["Orang Nias", "Mahasiswa", "Anak Nias", "Pemuda Nias", "Mahasiswa Nias di Tondano"]
+  },
+  { 
+    q: "Apa kata sapaan yang identik dari Nias?", 
+    a: "Yaahowu" 
+  },
+  { 
+    q: "Apakah kamu love dengan PMKN?", 
+    a: ["Iya", "Ya", "Suka", "Love PMKN", "Of course", "Yes", "Tentu", "Pasti", "Sangat suka", "Iya dong", "Suka banget", "Cinta PMKN", "Tidak", "Enggak", "Gak", "Nggak", "Tidak suka", "No", "Ga suka", "Gak suka", "Enggak suka"]
+  },
+  { 
+  q: "Siapa Ketua Umum PMKN saat ini?", 
+  a: ["Lisman Lase", "Paci", "Lisman", "Lase"]
+  },
+  { 
+    q: "Apa nama kegiatan Rapat tahunan terbesar PMKN?", 
+    a: ["Rapat Umum Organisasi", "RUO"]
   }
+];
 
-  function initPmknGreetLogic() {
-    const now = new Date().getTime();
-    const lastActive = localStorage.getItem("pmkn_v3_last_seen");
-    const overlay = document.getElementById("pmkn-greet-overlay");
-    const titleEl = document.getElementById("pmkn-greet-msg-title");
-    const descEl = document.getElementById("pmkn-greet-msg-desc");
+      const pmknMessages = [
+  {
+    t: "Huffft...",
+    d: "Kami kira Anda meninggalkan kami selamanya. Senang melihat Anda kembali!",
+  },
+  {
+    t: "Rindu Itu Berat!",
+    d: "Baru ditinggal sebentar saja sudah terasa sepi. Selamat datang kembali!",
+  },
+  {
+    t: "Masih Hidup?",
+    d: "Kirain tadi website ini cuma milik hantu karena saking sepinya. Hehe!",
+  },
+  {
+    t: "Akhirnya...",
+    d: "Capek tau nungguin kamu balik. Duduk yang manis lagi ya!",
+  },
+  {
+    t: "Kemana Saja?",
+    d: "Lama banget perginya, sampai debu di sini sudah setebal kamus!",
+  },
+  {
+    t: "Cuma Mampir?",
+    d: "Jangan pergi-pergi lagi ya, kami sudah siapkan tempat duduk paling nyaman.",
+  },
+  {
+    t: "Ya Ampun!",
+    d: "Kirain tadi nyasar ke tetangga sebelah. Untung ingat jalan pulang!",
+  },
+  {
+    t: "Selamat Kembali!",
+    d: "Hampir saja kami buatkan pengumuman orang hilang. Senang Anda kembali!",
+  },
+  {
+    t: "Tega Banget!",
+    d: "Ditinggal sendirian itu nggak enak tahu. Jangan lama-lama lagi ya!",
+  },
+  {
+    t: "Eh, Kamu Lagi!",
+    d: "Sudah puas jalan-jalannya? Sini istirahat dulu sebentar.",
+  },
+  {
+    t: "Senyap Banget!",
+    d: "Tadi di sini sunyi sekali seperti perpustakaan tengah malam. Jangan pergi lagi!",
+  },
+  {
+    t: "Misi Sukses!",
+    d: "Akhirnya Anda berhasil menemukan jalan kembali ke halaman ini. Selamat!",
+  }
+];
 
-    const pool = [
-      { t: "Huffft...", d: "Kami kira Anda meninggalkan kami selamanya. Senang melihat Anda kembali!" },
-      { t: "Rindu Itu Berat!", d: "Baru ditinggal sebentar saja sudah terasa sepi. Selamat datang kembali di PMKN!" },
-      { t: "Masih Hidup?", d: "Kirain tadi website ini cuma milik hantu karena saking sepinya. Hehe, selamat datang!" },
-      { t: "Akhirnya...", d: "Capek tau nungguin kamu balik. Duduk yang manis lagi ya!" },
-      { t: "Cuma Mampir?", d: "Habis dari mana saja? Jangan sering-sering menghilang, server kami butuh kehadiranmu." },
-      { t: "Halo Stranger!", d: "Hampir saja kami buatkan pengumuman orang hilang. Untung kamu sudah balik!" },
-      { t: "Welcome Home,", d: "Sejauh mana pun kamu scrolling, tempat ternyaman untuk pulang tetaplah ke sini." },
-      { t: "Ehem! Sibuk?", d: "Kami hampir cemburu karena kamu berpaling ke tab sebelah. Yuk, fokus ke sini lagi!" },
-      { t: "Back in Action!", d: "Dunia luar memang seru, tapi petualanganmu di PMKN belum selesai. Lanjutkan!" }
-    ];
+      let pmknActiveQ = null;
 
-    if (lastActive) {
-      const diff = now - lastActive;
-      const limit = 15 * 60 * 1000; // 15 Menit
-      // const limit = 5 * 1000; // 5 Detik untuk testing
+      function handlePmknReunionLogic() {
+        const now = new Date().getTime();
+        const lastSeen = localStorage.getItem("pmkn_v3_last_seen");
+        const overlay = document.getElementById("pmkn-greet-overlay");
 
-      if (diff > limit) {
-        const item = pool[Math.floor(Math.random() * pool.length)];
-        titleEl.innerText = item.t;
-        descEl.innerText = item.d;
-        overlay.style.display = "flex";
+        if (lastSeen) {
+          const timeGap = now - parseInt(lastSeen);
+          // const limit = 5 * 1000; // TEST 5 DETIK
+          const limit = 20 * 60 * 1000; // 20 menit
+
+          if (timeGap > limit) {
+            const pick = pmknMessages[Math.floor(Math.random() * pmknMessages.length)];
+            document.getElementById("pmkn-greet-msg-title").innerText = pick.t;
+            document.getElementById("pmkn-greet-msg-desc").innerText = pick.d;
+            overlay.style.display = "flex";
+          }
+        }
+        localStorage.setItem("pmkn_v3_last_seen", now);
       }
-    }
 
-    // Update timestamp
-    localStorage.setItem("pmkn_v3_last_seen", now);
+      function pmknShowChallenge() {
+        document.getElementById("pmkn-step-1").style.display = "none";
+        document.getElementById("pmkn-step-2").style.display = "block";
+        pmknActiveQ = pmknQuestions[Math.floor(Math.random() * pmknQuestions.length)];
+        document.getElementById("pmkn-question-text").innerText = pmknActiveQ.q;
+        setTimeout(() => document.getElementById("pmkn-answer-input").focus(), 100);
+      }
+
+      function pmknCheckAnswer() {
+  const inputEl = document.getElementById("pmkn-answer-input");
+  const val = inputEl.value.toLowerCase().trim();
+  const overlay = document.getElementById("pmkn-greet-overlay");
+
+  // Logika baru: Cek apakah jawaban user ada di dalam daftar jawaban benar
+  const isCorrect = Array.isArray(pmknActiveQ.a) 
+    ? pmknActiveQ.a.some(ans => ans.toLowerCase() === val)
+    : pmknActiveQ.a.toLowerCase() === val;
+
+  if (isCorrect) {
+    overlay.style.opacity = "0";
+    setTimeout(() => {
+      overlay.style.display = "none";
+      overlay.style.opacity = "1";
+      document.getElementById("pmkn-step-1").style.display = "block";
+      document.getElementById("pmkn-step-2").style.display = "none";
+      inputEl.value = "";
+      document.getElementById("pmkn-error-msg").style.display = "none";
+    }, 600);
+    localStorage.setItem("pmkn_v3_last_seen", new Date().getTime());
+  } else {
+    document.getElementById("pmkn-error-msg").style.display = "block";
+    // Efek getar sedikit jika salah (opsional)
+    inputEl.style.borderColor = "#e11d48";
+    setTimeout(() => inputEl.style.borderColor = "#cbd5e1", 500);
   }
+}
 
-  window.addEventListener("load", initPmknGreetLogic);
-</script>
+      window.addEventListener("load", handlePmknReunionLogic);
+    </script>
+
 
     <!-- game offline -->
-<div id="pmkn-offline-layer" style="display: none">
-    <div id="pmkn-offline-intro" class="pmkn-offline-screen">
+    <div id="pmkn-offline-layer" style="display: none">
+      <div id="pmkn-offline-intro" class="pmkn-offline-screen">
         <div class="pmkn-offline-inner">
-            <div class="pmkn-offline-sticker-box">
-                <img src="lelahstk.png" alt="Offline" class="pmkn-offline-img">
-            </div>
-            
-            <h1 class="pmkn-offline-title">koneksi terputus...</h1>
-            <p class="pmkn-offline-text">Sepertinya sinyal Anda sedang beristirahat. Sambil menunggu ia kembali, mau mencoba tantangan kecil?</p>
-
-            <div class="pmkn-offline-preview">
-                <div class="pmkn-preview-brick"></div>
-                <div class="pmkn-preview-brick"></div>
-                <div class="pmkn-preview-brick"></div>
-                <div class="pmkn-preview-ball"></div>
-                <div class="pmkn-preview-paddle"></div>
-            </div>
-
-            <div class="pmkn-offline-actions">
-                <button onclick="pmknStartActualGame()" class="pmkn-btn-text-green">Mainkan Game</button>
-                <button onclick="location.reload()" class="pmkn-btn-text-red">Segarkan Halaman</button>
-            </div>
+          <div class="pmkn-offline-sticker-box">
+          <img src="lelahstk.png" alt="Offline" class="pmkn-offline-img" />
+          
+          <div class="pmkn-clouds-overlay"></div>
+          
+          <div class="pmkn-rain-overlay"></div>
         </div>
-    </div>
 
-    <div id="pmkn-offline-arena" class="pmkn-game-box" style="display: none">
+          <h1 class="pmkn-offline-title">
+            <i class="fa-solid fa-wifi"></i> Sinyal drop ...
+          </h1>
+          <p class="pmkn-offline-text">
+            Sinyal sedang 'off'. Mau coba tantangan kecil?
+          </p>
+
+          <div class="pmkn-offline-preview">
+            <div class="pmkn-preview-brick"></div>
+            <div class="pmkn-preview-brick"></div>
+            <div class="pmkn-preview-brick"></div>
+            <div class="pmkn-preview-ball"></div>
+            <div class="pmkn-preview-paddle"></div>
+          </div>
+
+          <div class="pmkn-offline-actions">
+            <button onclick="pmknStartActualGame()" class="pmkn-btn-text-green">
+              Mainkan Game
+            </button>
+            <button onclick="location.reload()" class="pmkn-btn-text-red">
+              Segarkan Halaman
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="pmkn-offline-arena" class="pmkn-game-box" style="display: none">
         <div class="pmkn-game-header">
-            <h2 style="color: #ff4d00; margin-bottom: 5px">Brick Breaker PMKN</h2>
-            <p style="font-size: 0.8rem; color: #888">Buktikan keahlianmu!</p>
+          <h2 style="color: #ff4d00; margin-bottom: 5px">Brick Breaker PMKN</h2>
+          <p style="font-size: 0.8rem; color: #888">Buktikan keahlianmu!</p>
         </div>
 
         <div class="pmkn-canvas-container">
-            <canvas id="pmknGameCanvas"></canvas>
-            <div id="pmkn-game-over-status" style="display: none" onclick="pmknRestartEngine()">
-                <h3 id="pmkn-status-msg">GAME OVER</h3>
-                <p>Ketuk untuk main lagi</p>
-            </div>
+          <canvas id="pmknGameCanvas"></canvas>
+          <div
+            id="pmkn-game-over-status"
+            style="display: none"
+            onclick="pmknRestartEngine()"
+          >
+            <h3 id="pmkn-status-msg">GAME OVER</h3>
+            <p style="font-size: 0.9rem; color: #fff">
+              Ketuk di sini untuk main lagi
+            </p>
+          </div>
         </div>
 
         <div class="pmkn-game-stats">
-            <div class="pmkn-stat-item">SKOR: <span id="pmkn-score">0</span></div>
-            <div class="pmkn-stat-item">NYAWA: <span id="pmkn-lives">3</span></div>
+          <div class="pmkn-stat-item">SKOR: <span id="pmkn-score">0</span></div>
+          <div class="pmkn-stat-item">
+            NYAWA: <span id="pmkn-lives">3</span>
+          </div>
         </div>
-        <p class="pmkn-hint">Geser layar atau gunakan Panah Keyboard</p>
+        <p class="pmkn-hint">Geser layar atau gunakan <b>Panah Keyboard</b></p>
+        <button onclick="location.reload()" class="pmkn-btn-refresh-small">
+          Coba Segarkan Halaman
+        </button>
+      </div>
     </div>
-</div>
 
-<style>
-    /* Base Layer */
-    #pmkn-offline-layer {
+    <style>
+      /* CSS dengan Prefix unik pmkn- */
+      #pmkn-offline-layer {
         position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         z-index: 999999;
-        font-family: 'Poppins', sans-serif;
-        display: none; justify-content: center; align-items: center;
+        font-family: "Poppins", sans-serif;
+        display: none;
+        justify-content: center;
+        align-items: center;
         background: radial-gradient(circle, #f3f4f6 0%, #d1d5db 100%);
+      }
+
+      .pmkn-offline-screen {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .pmkn-offline-inner {
+        max-width: 500px;
+        width: 90%;
+        animation: pmknFadeIn 0.8s ease;
+      }
+      /* efek stiker */
+      .pmkn-offline-sticker-box {
+    position: relative;
+    display: inline-block;
+    width: clamp(140px, 30vw, 200px); /* Sedikit diperbesar agar elemen awan muat */
+    margin-bottom: 25px;
+    padding: 20px; /* Padding luas agar elemen bernapas */
+    border-radius: 30px; /* Sudut melengkung halus */
+    overflow: hidden; /* Memastikan hujan/awan tidak meluap keluar */
+    
+    /* EFEK MODERN: Kaca Transparan (Glassmorphism) */
+    background: rgba(255, 255, 255, 0.1); 
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Bingkai kaca tipis */
+    backdrop-filter: blur(8px); /* Efek blur di belakang kotak */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+    
+    /* Animasi mengambang yang perlahan/slow */
+    animation: pmknModernOfflineFloat 6s ease-in-out infinite;
+    z-index: 10;
+  }
+
+  /* 2. Style Gambar Stiker Offline */
+  .pmkn-offline-img {
+    width: 100%;
+    height: auto;
+    /* Filter visual 'Sangat Lelah' */
+    filter: 
+      grayscale(1)      /* Pucat tanpa warna */
+      brightness(0.9)   /* Redup */
+      contrast(0.8)     /* Kusam, melembutkan detail */;
+    opacity: 0.8;       /* Transparan kelelahan */
+    transform: rotate(-4deg); /* Terkulai permanently */
+    z-index: 1;
+    position: relative;
+  }
+
+  /* 3. Efek Awan Mendung Murni CSS */
+  .pmkn-clouds-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Di atas stiker, di bawah hujan */
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  /* Membuat Awan Besar menggunakan pseudo-elements */
+  .pmkn-clouds-overlay::before,
+  .pmkn-clouds-overlay::after {
+    content: '';
+    position: absolute;
+    background: #e2e8f0; /* Warna abu-abu mendung sangat muda */
+    border-radius: 50%; /* Bentuk dasar lingkaran */
+    filter: blur(10px); /* Membuat awan halus/tidak tajam */
+  }
+
+  /* Awan Besar Kiri Atas */
+  .pmkn-clouds-overlay::before {
+    width: 100px;
+    height: 100px;
+    top: -30px;
+    left: -40px;
+    opacity: 0.8;
+  }
+
+  /* Awan Kecil Kanan Bawah */
+  .pmkn-clouds-overlay::after {
+    width: 80px;
+    height: 80px;
+    bottom: -10px;
+    right: -20px;
+    opacity: 0.5;
+  }
+
+  /* 4. Efek Hujan CSS Modern */
+  .pmkn-rain-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3; /* Elemen paling atas */
+    pointer-events: none;
+    opacity: 0.7;
+    
+    /* Pola Hujan dengan Gradasi Putih-Biru Muda Transparan */
+    background-image: 
+      linear-gradient(170deg, rgba(186, 230, 253, 0.2) 20%, transparent 20%),
+      linear-gradient(170deg, rgba(255, 255, 255, 0.15) 15%, transparent 15%),
+      linear-gradient(170deg, rgba(186, 230, 253, 0.1) 10%, transparent 10%);
+    
+    background-size: 3px 60px, 2px 50px, 1px 40px; /* Ukuran acak */
+    background-repeat: repeat;
+    
+    /* Animasi hujan jatuh yang halus */
+    animation: pmknRainFalling 0.8s linear infinite;
+  }
+
+  /* --- KEYFRAMES ANIMASI BARU --- */
+
+  /* Animasi Mengambang Modern (Halus dengan Sedikit Skala) */
+  @keyframes pmknModernOfflineFloat {
+    0%, 100% {
+      transform: translateY(0) rotate(-4deg);
     }
-
-    .pmkn-offline-screen {
-        width: 100%; height: 100%;
-        display: flex; justify-content: center; align-items: center;
-        text-align: center; color: #374151;
+    50% {
+      transform: translateY(-8px) rotate(-1deg);
     }
+  }
 
-    .pmkn-offline-inner { max-width: 500px; width: 90%; animation: pmknFadeIn 0.8s ease; }
-
-    .pmkn-offline-img {
-        width: 150px; height: auto;
-        filter: grayscale(1); opacity: 0.7;
-        margin-top: 60px; margin-bottom: 25px;
-        animation: pmknFloat 3s ease-in-out infinite;
+  /* Animasi Hujan Jatuh (Looping Smooth) */
+  @keyframes pmknRainFalling {
+    0% {
+      background-position: 0px 0px, 0px 0px, 0px 0px;
     }
-
-    .pmkn-offline-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -1px; }
-    .pmkn-offline-text { font-size: 1rem; color: #6b7280; margin-bottom: 40px; line-height: 1.6; }
-
-    /* Preview Illustration */
-    .pmkn-offline-preview {
-        position: relative; width: 200px; height: 100px;
-        margin: 0 auto 40px; border-bottom: 2px solid #9ca3af;
+    100% {
+      /* Pergeseran diagonal tipis agar terlihat seperti hujan tertiup angin lembut */
+      background-position: 20px 600px, -15px 500px, 10px 400px;
     }
-    .pmkn-preview-brick { width: 40px; height: 15px; background: #9ca3af; position: absolute; top: 0; border-radius: 3px; }
-    .pmkn-preview-brick:nth-child(1) { left: 30px; }
-    .pmkn-preview-brick:nth-child(2) { left: 80px; }
-    .pmkn-preview-brick:nth-child(3) { left: 130px; }
-    .pmkn-preview-ball { width: 12px; height: 12px; background: #ff4d00; border-radius: 50%; position: absolute; bottom: 30px; left: 94px; animation: pmknBounce 2s infinite; }
-    .pmkn-preview-paddle { width: 60px; height: 6px; background: #374151; position: absolute; bottom: 0; left: 70px; border-radius: 10px; }
+  }
 
-    /* Minimalist Buttons */
-    .pmkn-offline-actions { display: flex; flex-direction: column; gap: 15px; align-items: center; }
-    .pmkn-btn-text-green, .pmkn-btn-text-red {
-        background: none; border: none; font-weight: 700; font-size: 14px; 
-        cursor: pointer; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.2s;
+  /* --- KEYFRAMES ANIMASI --- */
+
+  /* Animasi Mengambang Lesu (Sangat Slow) */
+  @keyframes pmknOfflineFloat {
+    0%, 100% {
+      transform: translateY(0) rotate(-5deg);
     }
-    .pmkn-btn-text-green { color: #22c55e; }
-    .pmkn-btn-text-red { color: #ef4444; }
-    .pmkn-btn-text-green:hover, .pmkn-btn-text-red:hover { opacity: 0.6; transform: translateY(-1px); }
-
-    /* Game Styles */
-    .pmkn-game-box {
-        width: 95%; max-width: 450px;
-        background: #222; padding: 25px; border-radius: 24px;
-        border: 2px solid #ff4d00; text-align: center; color: white;
+    50% {
+      transform: translateY(-5px) rotate(-2deg); /* Gerakan ke atas sangat sedikit */
     }
-    .pmkn-canvas-container { position: relative; margin: 15px 0; background: #000; border-radius: 12px; overflow: hidden; }
-    #pmknGameCanvas { width: 100%; height: auto; display: block; }
-    #pmkn-game-over-status { 
-        position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-        background: rgba(0,0,0,0.85); display: flex; flex-direction: column; 
-        justify-content: center; align-items: center; cursor: pointer;
+  }
+
+  /* Animasi Hujan Jatuh (Looping Cepat) */
+  @keyframes pmknRainFalling {
+    0% {
+      background-position: 0px 0px, 0px 0px, 0px 0px;
     }
+    100% {
+      /* Menggeser background ke bawah */
+      background-position: 10px 500px, -15px 400px, 20px 300px;
+    }
+  }
 
-    .pmkn-game-stats { display: flex; justify-content: space-around; margin: 15px 0; }
-    .pmkn-stat-item { background: #333; padding: 8px 20px; border-radius: 10px; color: #ff4d00; font-weight: bold; }
-    .pmkn-hint { font-size: 0.8rem; color: #666; }
+      .pmkn-offline-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #374151;
+        letter-spacing: -1px;
+        margin: 0;
+      }
+      .pmkn-offline-text {
+        font-size: 1rem;
+        color: #6b7280;
+        margin-top: 10px;
+        margin-bottom: 40px;
+        line-height: 1.6;
+      }
 
-    @keyframes pmknFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-    @keyframes pmknBounce { 0%, 100% { bottom: 30px; } 50% { bottom: 80px; } }
-    @keyframes pmknFadeIn { from { opacity: 0; } to { opacity: 1; } }
-</style>
+      /* Preview Anim */
+      .pmkn-offline-preview {
+        position: relative;
+        width: 200px;
+        height: 100px;
+        margin: 0 auto 40px;
+        border-bottom: 2px solid #9ca3af;
+      }
+      .pmkn-preview-brick {
+        width: 40px;
+        height: 15px;
+        background: #9ca3af;
+        position: absolute;
+        top: 0;
+        border-radius: 3px;
+      }
+      .pmkn-preview-brick:nth-child(1) {
+        left: 30px;
+      }
+      .pmkn-preview-brick:nth-child(2) {
+        left: 80px;
+      }
+      .pmkn-preview-brick:nth-child(3) {
+        left: 130px;
+      }
+      .pmkn-preview-ball {
+        width: 12px;
+        height: 12px;
+        background: #ff4d00;
+        border-radius: 50%;
+        position: absolute;
+        bottom: 30px;
+        left: 94px;
+        animation: pmknBounce 2s infinite;
+      }
+      .pmkn-preview-paddle {
+        width: 60px;
+        height: 6px;
+        background: #374151;
+        position: absolute;
+        bottom: 0;
+        left: 70px;
+        border-radius: 10px;
+      }
 
-<script>
-    let pmkn_canvas, pmkn_ctx, pmkn_status_div, pmkn_status_txt;
-    let pmkn_x, pmkn_y, pmkn_dx, pmkn_dy, pmkn_paddleX;
-    let pmkn_bricks = [], pmkn_score = 0, pmkn_lives = 3, pmkn_running = false;
-    const pmkn_ballR = 8, pmkn_pW = 85, pmkn_pH = 12;
+      /* Buttons */
+      .pmkn-offline-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+      }
+      .pmkn-btn-text-green {
+        color: #22c55e;
+        border: none;
+        background: none;
+        font-weight: 700;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+      }
+      .pmkn-btn-text-red {
+        color: #ef4444;
+        border: none;
+        background: none;
+        font-weight: 700;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+      }
+      .pmkn-btn-refresh-small {
+        background: none;
+        border: none;
+        color: #888;
+        text-decoration: underline;
+        font-size: 0.75rem;
+        margin-top: 15px;
+        cursor: pointer;
+      }
 
-    function pmknCheckConnection() {
-        const layer = document.getElementById("pmkn-offline-layer");
-        const intro = document.getElementById("pmkn-offline-intro");
-        const arena = document.getElementById("pmkn-offline-arena");
+      /* Game Box */
+      .pmkn-game-box {
+        width: 95%;
+        max-width: 450px;
+        background: #222;
+        padding: 25px;
+        border-radius: 24px;
+        border: 2px solid #ff4d00;
+        text-align: center;
+        color: white;
+      }
+      .pmkn-canvas-container {
+        position: relative;
+        margin: 15px 0;
+        background: #000;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      #pmknGameCanvas {
+        width: 100%;
+        height: auto;
+        display: block;
+        background: #000;
+        cursor: crosshair;
+      }
+      #pmkn-game-over-status {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        cursor: pointer;
+      }
+      #pmkn-status-msg {
+        color: #ff4d00;
+        font-size: 2rem;
+        margin: 0;
+        font-weight: 900;
+      }
+      .pmkn-game-stats {
+        display: flex;
+        justify-content: space-around;
+        margin: 15px 0;
+      }
+      .pmkn-stat-item {
+        background: #333;
+        padding: 8px 20px;
+        border-radius: 10px;
+        color: #ff4d00;
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+      .pmkn-hint {
+        font-size: 0.8rem;
+        color: #666;
+        margin-bottom: 0;
+      }
 
-        if (navigator.onLine) {
-            layer.style.display = "none";
-            pmkn_running = false;
-        } else {
-            layer.style.display = "flex";
-            layer.style.background = "radial-gradient(circle, #f3f4f6 0%, #d1d5db 100%)";
-            intro.style.display = "flex";
-            arena.style.display = "none";
+      @keyframes pmknFloat {
+        0%,
+        100% {
+          transform: translateY(0);
         }
-    }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+      @keyframes pmknBounce {
+        0%,
+        100% {
+          bottom: 30px;
+        }
+        50% {
+          bottom: 80px;
+        }
+      }
+      @keyframes pmknFadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
 
-    function pmknStartActualGame() {
+    <script>
+      let pmkn_canvas, pmkn_ctx, pmkn_status_div, pmkn_status_txt;
+      let pmkn_x, pmkn_y, pmkn_dx, pmkn_dy, pmkn_paddleX;
+      let pmkn_bricks = [],
+        pmkn_score = 0,
+        pmkn_lives = 3,
+        pmkn_running = false;
+      let pmkn_rightPressed = false,
+        pmkn_leftPressed = false;
+      const pmkn_ballR = 8,
+        pmkn_pW = 85,
+        pmkn_pH = 12;
+
+      function pmknUpdateStatus() {
+        const layer = document.getElementById("pmkn-offline-layer");
+        if (navigator.onLine) {
+          layer.style.display = "none";
+          pmkn_running = false;
+        } else {
+          layer.style.display = "flex";
+          document.getElementById("pmkn-offline-intro").style.display = "flex";
+          document.getElementById("pmkn-offline-arena").style.display = "none";
+        }
+      }
+
+      function pmknStartActualGame() {
         document.getElementById("pmkn-offline-intro").style.display = "none";
         document.getElementById("pmkn-offline-arena").style.display = "block";
         document.getElementById("pmkn-offline-layer").style.background = "#111";
-        if(!pmkn_canvas) pmknInitEngine();
+        if (!pmkn_canvas) pmknInitEngine();
         pmknRestartEngine();
-    }
+      }
 
-    function pmknInitEngine() {
+      function pmknInitEngine() {
         pmkn_canvas = document.getElementById("pmknGameCanvas");
         pmkn_ctx = pmkn_canvas.getContext("2d");
         pmkn_status_div = document.getElementById("pmkn-game-over-status");
         pmkn_status_txt = document.getElementById("pmkn-status-msg");
         pmkn_canvas.width = 400;
         pmkn_canvas.height = 500;
-    }
 
-    function pmknRestartEngine() {
-        pmkn_score = 0; pmkn_lives = 3;
+        // Keyboard Listener
+        document.addEventListener("keydown", (e) => {
+          if (e.key == "Right" || e.key == "ArrowRight")
+            pmkn_rightPressed = true;
+          else if (e.key == "Left" || e.key == "ArrowLeft")
+            pmkn_leftPressed = true;
+        });
+        document.addEventListener("keyup", (e) => {
+          if (e.key == "Right" || e.key == "ArrowRight")
+            pmkn_rightPressed = false;
+          else if (e.key == "Left" || e.key == "ArrowLeft")
+            pmkn_leftPressed = false;
+        });
+
+        // Touch/Mouse Move
+        const moveHandler = (ex) => {
+          let rect = pmkn_canvas.getBoundingClientRect();
+          let rx = ex - rect.left;
+          if (rx > 0 && rx < pmkn_canvas.width) pmkn_paddleX = rx - pmkn_pW / 2;
+        };
+        window.addEventListener("mousemove", (e) => moveHandler(e.clientX));
+        window.addEventListener(
+          "touchmove",
+          (e) => {
+            moveHandler(e.touches[0].clientX);
+            if (pmkn_running) e.preventDefault();
+          },
+          { passive: false },
+        );
+      }
+
+      function pmknRestartEngine() {
+        pmkn_score = 0;
+        pmkn_lives = 3;
         document.getElementById("pmkn-score").innerText = pmkn_score;
         document.getElementById("pmkn-lives").innerText = pmkn_lives;
         pmkn_status_div.style.display = "none";
-        
-        for(let c=0; c<5; c++) {
-            pmkn_bricks[c] = [];
-            for(let r=0; r<6; r++) pmkn_bricks[c][r] = { x: 0, y: 0, status: 1 };
+
+        for (let c = 0; c < 5; c++) {
+          pmkn_bricks[c] = [];
+          for (let r = 0; r < 6; r++)
+            pmkn_bricks[c][r] = { x: 0, y: 0, status: 1 };
         }
-        pmkn_x = pmkn_canvas.width/2; pmkn_y = pmkn_canvas.height-30;
-        pmkn_dx = 3; pmkn_dy = -3;
-        pmkn_paddleX = (pmkn_canvas.width - pmkn_pW)/2;
+        pmkn_x = pmkn_canvas.width / 2;
+        pmkn_y = pmkn_canvas.height - 30;
+        pmkn_dx = 3;
+        pmkn_dy = -3;
+        pmkn_paddleX = (pmkn_canvas.width - pmkn_pW) / 2;
         pmkn_running = true;
         pmknDraw();
-    }
+      }
 
-    function pmknDraw() {
-        if(!pmkn_running) return;
+      function pmknDraw() {
+        if (!pmkn_running) return;
         pmkn_ctx.clearRect(0, 0, pmkn_canvas.width, pmkn_canvas.height);
 
         // Bricks
-        for(let c=0; c<5; c++){
-            for(let r=0; r<6; r++){
-                if(pmkn_bricks[c][r].status == 1){
-                    let bX = c*(70+7)+12; let bY = r*(20+7)+30;
-                    pmkn_bricks[c][r].x = bX; pmkn_bricks[c][r].y = bY;
-                    pmkn_ctx.fillStyle = r < 2 ? "#ff4d00" : "#ffae00";
-                    pmkn_ctx.fillRect(bX, bY, 70, 20);
-                }
+        for (let c = 0; c < 5; c++) {
+          for (let r = 0; r < 6; r++) {
+            if (pmkn_bricks[c][r].status == 1) {
+              let bX = c * (70 + 7) + 12;
+              let bY = r * (20 + 7) + 30;
+              pmkn_bricks[c][r].x = bX;
+              pmkn_bricks[c][r].y = bY;
+              pmkn_ctx.fillStyle =
+                r < 2 ? "#ff4d00" : r < 4 ? "#ff8c00" : "#ffae00";
+              pmkn_ctx.fillRect(bX, bY, 70, 20);
             }
+          }
         }
 
-        // Ball & Paddle
-        pmkn_ctx.beginPath(); pmkn_ctx.arc(pmkn_x, pmkn_y, pmkn_ballR, 0, Math.PI*2);
-        pmkn_ctx.fillStyle = "#ff4d00"; pmkn_ctx.fill(); pmkn_ctx.closePath();
-        pmkn_ctx.fillStyle = "#ff4d00"; pmkn_ctx.fillRect(pmkn_paddleX, pmkn_canvas.height-17, pmkn_pW, pmkn_pH);
+        // Ball
+        pmkn_ctx.beginPath();
+        pmkn_ctx.arc(pmkn_x, pmkn_y, pmkn_ballR, 0, Math.PI * 2);
+        pmkn_ctx.fillStyle = "#ff4d00";
+        pmkn_ctx.fill();
+        pmkn_ctx.closePath();
 
-        // Logic
-        for(let c=0; c<5; c++){
-            for(let r=0; r<6; r++){
-                let b = pmkn_bricks[c][r];
-                if(b.status == 1 && pmkn_x > b.x && pmkn_x < b.x+70 && pmkn_y > b.y && pmkn_y < b.y+20){
-                    pmkn_dy = -pmkn_dy; b.status = 0; pmkn_score++;
-                    document.getElementById("pmkn-score").innerText = pmkn_score;
-                }
+        // Paddle
+        pmkn_ctx.fillStyle = "#ff4d00";
+        pmkn_ctx.fillRect(
+          pmkn_paddleX,
+          pmkn_canvas.height - 17,
+          pmkn_pW,
+          pmkn_pH,
+        );
+
+        // Logic Collision
+        for (let c = 0; c < 5; c++) {
+          for (let r = 0; r < 6; r++) {
+            let b = pmkn_bricks[c][r];
+            if (
+              b.status == 1 &&
+              pmkn_x > b.x &&
+              pmkn_x < b.x + 70 &&
+              pmkn_y > b.y &&
+              pmkn_y < b.y + 20
+            ) {
+              pmkn_dy = -pmkn_dy;
+              b.status = 0;
+              pmkn_score++;
+              document.getElementById("pmkn-score").innerText = pmkn_score;
+              if (pmkn_score == 30) {
+                pmkn_running = false;
+                pmkn_status_txt.innerText = "YOU WIN!";
+                pmkn_status_div.style.display = "flex";
+              }
             }
+          }
         }
 
-        if(pmkn_x + pmkn_dx > pmkn_canvas.width-pmkn_ballR || pmkn_x + pmkn_dx < pmkn_ballR) pmkn_dx = -pmkn_dx;
-        if(pmkn_y + pmkn_dy < pmkn_ballR) pmkn_dy = -pmkn_dy;
-        else if(pmkn_y + pmkn_dy > pmkn_canvas.height-pmkn_ballR-5){
-            if(pmkn_x > pmkn_paddleX && pmkn_x < pmkn_paddleX + pmkn_pW) pmkn_dy = -pmkn_dy;
-            else {
-                pmkn_lives--;
-                document.getElementById("pmkn-lives").innerText = pmkn_lives;
-                if(!pmkn_lives) { 
-                    pmkn_running = false; 
-                    pmkn_status_txt.innerText = "GAME OVER";
-                    pmkn_status_div.style.display = "flex";
-                } else { pmkn_x = pmkn_canvas.width/2; pmkn_y = pmkn_canvas.height-30; pmkn_dx = 3; pmkn_dy = -3; }
+        // Bounce
+        if (
+          pmkn_x + pmkn_dx > pmkn_canvas.width - pmkn_ballR ||
+          pmkn_x + pmkn_dx < pmkn_ballR
+        )
+          pmkn_dx = -pmkn_dx;
+        if (pmkn_y + pmkn_dy < pmkn_ballR) pmkn_dy = -pmkn_dy;
+        else if (pmkn_y + pmkn_dy > pmkn_canvas.height - pmkn_ballR - 5) {
+          if (pmkn_x > pmkn_paddleX && pmkn_x < pmkn_paddleX + pmkn_pW)
+            pmkn_dy = -pmkn_dy;
+          else {
+            pmkn_lives--;
+            document.getElementById("pmkn-lives").innerText = pmkn_lives;
+            if (!pmkn_lives) {
+              pmkn_running = false;
+              pmkn_status_txt.innerText = "GAME OVER";
+              pmkn_status_div.style.display = "flex";
+            } else {
+              pmkn_x = pmkn_canvas.width / 2;
+              pmkn_y = pmkn_canvas.height - 30;
+              pmkn_dx = 3;
+              pmkn_dy = -3;
             }
+          }
         }
 
-        pmkn_x += pmkn_dx; pmkn_y += pmkn_dy;
+        if (pmkn_rightPressed && pmkn_paddleX < pmkn_canvas.width - pmkn_pW)
+          pmkn_paddleX += 7;
+        else if (pmkn_leftPressed && pmkn_paddleX > 0) pmkn_paddleX -= 7;
+
+        pmkn_x += pmkn_dx;
+        pmkn_y += pmkn_dy;
         requestAnimationFrame(pmknDraw);
-    }
+      }
 
-    // Controls
-    window.addEventListener("mousemove", (e) => {
-        if(pmkn_canvas){
-            let r = pmkn_canvas.getBoundingClientRect();
-            let rx = e.clientX - r.left;
-            if(rx > 0 && rx < pmkn_canvas.width) pmkn_paddleX = rx - pmkn_pW/2;
-        }
-    });
-
-    window.addEventListener("online", pmknCheckConnection);
-    window.addEventListener("offline", pmknCheckConnection);
-    window.onload = pmknCheckConnection;
-</script>
+      window.addEventListener("online", pmknUpdateStatus);
+      window.addEventListener("offline", pmknUpdateStatus);
+      window.addEventListener("load", pmknUpdateStatus);
+    </script>
   </body>
 </html>
