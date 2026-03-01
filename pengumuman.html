@@ -614,423 +614,111 @@
       }
 
       /* informasi */
-      /* Container Filter  */
+      /* containet filter */
+      * {
+        box-sizing: border-box; /* Memastikan padding tidak memakan lebar elemen */
+      }
+
       .filter-wrapper {
         display: flex;
-        justify-content: center;
-        gap: 12px;
-        margin-bottom: 3rem;
-        padding: 10px 5px;
-        overflow-x: auto; /* Penting untuk mobile */
-        scrollbar-width: none; /* Sembunyikan scrollbar Firefox */
-      }
-
-      /* News container grid layout */
-      #news-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-        gap: 32px;
-        max-width: 1600px;
-        margin: 0 auto;
-        padding: 0 60px;
-      }
-
-      /* Main content section spacing */
-      .max-w-4xl {
-        max-width: 1600px !important;
-        padding: 40px !important;
+        justify-content: flex-start;
+        gap: 10px;
+        margin-bottom: 2rem;
+        padding: 10px 15px; /* Sedikit dikurangi agar tidak terlalu masuk ke dalam */
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        scroll-behavior: smooth;
       }
 
       .filter-wrapper::-webkit-scrollbar {
-        display: none; /* Sembunyikan scrollbar Chrome/Safari */
+        display: none;
       }
 
       .filter-btn {
-        padding: 12px 24px;
-        border-radius: 100px; /* Pill style */
+        padding: 8px 18px; /* Sedikit lebih kecil di mobile */
+        border-radius: 100px;
         border: 1px solid rgba(0, 0, 0, 0.05);
         background: white;
         color: #64748b;
         font-weight: 700;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         white-space: nowrap;
         cursor: pointer;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        flex-shrink: 0; /* Mencegah tombol gepeng */
       }
 
-      .filter-btn:hover {
-        background: #f1f5f9;
-        transform: translateY(-2px);
+      /* --- GRID LAYOUT (OPTIMASI MOBILE) --- */
+      #news-container {
+        display: grid;
+        grid-template-columns: 100%; /* Gunakan 100% untuk lebar penuh */
+        gap: 20px;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 0 15px; /* Padding tepi layar diperkecil agar card tetap lebar */
       }
 
-      .filter-btn.active {
-        background: var(--primary);
-        color: white;
-        border-color: var(--primary);
-        box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
-      }
-
-      /* Card Modern - Vertical Layout */
+      /* --- CARD MODERN --- */
       .info-card {
-        background: var(--card-bg);
-        border-radius: 20px;
-        padding: 32px;
+        background: var(--card-bg, #fff);
+        border-radius: 20px; /* Sedikit lebih kecil radiusnya di mobile agar proporsional */
+        padding: 20px; /* Padding dalam dikurangi sedikit agar konten lebih luas */
         position: relative;
         overflow: hidden;
-        border: 1px solid var(--border-color);
+        border: 1px solid var(--border-color, #e2e8f0);
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        min-height: 400px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
 
-        /* Shadow yang sangat halus dan luas */
-        box-shadow:
-          0 10px 15px -3px rgba(0, 0, 0, 0.02),
-          0 4px 6px -4px rgba(0, 0, 0, 0.02);
-
-        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-
-        /* entrance animation */
+        /* Entrance Animation */
         opacity: 0;
-        transform: translateY(20px);
         animation: fadeInUp 0.6s ease forwards;
       }
 
-      /* Top accent bar */
-      .info-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 6px;
-        background: linear-gradient(90deg, #2563eb, #3b82f6);
-        border-radius: 20px 20px 0 0;
+      /* Hilangkan margin-bottom yang berlebihan di max-w-4xl untuk mobile */
+      .max-w-4xl {
+        max-width: 1600px !important;
+        padding: 15px !important; /* Disamakan dengan container */
       }
 
-      /* Card content wrapper */
-      .info-card-content {
-        padding-top: 12px;
-      }
-
-      /* Glow effect on hover */
-      .info-card::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 100px;
-        height: 100px;
-        background: radial-gradient(
-          circle at top right,
-          var(--primary-light),
-          transparent
-        );
-        opacity: 0;
-        transition: opacity 0.5s ease;
-        pointer-events: none;
-      }
-
-      .info-card:hover::after {
-        opacity: 1;
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Hover Effect for vertical card */
-      .info-card:hover {
-        transform: translateY(-12px) scale(1.02);
-        border-color: var(--primary);
-        box-shadow:
-          0 20px 25px -5px rgba(37, 99, 235, 0.15),
-          0 10px 10px -5px rgba(0, 0, 0, 0.05);
-      }
-
-      /* Badge inside card */
-      .info-card .badge-info {
-        background: linear-gradient(135deg, #ff4d00, #ff8700);
-        color: white;
-        padding: 8px 16px;
-        border-radius: 12px;
-        font-size: 0.85rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        width: fit-content;
-      }
-
-      /* Title styling */
-      .info-card h3 {
-        margin: 0.5rem 0 0.75rem 0;
-        font-size: 1.5rem;
-        font-weight: 700;
-        line-height: 1.4;
-        background: linear-gradient(90deg, #2563eb, #3b82f6);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        transition: 0.3s;
-        cursor: pointer;
-      }
-      .info-card h3:hover {
-        transform: scale(1.02);
-        opacity: 0.85;
-      }
-      .info-card .date-info {
-        color: #94a3b8;
-        font-size: 0.9rem;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        margin-top: 0.75rem;
-      }
-
-      .sapaan-text {
-        font-style: italic;
-        color: #64748b;
-        margin: 0.5rem 0 0.5rem 0;
-        font-size: 1rem;
-        line-height: 1.5;
-      }
-
-      .isi-text {
-        color: #475569;
-        line-height: 1.7;
-        margin: 0 0 0.5rem 0;
-        font-size: 1rem;
-        /* clamp to three lines with ellipsis */
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-
-      /* read more button */
-      .btn-read-more {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 12px 24px;
-        background: linear-gradient(90deg, #2563eb, #3b82f6);
-        color: white;
-        border-radius: 999px;
-        font-size: 1rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: 0.3s;
-        width: fit-content;
-      }
-      .btn-read-more:hover {
-        background: linear-gradient(90deg, #3b82f6, #2563eb);
-        transform: translateY(-2px);
-      }
-      .btn-read-more i {
-        transition: transform 0.3s;
-      }
-      .btn-read-more:hover i {
-        transform: translateX(4px);
-      }
-
-      /* Responsive card layout */
-      @media (max-width: 900px) {
-        #news-container {
-          grid-template-columns: 1fr;
-          padding: 0 20px;
-        }
-
-        .info-card {
-          min-height: 320px;
-          padding: 24px;
-        }
-      }
-
-      /* Footer yang lebih bersih */
+      /* --- FOOTER & INTERACTION --- */
       .card-footer {
-        margin-top: 2rem;
-        padding-top: 1.25rem;
-        border-top: 1px solid var(--border-color);
+        margin-top: 1.25rem;
+        padding-top: 1rem;
+        border-top: 1px solid #f1f5f9;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
+        flex-direction: column;
         gap: 12px;
       }
 
-      /* Source Info bergaya Badge Pill */
-      .source-info {
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase; /* Membuat kesan profesional */
-        letter-spacing: 0.025em;
-        color: #64748b;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        padding: 8px 16px;
-        background: #f1f5f9;
-        border-radius: 100px; /* Pill style */
-        transition: all 0.3s ease;
-        border: 1px solid transparent;
+      .btn-read-more,
+      .btn-detail {
+        width: 100%;
+        box-sizing: border-box; /* Penting agar tidak meluber keluar */
       }
 
-      .source-info i {
-        color: var(--primary);
-        font-size: 0.9rem;
-      }
-
-      /* Interaksi Hover pada Source Info */
-      .info-card:hover .source-info {
-        background: var(--primary-light);
-        color: var(--primary);
-        border-color: rgba(99, 102, 241, 0.2);
-        transform: scale(1.05);
-      }
-
-      /* 1. Badge untuk Detail Kategori (Warna Abu-abu Soft) */
-      .badge-detail {
-        background: #f1f5f9;
-        color: #475569;
-        padding: 4px 12px;
-        border-radius: 8px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        border: 1px solid #e2e8f0;
-        display: inline-block;
-      }
-
-      /* 2. Styling untuk Info Kontak & No Telepon */
-      .additional-info-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-top: 8px;
-        color: #64748b;
-        font-size: 0.9rem;
-      }
-
-      .additional-info-item i {
-        color: #2563eb; /* Warna biru untuk ikon telepon */
-        width: 16px;
-      }
-
-      /* 3. Kotak Catatan Khusus (Gaya Warning/Alert) */
-      .note-box {
-        background: #fff9db; /* Kuning sangat muda */
-        color: #856404;
-        padding: 12px;
-        border-radius: 12px;
-        border-left: 4px solid #fcc419;
-        font-size: 0.85rem;
-        margin-top: 15px;
-        line-height: 1.5;
-        display: flex;
-        gap: 10px;
-      }
-
-      .note-box i {
-        margin-top: 3px;
-        color: #f08c00;
-      }
-
-      /* 4. Optimasi Grid untuk Layar Besar */
-      @media (min-width: 900px) {
+      /* --- MEDIA QUERIES (TABLET & DESKTOP) --- */
+      @media (min-width: 768px) {
         #news-container {
-          grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-          gap: 40px;
+          grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+          padding: 0 40px;
         }
-      }
 
-      /* 5. Efek Scroll Smooth untuk Filter di Mobile */
-      .filter-wrapper {
-        -webkit-overflow-scrolling: touch;
-        scroll-behavior: smooth;
-        padding-bottom: 15px;
-      }
+        .filter-wrapper {
+          justify-content: center;
+        }
 
-      .isi-berita {
-        font-size: 0.95rem;
-        color: #64748b;
-        line-height: 1.6;
-        margin-bottom: 20px;
-        /* Menjaga teks isi agar tidak berantakan jika terlalu panjang */
-        display: -webkit-box;
-        -webkit-line-clamp: 6;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
+        .card-footer {
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
 
-      .footer-details {
-        border-top: 1px solid #f1f5f9;
-        padding-top: 15px;
-        margin-top: 15px;
-      }
-
-      .phone-link {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        color: #1e293b;
-        font-size: 0.9rem;
-        margin-bottom: 10px;
-      }
-
-      .note-box {
-        background: #fffbeb;
-        border-left: 4px solid #f59e0b;
-        padding: 10px;
-        border-radius: 4px 8px 8px 4px;
-        font-size: 0.85rem;
-        color: #92400e;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      /* Ringkasan teks awal */
-      .excerpt {
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        margin-bottom: 15px;
-      }
-
-      /* Tombol Detail & Kembali */
-      .btn-detail,
-      .btn-back {
-        background: #2563eb;
-        color: white;
-        border: none;
-        padding: 8px 18px;
-        border-radius: 50px;
-        cursor: pointer;
-        font-weight: 600;
-        transition: 0.3s;
-      }
-
-      .btn-back {
-        background: #64748b;
-      }
-
-      .btn-detail:hover {
-        background: #1d4ed8;
-        transform: scale(1.05);
-      }
-
-      /* Animasi kartu saat mode detail */
-      .is-detailed {
-        grid-column: 1 / -1; /* Mengambil lebar penuh jika dalam grid */
-        max-width: 800px;
-        margin: 0 auto;
+        .btn-read-more,
+        .btn-detail {
+          width: fit-content;
+        }
       }
 
       /* --- Chat Widget --- */
