@@ -22,6 +22,10 @@
         --text: #334155;
         --white: #ffffff;
         --glass: rgba(255, 255, 255, 0.1);
+        /* Card variables */
+        --card-bg: #ffffff;
+        --border-color: rgba(0, 0, 0, 0.05);
+        --primary-light: rgba(37, 99, 235, 0.1);
       }
       * {
         margin: 0;
@@ -530,9 +534,9 @@
         align-items: center;
         padding: 100px 6% 60px;
         text-align: center;
-        background: 
-  
-  /* Overlay gelap supaya teks putih menonjol */
+        background:
+
+      /* Overlay gelap supaya teks putih menonjol */
           linear-gradient(
             to bottom,
             rgba(15, 23, 42, 0.7),
@@ -610,80 +614,132 @@
       }
 
       /* informasi */
-      /* Container Utama */
-      .official-letter-section {
-        padding: 40px 6%;
+      /* Container Filter  */
+      .filter-wrapper {
         display: flex;
         justify-content: center;
-        background-color: #f8fafc;
-      }
-
-      /* Gaya Card sesuai Gambar */
-      .letter-paper {
-        background: white;
-        width: 100%;
-        max-width: 900px;
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-        border: 1px solid #e2e8f0;
-        font-family: "Poppins", sans-serif;
-      }
-
-      /* Badge & Meta Data */
-      .info-meta {
-        display: flex;
-        align-items: center;
         gap: 12px;
-        margin-bottom: 20px;
+        margin-bottom: 3rem;
+        padding: 10px 5px;
+        overflow-x: auto; /* Penting untuk mobile */
+        scrollbar-width: none; /* Sembunyikan scrollbar Firefox */
       }
 
-      .badge-info {
-        background: #dbeafe;
-        color: #2563eb;
-        padding: 4px 12px;
-        border-radius: 8px;
-        font-size: 0.85rem;
-        font-weight: 600;
+      /* News container grid layout */
+      #news-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+        gap: 32px;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 0 60px;
       }
 
-      .info-date {
+      /* Main content section spacing */
+      .max-w-4xl {
+        max-width: 1600px !important;
+        padding: 40px !important;
+      }
+
+      .filter-wrapper::-webkit-scrollbar {
+        display: none; /* Sembunyikan scrollbar Chrome/Safari */
+      }
+
+      .filter-btn {
+        padding: 12px 24px;
+        border-radius: 100px; /* Pill style */
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        background: white;
         color: #64748b;
-        font-size: 0.85rem;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-      }
-
-      /* Judul Header */
-      .letter-header h2 {
-        font-size: 1.6rem;
         font-weight: 700;
-        color: #1e293b;
-        margin-bottom: 20px;
-        line-height: 1.3;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        cursor: pointer;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      /* Body Text */
-      .letter-body {
-        color: #475569;
-        line-height: 1.7;
-        font-size: 1rem;
+      .filter-btn:hover {
+        background: #f1f5f9;
+        transform: translateY(-2px);
       }
 
-      /* Area Tersembunyi */
-      #extra-content {
-        display: none; /* Default Hidden */
-        border-top: 1px solid #f1f5f9;
-        margin-top: 20px;
-        padding-top: 20px;
-        animation: fadeIn 0.4s ease;
+      .filter-btn.active {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+        box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
       }
 
-      @keyframes fadeIn {
+      /* Card Modern - Vertical Layout */
+      .info-card {
+        background: var(--card-bg);
+        border-radius: 20px;
+        padding: 32px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 400px;
+
+        /* Shadow yang sangat halus dan luas */
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.02),
+          0 4px 6px -4px rgba(0, 0, 0, 0.02);
+
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+        /* entrance animation */
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      /* Top accent bar */
+      .info-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: linear-gradient(90deg, #2563eb, #3b82f6);
+        border-radius: 20px 20px 0 0;
+      }
+
+      /* Card content wrapper */
+      .info-card-content {
+        padding-top: 12px;
+      }
+
+      /* Glow effect on hover */
+      .info-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(
+          circle at top right,
+          var(--primary-light),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        pointer-events: none;
+      }
+
+      .info-card:hover::after {
+        opacity: 1;
+      }
+
+      @keyframes fadeInUp {
         from {
           opacity: 0;
-          transform: translateY(10px);
+          transform: translateY(20px);
         }
         to {
           opacity: 1;
@@ -691,133 +747,152 @@
         }
       }
 
-      /* Box Pembayaran Modern */
-      .payment-box {
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        padding: 20px;
-        margin: 20px 0;
+      /* Hover Effect for vertical card */
+      .info-card:hover {
+        transform: translateY(-12px) scale(1.02);
+        border-color: var(--primary);
+        box-shadow:
+          0 20px 25px -5px rgba(37, 99, 235, 0.15),
+          0 10px 10px -5px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Badge inside card */
+      .info-card .badge-info {
+        background: linear-gradient(135deg, #ff4d00, #ff8700);
+        color: white;
+        padding: 8px 16px;
         border-radius: 12px;
-        color: #1e293b;
-      }
-
-      /* Styling Container Metode Pembayaran */
-      .payment-container {
-        margin: 25px 0;
-      }
-
-      .payment-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 15px;
-        margin-top: 15px;
-      }
-
-      .payment-method-card {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        padding: 15px;
-        transition: 0.3s;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .payment-method-card:hover {
-        border-color: #ff4d00;
-        box-shadow: 0 5px 15px rgba(255, 77, 0, 0.1);
-      }
-
-      .method-icon {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 10px;
-        object-fit: contain;
-      }
-
-      .method-name {
+        font-size: 0.85rem;
         font-weight: 700;
-        font-size: 0.9rem;
-        color: #1e293b;
-        margin-bottom: 5px;
-      }
-
-      .method-detail {
-        font-size: 0.8rem;
-        color: #64748b;
-        word-break: break-all;
-      }
-
-      /* Khusus QRIS */
-      .qris-preview {
-        width: 100%;
-        max-width: 150px;
-        background: #f8fafc;
-        border: 1px dashed #cbd5e1;
-        border-radius: 8px;
-        margin: 10px 0;
-        padding: 10px;
-        cursor: pointer;
-      }
-
-      .manual-badge {
-        background: #f1f5f9;
-        color: #475569;
-        padding: 2px 8px;
-        border-radius: 4px;
-        font-size: 0.7rem;
-        font-weight: 600;
         text-transform: uppercase;
+        letter-spacing: 0.5px;
+        width: fit-content;
       }
 
-      .copy-btn-mini {
-        background: #ff4d00;
-        color: white;
-        border: none;
-        padding: 3px 10px;
-        border-radius: 6px;
-        font-size: 0.75rem;
+      /* Title styling */
+      .info-card h3 {
+        margin: 0.5rem 0 0.75rem 0;
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1.4;
+        background: linear-gradient(90deg, #2563eb, #3b82f6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: 0.3s;
         cursor: pointer;
-        margin-left: 8px;
-        transition: 0.2s;
       }
-
-      .copy-btn-mini:hover {
-        background: #e64500;
+      .info-card h3:hover {
+        transform: scale(1.02);
+        opacity: 0.85;
       }
-
-      /* Tombol Baca Selengkapnya sesuai Gambar */
-      .read-more-btn {
-        background: #ff4d00;
-        color: white;
-        border: none;
-        padding: 12px 25px;
-        border-radius: 10px;
-        font-weight: 600;
-        cursor: pointer;
+      .info-card .date-info {
+        color: #94a3b8;
+        font-size: 0.9rem;
         display: flex;
         align-items: center;
-        gap: 10px;
-        margin-left: auto; /* Pindah ke kanan sesuai gambar */
-        margin-top: 20px;
+        gap: 6px;
+        margin-top: 0.75rem;
+      }
+
+      .sapaan-text {
+        font-style: italic;
+        color: #64748b;
+        margin: 0.5rem 0 0.5rem 0;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      .isi-text {
+        color: #475569;
+        line-height: 1.7;
+        margin: 0 0 0.5rem 0;
+        font-size: 1rem;
+        /* clamp to three lines with ellipsis */
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      /* read more button */
+      .btn-read-more {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        background: linear-gradient(90deg, #2563eb, #3b82f6);
+        color: white;
+        border-radius: 999px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
         transition: 0.3s;
+        width: fit-content;
+      }
+      .btn-read-more:hover {
+        background: linear-gradient(90deg, #3b82f6, #2563eb);
+        transform: translateY(-2px);
+      }
+      .btn-read-more i {
+        transition: transform 0.3s;
+      }
+      .btn-read-more:hover i {
+        transform: translateX(4px);
       }
 
-      .read-more-btn:hover {
-        background: #e64500;
-        transform: scale(1.02);
+      /* Responsive card layout */
+      @media (max-width: 768px) {
+        #news-container {
+          grid-template-columns: 1fr;
+          padding: 0 20px;
+        }
+
+        .info-card {
+          min-height: 320px;
+          padding: 24px;
+        }
       }
 
-      /* Responsive */
-      @media (max-width: 600px) {
-        .letter-paper {
-          padding: 20px;
-        }
-        .letter-header h2 {
-          font-size: 1.3rem;
-        }
+      /* Footer yang lebih bersih */
+      .card-footer {
+        margin-top: 2rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--border-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      /* Source Info bergaya Badge Pill */
+      .source-info {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase; /* Membuat kesan profesional */
+        letter-spacing: 0.025em;
+        color: #64748b;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 16px;
+        background: #f1f5f9;
+        border-radius: 100px; /* Pill style */
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+      }
+
+      .source-info i {
+        color: var(--primary);
+        font-size: 0.9rem;
+      }
+
+      /* Interaksi Hover pada Source Info */
+      .info-card:hover .source-info {
+        background: var(--primary-light);
+        color: var(--primary);
+        border-color: rgba(99, 102, 241, 0.2);
+        transform: scale(1.05);
       }
 
       /* --- Chat Widget --- */
@@ -1904,197 +1979,96 @@
       </p>
     </section>
 
-    <section class="official-letter-section">
-      <div class="letter-paper">
-        <div class="info-meta">
-          <span class="badge-info">Informasi</span>
-          <span class="info-date"
-            ><i class="fa-regular fa-calendar"></i> 21 February 2026</span
-          >
-        </div>
-
-        <div class="letter-header">
-          <h2>Kewajiban Iuran Rutin Anggota PMKN Tondano Berdasarkan AD/ART</h2>
-        </div>
-
-        <div class="letter-body">
-          <p>Syalom, Salam Sejahtera dalam Kasih Kristus,</p>
-
-          <p>
-            Berdasarkan Ketetapan Anggaran Dasar dan Anggaran Rumah Tangga
-            (AD/ART) PMKN BAB XVI Pasal 27 dan 28 mengenai Pendanaan Organisasi,
-            dengan ini disampaikan kepada seluruh anggota aktif PMKN Tondano
-            bahwa:
-          </p>
-
-          <div id="extra-content">
-            <ul
-              style="margin-left: 20px; margin-top: 10px; margin-bottom: 20px"
-            >
-              <li>
-                Setiap anggota wajib memenuhi iuran rutin setiap bulannya.
-              </li>
-              <li>
-                Dana yang terkumpul akan dialokasikan untuk operasional
-                pelayanan, kas sosial, dan pengembangan organisasi.
-              </li>
-              <li>
-                Pembayaran dapat dilakukan selambat-lambatnya tanggal xx setiap
-                bulannya.
-              </li>
-            </ul>
-
-            <div class="payment-container">
-              <strong style="color: #1e293b; font-size: 1.1rem"
-                >Pilih Metode Pembayaran:</strong
-              >
-
-              <div class="payment-grid">
-                <div class="payment-method-card">
-                  <i
-                    class="fa-solid fa-building-columns"
-                    style="font-size: 2rem; color: #00529c; margin-bottom: 10px"
-                  ></i>
-                  <span class="method-name">BRI</span>
-                  <span class="method-detail" id="accNum"
-                    >0176 0108 6986 508</span
-                  >
-                  <span class="method-detail">a.n Jelita Ziliwu</span>
-                  <button class="copy-btn-mini" onclick="copyNumber()">
-                    Salin
-                  </button>
-                </div>
-
-                <div class="payment-method-card">
-                  <i class="fa-solid fa-wallet"></i>
-                  <span class="method-name">DANA</span>
-                  <span class="method-detail">0812-xxxx-xxxx</span>
-                  <span class="method-detail">a.n Jelita Ziliwu</span>
-                </div>
-
-                <div class="payment-method-card">
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Logo_ovo_purple.svg"
-                    alt="OVO"
-                    class="method-icon"
-                  />
-                  <span class="method-name">OVO</span>
-                  <span class="method-detail">0812-xxxx-xxxx</span>
-                  <span class="method-detail">a.n Jelita Ziliwu</span>
-                </div>
-
-                <div class="payment-method-card">
-                  <i
-                    class="fa-solid fa-qrcode"
-                    style="font-size: 2rem; color: #1e293b; margin-bottom: 10px"
-                  ></i>
-                  <span class="method-name">QRIS (All Payment)</span>
-                  <div class="qris-preview" onclick="showQris()">
-                    <i class="fa-solid fa-expand"></i><br />Lihat QR Code
-                  </div>
-                  <span class="method-detail">Otomatis Terverifikasi</span>
-                </div>
-
-                <div class="payment-method-card">
-                  <i
-                    class="fa-solid fa-hand-holding-dollar"
-                    style="font-size: 2rem; color: #10b981; margin-bottom: 10px"
-                  ></i>
-                  <span class="method-name">Tunai / Manual</span>
-                  <span class="manual-badge">Cash</span>
-                  <span class="method-detail"
-                    >Serahkan langsung ke Bendahara Umum (Jelita Ziliwu)</span
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div
-              id="qrisModal"
-              style="
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.8);
-                z-index: 10001;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                color: white;
-              "
-            >
-              <span
-                onclick="closeQris()"
-                style="
-                  position: absolute;
-                  top: 20px;
-                  right: 30px;
-                  font-size: 2rem;
-                  cursor: pointer;
-                "
-                >&times;</span
-              >
-              <img
-                src="qris-placeholder.png"
-                id="qrisImg"
-                style="
-                  width: 300px;
-                  border-radius: 15px;
-                  border: 10px solid white;
-                "
-              />
-              <p style="margin-top: 20px; font-family: sans-serif">
-                Scan QRIS PMKN Tondano
-              </p>
-            </div>
-
-            <div class="info-footer-note">
-              <p>
-                <i
-                  class="fa-solid fa-circle-info"
-                  style="margin-right: 8px; color: #475569"
-                ></i>
-                <strong>Catatan:</strong> Jika sudah melakukan transaksi
-                pembayaran selain cash, harap kirimkan bukti transaksi ke WA
-                Bendahara Umum. Jika tidak, maka dianggap belum bayar. Kirim
-                Bukti transaksi
-              </p>
-
-              <a
-                href="https://wa.me/6285261757749?text=Yaahowu,%20ini%20bukti%20pembayaran%20iuran%20saya.%0A%0ANama:%20%0ABulan:%20"
-                target="_blank"
-                class="btn-kirim-wa"
-                >disini <i class="fa-solid fa-hand-point-left"></i>
-              </a>
-            </div>
-
-            <p>
-              Demikian informasi ini kami sampaikan. Atas perhatian dan kerja
-              sama seluruh rekan-rekan mahasiswa, kami ucapkan terima kasih.
-              Tuhan Yesus Memberkati.
-            </p>
-
-            <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 15px">
-              <i class="fa-solid fa-user-tie"></i> BPI PMKN
-            </p>
-          </div>
-
-          <button
-            class="read-more-btn"
-            id="readMoreBtn"
-            onclick="toggleLetter()"
-          >
-            <span>Baca Selengkapnya</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
+    <div class="max-w-4xl mx-auto px-4 py-10">
+      <div class="filter-wrapper">
+        <button class="filter-btn active" onclick="filterData('Semua', this)">
+          Semua
+        </button>
+        <button class="filter-btn" onclick="filterData('Informasi', this)">
+          Informasi
+        </button>
+        <button class="filter-btn" onclick="filterData('Kegiatan', this)">
+          Kegiatan
+        </button>
+        <button class="filter-btn" onclick="filterData('Lainnya', this)">
+          Lainnya
+        </button>
       </div>
-    </section>
+
+      <div id="news-container"></div>
+    </div>
 
     <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbzOTJbRlBQ3-kUN6HFBFV0sT2QOqxgybu6jwiO8mNCPyxiCq-9r9aq04Tmnpu17DtDSyw/exec";
+      let allData = [];
+
+      // Ambil Data dari Google Sheets
+      async function fetchData() {
+        try {
+          const response = await fetch(scriptURL);
+          allData = await response.json();
+          renderCards(allData);
+        } catch (error) {
+          document.getElementById("news-container").innerHTML =
+            "Gagal memuat data.";
+        }
+      }
+
+      function renderCards(data) {
+        const container = document.getElementById("news-container");
+        container.innerHTML = "";
+
+        if (data.length === 0) {
+          container.innerHTML =
+            '<p class="text-center">Tidak ada informasi ditemukan.</p>';
+          return;
+        }
+
+        data.forEach((item, idx) => {
+          const dateStr = new Date(item.tgl_mulai).toLocaleDateString("id-ID", {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+          });
+
+          container.innerHTML += `
+  <div class="info-card" style="animation-delay: ${idx * 0.1}s;">
+    <div class="info-card-content">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="badge-info">${item.kategori}</span>
+        <span class="date-info"><i class="fa-regular fa-calendar-alt"></i> ${dateStr}</span>
+      </div>
+      <h3>${item.judul}</h3>
+      <p class="sapaan-text">${item.sapaan}</p>
+      <p class="isi-text">${item.isi}</p>
+      <div class="flex justify-end mt-4">
+      </div>
+    </div>
+  </div>
+`;
+        });
+      }
+
+      function filterData(kategori, btn) {
+        // Update UI Tombol
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        // Filter Logic
+        if (kategori === "Semua") {
+          renderCards(allData);
+        } else {
+          const filtered = allData.filter((d) => d.kategori === kategori);
+          renderCards(filtered);
+        }
+      }
+
+      // Panggil saat halaman dimuat
+      fetchData();
+
       window.addEventListener("load", () => {
         const loadingScreen = document.getElementById("loading-screen");
         loadingScreen.style.opacity = "0";
@@ -2183,20 +2157,6 @@
         }
       }
 
-      function showQris() {
-        document.getElementById("qrisModal").style.display = "flex";
-      }
-      function closeQris() {
-        document.getElementById("qrisModal").style.display = "none";
-      }
-
-      function copyNumber() {
-        const num = document.getElementById("accNum").innerText;
-        navigator.clipboard.writeText(num);
-        alert("Nomor rekening atas nama Jelita Ziliwu berhasil disalin!");
-      }
-
-      // chat wigded
       // chat wigded
       function toggleChat() {
         const chat = document.getElementById("chat-window");

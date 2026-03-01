@@ -1469,6 +1469,404 @@
       </div>
     </div>
 
+    <div id="gatekeeper" class="gate-wrapper">
+      <div class="gate-content">
+        <div class="gate-glow"></div>
+
+        <div class="gate-icon">
+          <i class="fas fa-shield-halved"></i>
+        </div>
+
+        <h2>Akses Terbatas</h2>
+
+        <p class="privacy-note">
+          Halaman ini berisi informasi <strong>Internal & Privat</strong>. Untuk
+          menjaga data, diperlukan verifikasi identitas melalui pertanyaan
+          keamanan.
+        </p>
+
+        <div class="divider"></div>
+
+        <h3 id="question-label">Memuat tantangan keamanan...</h3>
+
+        <div class="input-group">
+          <input
+            type="text"
+            id="answer-input"
+            placeholder="Ketik jawaban di sini..."
+            autocomplete="off"
+          />
+          <button onclick="checkAccess()" id="btn-verify">
+            <span>Verifikasi</span>
+            <i class="fas fa-unlock"></i>
+          </button>
+        </div>
+
+        <p id="error-msg" class="error-hide">
+          <i class="fas fa-exclamation-circle"></i> Jawaban salah. Akses
+          ditolak.
+        </p>
+      </div>
+    </div>
+    <style>
+      .gate-wrapper {
+        position: fixed;
+        inset: 0;
+        background: var(--bg-dark);
+        /* Background dengan tekstur grid halus */
+        background-image: radial-gradient(
+          circle at 2px 2px,
+          rgba(255, 255, 255, 0.05) 1px,
+          transparent 0
+        );
+        background-size: 40px 40px;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        font-family: "Inter", sans-serif;
+      }
+
+      .gate-content {
+        background: rgba(30, 41, 59, 0.7);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        padding: 3rem 2.5rem;
+        border-radius: 32px;
+        width: 100%;
+        max-width: 440px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        position: relative;
+      }
+
+      /* Efek cahaya di belakang ikon */
+      .gate-glow {
+        position: absolute;
+        top: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px;
+        height: 150px;
+        background: var(--primary);
+        filter: blur(80px);
+        opacity: 0.3;
+        z-index: -1;
+      }
+
+      .gate-icon {
+        font-size: 3.5rem;
+        background: linear-gradient(
+          to bottom right,
+          var(--primary),
+          var(--accent)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1.5rem;
+      }
+
+      .gate-content h2 {
+        color: white;
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.025em;
+      }
+
+      .privacy-note {
+        color: #94a3b8;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .privacy-note strong {
+        color: var(--primary);
+      }
+
+      .divider {
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        margin-bottom: 1.5rem;
+      }
+
+      #question-label {
+        font-size: 1rem;
+        color: #f1f5f9;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      #answer-input {
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 14px 20px;
+        border-radius: 16px;
+        color: white;
+        font-size: 1rem;
+        outline: none;
+        transition: all 0.3s;
+        text-align: center;
+      }
+
+      #answer-input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(129, 140, 248, 0.15);
+      }
+
+      #btn-verify {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        color: white;
+        border: none;
+        padding: 14px;
+        border-radius: 16px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      #btn-verify:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.4);
+        filter: brightness(1.1);
+      }
+
+      .error-hide {
+        opacity: 0;
+        color: #fda4af;
+        font-size: 0.85rem;
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        transition: 0.3s;
+      }
+
+      .error-show {
+        opacity: 1;
+      }
+    </style>
+    <script>
+      const securityData = [
+        {
+          q: "Tanggal berapa RUO PMKN terakhir ini dilaksanakan?",
+          a: [
+            "20 oktober 2025",
+            "20 okt 2025",
+            "20-10-2025",
+            "20/10/2025",
+            "20 10 2025",
+            "20.10.25",
+          ],
+        },
+      ];
+
+      let selectedChallenge;
+      let wrongCount = 0;
+      let isLocked = false;
+      let timerInterval;
+
+      window.onload = function () {
+        checkPersistentLockdown();
+        selectedChallenge =
+          securityData[Math.floor(Math.random() * securityData.length)];
+        document.getElementById("question-label").innerText =
+          selectedChallenge.q;
+      };
+
+      function checkPersistentLockdown() {
+        const lockExpiry = localStorage.getItem("lockdownExpiry");
+        if (lockExpiry) {
+          const now = new Date().getTime();
+          if (now < lockExpiry) {
+            const remaining = Math.ceil((lockExpiry - now) / 1000);
+            triggerLockdown(remaining);
+          } else {
+            localStorage.removeItem("lockdownExpiry");
+          }
+        }
+      }
+
+      function checkAccess() {
+        if (isLocked) return;
+        const inputElement = document.getElementById("answer-input");
+        const userInput = inputElement.value.toLowerCase().trim();
+        const errorMsg = document.getElementById("error-msg");
+        const gate = document.getElementById("gatekeeper");
+        const icon = document.querySelector(".gate-icon i");
+        const btn = document.getElementById("btn-verify");
+
+        if (selectedChallenge.a.includes(userInput)) {
+          errorMsg.classList.remove("error-show");
+          btn.innerHTML =
+            '<span>Akses Terbuka</span> <i class="fas fa-check-circle"></i>';
+          btn.style.background = "linear-gradient(135deg, #22c55e, #16a34a)";
+          icon.className = "fas fa-unlock-alt";
+          icon.style.color = "#22c55e";
+          localStorage.removeItem("wrongCount");
+          window.onbeforeunload = null;
+
+          setTimeout(() => {
+            gate.style.transition = "all 1s ease";
+            gate.style.opacity = "0";
+            gate.style.filter = "blur(30px)";
+            setTimeout(() => gate.remove(), 1000);
+          }, 700);
+        } else {
+          wrongCount++;
+          if (wrongCount >= 3) {
+            const expiryTime = new Date().getTime() + 60 * 1000;
+            localStorage.setItem("lockdownExpiry", expiryTime);
+            triggerLockdown(60);
+          } else {
+            errorMsg.innerHTML = `<i class="fas fa-exclamation-circle"></i> Salah! Percobaan: ${wrongCount}/3`;
+            errorMsg.classList.add("error-show");
+            document
+              .querySelector(".gate-content")
+              .animate(
+                [
+                  { transform: "translateX(-8px)" },
+                  { transform: "translateX(8px)" },
+                  { transform: "translateX(0)" },
+                ],
+                { duration: 250 },
+              );
+          }
+        }
+      }
+
+      // FUNGSI SECURITY CORE
+      function triggerLockdown(duration) {
+        isLocked = true;
+        const gate = document.getElementById("gatekeeper");
+        const content = document.querySelector(".gate-content");
+
+        // 1. Masuk Mode Fullscreen (Meminta izin browser)
+        if (gate.requestFullscreen) {
+          gate.requestFullscreen();
+        } else if (gate.webkitRequestFullscreen) {
+          gate.webkitRequestFullscreen();
+        }
+
+        // 2. Kunci Navigasi & Refresh
+        window.onbeforeunload = function () {
+          return "PROSES TERKUNCI!";
+        };
+
+        // 3. Matikan Klik Kanan
+        document.oncontextmenu = (e) => e.preventDefault();
+
+        gate.style.background = "#000000";
+        content.style.display = "none";
+
+        const oldTimer = document.getElementById("lockdown-timer");
+        if (oldTimer) oldTimer.remove();
+
+        const countdownDiv = document.createElement("div");
+        countdownDiv.id = "lockdown-timer";
+        countdownDiv.innerHTML = `
+      <i class="fas fa-biohazard" style="font-size: 5rem; color: #ff4444; margin-bottom: 20px; animation: pulse 1s infinite;"></i>
+      <h1 style="color: white; font-family: 'Courier New', monospace; letter-spacing: 5px; font-size: 2.5rem;">LOCKDOWN ACTIVE</h1>
+      <p style="color: #666; max-width: 450px; margin: 20px auto; line-height: 1.6;">
+        Terdeteksi upaya paksa. Navigasi telah dibekukan. Tunggu saja sistem melakukan reset.
+        Meninggalkan halaman ini atau meminimalkan browser akan mereset waktu reset.
+      </p>
+      <div id="timer-seconds" style="color: #ff4444; font-size: 5rem; font-weight: bold; font-family: monospace; text-shadow: 0 0 30px rgba(255, 68, 68, 0.7);">60</div>
+    `;
+        countdownDiv.style.textAlign = "center";
+        gate.appendChild(countdownDiv);
+
+        let secondsLeft = duration;
+
+        // 4. Deteksi Pindah Tab / Minimize (Hukuman: Reset ke 60 detik)
+        document.onvisibilitychange = function () {
+          if (document.hidden && isLocked) {
+            secondsLeft = 60; // Hukuman reset waktu
+            const expiryTime = new Date().getTime() + 60 * 1000;
+            localStorage.setItem("lockdownExpiry", expiryTime);
+            alert(
+              "PELANGGARAN: Terdeteksi upaya meninggalkan halaman! Waktu reset dimulai dari awal.",
+            );
+          }
+        };
+
+        clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+          secondsLeft--;
+          document.getElementById("timer-seconds").innerText = secondsLeft;
+          if (secondsLeft <= 0) {
+            clearInterval(timerInterval);
+            resetLockdown();
+          }
+        }, 1000);
+      }
+
+      function resetLockdown() {
+        isLocked = false;
+        wrongCount = 0;
+        localStorage.removeItem("lockdownExpiry");
+        window.onbeforeunload = null;
+        document.oncontextmenu = null;
+        document.onvisibilitychange = null;
+
+        if (document.exitFullscreen) {
+          document.exitFullscreen().catch(() => {});
+        }
+
+        const gate = document.getElementById("gatekeeper");
+        const content = document.querySelector(".gate-content");
+        const timerDiv = document.getElementById("lockdown-timer");
+
+        if (timerDiv) timerDiv.remove();
+        gate.style.background = "#020617";
+        content.style.display = "block";
+        document.getElementById("answer-input").value = "";
+        document.getElementById("error-msg").classList.remove("error-show");
+      }
+
+      document
+        .getElementById("answer-input")
+        .addEventListener("keypress", (e) => {
+          if (e.key === "Enter") checkAccess();
+        });
+    </script>
+
+    <style>
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.7;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+    </style>
+
     <ul class="menu" id="mobileMenu">
       <li class="sidebar-mobile-header">
         <div style="display: flex; align-items: center; gap: 12px">
