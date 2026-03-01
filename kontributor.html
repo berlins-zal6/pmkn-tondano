@@ -2863,8 +2863,7 @@
     </div>
 </div>
 
-<!-- kata rindu web -->
-<!-- kata rindu web -->
+    <!-- kata rindu web -->
     <div id="pmkn-greet-overlay" class="pmkn-greet-layer">
       <div class="pmkn-greet-container">
         
@@ -3278,6 +3277,13 @@
   .pmkn-greet-stk-img {
     animation: pmknFloat 6s ease-in-out infinite;
   }
+
+  /* Tambahan animasi shake jika salah */
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
 </style>
 
     <script>
@@ -3295,7 +3301,7 @@
     a: ["2020", "29 Oktober 2020"]
   },
   { 
-    q: "Dimana lokasi PMKN sekrang?", 
+    q: "Dimana lokasi sekretariat PMKN sekarang?", 
     a: ["Tondano", "Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2, Kec. Tondano Selatan Sulawesi Utara", "Brother House", "Kost Putra", "Kost Putra Blok B No.2"]
   },
   { 
@@ -3376,66 +3382,106 @@
 ];
 
       let pmknActiveQ = null;
+  let isAnswering = false; // Flag untuk mendeteksi sedang kuis
 
-      function handlePmknReunionLogic() {
-        const now = new Date().getTime();
-        const lastSeen = localStorage.getItem("pmkn_v3_last_seen");
-        const overlay = document.getElementById("pmkn-greet-overlay");
+  function handlePmknReunionLogic() {
+    const now = new Date().getTime();
+    const lastSeen = localStorage.getItem("pmkn_v3_last_seen");
+    const overlay = document.getElementById("pmkn-greet-overlay");
 
-        if (lastSeen) {
-          const timeGap = now - parseInt(lastSeen);
-          // const limit = 5 * 1000; // TEST 5 DETIK
-          const limit = 20 * 60 * 1000; // 20 menit
+    // Cek apakah sebelumnya sedang dalam posisi kuis yang belum selesai
+    const wasPending = localStorage.getItem("pmkn_pending_quiz") === "true";
 
-          if (timeGap > limit) {
-            const pick = pmknMessages[Math.floor(Math.random() * pmknMessages.length)];
-            document.getElementById("pmkn-greet-msg-title").innerText = pick.t;
-            document.getElementById("pmkn-greet-msg-desc").innerText = pick.d;
-            overlay.style.display = "flex";
-          }
-        }
-        localStorage.setItem("pmkn_v3_last_seen", now);
+    if (lastSeen || wasPending) {
+      const timeGap = now - parseInt(lastSeen || 0);
+      const limit = 20 * 60 * 1000; // 20 menit
+      // const limit = 5 * 1000; // 5 detik untuk testing cepat
+
+      if (timeGap > limit || wasPending) {
+        isAnswering = true;
+        localStorage.setItem("pmkn_pending_quiz", "true"); // Tandai harus kuis
+        
+        const pick = pmknMessages[Math.floor(Math.random() * pmknMessages.length)];
+        document.getElementById("pmkn-greet-msg-title").innerText = pick.t;
+        document.getElementById("pmkn-greet-msg-desc").innerText = pick.d;
+        overlay.style.display = "flex";
+        
+        // Kunci navigasi
+        lockNavigation();
       }
-
-      function pmknShowChallenge() {
-        document.getElementById("pmkn-step-1").style.display = "none";
-        document.getElementById("pmkn-step-2").style.display = "block";
-        pmknActiveQ = pmknQuestions[Math.floor(Math.random() * pmknQuestions.length)];
-        document.getElementById("pmkn-question-text").innerText = pmknActiveQ.q;
-        setTimeout(() => document.getElementById("pmkn-answer-input").focus(), 100);
-      }
-
-      function pmknCheckAnswer() {
-  const inputEl = document.getElementById("pmkn-answer-input");
-  const val = inputEl.value.toLowerCase().trim();
-  const overlay = document.getElementById("pmkn-greet-overlay");
-
-  // Logika baru: Cek apakah jawaban user ada di dalam daftar jawaban benar
-  const isCorrect = Array.isArray(pmknActiveQ.a) 
-    ? pmknActiveQ.a.some(ans => ans.toLowerCase() === val)
-    : pmknActiveQ.a.toLowerCase() === val;
-
-  if (isCorrect) {
-    overlay.style.opacity = "0";
-    setTimeout(() => {
-      overlay.style.display = "none";
-      overlay.style.opacity = "1";
-      document.getElementById("pmkn-step-1").style.display = "block";
-      document.getElementById("pmkn-step-2").style.display = "none";
-      inputEl.value = "";
-      document.getElementById("pmkn-error-msg").style.display = "none";
-    }, 600);
-    localStorage.setItem("pmkn_v3_last_seen", new Date().getTime());
-  } else {
-    document.getElementById("pmkn-error-msg").style.display = "block";
-    // Efek getar sedikit jika salah (opsional)
-    inputEl.style.borderColor = "#e11d48";
-    setTimeout(() => inputEl.style.borderColor = "#cbd5e1", 500);
+    }
+    localStorage.setItem("pmkn_v3_last_seen", now);
   }
-}
 
-      window.addEventListener("load", handlePmknReunionLogic);
-    </script>
+  function lockNavigation() {
+    // Mencegah refresh/keluar dengan dialog browser
+    window.onbeforeunload = function() {
+      if (isAnswering) {
+        return "Jawab dulu kuisnya, PMKN rindu kamu!";
+      }
+    };
+    
+    // Opsional: Fullscreen otomatis agar lebih fokus (butuh klik user pertama)
+    // if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+  }
+
+  function pmknShowChallenge() {
+    document.getElementById("pmkn-step-1").style.display = "none";
+    document.getElementById("pmkn-step-2").style.display = "block";
+    pmknActiveQ = pmknQuestions[Math.floor(Math.random() * pmknQuestions.length)];
+    document.getElementById("pmkn-question-text").innerText = pmknActiveQ.q;
+    setTimeout(() => document.getElementById("pmkn-answer-input").focus(), 100);
+  }
+
+  function pmknCheckAnswer() {
+    const inputEl = document.getElementById("pmkn-answer-input");
+    const val = inputEl.value.toLowerCase().trim();
+    const overlay = document.getElementById("pmkn-greet-overlay");
+
+    const isCorrect = Array.isArray(pmknActiveQ.a) 
+      ? pmknActiveQ.a.some(ans => ans.toLowerCase() === val)
+      : pmknActiveQ.a.toLowerCase() === val;
+
+    if (isCorrect) {
+      isAnswering = false;
+      localStorage.setItem("pmkn_pending_quiz", "false"); // Kuis selesai
+      window.onbeforeunload = null; // Buka kunci navigasi
+
+      overlay.style.opacity = "0";
+      setTimeout(() => {
+        overlay.style.display = "none";
+        overlay.style.opacity = "1";
+        document.getElementById("pmkn-step-1").style.display = "block";
+        document.getElementById("pmkn-step-2").style.display = "none";
+        inputEl.value = "";
+        document.getElementById("pmkn-error-msg").style.display = "none";
+      }, 600);
+      localStorage.setItem("pmkn_v3_last_seen", new Date().getTime());
+    } else {
+      document.getElementById("pmkn-error-msg").style.display = "block";
+      inputEl.style.borderColor = "#e11d48";
+      inputEl.style.animation = "shake 0.5s";
+      setTimeout(() => {
+        inputEl.style.borderColor = "#cbd5e1";
+        inputEl.style.animation = "";
+      }, 500);
+    }
+  }
+
+  // Tambahkan listener untuk input Enter
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Enter" && isAnswering) {
+      const step2 = document.getElementById("pmkn-step-2");
+      if (step2.style.display === "block") {
+        pmknCheckAnswer();
+      } else {
+        pmknShowChallenge();
+      }
+    }
+  });
+
+  window.addEventListener("load", handlePmknReunionLogic);
+</script>
 
 
     <!-- game offline -->

@@ -841,7 +841,7 @@
       }
 
       /* Responsive card layout */
-      @media (max-width: 768px) {
+      @media (max-width: 900px) {
         #news-container {
           grid-template-columns: 1fr;
           padding: 0 20px;
@@ -893,6 +893,144 @@
         color: var(--primary);
         border-color: rgba(99, 102, 241, 0.2);
         transform: scale(1.05);
+      }
+
+      /* 1. Badge untuk Detail Kategori (Warna Abu-abu Soft) */
+      .badge-detail {
+        background: #f1f5f9;
+        color: #475569;
+        padding: 4px 12px;
+        border-radius: 8px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        border: 1px solid #e2e8f0;
+        display: inline-block;
+      }
+
+      /* 2. Styling untuk Info Kontak & No Telepon */
+      .additional-info-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 8px;
+        color: #64748b;
+        font-size: 0.9rem;
+      }
+
+      .additional-info-item i {
+        color: #2563eb; /* Warna biru untuk ikon telepon */
+        width: 16px;
+      }
+
+      /* 3. Kotak Catatan Khusus (Gaya Warning/Alert) */
+      .note-box {
+        background: #fff9db; /* Kuning sangat muda */
+        color: #856404;
+        padding: 12px;
+        border-radius: 12px;
+        border-left: 4px solid #fcc419;
+        font-size: 0.85rem;
+        margin-top: 15px;
+        line-height: 1.5;
+        display: flex;
+        gap: 10px;
+      }
+
+      .note-box i {
+        margin-top: 3px;
+        color: #f08c00;
+      }
+
+      /* 4. Optimasi Grid untuk Layar Besar */
+      @media (min-width: 900px) {
+        #news-container {
+          grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+          gap: 40px;
+        }
+      }
+
+      /* 5. Efek Scroll Smooth untuk Filter di Mobile */
+      .filter-wrapper {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        padding-bottom: 15px;
+      }
+
+      .isi-berita {
+        font-size: 0.95rem;
+        color: #64748b;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        /* Menjaga teks isi agar tidak berantakan jika terlalu panjang */
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .footer-details {
+        border-top: 1px solid #f1f5f9;
+        padding-top: 15px;
+        margin-top: 15px;
+      }
+
+      .phone-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #1e293b;
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+
+      .note-box {
+        background: #fffbeb;
+        border-left: 4px solid #f59e0b;
+        padding: 10px;
+        border-radius: 4px 8px 8px 4px;
+        font-size: 0.85rem;
+        color: #92400e;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      /* Ringkasan teks awal */
+      .excerpt {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin-bottom: 15px;
+      }
+
+      /* Tombol Detail & Kembali */
+      .btn-detail,
+      .btn-back {
+        background: #2563eb;
+        color: white;
+        border: none;
+        padding: 8px 18px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+
+      .btn-back {
+        background: #64748b;
+      }
+
+      .btn-detail:hover {
+        background: #1d4ed8;
+        transform: scale(1.05);
+      }
+
+      /* Animasi kartu saat mode detail */
+      .is-detailed {
+        grid-column: 1 / -1; /* Mengambil lebar penuh jika dalam grid */
+        max-width: 800px;
+        margin: 0 auto;
       }
 
       /* --- Chat Widget --- */
@@ -2000,64 +2138,113 @@
 
     <script>
       const scriptURL =
-        "https://script.google.com/macros/s/AKfycbzOTJbRlBQ3-kUN6HFBFV0sT2QOqxgybu6jwiO8mNCPyxiCq-9r9aq04Tmnpu17DtDSyw/exec";
+        "https://script.google.com/macros/s/AKfycbzqASp5q5u_IHHpjAgdJauiKLjadBJeOIOWq-Odz-dWglZbr1l2KDKAi0d_Hp6w5trv-A/exec";
       let allData = [];
 
-      // Ambil Data dari Google Sheets
+      // 1. Ambil Data dari Google Sheets
       async function fetchData() {
         try {
           const response = await fetch(scriptURL);
           allData = await response.json();
           renderCards(allData);
         } catch (error) {
+          console.error("Error:", error);
           document.getElementById("news-container").innerHTML =
-            "Gagal memuat data.";
+            `<p style="color: red; text-align: center;">Gagal memuat data. Periksa koneksi atau URL Apps Script.</p>`;
         }
       }
 
+      // 2. Fungsi untuk Menampilkan Kartu (Render)
       function renderCards(data) {
         const container = document.getElementById("news-container");
         container.innerHTML = "";
 
-        if (data.length === 0) {
-          container.innerHTML =
-            '<p class="text-center">Tidak ada informasi ditemukan.</p>';
-          return;
-        }
+        data.forEach((item) => {
+          // Bersihkan nomor WA (hapus spasi/strip) dan pastikan mulai dengan 62
+          let waNumber = item.no_telp.toString().replace(/[^0-9]/g, "");
+          if (waNumber.startsWith("0")) waNumber = "62" + waNumber.substring(1);
 
-        data.forEach((item, idx) => {
-          const dateStr = new Date(item.tgl_mulai).toLocaleDateString("id-ID", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-          });
+          const namaAdmin = item.sumber || "Admin PMKN"; // Fallback jika kolom sumber kosong
+
+          const waLink = `https://wa.me/${waNumber}?text=Ya'ahowu%20*${encodeURIComponent(namaAdmin)}*,%0A%0A*Perkenalkan%20Diri:*%0ANama:%20[Isi%20Nama]%0AAsal/Instansi:%20[Isi%20Asal]%0A%0A*Tujuan%20Saya:*%0ASaya%20ingin%20bertanya%20dan%20mengetahui%20lebih%20lanjut%20mengenai%20informasi:%20%0A👉%20*${encodeURIComponent(item.judul)}*%0A%0AMohon%20bantuannya%20untuk%20memberikan%20detail%20terkait%20hal%20tersebut.%20Terima%20kasih!`;
 
           container.innerHTML += `
-  <div class="info-card" style="animation-delay: ${idx * 0.1}s;">
-    <div class="info-card-content">
-      <div class="flex items-center gap-3 mb-2">
-        <span class="badge-info">${item.kategori}</span>
-        <span class="date-info"><i class="fa-regular fa-calendar-alt"></i> ${dateStr}</span>
+      <div class="info-card" id="${item.id}">
+        <div class="info-card-content">
+          <span class="badge-info">${item.kategori}</span>
+          <div class="date-info"><i class="fa-regular fa-calendar"></i> ${new Date(item.tgl_mulai).toLocaleDateString("id-ID")}</div>
+          
+          <h3>${item.judul}</h3>
+          
+          <div class="isi-berita excerpt">${item.isi}</div>
+          <div class="isi-berita full-text" style="display:none;">${item.isi.replace(/\n/g, "<br>")}</div>
+
+          <div class="footer-details">
+            ${
+              item.no_telp
+                ? `
+              <a href="${waLink}" target="_blank" class="phone-link" style="text-decoration:none;">
+                <i class="fa-solid fa-phone"></i> <b>Hubungi:</b> ${item.no_telp} (Klik via WA)
+              </a>`
+                : ""
+            }
+            
+            ${
+              item.catatan
+                ? `
+              <div class="note-box">
+                <i class="fa-solid fa-circle-info"></i> <b>Catatan:</b> ${item.catatan}
+              </div>`
+                : ""
+            }
+          </div>
+        </div>
+
+        <div class="card-footer-action">
+          <div class="source-tag"><i class="fa-solid fa-link"></i> ${item.sumber || "INTERNAL"}</div>
+          <button class="btn-detail" onclick="toggleDetail('${item.id}')">Lihat Detail</button>
+          <button class="btn-back" onclick="resetView()" style="display:none;">Kembali</button>
+        </div>
       </div>
-      <h3>${item.judul}</h3>
-      <p class="sapaan-text">${item.sapaan}</p>
-      <p class="isi-text">${item.isi}</p>
-      <div class="flex justify-end mt-4">
-      </div>
-    </div>
-  </div>
-`;
+    `;
         });
       }
 
+      // Fungsi untuk melihat satu detail saja
+      function toggleDetail(id) {
+        const cards = document.querySelectorAll(".info-card");
+        cards.forEach((card) => {
+          if (card.id === id) {
+            card.classList.add("is-detailed");
+            card.querySelector(".excerpt").style.display = "none";
+            card.querySelector(".full-text").style.display = "block";
+            card.querySelector(".btn-detail").style.display = "none";
+            card.querySelector(".btn-back").style.display = "block";
+          } else {
+            card.style.display = "none"; // Sembunyikan kartu lain
+          }
+        });
+      }
+
+      function resetView() {
+        const cards = document.querySelectorAll(".info-card");
+        cards.forEach((card) => {
+          card.style.display = "block";
+          card.classList.remove("is-detailed");
+          card.querySelector(".excerpt").style.display = "-webkit-box";
+          card.querySelector(".full-text").style.display = "none";
+          card.querySelector(".btn-detail").style.display = "block";
+          card.querySelector(".btn-back").style.display = "none";
+        });
+      }
+
+      // 3. Fungsi Filter Kategori
       function filterData(kategori, btn) {
-        // Update UI Tombol
         document
           .querySelectorAll(".filter-btn")
           .forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
 
-        // Filter Logic
         if (kategori === "Semua") {
           renderCards(allData);
         } else {
@@ -2066,17 +2253,19 @@
         }
       }
 
-      // Panggil saat halaman dimuat
+      // Jalankan Fetch saat halaman siap
       fetchData();
 
+      // Loading Screen Handler
       window.addEventListener("load", () => {
         const loadingScreen = document.getElementById("loading-screen");
-        loadingScreen.style.opacity = "0";
-        setTimeout(() => {
-          loadingScreen.style.display = "none";
-        }, 500);
+        if (loadingScreen) {
+          loadingScreen.style.opacity = "0";
+          setTimeout(() => {
+            loadingScreen.style.display = "none";
+          }, 500);
+        }
       });
-
       // --- Mobile Menu Logic ---
       const menuBtn = document.getElementById("menuBtn");
       const navbar = document.querySelector(".navbar");
@@ -2152,7 +2341,7 @@
           extraContent.scrollIntoView({ behavior: "smooth", block: "nearest" });
         } else {
           extraContent.style.display = "none";
-          btnText.innerText = "Baca Selengkapnya";
+          btnText.innerText = "Lihat Detail";
           btnIcon.classList.replace("fa-chevron-up", "fa-arrow-right");
         }
       }

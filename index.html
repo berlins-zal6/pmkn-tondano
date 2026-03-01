@@ -1335,119 +1335,167 @@
       }
 
       /* --- News & Updates Section  --- */
-      .news-section {
-        padding: 60px 5%;
-        background-color: #f8fafc; /* Latar belakang abu-abu sangat muda agar kartu putih terlihat pop-up */
-      }
+      /* Container Utama */
+.news-section {
+  padding: 100px 5%;
+  background: radial-gradient(circle at top right, #f8fafc, #f1f5f9);
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
 
-      .campus-life-header {
-        text-align: center;
-        margin-bottom: 40px;
-      }
+/* Header Bagian dengan Aksen Garis */
+.campus-life-header {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
 
-      .campus-life-header h2 {
-        font-size: 2rem;
-        color: #1e293b;
-        font-weight: 800;
-        letter-spacing: -1px;
-      }
+.campus-life-header h2 {
+  font-size: 2.8rem;
+  color: #0f172a;
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+}
 
-      .news-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 25px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
+.campus-life-header p {
+  color: #64748b;
+  font-size: 1.15rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
 
-      /* Kolom sebagai Container Putih */
-      .news-column {
-        background: white;
-        border-radius: 16px;
-        padding: 24px;
-        box-shadow:
-          0 4px 6px -1px rgba(0, 0, 0, 0.05),
-          0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        display: flex;
-        flex-direction: column;
-      }
+/* Grid Layout dengan Gap Lebih Dinamis */
+.news-grid-layout {
+  display: grid;
+  /* Membagi menjadi 2 kolom dengan lebar yang sama (1fr) */
+  grid-template-columns: 1fr 1fr; 
+  gap: 30px; /* Jarak antar kolom */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
-      .news-column-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-        padding-bottom: 12px;
-        border-bottom: 2px solid #f1f5f9;
-      }
+.column {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 25px;
+  /* Memberikan efek bayangan agar kolom terlihat terpisah */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
 
-      /* Card Update */
-      .update-card {
-        border: 1px solid #f1f5f9;
-        border-radius: 12px;
-        padding: 20px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        background: #ffffff;
-      }
+.column-header {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 10px;
+}
 
-      .update-card:hover {
-        border-color: #ff4d00;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-        transform: translateY(-3px);
-      }
+.column-header h2 {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #1e293b;
+}
 
-      .post-title-home {
-        font-family: "Poppins", sans-serif;
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: #1e293b;
-        margin: 12px 0;
-        line-height: 1.4;
-      }
+/* RESPONSIVE: Agar di HP jadi 1 kolom bertumpuk */
+@media (max-width: 900px) {
+  .news-grid-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
 
-      .post-excerpt-home {
-        font-size: 0.875rem;
-        color: #64748b;
-        line-height: 1.6;
-        margin-bottom: 20px;
-        /* Batasi teks agar kartu tidak terlalu panjang */
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
+/* Item Card: Minimalis namun Interaktif */
+.update-card {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  border-radius: 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+  margin-bottom: 12px;
+  border: 1px solid transparent;
+}
 
-      /* Tombol Baca - Dibuat Minimalis & Modern */
-      .btn-baca {
-        background: #ff4d00;
-        color: white !important;
-        padding: 10px 18px;
-        border-radius: 10px;
-        text-decoration: none;
-        font-size: 0.85rem;
-        font-weight: 600;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        transition: 0.2s;
-        box-shadow: 0 4px 12px rgba(255, 77, 0, 0.2);
-      }
+.update-card:hover {
+  background: #ffffff;
+  border-color: #f1f5f9;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  transform: scale(1.02) translateX(10px);
+}
 
-      .btn-baca:hover {
-        background: #e64500;
-        box-shadow: 0 6px 15px rgba(255, 77, 0, 0.3);
-      }
+/* Kotak Ikon yang Lebih Pop-Out */
+.icon-wrapper {
+  min-width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+}
 
-      .icon-kegiatan {
-        color: #ff4d00;
-      }
-      .icon-pengumuman {
-        color: #3b82f6;
-      }
-      .icon-agenda {
-        color: #10b981;
-      }
+.bg-orange-soft { 
+    background: linear-gradient(135deg, #fff7ed, #ffedd5); 
+    color: #f97316; 
+}
+.bg-blue-soft { 
+    background: linear-gradient(135deg, #eff6ff, #dbeafe); 
+    color: #3b82f6; 
+}
 
+/* Typography Card */
+.post-title-home {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.post-excerpt-home {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Link Selengkapnya dengan Efek Underline Modern */
+.selengkapnya-link {
+  color: #1e293b;
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 0.85rem;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.selengkapnya-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #f97316;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.update-card:hover .selengkapnya-link::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Responsif */
+@media (max-width: 1024px) {
+  .news-grid { grid-template-columns: 1fr; }
+}
       /* --- Organization Life (Video Gallery) --- */
       .org-life-section {
         padding: 100px 5%;
@@ -3282,145 +3330,35 @@
       </div>
     </section>
 
-    <section class="news-section">
-      <div class="campus-life-header">
-        <h2>NEWS PMKN</h2>
-        <p style="color: #64748b">
-          Informasi terkini mengenai kegiatan, pengumuman, dan agenda
-          organisasi.
-        </p>
+    <div class="news-section">
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 40vh; text-align: center; width: 100%;">
+  <div class="brand-badge" style="background: #fff7ed; color: #f97316; padding: 5px 15px; border-radius: 100px; font-size: 0.75rem; font-weight: 700; margin-bottom: 15px; border: 1px solid #ffedd5;">
+    UPDATE TERBARU
+  </div>
+  <h1 style="font-size: 3rem; font-weight: 900; color: #0f172a; margin-bottom: 15px; letter-spacing: -2px;">
+    NEWS <span style="color: #f97316;">PMKN</span>
+  </h1>
+  <p style="color: #64748b; font-size: 1.15rem; max-width: 550px; line-height: 1.7;">
+    Tetap update dengan Kegiatan terbaru dan pengumuman penting<br><b>Persatuan Mahasiswa Kristen Nias</b>
+  </p>
+</div>
+
+  <div class="news-grid-layout">
+    <div class="column">
+      <div class="column-header">
+        <h2><i class="fa-solid fa-person-chalkboard"></i> Kegiatan</h2>
       </div>
+      <div id="berita-list" class="card-stack"></div>
+    </div>
 
-      <div class="news-grid">
-        <div class="news-column">
-          <div class="news-column-header">
-            <h3>
-              <i class="fa-solid fa-camera-retro icon-kegiatan"></i> Kegiatan
-            </h3>
-            <a href="kegiatan.html" class="view-all">Lihat Semua</a>
-          </div>
-
-          <div class="latest-post update-card clearfix">
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                margin-bottom: 10px;
-              "
-            >
-              <span
-                class="badge-info"
-                style="background: #ffede6; color: #ff4d00"
-                >Pendaftaran</span
-              >
-              <span class="post-date"
-                ><i class="fa-regular fa-calendar"></i> 15 Feb - 21 Mar</span
-              >
-            </div>
-            <h4 class="post-title-home">TIM KERJA FUTSAL PMKN CUP 3</h4>
-            <p class="post-excerpt-home">
-              Lapangan sudah menunggu! Giliran timmu membuktikan siapa yang
-              pantas menjadi juara di turnamen futsal mahasiswa paling bergengsi
-              se-Sulawesi Utara.
-            </p>
-            <div
-              style="
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-top: 15px;
-                border-top: 1px solid #f1f5f9;
-                padding-top: 15px;
-              "
-            >
-              <span style="font-size: 0.75rem; color: #94a3b8"
-                ><i class="fa-solid fa-user-circle"></i> Panitia Cup 3</span
-              >
-              <a href="kegiatan.html" class="btn-baca"
-                >Daftar <i class="fa-solid fa-arrow-right"></i
-              ></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="news-column">
-          <div class="news-column-header">
-            <h3>
-              <i class="fa-solid fa-bullhorn icon-pengumuman"></i> Pengumuman
-            </h3>
-            <a href="pengumuman.html" class="view-all">Lihat Semua</a>
-          </div>
-
-          <div class="latest-post update-card clearfix">
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                margin-bottom: 10px;
-              "
-            >
-              <span
-                class="badge-info"
-                style="background: #e0f2fe; color: #0369a1"
-                >Wajib</span
-              >
-              <span class="post-date"
-                ><i class="fa-regular fa-calendar"></i> 21 Feb 2026</span
-              >
-            </div>
-            <h4 class="post-title-home">
-              Kewajiban Iuran Rutin Anggota (AD/ART)
-            </h4>
-            <p class="post-excerpt-home">
-              Berdasarkan AD/ART PMKN Pasal 27-28, diberitahukan kepada seluruh
-              anggota aktif untuk melakukan pembayaran iuran rutin bulanan tepat
-              waktu.
-            </p>
-            <div
-              style="
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-top: 15px;
-                border-top: 1px solid #f1f5f9;
-                padding-top: 15px;
-              "
-            >
-              <span style="font-size: 0.75rem; color: #94a3b8"
-                ><i class="fa-solid fa-user-circle"></i> BPI PMKN</span
-              >
-              <a href="pengumuman.html" class="btn-baca"
-                >Baca <i class="fa-solid fa-arrow-right"></i
-              ></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="news-column">
-          <div class="news-column-header">
-            <h3>
-              <i class="fa-solid fa-calendar-days icon-agenda"></i> Agenda
-            </h3>
-            <a href="agenda.html" class="view-all">Lihat Semua</a>
-          </div>
-          <div
-            id="container-agenda"
-            style="
-              min-height: 200px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            "
-          >
-            <p class="loading-text">
-              <i class="fa-solid fa-spinner fa-spin"></i> Menarik data agenda...
-            </p>
-          </div>
-        </div>
+    <div class="column">
+      <div class="column-header">
+        <h2><i class="fa-solid fa-bullhorn text-blue-500"></i> Pengumuman</h2>
       </div>
-    </section>
+      <div id="pengumuman-list" class="card-stack"></div>
+    </div>
+  </div>
+</div>
 
     <section class="news-section"></section>
 
@@ -3757,6 +3695,78 @@
           closeZoom();
         }
       });
+
+      // news PMKN
+      async function fetchPMKNNews() {
+        const url = "https://script.google.com/macros/s/AKfycbzqASp5q5u_IHHpjAgdJauiKLjadBJeOIOWq-Odz-dWglZbr1l2KDKAi0d_Hp6w5trv-A/exec";
+        const container = document.getElementById('news-container');
+
+        async function fetchNews() {
+        // Pastikan container kolom sudah ada di HTML Anda
+        const beritaContainer = document.getElementById("berita-list");
+        const pengumumanContainer = document.getElementById("pengumuman-list");
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            // Bersihkan loading/isi lama
+            if(beritaContainer) beritaContainer.innerHTML = '';
+            if(pengumumanContainer) pengumumanContainer.innerHTML = '';
+
+            data.forEach(item => {
+                // 1. Format Tanggal
+                const tanggalIndo = item.tgl_mulai ? new Date(item.tgl_mulai).toLocaleDateString("id-ID", {
+                    day: "numeric", month: "long", year: "numeric"
+                }) : 'Terbaru';
+
+                // 2. Tentukan Kategori untuk Pemisahan Kolom
+                const isKegiatan = item.kategori.toLowerCase() === 'kegiatan';
+                
+                // 3. Buat Elemen Kartu Modern
+                const card = document.createElement('div');
+                card.className = "update-card"; // Menggunakan class dari CSS yang kita buat
+                
+                // 4. Struktur HTML Kartu (Mengikuti gaya Ikon di samping)
+                card.innerHTML = `
+                    <div class="icon-wrapper ${isKegiatan ? 'bg-orange-soft' : 'bg-blue-soft'}">
+                        <i class="fa-solid ${isKegiatan ? 'fa-file-lines' : 'fa-info-circle'}"></i>
+                    </div>
+                    <div class="post-content-home">
+                        <div class="post-meta-home">
+                            <span>${tanggalIndo}</span>
+                            <span style="text-transform: uppercase; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.5px;">
+                                ${item.kategori}
+                            </span>
+                        </div>
+                        <h3 class="post-title-home">${item.judul}</h3>
+                        <p class="post-excerpt-home">${item.isi}</p>
+                        <div style="display: flex; justify-content: flex-end;">
+                            <a href="pengumuman.html?id=${item.id || ''}" class="selengkapnya-link">
+                                Selengkapnya →
+                            </a>
+                        </div>
+                    </div>
+                `;
+
+                // 5. Masukkan ke Kolom yang Tepat
+                if (isKegiatan && beritaContainer) {
+                    beritaContainer.appendChild(card);
+                } else if (!isKegiatan && pengumumanContainer) {
+                    pengumumanContainer.appendChild(card);
+                }
+            });
+
+        } catch (error) {
+            console.error("Gagal memuat berita:", error);
+            if(beritaContainer) beritaContainer.innerHTML = '<p>Gagal memuat data.</p>';
+        }
+    }
+        fetchNews();
+    }
+
+    // Jalankan fungsi saat halaman dimuat
+    window.addEventListener('DOMContentLoaded', fetchPMKNNews);
 
       // statistik PAB
       async function renderChart() {
@@ -4750,6 +4760,13 @@
   .pmkn-greet-stk-img {
     animation: pmknFloat 6s ease-in-out infinite;
   }
+
+  /* Tambahan animasi shake jika salah */
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
 </style>
 
     <script>
@@ -4767,7 +4784,7 @@
     a: ["2020", "29 Oktober 2020"]
   },
   { 
-    q: "Dimana lokasi PMKN sekrang?", 
+    q: "Dimana lokasi sekretariat PMKN sekarang?", 
     a: ["Tondano", "Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2, Kec. Tondano Selatan Sulawesi Utara", "Brother House", "Kost Putra", "Kost Putra Blok B No.2"]
   },
   { 
@@ -4848,66 +4865,106 @@
 ];
 
       let pmknActiveQ = null;
+  let isAnswering = false; // Flag untuk mendeteksi sedang kuis
 
-      function handlePmknReunionLogic() {
-        const now = new Date().getTime();
-        const lastSeen = localStorage.getItem("pmkn_v3_last_seen");
-        const overlay = document.getElementById("pmkn-greet-overlay");
+  function handlePmknReunionLogic() {
+    const now = new Date().getTime();
+    const lastSeen = localStorage.getItem("pmkn_v3_last_seen");
+    const overlay = document.getElementById("pmkn-greet-overlay");
 
-        if (lastSeen) {
-          const timeGap = now - parseInt(lastSeen);
-          // const limit = 5 * 1000; // TEST 5 DETIK
-          const limit = 20 * 60 * 1000; // 20 menit
+    // Cek apakah sebelumnya sedang dalam posisi kuis yang belum selesai
+    const wasPending = localStorage.getItem("pmkn_pending_quiz") === "true";
 
-          if (timeGap > limit) {
-            const pick = pmknMessages[Math.floor(Math.random() * pmknMessages.length)];
-            document.getElementById("pmkn-greet-msg-title").innerText = pick.t;
-            document.getElementById("pmkn-greet-msg-desc").innerText = pick.d;
-            overlay.style.display = "flex";
-          }
-        }
-        localStorage.setItem("pmkn_v3_last_seen", now);
+    if (lastSeen || wasPending) {
+      const timeGap = now - parseInt(lastSeen || 0);
+      const limit = 20 * 60 * 1000; // 20 menit
+      // const limit = 5 * 1000; // 5 detik untuk testing cepat
+
+      if (timeGap > limit || wasPending) {
+        isAnswering = true;
+        localStorage.setItem("pmkn_pending_quiz", "true"); // Tandai harus kuis
+        
+        const pick = pmknMessages[Math.floor(Math.random() * pmknMessages.length)];
+        document.getElementById("pmkn-greet-msg-title").innerText = pick.t;
+        document.getElementById("pmkn-greet-msg-desc").innerText = pick.d;
+        overlay.style.display = "flex";
+        
+        // Kunci navigasi
+        lockNavigation();
       }
-
-      function pmknShowChallenge() {
-        document.getElementById("pmkn-step-1").style.display = "none";
-        document.getElementById("pmkn-step-2").style.display = "block";
-        pmknActiveQ = pmknQuestions[Math.floor(Math.random() * pmknQuestions.length)];
-        document.getElementById("pmkn-question-text").innerText = pmknActiveQ.q;
-        setTimeout(() => document.getElementById("pmkn-answer-input").focus(), 100);
-      }
-
-      function pmknCheckAnswer() {
-  const inputEl = document.getElementById("pmkn-answer-input");
-  const val = inputEl.value.toLowerCase().trim();
-  const overlay = document.getElementById("pmkn-greet-overlay");
-
-  // Logika baru: Cek apakah jawaban user ada di dalam daftar jawaban benar
-  const isCorrect = Array.isArray(pmknActiveQ.a) 
-    ? pmknActiveQ.a.some(ans => ans.toLowerCase() === val)
-    : pmknActiveQ.a.toLowerCase() === val;
-
-  if (isCorrect) {
-    overlay.style.opacity = "0";
-    setTimeout(() => {
-      overlay.style.display = "none";
-      overlay.style.opacity = "1";
-      document.getElementById("pmkn-step-1").style.display = "block";
-      document.getElementById("pmkn-step-2").style.display = "none";
-      inputEl.value = "";
-      document.getElementById("pmkn-error-msg").style.display = "none";
-    }, 600);
-    localStorage.setItem("pmkn_v3_last_seen", new Date().getTime());
-  } else {
-    document.getElementById("pmkn-error-msg").style.display = "block";
-    // Efek getar sedikit jika salah (opsional)
-    inputEl.style.borderColor = "#e11d48";
-    setTimeout(() => inputEl.style.borderColor = "#cbd5e1", 500);
+    }
+    localStorage.setItem("pmkn_v3_last_seen", now);
   }
-}
 
-      window.addEventListener("load", handlePmknReunionLogic);
-    </script>
+  function lockNavigation() {
+    // Mencegah refresh/keluar dengan dialog browser
+    window.onbeforeunload = function() {
+      if (isAnswering) {
+        return "Jawab dulu kuisnya, PMKN rindu kamu!";
+      }
+    };
+    
+    // Opsional: Fullscreen otomatis agar lebih fokus (butuh klik user pertama)
+    // if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+  }
+
+  function pmknShowChallenge() {
+    document.getElementById("pmkn-step-1").style.display = "none";
+    document.getElementById("pmkn-step-2").style.display = "block";
+    pmknActiveQ = pmknQuestions[Math.floor(Math.random() * pmknQuestions.length)];
+    document.getElementById("pmkn-question-text").innerText = pmknActiveQ.q;
+    setTimeout(() => document.getElementById("pmkn-answer-input").focus(), 100);
+  }
+
+  function pmknCheckAnswer() {
+    const inputEl = document.getElementById("pmkn-answer-input");
+    const val = inputEl.value.toLowerCase().trim();
+    const overlay = document.getElementById("pmkn-greet-overlay");
+
+    const isCorrect = Array.isArray(pmknActiveQ.a) 
+      ? pmknActiveQ.a.some(ans => ans.toLowerCase() === val)
+      : pmknActiveQ.a.toLowerCase() === val;
+
+    if (isCorrect) {
+      isAnswering = false;
+      localStorage.setItem("pmkn_pending_quiz", "false"); // Kuis selesai
+      window.onbeforeunload = null; // Buka kunci navigasi
+
+      overlay.style.opacity = "0";
+      setTimeout(() => {
+        overlay.style.display = "none";
+        overlay.style.opacity = "1";
+        document.getElementById("pmkn-step-1").style.display = "block";
+        document.getElementById("pmkn-step-2").style.display = "none";
+        inputEl.value = "";
+        document.getElementById("pmkn-error-msg").style.display = "none";
+      }, 600);
+      localStorage.setItem("pmkn_v3_last_seen", new Date().getTime());
+    } else {
+      document.getElementById("pmkn-error-msg").style.display = "block";
+      inputEl.style.borderColor = "#e11d48";
+      inputEl.style.animation = "shake 0.5s";
+      setTimeout(() => {
+        inputEl.style.borderColor = "#cbd5e1";
+        inputEl.style.animation = "";
+      }, 500);
+    }
+  }
+
+  // Tambahkan listener untuk input Enter
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Enter" && isAnswering) {
+      const step2 = document.getElementById("pmkn-step-2");
+      if (step2.style.display === "block") {
+        pmknCheckAnswer();
+      } else {
+        pmknShowChallenge();
+      }
+    }
+  });
+
+  window.addEventListener("load", handlePmknReunionLogic);
+</script>
 
 
     <!-- game offline -->
