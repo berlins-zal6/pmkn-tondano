@@ -2868,6 +2868,626 @@
       </div>
     </div>
 
+    <!-- kata rindu web -->
+    <div id="pmkn-greet-overlay" class="pmkn-greet-layer">
+      <div class="pmkn-greet-container">
+        
+        <div id="pmkn-step-1">
+          <div class="pmkn-stk-wrapper">
+            <img src="lelahstk.png" alt="Sticker" class="pmkn-greet-stk-img" />
+            <div class="pmkn-tear-puddle"></div>
+          </div>
+          <h1 id="pmkn-greet-msg-title">huffft...</h1>
+          <p id="pmkn-greet-msg-desc">Selamat datang kembali!</p>
+          <button onclick="pmknShowChallenge()" class="pmkn-greet-btn">Lanjutkan...</button>
+        </div>
+
+        <div id="pmkn-step-2" style="display: none">
+          <h2>Yaahowu,<br>Verifikasi Dulu Ya</h2>
+          <p id="pmkn-question-text"></p>
+          <input type="text" id="pmkn-answer-input" placeholder="Tulis jawaban..." autocomplete="off">
+          <br>
+          <button onclick="pmknCheckAnswer()" class="pmkn-greet-btn-submit">Masuk</button>
+          <p id="pmkn-error-msg">Jawaban salah! Coba ingat lagi</p>
+        </div>
+    <style>
+  /* Import Font Modern & Clean */
+  @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&display=swap");
+
+  .pmkn-greet-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, #f3f4f6 0%, #d1d5db 100%);
+    z-index: 999999;
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    text-align: center;
+    color: #334155;
+    text-transform: capitalize;
+  }
+
+  .pmkn-greet-container {
+    background: transparent;
+    max-width: 800px;
+    width: 90%;
+    animation: pmknEnter 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Memastikan kontainer mewarisi format kapital */
+    text-transform: capitalize;
+  }
+
+  /* Tambahan: Pastikan judul tidak dipaksa huruf kecil lagi */
+  #pmkn-greet-msg-title {
+    text-transform: capitalize !important;
+  }
+
+  /* Sticker Grayscale */
+/* 1. Container Wrapper Stiker */
+.pmkn-stk-wrapper {
+  position: relative;
+  display: inline-block;
+  width: clamp(120px, 20vw, 160px);
+  margin-bottom: 60px; /* Ruang untuk genangan banjir */
+  /* Perbaikan: Animasi mengambang yang lesu */
+  animation: pmknFloatLeleh 8s ease-in-out infinite;
+}
+
+/* 2. Style Gambar Stiker Asli */
+.pmkn-greet-stk-img {
+  width: 100%;
+  height: auto;
+  filter: 
+    drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15)) 
+    grayscale(1)      /* Pucat */
+    brightness(0.9)   /* Redup */
+    sepia(0.2);       /* Kusam */
+  opacity: 0.75;
+  transform: rotate(-3deg); /* Posisi terkulai */
+}
+
+/* 3. Efek Air Mata (Tetesan) */
+.pmkn-stk-wrapper::before,
+.pmkn-stk-wrapper::after {
+  content: '';
+  position: absolute;
+  background: rgba(186, 230, 253, 0.6);
+  border-radius: 50%;
+  border-bottom-left-radius: 0;
+  transform: rotate(-45deg);
+  opacity: 0;
+  z-index: 2;
+}
+
+/* Air Mata Kiri */
+.pmkn-stk-wrapper::before {
+  width: 8px;
+  height: 8px;
+  left: 35%; /* Sesuaikan ke posisi mata kiri */
+  animation: pmknAirMataKiri 4s infinite 1s;
+}
+
+/* Air Mata Kanan */
+.pmkn-stk-wrapper::after {
+  width: 10px;
+  height: 10px;
+  right: 32%; /* Sesuaikan ke posisi mata kanan */
+  animation: pmknAirMataKanan 4s infinite 2.5s;
+}
+
+/* 4. Efek Genangan Air (Banjir) */
+.pmkn-tear-puddle {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 12px;
+  background: rgba(186, 230, 253, 0.4);
+  border-radius: 50%;
+  filter: blur(2px);
+  z-index: 1;
+  animation: pmknBanjir 4s ease-in-out infinite;
+}
+
+.pmkn-tear-puddle::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  width: 30%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+}
+
+/* --- KEYFRAMES --- */
+
+@keyframes pmknFloatLeleh {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-8px) rotate(-1deg); }
+}
+
+@keyframes pmknBanjir {
+  0%, 100% { width: 80%; opacity: 0.4; }
+  50% { width: 110%; opacity: 0.7; filter: blur(3px); }
+}
+
+@keyframes pmknAirMataKiri {
+  0% { top: 40%; opacity: 0; }
+  20% { opacity: 1; }
+  80% { top: 95%; opacity: 0; }
+  100% { top: 95%; opacity: 0; }
+}
+
+@keyframes pmknAirMataKanan {
+  0% { top: 43%; opacity: 0; }
+  25% { opacity: 1; }
+  85% { top: 100%; opacity: 0; }
+  100% { top: 100%; opacity: 0; }
+}
+
+  /* Judul Minimalis */
+  #pmkn-greet-msg-title {
+    font-size: clamp(2.5rem, 10vw, 5rem);
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -3px;
+    color: #1e293b;
+    text-transform: lowercase;
+    text-transform: capitalize; 
+  }
+
+  #pmkn-greet-msg-desc {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #64748b;
+    margin: 15px auto 40px;
+    max-width: 500px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Tombol Teks Merah Sesuai Request */
+  .pmkn-greet-btn {
+  background: transparent;
+  color: #e11d48;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  /* Format Aa (Kapital di awal kata) */
+  text-transform: capitalize; 
+  letter-spacing: 1px;
+  opacity: 0.8;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.pmkn-greet-btn:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+  /* STEP 2 - QUIZ MODERN STYLE */
+  #pmkn-step-2 {
+    animation: pmknEnter 0.8s ease-out;
+    border: 1px solid #cbd5e1; /* Garis bingkai tipis */
+    padding: 60px 40px; /* Jarak luas di dalam bingkai */
+    border-radius: 30px; /* Sudut melengkung halus */
+    background: rgba(255, 255, 255, 0.2); /* Efek kaca transparan tipis */
+    backdrop-filter: blur(5px);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* Judul Yaahowu */
+  #pmkn-step-2 h2 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #64748b;
+    margin-bottom: 35px; /* Jarak lebih renggang */
+    line-height: 1.6;
+    text-transform: capitalize;
+  }
+
+  /* Teks Pertanyaan */
+  #pmkn-question-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 45px; /* Jarak ke input diperlebar */
+    line-height: 1.3;
+  }
+
+  /* Input Jawaban Minimalis */
+  #pmkn-answer-input {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid #94a3b8 !important; /* Garis lebih tipis agar elegan */
+    color: #1e293b !important;
+    font-size: 1.2rem !important;
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    padding: 12px 0 !important;
+    outline: none !important;
+    transition: all 0.4s ease !important;
+    margin-bottom: 40px; /* Jarak ke tombol submit */
+  }
+
+  #pmkn-answer-input:focus {
+    border-bottom-color: #1e293b !important;
+    border-bottom-width: 2px !important;
+  }
+
+  #pmkn-answer-input::placeholder {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+
+  /* Tombol Submit Outline */
+  .pmkn-greet-btn-submit {
+    background: transparent;
+    color: #1e293b;
+    border: 1.5px solid #1e293b;
+    padding: 12px 40px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase; /* Membuat tombol terlihat tegas */
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .pmkn-greet-btn-submit:hover {
+    background: #1e293b;
+    color: #ffffff;
+    transform: scale(1.05);
+  }
+
+  /* Pesan Error */
+  #pmkn-error-msg {
+    color: #e11d48;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 25px;
+    display: none;
+    text-transform: capitalize;
+  }
+
+  /* Animations */
+  @keyframes pmknFloatLeleh {
+    0%, 100% {
+      transform: translateY(0) rotate(-3deg);
+    }
+    50% {
+      transform: translateY(-5px) rotate(-1deg); /* Gerakan ke atas sangat sedikit */
+    }
+  }
+
+  /* Animasi Air Mata Menetes (Kiri) */
+  @keyframes pmknAirMataKiri {
+    0% {
+      top: 45%; /* Posisi awal mata */
+      opacity: 0;
+      transform: rotate(-45deg) scale(0.5);
+    }
+    10%, 20% {
+      opacity: 1; /* Muncul */
+      transform: rotate(-45deg) scale(1);
+    }
+    80% {
+      top: 75%; /* Mengalir ke bawah pipi */
+      opacity: 0; /* Menghilang di ujung */
+      transform: rotate(-45deg) scale(1);
+    }
+    100% {
+      top: 75%;
+      opacity: 0;
+    }
+  }
+
+  /* Animasi Air Mata Menetes (Kanan - Lebih Panjang) */
+  @keyframes pmknAirMataKanan {
+    0% {
+      top: 48%;
+      opacity: 0;
+      transform: rotate(-45deg) scale(0.5);
+    }
+    15%, 25% {
+      opacity: 1;
+      transform: rotate(-45deg) scale(1.1); /* Sedikit lebih besar */
+    }
+    85% {
+      top: 85%; /* Mengalir lebih jauh ke dagu */
+      opacity: 0;
+      transform: rotate(-45deg) scale(1.1);
+    }
+    100% {
+      top: 85%;
+      opacity: 0;
+    }
+  }
+  /* Animasi Banjir yang Bergelombang */
+@keyframes pmknBanjir {
+  0%, 100% {
+    width: 80%;
+    height: 10px;
+    opacity: 0.4;
+  }
+  50% {
+    width: 100%; /* Air seolah meluap */
+    height: 15px;
+    opacity: 0.7;
+    filter: blur(3px);
+  }
+}
+
+/* Pastikan air mata jatuh seolah masuk ke genangan */
+@keyframes pmknAirMataKiri {
+  0% { top: 45%; opacity: 0; transform: rotate(-45deg) scale(0.5); }
+  10%, 20% { opacity: 1; transform: rotate(-45deg) scale(1); }
+  90% { 
+    top: 95%; /* Jatuh sampai ke area banjir */
+    opacity: 0; 
+    transform: rotate(-45deg) scale(0.8); 
+  }
+  100% { top: 95%; opacity: 0; }
+}
+
+@keyframes pmknAirMataKanan {
+  0% { top: 48%; opacity: 0; transform: rotate(-45deg) scale(0.5); }
+  15%, 25% { opacity: 1; transform: rotate(-45deg) scale(1.1); }
+  95% { 
+    top: 100%; /* Jatuh sampai ke area banjir */
+    opacity: 0; 
+    transform: rotate(-45deg) scale(0.9); 
+  }
+  100% { top: 100%; opacity: 0; }
+}
+
+  /* Animasi Masuk yang Sophisticated */
+  @keyframes pmknEnter {
+    0% {
+      opacity: 0;
+      filter: blur(15px) brightness(1.5); /* Mulai dari sangat blur dan terang */
+      transform: scale(0.9) translateY(30px);
+    }
+    /* Menggunakan teknik overshoot (sedikit melewati posisi asli lalu kembali) */
+    70% {
+      opacity: 0.8;
+      filter: blur(5px);
+      transform: scale(1.02) translateY(-5px);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0) brightness(1);
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  /* Cara penggunaan pada container agar lebih smooth */
+  .pmkn-greet-container {
+    animation: pmknEnter 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .pmkn-greet-stk-img {
+    animation: pmknFloat 6s ease-in-out infinite;
+  }
+
+  /* Tambahan animasi shake jika salah */
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+</style>
+
+    <script>
+      const pmknQuestions = [
+  { 
+    q: "Apa singkatan dari PMKN?", 
+    a: "Persatuan Mahasiswa Kristen Nias" 
+  },
+  { 
+    q: "Tahun berapa pertama kali PMKN didirikan?", 
+    a: "2017" 
+  },
+  { 
+    q: "Tahun berapa resmi PMKN di Tondano?", 
+    a: ["2020", "29 Oktober 2020"]
+  },
+  { 
+    q: "Dimana lokasi sekretariat PMKN sekarang?", 
+    a: ["Tondano", "Jl. Perum Maesa UNIMA Kost Putra Blok B, No.2, Kec. Tondano Selatan Sulawesi Utara", "Brother House", "Kost Putra", "Kost Putra Blok B No.2"]
+  },
+  { 
+    q: "Bulan berapa PMKN merayakan Diesnatalis ?", 
+    a: ["Oktober", "October", "29 Oktober"] 
+  },
+  { 
+    q: "Siapa saja anggota PMKN?", 
+    a: ["Orang Nias", "Mahasiswa", "Anak Nias", "Pemuda Nias", "Mahasiswa Nias di Tondano"]
+  },
+  { 
+    q: "Apa kata sapaan yang identik dari Nias?", 
+    a: "Yaahowu" 
+  },
+  { 
+    q: "Apakah kamu love dengan PMKN?", 
+    a: ["Iya", "Ya", "Suka", "Love PMKN", "Of course", "Yes", "Tentu", "Pasti", "Sangat suka", "Iya dong", "Suka banget", "Cinta PMKN", "Tidak", "Enggak", "Gak", "Nggak", "Tidak suka", "No", "Ga suka", "Gak suka", "Enggak suka"]
+  },
+  { 
+  q: "Siapa Ketua Umum PMKN saat ini?", 
+  a: ["Lisman Lase", "Paci", "Lisman", "Lase"]
+  },
+  { 
+    q: "Apa nama kegiatan Rapat tahunan terbesar PMKN?", 
+    a: ["Rapat Umum Organisasi", "RUO"]
+  }
+];
+
+      const pmknMessages = [
+  {
+    t: "Huffft...",
+    d: "Kami kira Anda meninggalkan kami selamanya. Senang melihat Anda kembali!",
+  },
+  {
+    t: "Rindu Itu Berat!",
+    d: "Baru ditinggal sebentar saja sudah terasa sepi. Selamat datang kembali!",
+  },
+  {
+    t: "Masih Hidup?",
+    d: "Kirain tadi website ini cuma milik hantu karena saking sepinya. Hehe!",
+  },
+  {
+    t: "Akhirnya...",
+    d: "Capek tau nungguin kamu balik. Duduk yang manis lagi ya!",
+  },
+  {
+    t: "Kemana Saja?",
+    d: "Lama banget perginya, sampai debu di sini sudah setebal kamus!",
+  },
+  {
+    t: "Cuma Mampir?",
+    d: "Jangan pergi-pergi lagi ya, kami sudah siapkan tempat duduk paling nyaman.",
+  },
+  {
+    t: "Ya Ampun!",
+    d: "Kirain tadi nyasar ke tetangga sebelah. Untung ingat jalan pulang!",
+  },
+  {
+    t: "Selamat Kembali!",
+    d: "Hampir saja kami buatkan pengumuman orang hilang. Senang Anda kembali!",
+  },
+  {
+    t: "Tega Banget!",
+    d: "Ditinggal sendirian itu nggak enak tahu. Jangan lama-lama lagi ya!",
+  },
+  {
+    t: "Eh, Kamu Lagi!",
+    d: "Sudah puas jalan-jalannya? Sini istirahat dulu sebentar.",
+  },
+  {
+    t: "Senyap Banget!",
+    d: "Tadi di sini sunyi sekali seperti perpustakaan tengah malam. Jangan pergi lagi!",
+  },
+  {
+    t: "Misi Sukses!",
+    d: "Akhirnya Anda berhasil menemukan jalan kembali ke halaman ini. Selamat!",
+  }
+];
+
+      let pmknActiveQ = null;
+  let isAnswering = false; // Flag untuk mendeteksi sedang kuis
+
+  function handlePmknReunionLogic() {
+    const now = new Date().getTime();
+    const lastSeen = localStorage.getItem("pmkn_v3_last_seen");
+    const overlay = document.getElementById("pmkn-greet-overlay");
+
+    // Cek apakah sebelumnya sedang dalam posisi kuis yang belum selesai
+    const wasPending = localStorage.getItem("pmkn_pending_quiz") === "true";
+
+    if (lastSeen || wasPending) {
+      const timeGap = now - parseInt(lastSeen || 0);
+      const limit = 20 * 60 * 1000; // 20 menit
+      // const limit = 5 * 1000; // 5 detik untuk testing cepat
+
+      if (timeGap > limit || wasPending) {
+        isAnswering = true;
+        localStorage.setItem("pmkn_pending_quiz", "true"); // Tandai harus kuis
+        
+        const pick = pmknMessages[Math.floor(Math.random() * pmknMessages.length)];
+        document.getElementById("pmkn-greet-msg-title").innerText = pick.t;
+        document.getElementById("pmkn-greet-msg-desc").innerText = pick.d;
+        overlay.style.display = "flex";
+        
+        // Kunci navigasi
+        lockNavigation();
+      }
+    }
+    localStorage.setItem("pmkn_v3_last_seen", now);
+  }
+
+  function lockNavigation() {
+    // Mencegah refresh/keluar dengan dialog browser
+    window.onbeforeunload = function() {
+      if (isAnswering) {
+        return "Jawab dulu kuisnya, PMKN rindu kamu!";
+      }
+    };
+    
+    // Opsional: Fullscreen otomatis agar lebih fokus (butuh klik user pertama)
+    // if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+  }
+
+  function pmknShowChallenge() {
+    document.getElementById("pmkn-step-1").style.display = "none";
+    document.getElementById("pmkn-step-2").style.display = "block";
+    pmknActiveQ = pmknQuestions[Math.floor(Math.random() * pmknQuestions.length)];
+    document.getElementById("pmkn-question-text").innerText = pmknActiveQ.q;
+    setTimeout(() => document.getElementById("pmkn-answer-input").focus(), 100);
+  }
+
+  function pmknCheckAnswer() {
+    const inputEl = document.getElementById("pmkn-answer-input");
+    const val = inputEl.value.toLowerCase().trim();
+    const overlay = document.getElementById("pmkn-greet-overlay");
+
+    const isCorrect = Array.isArray(pmknActiveQ.a) 
+      ? pmknActiveQ.a.some(ans => ans.toLowerCase() === val)
+      : pmknActiveQ.a.toLowerCase() === val;
+
+    if (isCorrect) {
+      isAnswering = false;
+      localStorage.setItem("pmkn_pending_quiz", "false"); // Kuis selesai
+      window.onbeforeunload = null; // Buka kunci navigasi
+
+      overlay.style.opacity = "0";
+      setTimeout(() => {
+        overlay.style.display = "none";
+        overlay.style.opacity = "1";
+        document.getElementById("pmkn-step-1").style.display = "block";
+        document.getElementById("pmkn-step-2").style.display = "none";
+        inputEl.value = "";
+        document.getElementById("pmkn-error-msg").style.display = "none";
+      }, 600);
+      localStorage.setItem("pmkn_v3_last_seen", new Date().getTime());
+    } else {
+      document.getElementById("pmkn-error-msg").style.display = "block";
+      inputEl.style.borderColor = "#e11d48";
+      inputEl.style.animation = "shake 0.5s";
+      setTimeout(() => {
+        inputEl.style.borderColor = "#cbd5e1";
+        inputEl.style.animation = "";
+      }, 500);
+    }
+  }
+
+  // Tambahkan listener untuk input Enter
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Enter" && isAnswering) {
+      const step2 = document.getElementById("pmkn-step-2");
+      if (step2.style.display === "block") {
+        pmknCheckAnswer();
+      } else {
+        pmknShowChallenge();
+      }
+    }
+  });
+
+  window.addEventListener("load", handlePmknReunionLogic);
+</script>
+
     <!-- game offline -->
     <div id="pmkn-offline-layer" style="display: none">
       <div id="pmkn-offline-intro" class="pmkn-offline-screen">
