@@ -2006,6 +2006,128 @@
         }
       }
 
+      /* lihat brosur */
+      .brosur-overlay {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.85); /* Hitam transparan */
+        backdrop-filter: blur(10px); /* Efek blur di belakang gambar */
+        display: none; /* Sembunyi awal */
+        justify-content: center;
+        align-items: center;
+        z-index: 9999999;
+        padding: 20px;
+        animation: fadeIn 0.3s ease;
+      }
+
+      /* Kontainer Gambar */
+      .brosur-container {
+        position: relative;
+        max-width: 90%;
+        max-height: 90vh;
+        transform: scale(0.7);
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        /* Tambahan Frame Putih */
+        background: #ffffff;
+        padding: 25px; /* Ketebalan frame */
+        border-radius: 20px;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      }
+
+      /* Gambar Brosur */
+      .brosur-img {
+        max-width: 100%;
+        max-height: 75vh; /* Disesuaikan agar muat dengan frame */
+        border-radius: 8px; /* Sudut gambar sedikit melengkung di dalam frame */
+        display: block;
+      }
+
+      /* Responsif: Mobile (Layar di bawah 768px) */
+      @media (max-width: 768px) {
+        .brosur-container {
+          background: transparent; /* Hilangkan warna putih */
+          padding: 0;               /* Hilangkan jarak bingkai */
+          box-shadow: none;        /* Hilangkan bayangan kontainer */
+        }
+        
+        .brosur-img {
+          max-height: 80vh;         /* Gambar bisa lebih besar di mobile */
+          border-radius: 12px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Bayangan pindah ke gambar langsung */
+        }
+
+        .close-btn {
+          top: -50px; /* Sesuaikan posisi tombol close di mobile */
+          right: 0;
+        }
+      }
+
+      /* Tombol Download di bawah gambar */
+      .brosur-actions {
+          margin-top: 20px;
+      }
+
+      /* Versi Desktop (Di dalam kontainer putih) */
+      .btn-download {
+        display: inline-block;
+        background: transparent;
+        color: #1e293b; /* Warna teks gelap agar terbaca di atas frame putih */
+        padding: 10px 22px;
+        border-radius: 50px;
+        /* Stroke gelap transparan agar senada dengan frame putih */
+        border: 1.5px solid rgba(30, 41, 59, 0.2); 
+        font: 700 0.85rem "Plus Jakarta Sans", sans-serif;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
+      }
+
+      .btn-download:hover {
+        border-color: #e11d48;
+        color: #e11d48;
+        transform: translateY(-3px);
+        background: rgba(225, 29, 72, 0.05);
+      }
+
+      /* Versi Mobile (Saat frame putih hilang) */
+      @media (max-width: 768px) {
+        .btn-download {
+          color: #ffffff; /* Kembali putih karena background overlay hitam */
+          border-color: rgba(255, 255, 255, 0.3); /* Stroke putih transparan */
+        }
+        
+        .btn-download:hover {
+          color: #e11d48;
+          border-color: #e11d48;
+        }
+      }
+
+      /* Tombol Close (X) */
+      .close-btn {
+        position: absolute;
+        top: -40px;
+        right: -10px;
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 2.5rem;
+        cursor: pointer;
+      }
+
+      /* Class Aktif untuk Animasi */
+      .brosur-overlay.active { display: flex; }
+      .brosur-overlay.active .brosur-container { transform: scale(1); }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
       /* --- Chat Widget --- */
       .bot-avatar {
         width: 45px;
@@ -3799,25 +3921,36 @@ window.addEventListener('load', function() {
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <section class="cta-join-section reveal">
-      <div class="cta-join-content">
-        <h2>Siap Menjadi Bagian dari PMKN?</h2>
-        <p>
-          Bergabunglah dengan keluarga besar mahasiswa Nias di Tondano. Mari
-          bertumbuh, berkarya, dan berproses bersama dalam semangat kekeluargaan
-          Kristiani.
-        </p>
+    <div class="cta-join-content">
+      <h2>Siap Menjadi Bagian dari PMKN?</h2>
+      <p>
+        Bergabunglah dengan keluarga besar mahasiswa Nias di Tondano. Mari
+        bertumbuh, berkarya, dan berproses bersama dalam semangat kekeluargaan Kristiani.
+      </p>
 
-        <div class="cta-btns">
-          <a href="https://bit.ly/DaftarPMKN" class="btn-cta-white">
-            <i class="fa-solid fa-user-plus"></i> Daftar Sekarang
-          </a>
+      <div class="cta-btns">
+        <a href="https://bit.ly/DaftarPMKN" class="btn-cta-white">
+          <i class="fa-solid fa-user-plus"></i> Daftar Sekarang
+        </a>
 
-          <a href="#" class="btn-cta-outline disable">
-            <i class="fa-solid fa-image"></i> Lihat Brosur
-          </a>
-        </div>
+        <a href="javascript:void(0)" onclick="openBrosur()" class="btn-cta-outline">
+          <i class="fa-solid fa-image"></i> Lihat Brosur
+        </a>
       </div>
-    </section>
+    </div>
+  </section>
+
+  <div id="brosur-modal" class="brosur-overlay" onclick="closeBrosur()">
+    <div class="brosur-container" onclick="event.stopPropagation()">
+      <button class="close-btn" onclick="closeBrosur()">&times;</button>
+      <img src="brosur baru pmkn.jpg" alt="Brosur PMKN" class="brosur-img">
+      <div class="brosur-actions">
+          <a href="brosur baru pmkn.jpg" download class="btn-download">
+              <i class="fa-solid fa-circle-down"></i> Simpan Gambar
+          </a>
+      </div>
+    </div>
+  </div>
 
     <script>
       window.addEventListener("load", () => {
@@ -4075,6 +4208,27 @@ window.addEventListener('load', function() {
         });
       }
 
+      // lihat brosur
+        function openBrosur() {
+        const modal = document.getElementById('brosur-modal');
+        modal.style.display = 'flex';
+        setTimeout(() => {
+          modal.classList.add('active');
+        }, 10);
+      }
+
+      function closeBrosur() {
+        const modal = document.getElementById('brosur-modal');
+        modal.classList.remove('active');
+        setTimeout(() => {
+          modal.style.display = 'none';
+        }, 400);
+      }
+
+      // Tutup dengan tombol Esc
+      document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape") closeBrosur();
+      });
       // Jalankan fungsi saat halaman siap
       document.addEventListener("DOMContentLoaded", renderChart);
 
