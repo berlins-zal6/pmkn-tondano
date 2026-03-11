@@ -2218,96 +2218,196 @@
   
   <h2>Kontributor & Pengembang</h2>
   <p>Tim yang berdedikasi membangun dan mengembangkan website Persatuan Mahasiswa Kristen Nias (PMKN) di Tondano.</p>
-</section>
 
 <div class="container">
-  <div class="stats-grid">
+  <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
     
-    <div class="stat-box box-orange">
-      <i class="fa-solid fa-users-gear"></i>
-      <h3>05</h3>
-      <p>Total Kontributor</p>
+    <div class="stat-box box-orange" style="background: rgba(249, 115, 22, 0.1); border: 1px solid rgba(249, 115, 22, 0.2); padding: 20px; border-radius: 15px; text-align: center;">
+      <i class="fa-solid fa-users-gear" style="color: #f97316; font-size: 1.5rem; margin-bottom: 10px;"></i>
+      <h3 style="font-size: 1.8rem; margin: 5px 0;">05</h3>
+      <p style="color: #94a3b8; font-size: 0.85rem;">Total Kontributor</p>
     </div>
     
-    <div class="stat-box box-green">
-      <i class="fa-solid fa-user-check"></i>
-      <h3>01</h3>
-      <p>Aktif</p>
+    <div class="stat-box box-green" style="background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.2); padding: 20px; border-radius: 15px; text-align: center;">
+      <i class="fa-solid fa-user-check" style="color: #22c55e; font-size: 1.5rem; margin-bottom: 10px;"></i>
+      <h3 style="font-size: 1.8rem; margin: 5px 0;">01</h3>
+      <p style="color: #94a3b8; font-size: 0.85rem;">Aktif</p>
     </div>
     
-    <div class="stat-box box-blue">
-      <i class="fa-solid fa-code-branch"></i>
-      <h3>150+</h3>
-      <p>Total Commits</p>
+    <div class="stat-box box-blue" style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); padding: 20px; border-radius: 15px; text-align: center;">
+      <i class="fa-solid fa-code-branch" style="color: #3b82f6; font-size: 1.5rem; margin-bottom: 10px;"></i>
+      <h3 style="font-size: 1.8rem; margin: 5px 0;">150+</h3>
+      <p style="color: #94a3b8; font-size: 0.85rem;">Total Commits</p>
     </div>
     
-    <div class="stat-box box-purple">
-      <i class="fa-brands fa-superpowers"></i>
-      <h3>24</h3>
-      <p>Fitur</p>
+    <div class="stat-box box-purple" style="background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.2); padding: 20px; border-radius: 15px; text-align: center;">
+      <i class="fa-brands fa-superpowers" style="color: #a855f7; font-size: 1.5rem; margin-bottom: 10px;"></i>
+      <h3 style="font-size: 1.8rem; margin: 5px 0;">24</h3>
+      <p style="color: #94a3b8; font-size: 0.85rem;">Fitur</p>
     </div>
 
   </div>
-  </div>
-
   <div style="margin-top: 50px;"></div>
 </div>
+</section>
 
-<section class="dev-section">
-  <div class="section-title">
-    <h2>Tim Pengembang</h2>
-    <p>Individu-individu berbakat yang berkontribusi dalam pengembangan website ini.</p>
+<section class="dev-section" style="padding: 40px 0;">
+  <div class="section-title" style="text-align: center; margin-bottom: 40px;">
+    <h2 style="font-size: 2rem; margin-bottom: 10px;">Tim Pengembang</h2>
+    <p style="color: #94a3b8;">Individu-individu berbakat yang berkontribusi dalam pengembangan website ini.</p>
   </div>
 
-  <div class="developer-card">
-  <div class="dev-left">
-    <div class="bg-line"></div>
+  <div class="developer-card" style="display: flex; flex-wrap: wrap; gap: 30px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; overflow: hidden; max-width: 900px; margin: 0 auto;">
     
-    <div class="photo-container">
-      <img src="devoloper1.jpg" alt="Berlin S. Zal" class="profile-img">
-    </div>
+    <div class="dev-left" style="flex: 1; min-width: 280px; padding: 40px; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);">
+      <a href="https://berlins-zal6.github.io/profileq/" target="_blank" style="text-decoration: none; display: block; width: fit-content; margin: 0 auto;">
+  <div class="photo-container" 
+       style="width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--accent); padding: 5px; position: relative; z-index: 2; cursor: pointer; transition: 0.4s ease;"
+       onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 20px var(--accent)';" 
+       onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
     
-    <div class="status-badge">
-      <span class="dot">●</span> Active Developer
-    </div>
+    <img src="devoloper1.jpg" alt="Berlin S. Zal" class="profile-img" 
+         style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block;">
+    
   </div>
-
-  <div class="dev-right">
-    <div class="header-info">
-      <h2 class="name">Berlin S. Zalukhu</h2>
-      <p class="role">Lead Developer</p>
-      <p class="description">
-        Pengembang utama dan arsitek sistem. Bertanggung jawab atas desain, pengembangan, dan maintenance keseluruhan website.
-      </p>
-    </div>
-
-    <div class="skills-section">
-      <p class="section-label"><i class="fa-solid fa-star"></i> Keahlian</p>
-      <div class="tags">
-        <span>HTML5</span>
-        <span>JavaScript</span>
-        <span>UI/UX Design</span>
-        <span>React.js</span>
+</a>
+      
+      <div class="status-badge" style="margin-top: 20px; background: rgba(34, 197, 94, 0.1); color: #22c55e; padding: 6px 15px; border-radius: 20px; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; border: 1px solid rgba(34, 197, 94, 0.2);">
+        <span class="dot" style="animation: pulse 2s infinite;">●</span> Active Developer
       </div>
     </div>
 
-    <div class="contribution-section">
-      <p class="section-label"><i class="fa-solid fa-circle-check"></i> Kontribusi Utama</p>
-      <ul class="contribute-list">
-        <li>Merancang arsitektur sistem dan database</li>
-        <li>Fitur utama Backend & Frontend</li>
-        <li>Optimasi performa dan keamanan</li>
-      </ul>
-    </div>
+    <div class="dev-right" style="flex: 2; min-width: 320px; padding: 40px; border-left: 1px solid rgba(255, 255, 255, 0.05);">
+      
+      <div class="header-info" style="margin-bottom: 1.5rem;">
+        <a href="https://berlins-zal6.github.io/profileq/" target="_blank" style="text-decoration: none; color: inherit; display: inline-block;">
+          <h2 class="name" style="cursor: pointer; transition: 0.3s; margin-bottom: 4px; font-weight: 700; letter-spacing: 0.5px;" 
+              onmouseover="this.style.color='var(--accent)'; this.style.transform='translateX(5px)'" 
+              onmouseout="this.style.color='inherit'; this.style.transform='translateX(0)'">
+            Berlin S. Zalukhu
+          </h2>
+        </a>
+      </div>
 
-    <div class="action-buttons">
-      <a href="#" class="btn btn-black"><i class="fa-brands fa-github"></i> GitHub</a>
-      <a href="#" class="btn btn-blue"><i class="fa-solid fa-code"></i> VS Code</a>
-      <a href="#" class="btn btn-orange"><i class="fa-solid fa-envelope"></i> Email</a>
+      <div>
+        <p class="role" style="color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 8px;">
+          Lead Developer
+        </p>
+        <p class="description" style="font-size: 0.9rem; line-height: 1.6; color: #cbd5e1;">
+          Pengembang utama dan arsitek sistem. Bertanggung jawab atas desain, pengembangan, dan maintenance keseluruhan website.
+        </p>
+      </div>
+
+      <div class="skills-section" style="margin-bottom: 1.5rem;">
+        <p class="section-label" style="font-size: 0.85rem; font-weight: 600; color: #94a3b8; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-star" style="color: #fbbf24;"></i> Keahlian
+        </p>
+        <div class="tags" style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <span style="background: rgba(255,255,255,0.05); padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.1);">HTML5</span>
+          <span style="background: rgba(255,255,255,0.05); padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.1);">JavaScript</span>
+          <span style="background: rgba(255,255,255,0.05); padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.1);">UI/UX</span>
+          <span style="background: rgba(255,255,255,0.05); padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.1);">React.js</span>
+        </div>
+      </div>
+
+      <div class="contribution-section" style="margin-bottom: 2rem;">
+        <p class="section-label" style="font-size: 0.85rem; font-weight: 600; color: #94a3b8; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-circle-check" style="color: #22c55e;"></i> Kontribusi Utama
+        </p>
+        <ul style="list-style: none; padding: 0; font-size: 0.85rem; color: #cbd5e1;">
+          <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+            <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; color: var(--accent);"></i> Arsitektur Sistem & Database
+          </li>
+          <li style="margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+            <i class="fa-solid fa-chevron-right" style="font-size: 0.6rem; color: var(--accent);"></i> Backend & Frontend Integration
+          </li>
+        </ul>
+      </div>
+
+      <div class="action-buttons" style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <a href="https://github.com/berlins-zal6" target="_blank" class="btn" style="padding: 10px 18px; border-radius: 8px; font-size: 0.8rem; text-decoration: none; display: flex; align-items: center; gap: 8px; background: #24292e; color: white;">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+        <a href="mailto:berlinsepzal6@gmail.com" class="btn" style="padding: 10px 18px; border-radius: 8px; font-size: 0.8rem; text-decoration: none; display: flex; align-items: center; gap: 8px; background: #f97316; color: white;">
+          <i class="fa-solid fa-envelope"></i> Email
+        </a>
+      </div>
     </div>
   </div>
-</div>
 </section>
+
+<style>
+/* Animasi Pulse yang sudah Mner buat */
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+/* --- PENYESUAIAN MOBILE (Desktop tetap mengikuti inline style Mner) --- */
+@media (max-width: 768px) {
+  /* Statistik jadi 2 kolom di mobile agar tidak terlalu kecil */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
+  }
+
+  /* Kartu developer berubah jadi tumpukan vertikal */
+  .developer-card {
+    flex-direction: column !important;
+    max-width: 100% !important;
+    margin: 0 15px !important;
+  }
+
+  /* Bagian kiri (foto) mengambil lebar penuh */
+  .dev-left {
+    min-width: 100% !important;
+    padding: 30px 20px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Bagian kanan (info) menghilangkan border-left dan padding disesuaikan */
+  .dev-right {
+    min-width: 100% !important;
+    padding: 30px 20px !important;
+    border-left: none !important;
+  }
+
+  /* Nama dan deskripsi jadi rata tengah di mobile agar lebih rapi */
+  .header-info, .header-info a {
+    text-align: center;
+    display: block !important;
+  }
+  
+  .role, .description {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Tombol aksi jadi lebar penuh di mobile */
+  .action-buttons {
+    justify-content: center;
+  }
+  
+  .action-buttons .btn {
+    flex: 1;
+    justify-content: center;
+    min-width: 120px;
+  }
+}
+
+/* Khusus layar sangat kecil (HP jadul/kecil) */
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr !important; /* Statistik jadi 1 kolom saja */
+  }
+  
+  .name {
+    font-size: 1.5rem !important;
+  }
+}
+</style>
 
 <script>
       window.addEventListener("load", () => {
